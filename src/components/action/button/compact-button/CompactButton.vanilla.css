@@ -1,0 +1,432 @@
+/* CompactButton Vanilla CSS - SELF-CONTAINED - TOKEN LED */
+
+/* Base Button */
+.compact-button {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+  border: none;
+  font-family: inherit;
+  position: relative;
+  background: transparent;
+}
+
+.compact-button:disabled {
+  cursor: not-allowed;
+}
+
+/* Inner container */
+.compact-button-inner {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+/* Text wrapper */
+.compact-button-text-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0 var(--spacing-08);
+}
+
+/* Button Text */
+.compact-button-text {
+  text-align: center;
+  font-family: var(--type-style-6-family);
+  font-size: var(--type-style-6-size);
+  font-weight: var(--type-style-6-weight);
+  line-height: var(--type-style-6-line-height);
+  transition: color 0.2s;
+}
+
+/* Icon Containers */
+.compact-button-icon-left,
+.compact-button-icon-right {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.compact-button-icon-left img,
+.compact-button-icon-right img {
+  object-fit: contain;
+  display: block;
+}
+
+/* ========== SIZE: DEFAULT ========== */
+.compact-button.size-default .compact-button-inner {
+  border-radius: var(--btn-compact-corner-radius-default);
+  padding: var(--spacing-12) var(--spacing-16);
+}
+
+.compact-button.size-default .compact-button-icon-left {
+  height: 18px;
+  width: 18px;
+}
+
+.compact-button.size-default .compact-button-icon-right {
+  height: 18px;
+  width: 18px;
+}
+
+.compact-button.size-default .compact-button-icon-left img {
+  height: 18px;
+  width: 18px;
+}
+
+.compact-button.size-default .compact-button-icon-right img {
+  height: 18px;
+  width: 18px;
+}
+
+/* ========== SIZE: SMALL ========== */
+.compact-button.size-small .compact-button-inner {
+  border-radius: var(--btn-compact-corner-radius-small);
+  padding: 0 var(--spacing-16);
+  min-height: var(--btn-compact-min-height-small);
+}
+
+.compact-button.size-small .compact-button-icon-left {
+  height: 16px;
+  width: 16px;
+}
+
+.compact-button.size-small .compact-button-icon-right {
+  height: 12px;
+  width: 12px;
+}
+
+.compact-button.size-small .compact-button-icon-left img {
+  height: 16px;
+  width: 16px;
+}
+
+.compact-button.size-small .compact-button-icon-right img {
+  height: 12px;
+  width: 12px;
+}
+
+/* ========== TYPE: PRIMARY ========== */
+.compact-button.btn-primary .compact-button-inner {
+  background-color: var(--bg-action-default);
+  border: 2px solid transparent;
+}
+
+.compact-button.btn-primary .compact-button-text {
+  color: var(--text-action-inverse);
+}
+
+.compact-button.btn-primary .compact-button-icon-left img,
+.compact-button.btn-primary .compact-button-icon-right img {
+  filter: brightness(0) invert(1);
+}
+
+/* Primary Pressed */
+.compact-button.btn-primary:active .compact-button-inner,
+.compact-button.btn-primary.pressed .compact-button-inner {
+  background-color: var(--bg-action-pressed);
+}
+
+/* Primary Disabled */
+.compact-button.btn-primary:disabled .compact-button-inner,
+.compact-button.btn-primary.disabled .compact-button-inner {
+  background-color: var(--bg-action-disabled);
+}
+
+.compact-button.btn-primary:disabled .compact-button-text,
+.compact-button.btn-primary.disabled .compact-button-text {
+  color: var(--text-subdued);
+}
+
+.compact-button.btn-primary:disabled .compact-button-icon-left,
+.compact-button.btn-primary:disabled .compact-button-icon-right,
+.compact-button.btn-primary.disabled .compact-button-icon-left,
+.compact-button.btn-primary.disabled .compact-button-icon-right {
+  display: none;
+}
+
+/* ========== TYPE: PRIMARY + BRAND ACCENT ========== */
+.compact-button.btn-primary.btn-brand-accent .compact-button-inner {
+  background-color: var(--btn-brand-accent-primary-bg-default);
+  border: 2px solid var(--btn-brand-accent-primary-border-default);
+}
+
+.compact-button.btn-primary.btn-brand-accent .compact-button-text {
+  color: var(--btn-brand-accent-primary-text-default);
+}
+
+.compact-button.btn-primary.btn-brand-accent .compact-button-icon-left img,
+.compact-button.btn-primary.btn-brand-accent .compact-button-icon-right img {
+  filter: none;
+}
+
+/* Brand Accent Pressed */
+.compact-button.btn-primary.btn-brand-accent:active .compact-button-inner,
+.compact-button.btn-primary.btn-brand-accent.pressed .compact-button-inner {
+  background-color: var(--btn-brand-accent-primary-bg-pressed);
+  border-color: var(--btn-brand-accent-primary-border-pressed);
+}
+
+/* Brand Accent Disabled */
+.compact-button.btn-primary.btn-brand-accent:disabled .compact-button-inner,
+.compact-button.btn-primary.btn-brand-accent.disabled .compact-button-inner {
+  background-color: var(--bg-action-disabled);
+  border-color: transparent;
+}
+
+.compact-button.btn-primary.btn-brand-accent:disabled .compact-button-text,
+.compact-button.btn-primary.btn-brand-accent.disabled .compact-button-text {
+  color: var(--text-subdued);
+}
+
+/* ========== TYPE: PRIMARY + ON COLOR BG ========== */
+.compact-button.btn-primary.btn-on-color .compact-button-inner {
+  background-color: var(--bg-action-on-color-default);
+  border: 2px solid transparent;
+}
+
+.compact-button.btn-primary.btn-on-color .compact-button-text {
+  color: var(--color-black);
+}
+
+.compact-button.btn-primary.btn-on-color .compact-button-icon-left img,
+.compact-button.btn-primary.btn-on-color .compact-button-icon-right img {
+  filter: none;
+}
+
+/* On Color Pressed */
+.compact-button.btn-primary.btn-on-color:active .compact-button-inner,
+.compact-button.btn-primary.btn-on-color.pressed .compact-button-inner {
+  background-color: var(--bg-action-on-color-pressed);
+}
+
+.compact-button.btn-primary.btn-on-color:active .compact-button-text,
+.compact-button.btn-primary.btn-on-color.pressed .compact-button-text {
+  color: var(--color-white);
+}
+
+.compact-button.btn-primary.btn-on-color:active .compact-button-icon-left img,
+.compact-button.btn-primary.btn-on-color:active .compact-button-icon-right img,
+.compact-button.btn-primary.btn-on-color.pressed .compact-button-icon-left img,
+.compact-button.btn-primary.btn-on-color.pressed .compact-button-icon-right img {
+  filter: brightness(0) invert(1);
+}
+
+/* On Color Disabled */
+.compact-button.btn-primary.btn-on-color:disabled .compact-button-inner,
+.compact-button.btn-primary.btn-on-color.disabled .compact-button-inner {
+  background-color: var(--bg-action-disabled);
+}
+
+/* ========== TYPE: SECONDARY ========== */
+.compact-button.btn-secondary .compact-button-inner {
+  background-color: transparent;
+  border: 1px solid var(--text-default);
+}
+
+.compact-button.btn-secondary .compact-button-text {
+  color: var(--text-default);
+}
+
+.compact-button.btn-secondary .compact-button-icon-left img,
+.compact-button.btn-secondary .compact-button-icon-right img {
+  filter: none;
+}
+
+/* Secondary Pressed */
+.compact-button.btn-secondary:active .compact-button-inner,
+.compact-button.btn-secondary.pressed .compact-button-inner {
+  background-color: var(--bg-action-pressed);
+  border-color: transparent;
+}
+
+.compact-button.btn-secondary:active .compact-button-text,
+.compact-button.btn-secondary.pressed .compact-button-text {
+  color: var(--text-action-inverse);
+}
+
+.compact-button.btn-secondary:active .compact-button-icon-left img,
+.compact-button.btn-secondary:active .compact-button-icon-right img,
+.compact-button.btn-secondary.pressed .compact-button-icon-left img,
+.compact-button.btn-secondary.pressed .compact-button-icon-right img {
+  filter: brightness(0) invert(1);
+}
+
+/* Secondary Disabled */
+.compact-button.btn-secondary:disabled .compact-button-inner,
+.compact-button.btn-secondary.disabled .compact-button-inner {
+  background-color: var(--bg-action-disabled);
+  border-color: transparent;
+}
+
+.compact-button.btn-secondary:disabled .compact-button-text,
+.compact-button.btn-secondary.disabled .compact-button-text {
+  color: var(--text-subdued);
+}
+
+.compact-button.btn-secondary:disabled .compact-button-icon-left,
+.compact-button.btn-secondary:disabled .compact-button-icon-right,
+.compact-button.btn-secondary.disabled .compact-button-icon-left,
+.compact-button.btn-secondary.disabled .compact-button-icon-right {
+  display: none;
+}
+
+/* ========== TYPE: SECONDARY + ON COLOR BG ========== */
+.compact-button.btn-secondary.btn-on-color .compact-button-inner {
+  background-color: transparent;
+  border: 1px solid var(--color-white);
+}
+
+.compact-button.btn-secondary.btn-on-color .compact-button-text {
+  color: var(--color-white);
+}
+
+.compact-button.btn-secondary.btn-on-color .compact-button-icon-left img,
+.compact-button.btn-secondary.btn-on-color .compact-button-icon-right img {
+  filter: brightness(0) invert(1);
+}
+
+/* Secondary On Color Pressed */
+.compact-button.btn-secondary.btn-on-color:active .compact-button-inner,
+.compact-button.btn-secondary.btn-on-color.pressed .compact-button-inner {
+  background-color: var(--bg-action-on-color-pressed);
+  border-color: transparent;
+}
+
+/* Secondary On Color Disabled */
+.compact-button.btn-secondary.btn-on-color:disabled .compact-button-inner,
+.compact-button.btn-secondary.btn-on-color.disabled .compact-button-inner {
+  background-color: var(--bg-action-disabled);
+  border-color: transparent;
+}
+
+/* ========== TYPE: TERTIARY ========== */
+.compact-button.btn-tertiary {
+  border: 2px solid transparent;
+}
+
+.compact-button.btn-tertiary .compact-button-inner {
+  background-color: transparent;
+  border: none;
+}
+
+.compact-button.btn-tertiary .compact-button-text {
+  color: var(--text-default);
+  text-decoration: underline;
+}
+
+.compact-button.btn-tertiary .compact-button-icon-left img,
+.compact-button.btn-tertiary .compact-button-icon-right img {
+  filter: none;
+}
+
+/* Tertiary Pressed */
+.compact-button.btn-tertiary:active .compact-button-inner,
+.compact-button.btn-tertiary.pressed .compact-button-inner {
+  background-color: var(--bg-action-pressed);
+  border: none;
+}
+
+.compact-button.btn-tertiary:active .compact-button-text,
+.compact-button.btn-tertiary.pressed .compact-button-text {
+  color: var(--text-action-inverse);
+  text-decoration: none;
+}
+
+.compact-button.btn-tertiary:active .compact-button-icon-left img,
+.compact-button.btn-tertiary:active .compact-button-icon-right img,
+.compact-button.btn-tertiary.pressed .compact-button-icon-left img,
+.compact-button.btn-tertiary.pressed .compact-button-icon-right img {
+  filter: brightness(0) invert(1);
+}
+
+/* Tertiary Disabled */
+.compact-button.btn-tertiary:disabled,
+.compact-button.btn-tertiary.disabled {
+  border-color: transparent;
+}
+
+.compact-button.btn-tertiary:disabled .compact-button-inner,
+.compact-button.btn-tertiary.disabled .compact-button-inner {
+  background-color: var(--bg-action-disabled);
+}
+
+.compact-button.btn-tertiary:disabled .compact-button-text,
+.compact-button.btn-tertiary.disabled .compact-button-text {
+  color: var(--text-subdued);
+  text-decoration: none;
+}
+
+.compact-button.btn-tertiary:disabled .compact-button-icon-left,
+.compact-button.btn-tertiary:disabled .compact-button-icon-right,
+.compact-button.btn-tertiary.disabled .compact-button-icon-left,
+.compact-button.btn-tertiary.disabled .compact-button-icon-right {
+  display: none;
+}
+
+/* ========== TYPE: TERTIARY + ON COLOR BG ========== */
+.compact-button.btn-tertiary.btn-on-color .compact-button-text {
+  color: var(--color-white);
+  text-decoration: underline;
+}
+
+.compact-button.btn-tertiary.btn-on-color .compact-button-icon-left img,
+.compact-button.btn-tertiary.btn-on-color .compact-button-icon-right img {
+  filter: brightness(0) invert(1);
+}
+
+/* Tertiary On Color Pressed */
+.compact-button.btn-tertiary.btn-on-color:active .compact-button-inner,
+.compact-button.btn-tertiary.btn-on-color.pressed .compact-button-inner {
+  background-color: var(--bg-action-on-color-pressed);
+}
+
+.compact-button.btn-tertiary.btn-on-color:active .compact-button-text,
+.compact-button.btn-tertiary.btn-on-color.pressed .compact-button-text {
+  color: var(--color-white);
+}
+
+/* Tertiary On Color Disabled */
+.compact-button.btn-tertiary.btn-on-color:disabled .compact-button-inner,
+.compact-button.btn-tertiary.btn-on-color.disabled .compact-button-inner {
+  background-color: var(--bg-action-disabled);
+}
+
+/* ========== DARK MODE ========== */
+[data-theme="dark"] .compact-button.btn-primary .compact-button-icon-left img,
+[data-theme="dark"] .compact-button.btn-primary .compact-button-icon-right img {
+  filter: none;
+}
+
+[data-theme="dark"] .compact-button.btn-secondary .compact-button-icon-left img,
+[data-theme="dark"] .compact-button.btn-secondary .compact-button-icon-right img {
+  filter: brightness(0) invert(1);
+}
+
+[data-theme="dark"] .compact-button.btn-secondary:active .compact-button-icon-left img,
+[data-theme="dark"] .compact-button.btn-secondary:active .compact-button-icon-right img,
+[data-theme="dark"] .compact-button.btn-secondary.pressed .compact-button-icon-left img,
+[data-theme="dark"] .compact-button.btn-secondary.pressed .compact-button-icon-right img {
+  filter: none;
+}
+
+[data-theme="dark"] .compact-button.btn-tertiary .compact-button-icon-left img,
+[data-theme="dark"] .compact-button.btn-tertiary .compact-button-icon-right img {
+  filter: brightness(0) invert(1);
+}
+
+[data-theme="dark"] .compact-button.btn-tertiary:active .compact-button-icon-left img,
+[data-theme="dark"] .compact-button.btn-tertiary:active .compact-button-icon-right img,
+[data-theme="dark"] .compact-button.btn-tertiary.pressed .compact-button-icon-left img,
+[data-theme="dark"] .compact-button.btn-tertiary.pressed .compact-button-icon-right img {
+  filter: none;
+}

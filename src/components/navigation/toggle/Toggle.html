@@ -1,0 +1,140 @@
+# Toggle Component
+
+A segmented control toggle component that allows users to select between two mutually exclusive options (e.g., Yes/No, On/Off).
+
+## Files
+
+- `Toggle.vanilla.css` - Self-contained CSS with token-led styling
+- `Toggle.vanilla.js` - Interactive functionality for toggle behavior
+- `Toggle-demo.html` - Demo page showing all states
+
+## Component Structure
+
+```html
+<div class="toggle">
+    <button class="toggle-tab [is-active]" data-value="yes" [disabled]>
+        <span class="toggle-tab-text">Yes</span>
+    </button>
+    <div class="toggle-separator"></div>
+    <button class="toggle-tab [is-active]" data-value="no" [disabled]>
+        <span class="toggle-tab-text">No</span>
+    </button>
+</div>
+```
+
+## States
+
+1. **Default - All Inactive**: No option selected
+2. **Default - Tab 1 Active**: First option (Yes) selected
+3. **Default - Tab 2 Active**: Second option (No) selected
+4. **Disabled - All Inactive**: Disabled with no selection
+5. **Disabled - Tab 1 Active**: Disabled with first option selected
+6. **Disabled - Tab 2 Active**: Disabled with second option selected
+
+## CSS Classes
+
+- `.toggle` - Container for the toggle component
+- `.toggle-tab` - Individual tab button
+- `.toggle-tab.is-active` - Active state for selected tab
+- `.toggle-tab:disabled` - Disabled state
+- `.toggle-tab-text` - Text label for tab
+- `.toggle-separator` - Divider between tabs (hidden when adjacent to active tab)
+
+## JavaScript Events
+
+The component dispatches a custom `toggle-change` event when a tab is clicked:
+
+```javascript
+element.addEventListener('toggle-change', function(e) {
+    console.log(e.detail.value); // 'yes' or 'no'
+    console.log(e.detail.label); // 'Yes' or 'No'
+});
+```
+
+## Design Tokens Used
+
+### Typography
+- `--type-style-6-family` - Font family
+- `--type-style-6-size` - Font size (15px)
+- `--type-style-6-weight` - Font weight
+- `--type-style-6-line-height` - Line height (20px)
+- `--type-style-6-letter-spacing` - Letter spacing
+
+### Colors
+- `--bg-panel-subdued` - Toggle container background
+- `--bg-inverse` - Active tab background (black)
+- `--text-default` - Default text color
+- `--text-inverse` - Active tab text color (white)
+- `--text-disabled` - Disabled text color
+- `--bg-disabled` - Disabled active background
+- `--bg-panel-hover` - Hover state background
+- `--border-subdued` - Separator color
+
+### Spacing & Borders
+- `--spacing-06` - Vertical padding (6px)
+- `--spacing-12` - Horizontal padding (12px)
+- `--radius-large` - Container border radius (10px)
+- `--radius-default` - Tab border radius (8px)
+
+## Dimensions
+- Container padding: 2px
+- Tab min-width: 57px
+- Tab height: 32px
+- Separator: 1px × 12px
+
+## Usage Examples
+
+### Basic Yes/No Toggle
+```html
+<div class="toggle">
+    <button class="toggle-tab" data-value="yes">
+        <span class="toggle-tab-text">Yes</span>
+    </button>
+    <div class="toggle-separator"></div>
+    <button class="toggle-tab" data-value="no">
+        <span class="toggle-tab-text">No</span>
+    </button>
+</div>
+```
+
+### Pre-selected Option
+```html
+<div class="toggle">
+    <button class="toggle-tab is-active" data-value="yes">
+        <span class="toggle-tab-text">Yes</span>
+    </button>
+    <div class="toggle-separator"></div>
+    <button class="toggle-tab" data-value="no">
+        <span class="toggle-tab-text">No</span>
+    </button>
+</div>
+```
+
+### Disabled Toggle
+```html
+<div class="toggle">
+    <button class="toggle-tab" data-value="yes" disabled>
+        <span class="toggle-tab-text">Yes</span>
+    </button>
+    <div class="toggle-separator"></div>
+    <button class="toggle-tab" data-value="no" disabled>
+        <span class="toggle-tab-text">No</span>
+    </button>
+</div>
+```
+
+## Behavior
+
+- Only one tab can be active at a time
+- Clicking a tab activates it and deactivates the other
+- Separator is hidden when adjacent to an active tab
+- Disabled tabs cannot be clicked
+- Smooth transitions for background and text color changes
+- Custom event dispatched on selection change
+
+## Dark Mode Support
+
+All colors automatically adapt to dark mode through design tokens:
+- Background colors invert appropriately
+- Text colors maintain proper contrast
+- Border colors adjust for visibility

@@ -1,0 +1,188 @@
+<!-- 
+  List Action Group HTML Component - TOKEN LED - SELF-CONTAINED
+  
+  Container for stacked list-item-action components.
+  Creates a grouped list with proper positioning (top, middle, bottom).
+  
+  Dependencies:
+  - Design tokens (cancara-tokens.css)
+  - ListItemAction component (nested)
+  - Pictogram component (nested via ListItemAction)
+  - Illustration component (nested via ListItemAction)
+  - Divider component (nested via ListItemAction)
+  - ListActionGroup.vanilla.css (SELF-CONTAINED)
+  
+  Usage:
+  1. Import all nested component CSS
+  2. Import ListActionGroup.vanilla.css
+  3. Copy HTML structure
+  4. Nest list-item-action components inside
+-->
+
+<!-- Example 1: Compact Width with 6 items -->
+<div class="list-action-group width-compact">
+    <!-- Item 1: Top position with heading -->
+    <div class="list-item-action asset-none width-compact position-top state-default">
+        <div class="list-item-heading">
+            <span class="list-item-heading-text">SECTION HEADING</span>
+        </div>
+        <div class="list-item-content">
+            <div class="list-item-text">
+                <span class="list-item-title">First Item</span>
+            </div>
+            <div class="list-item-action-icon">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                    <path d="M4.5 3L7.5 6L4.5 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+        </div>
+        <div class="divider width-default"><div class="divider-line"></div></div>
+    </div>
+    
+    <!-- Items 2-5: Middle positions -->
+    <div class="list-item-action asset-none width-compact position-middle state-default">
+        <div class="list-item-content">
+            <div class="list-item-text">
+                <span class="list-item-title">Second Item</span>
+            </div>
+            <div class="list-item-action-icon">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                    <path d="M4.5 3L7.5 6L4.5 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+        </div>
+        <div class="divider width-default"><div class="divider-line"></div></div>
+    </div>
+    
+    <div class="list-item-action asset-none width-compact position-middle state-default">
+        <div class="list-item-content">
+            <div class="list-item-text">
+                <span class="list-item-title">Third Item</span>
+            </div>
+            <div class="list-item-action-icon">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                    <path d="M4.5 3L7.5 6L4.5 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+        </div>
+        <div class="divider width-default"><div class="divider-line"></div></div>
+    </div>
+    
+    <div class="list-item-action asset-none width-compact position-middle state-default">
+        <div class="list-item-content">
+            <div class="list-item-text">
+                <span class="list-item-title">Fourth Item</span>
+            </div>
+            <div class="list-item-action-icon">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                    <path d="M4.5 3L7.5 6L4.5 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+        </div>
+        <div class="divider width-default"><div class="divider-line"></div></div>
+    </div>
+    
+    <div class="list-item-action asset-none width-compact position-middle state-default">
+        <div class="list-item-content">
+            <div class="list-item-text">
+                <span class="list-item-title">Fifth Item</span>
+            </div>
+            <div class="list-item-action-icon">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                    <path d="M4.5 3L7.5 6L4.5 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+        </div>
+        <div class="divider width-default"><div class="divider-line"></div></div>
+    </div>
+    
+    <!-- Item 6: Bottom position (no divider) -->
+    <div class="list-item-action asset-none width-compact position-bottom state-default">
+        <div class="list-item-content">
+            <div class="list-item-text">
+                <span class="list-item-title">Sixth Item</span>
+            </div>
+            <div class="list-item-action-icon">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                    <path d="M4.5 3L7.5 6L4.5 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example 2: FullWidth with icons -->
+<div class="list-action-group width-fullwidth">
+    <div class="list-item-action asset-icon width-fullwidth position-top state-default">
+        <div class="list-item-heading">
+            <span class="list-item-heading-text">QUICK ACTIONS</span>
+        </div>
+        <div class="list-item-content">
+            <div class="list-item-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="list-item-text">
+                <span class="list-item-title">Profile Settings</span>
+            </div>
+            <div class="list-item-action-icon">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                    <path d="M4.5 3L7.5 6L4.5 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+        </div>
+        <div class="divider width-fullwidth"><div class="divider-line"></div></div>
+    </div>
+    
+    <div class="list-item-action asset-icon width-fullwidth position-bottom state-default">
+        <div class="list-item-content">
+            <div class="list-item-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 16V12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 8H12.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="list-item-text">
+                <span class="list-item-title">Help & Support</span>
+            </div>
+            <div class="list-item-action-icon">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                    <path d="M4.5 3L7.5 6L4.5 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--
+  WIDTH VARIANTS:
+  - width-compact: Has horizontal padding (16px)
+  - width-fullwidth: No horizontal padding, extends to edges
+  
+  NESTED COMPONENTS:
+  All list-item-action components should use:
+  - position-top: For the first item
+  - position-middle: For middle items
+  - position-bottom: For the last item
+  
+  COMPLETE USAGE:
+  
+  <head>
+      <link rel="stylesheet" href="path/to/cancara-tokens.css">
+      <link rel="stylesheet" href="path/to/Pictogram.vanilla.css">
+      <link rel="stylesheet" href="path/to/Illustration.vanilla.css">
+      <link rel="stylesheet" href="path/to/Divider.vanilla.css">
+      <link rel="stylesheet" href="path/to/ListItemAction.vanilla.css">
+      <link rel="stylesheet" href="path/to/ListActionGroup.vanilla.css">
+  </head>
+  <body>
+      <!-- HTML structure above -->
+      
+      <script src="path/to/Pictogram.vanilla.js"></script>
+      <script src="path/to/Illustration.vanilla.js"></script>
+      <script src="path/to/ListItemAction.vanilla.js"></script>
+  </body>
+-->

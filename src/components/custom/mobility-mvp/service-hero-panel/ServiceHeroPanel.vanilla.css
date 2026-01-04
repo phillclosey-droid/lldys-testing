@@ -1,0 +1,274 @@
+/* 
+  ServiceHeroPanel Component Styles - SELF-CONTAINED - TOKEN LED
+  
+  A service reminder panel with overlapping pictogram and card layout.
+  All spacing, colors, and typography use design tokens.
+  
+  Dependencies:
+  - cancara-tokens.css (design tokens)
+  - Pictogram.vanilla.css
+  - NotificationTag.vanilla.css
+  - NotificationHint.vanilla.css
+  - Accordion.vanilla.css
+  - ActionButton.vanilla.css
+  - Divider.vanilla.css
+*/
+
+/* Container */
+.service-hero-panel {
+    position: relative;
+    width: 100%;
+    max-width: 100%; /* Full width, no max constraint */
+    margin: 0; /* Remove any margin */
+}
+
+/* Pictogram - Left aligned with margin */
+.service-hero-panel-pictogram {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: flex-start; /* Left align */
+    margin-left: var(--spacing-16); /* 16px left margin */
+    margin-bottom: -30px; /* Pull card up to overlap pictogram center - reduced from -40px */
+}
+
+/* Reduce pictogram size by 25% from doubled size */
+.service-hero-panel-pictogram .pictogram {
+    width: 60px; /* Reduced from 80px (25% smaller) */
+    height: 60px; /* Reduced from 80px (25% smaller) */
+}
+
+.service-hero-panel-pictogram .pictogram img {
+    width: 36px; /* Reduced from 48px (25% smaller) */
+    height: 36px; /* Reduced from 48px (25% smaller) */
+}
+
+/* Main Card */
+.service-hero-panel-card {
+    position: relative;
+    z-index: 1;
+    background: var(--bg-panel-default);
+    border-radius: var(--radius-default); /* 12px */
+    padding: var(--spacing-16); /* 16px */
+    padding-top: calc(var(--spacing-16) + 30px); /* Extra top padding for pictogram overlap - adjusted for 60px pictogram */
+    margin-bottom: 0; /* Remove bottom margin */
+}
+
+/* Registration Row */
+.service-hero-panel-reg-row {
+    display: flex;
+    align-items: baseline; /* Align to baseline so text lines up */
+    gap: var(--spacing-08); /* 8px */
+    margin-bottom: var(--spacing-08); /* 8px */
+}
+
+.service-hero-panel-reg-label {
+    font-family: var(--font-family-body);
+    font-size: var(--type-style-3-size); /* Increased from style 4 to style 3 */
+    font-weight: var(--type-style-3-weight);
+    line-height: var(--type-style-3-line-height);
+    color: var(--text-default);
+}
+
+.service-hero-panel-pips {
+    font-family: var(--font-family-body);
+    font-size: var(--type-style-5-size); /* 16px */
+    font-weight: var(--type-style-5-weight);
+    line-height: var(--type-style-5-line-height);
+    color: var(--text-subdued);
+    letter-spacing: 2px;
+}
+
+.service-hero-panel-reg-number {
+    font-family: var(--font-family-body);
+    font-size: var(--type-style-8-size); /* 12px */
+    font-weight: var(--type-style-8-weight);
+    line-height: var(--type-style-8-line-height);
+    color: var(--text-default);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Service Type */
+.service-hero-panel-service-type {
+    font-family: var(--font-family-body);
+    font-size: var(--type-style-8-size); /* 12px */
+    font-weight: var(--type-style-8-weight);
+    line-height: var(--type-style-8-line-height);
+    color: var(--text-subdued);
+    margin-bottom: 0; /* Reduced space below */
+    margin-top: var(--spacing-16); /* Increased from 8px to 16px */
+}
+
+/* Date Row with Tag */
+.service-hero-panel-date-row {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-24); /* Doubled from 12px to 24px */
+    margin-bottom: var(--spacing-16); /* 16px */
+}
+
+.service-hero-panel-date {
+    font-family: var(--font-family-heading);
+    font-size: var(--type-style-3-size); /* 24px */
+    font-weight: var(--type-style-3-weight);
+    line-height: var(--type-style-3-line-height);
+    letter-spacing: var(--type-style-3-letter-spacing);
+    color: var(--text-default);
+}
+
+/* Override tag uppercase */
+.service-hero-panel-date-row .notification-tag-text {
+    text-transform: none !important;
+}
+
+/* Hint Section */
+.service-hero-panel-hint {
+    margin-bottom: var(--spacing-16); /* 16px */
+    margin-top: var(--spacing-24); /* Increased from 16px to 24px */
+    margin-left: calc(var(--spacing-16) * -1); /* Remove left padding */
+    margin-right: calc(var(--spacing-16) * -1); /* Remove right padding */
+}
+
+/* Make notification hint full width */
+.service-hero-panel-hint .notification-hint {
+    width: 100%;
+    max-width: 100%;
+}
+
+.service-hero-panel-hint .notification-hint-content {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+}
+
+/* Divider Section */
+.service-hero-panel-divider {
+    margin-bottom: -16px; /* Negative margin to pull accordion up and eliminate gap */
+    margin-top: var(--spacing-16); /* Keep space above divider */
+}
+
+/* Accordion Section - Remove all top spacing */
+.service-hero-panel-accordion {
+    margin-top: 0 !important;
+}
+
+.service-hero-panel-accordion .accordion {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+.service-hero-panel-accordion .accordion-item {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+.service-hero-panel-accordion .accordion-header {
+    margin-top: 0 !important;
+    padding-top: var(--spacing-16) !important;
+}
+
+/* Accordion Section */
+.service-hero-panel-accordion {
+    /* Accordion component handles its own styling */
+}
+
+/* Remove hover background on accordion */
+.service-hero-panel-accordion .accordion-header:hover {
+    background: transparent !important;
+}
+
+/* Bell icon left of accordion label */
+.service-hero-panel-accordion .accordion-icon-left {
+    width: 18px;
+    height: 18px;
+    margin-right: var(--spacing-08);
+    flex-shrink: 0;
+}
+
+.service-hero-panel-accordion .accordion-icon-left img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    filter: brightness(0) invert(1); /* Make icon white in dark mode */
+}
+
+/* Light mode - make icon dark */
+[data-theme="light"] .service-hero-panel-accordion .accordion-icon-left img {
+    filter: brightness(0); /* Make icon black in light mode */
+}
+
+/* Adjust accordion header to accommodate left icon */
+.service-hero-panel-accordion .accordion-header {
+    display: flex;
+    align-items: center;
+}
+
+/* Remove background from accordion panel when open */
+.service-hero-panel-accordion .accordion-panel {
+    background: transparent !important;
+}
+
+.service-hero-panel-accordion .accordion-panel-content {
+    background: transparent !important;
+    padding: 0 !important; /* This removes the padding that was creating the gap */
+}
+
+/* Cost Breakdown Container */
+.service-hero-panel-cost-container {
+    background: var(--bg-page-default); /* Page background color */
+    border-radius: var(--radius-default); /* Add border radius back */
+    padding: var(--spacing-08) var(--spacing-16); /* 8px top/bottom, 16px left/right */
+    margin-bottom: var(--spacing-16); /* 16px */
+    margin-top: var(--spacing-16); /* Space above container */
+}
+
+.service-hero-panel-cost-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0; /* Remove vertical padding */
+    margin: var(--spacing-04) 0; /* Minimal vertical spacing */
+}
+
+/* Add space top and bottom of divider when accordion is open */
+.service-hero-panel-cost-container .divider {
+    margin: var(--spacing-12) 0; /* Reduced from 16px to 12px */
+}
+
+.service-hero-panel-cost-label {
+    font-family: var(--font-family-body);
+    font-size: var(--type-style-8-size); /* Smaller font - style 8 */
+    font-weight: var(--font-weight-bold); /* Bold for left side */
+    line-height: var(--type-style-8-line-height);
+    color: var(--text-default);
+    text-align: left;
+}
+
+.service-hero-panel-cost-value {
+    font-family: var(--font-family-body);
+    font-size: var(--type-style-8-size); /* Smaller font - style 8 */
+    font-weight: var(--font-weight-regular); /* Regular for right side */
+    line-height: var(--type-style-8-line-height);
+    color: var(--text-default);
+    text-align: right;
+}
+
+/* Button Section */
+.service-hero-panel-button {
+    /* Button component handles its own styling */
+}
+
+.service-hero-panel-button .action-button {
+    width: 100%;
+}
+
+/* Dark Mode Support */
+/* All colors use semantic tokens that automatically adapt */
+
+/* Responsive */
+@media (max-width: 430px) {
+    .service-hero-panel {
+        max-width: 100%;
+    }
+}

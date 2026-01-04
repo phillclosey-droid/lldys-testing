@@ -1,0 +1,67 @@
+/* Illustration Vanilla CSS - Standalone version for HTML usage - TOKEN LED */
+
+.illustration {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-default);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.illustration img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+/* Variant Colors - TOKEN LED using proper semantic/promo tokens */
+.ill-default {
+  background-color: var(--promo-bg-secondary-default); /* Mint green */
+}
+
+.ill-default-alt-01 {
+  background-color: var(--color-white); /* Static white - does not change with dark mode */
+}
+
+.ill-default-alt-02 {
+  background-color: var(--color-gray-100); /* Static gray-100 - does not change with dark mode */
+}
+
+.ill-primary {
+  background-color: var(--promo-bg-primary-default); /* Green primary */
+}
+
+.ill-primary-alt-01 {
+  background-color: var(--promo-bg-primary-dark); /* Dark green */
+}
+
+.ill-primary-alt-02 {
+  background-color: var(--promo-bg-primary-darker); /* Darker green */
+}
+
+.ill-primary-alt-03 {
+  background-color: var(--promo-bg-primary-light); /* Light green */
+}
+
+.ill-secondary {
+  background-color: var(--promo-bg-secondary-default); /* Mint green */
+}
+
+.ill-secondary-alt-01 {
+  background-color: var(--promo-bg-secondary-purple); /* Purple */
+}
+
+.ill-secondary-alt-02 {
+  background-color: var(--promo-bg-secondary-pink); /* Pink */
+}
+
+.ill-secondary-alt-03 {
+  background-color: var(--promo-bg-secondary-cyan); /* Cyan */
+}
+
+.ill-secondary-alt-04 {
+  background-color: var(--promo-bg-secondary-orange); /* Orange */
+}

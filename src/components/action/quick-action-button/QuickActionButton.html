@@ -1,0 +1,158 @@
+<!-- 
+  QuickActionButton HTML Component - SELF-CONTAINED - TOKEN LED
+  
+  A button with icon, optional notification badge/tag, and label text.
+  
+  Three presets:
+  - 'account-quick-links': 48px with white background and border, 19px icon, optional badge, 12px label
+  - 'action-menu': 48px no background/border, 19px icon, 14px label
+  - 'default': 48px no background/border, 24px icon, optional NEW tag, 12px label
+  
+  Three states: default, pressed, disabled
+  
+  Nested Components (self-contained in CSS):
+  - NotificationBadge
+  - NotificationTag
+  
+  Dependencies:
+  - Design tokens (cancara-tokens.css)
+  - QuickActionButton.vanilla.css (SELF-CONTAINED - includes badge & tag)
+  - QuickActionButton.vanilla.js (auto-initializes icons)
+  
+  Usage:
+  1. Import CSS and JS
+  2. Copy HTML structure
+  3. Set data-icon attribute
+  4. Choose preset and state classes
+-->
+
+<!-- PRESET: account-quick-links (with background, border, and badge) -->
+<div class="quick-action-button">
+    <div class="button-container">
+        <!-- Background shape (only for account-quick-links) -->
+        <div class="shape-background"></div>
+        
+        <!-- Icon (19px for account-quick-links) -->
+        <div class="icon-container icon-19">
+            <img data-icon="person" data-icon-category="people" alt="">
+        </div>
+        
+        <!-- NotificationBadge (Nested - Self-contained) -->
+        <div class="notification-badge-nested">
+            <div class="notification-badge">
+                <div class="notification-badge-text">12</div>
+            </div>
+        </div>
+    </div>
+    <div class="label-text-small">Profile</div>
+</div>
+
+<!-- PRESET: account-quick-links (Pressed state) -->
+<div class="quick-action-button pressed">
+    <div class="button-container">
+        <div class="shape-background"></div>
+        <div class="icon-container icon-19">
+            <img data-icon="search" data-icon-category="navigation" alt="">
+        </div>
+    </div>
+    <div class="label-text-small">Search</div>
+</div>
+
+<!-- PRESET: account-quick-links (Disabled state) -->
+<div class="quick-action-button disabled">
+    <div class="button-container">
+        <div class="shape-background"></div>
+        <div class="icon-container icon-19">
+            <img data-icon="current-account" data-icon-category="finance" alt="">
+        </div>
+    </div>
+    <div class="label-text-small">Transfer</div>
+</div>
+
+<!-- PRESET: action-menu (no background, 19px icon, 14px label) -->
+<div class="quick-action-button">
+    <div class="button-container">
+        <div class="icon-container icon-19">
+            <img data-icon="person" data-icon-category="people" alt="">
+        </div>
+    </div>
+    <div class="label-text-medium">Profile</div>
+</div>
+
+<!-- PRESET: default (no background, 24px icon, 12px label, optional NEW tag) -->
+<div class="quick-action-button">
+    <div class="button-container">
+        <div class="icon-container icon-24">
+            <img data-icon="search" data-icon-category="navigation" alt="">
+        </div>
+        
+        <!-- NotificationTag NEW (Nested - Self-contained) -->
+        <div class="notification-tag-nested">
+            <div class="notification-tag">
+                <div class="notification-tag-text">New</div>
+            </div>
+        </div>
+    </div>
+    <div class="label-text-small">Search</div>
+</div>
+
+<!-- PRESET: default (without NEW tag) -->
+<div class="quick-action-button">
+    <div class="button-container">
+        <div class="icon-container icon-24">
+            <img data-icon="current-account" data-icon-category="finance" alt="">
+        </div>
+    </div>
+    <div class="label-text-small">Accounts</div>
+</div>
+
+<!--
+  PRESETS:
+  
+  1. account-quick-links:
+     - Has shape-background
+     - Icon: icon-19 (19px)
+     - Label: label-text-small (12px)
+     - Can have notification-badge-nested
+  
+  2. action-menu:
+     - No shape-background
+     - Icon: icon-19 (19px)
+     - Label: label-text-medium (14px)
+  
+  3. default:
+     - No shape-background
+     - Icon: icon-24 (24px)
+     - Label: label-text-small (12px)
+     - Can have notification-tag-nested (NEW)
+  
+  STATES:
+  - default: No state class
+  - pressed: Add "pressed" class to quick-action-button
+  - disabled: Add "disabled" class to quick-action-button
+  
+  COMPLETE USAGE:
+  
+  <head>
+      <link rel="stylesheet" href="path/to/cancara-tokens.css">
+      <link rel="stylesheet" href="path/to/QuickActionButton.vanilla.css">
+  </head>
+  <body>
+      <div class="quick-action-button">
+          <div class="button-container">
+              <div class="shape-background"></div>
+              <div class="icon-container icon-19">
+                  <img data-icon="person" data-icon-category="people" alt="">
+              </div>
+              <div class="notification-badge-nested">
+                  <div class="notification-badge">
+                      <div class="notification-badge-text">5</div>
+                  </div>
+              </div>
+          </div>
+          <div class="label-text-small">Profile</div>
+      </div>
+      
+      <script src="path/to/QuickActionButton.vanilla.js"></script>
+  </body>
+-->

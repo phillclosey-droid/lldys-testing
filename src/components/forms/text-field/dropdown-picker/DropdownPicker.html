@@ -1,0 +1,219 @@
+# Dropdown Picker Component
+
+A dropdown selector component with label, value text, and chevron icon. Available in default (vertical) and inline (horizontal) layouts.
+
+## Files
+
+- `DropdownPicker.vanilla.css` - Self-contained CSS with token-led styling
+- `DropdownPicker.vanilla.js` - Interactive functionality
+- `DropdownPicker-demo.html` - Demo page showing all variants
+
+## Component Structure
+
+### Default Layout (Vertical)
+
+```html
+<div class="dropdown-picker">
+    <label class="dropdown-picker-label">Label</label>
+    <div class="dropdown-picker-input-wrapper">
+        <div class="dropdown-picker-input">
+            <span class="dropdown-picker-value">Select one option</span>
+            <div class="dropdown-picker-icon">
+                <img src="../../../../../assets/icons/arrows/chevron-down.svg" alt="Select option">
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+### Inline Layout (Horizontal)
+
+```html
+<div class="dropdown-picker layout-inline">
+    <div class="dropdown-picker-input-wrapper">
+        <div class="dropdown-picker-input">
+            <div class="dropdown-picker-content">
+                <span class="dropdown-picker-label-inline">Label</span>
+                <span class="dropdown-picker-colon">:</span>
+                <span class="dropdown-picker-value">Select one option</span>
+            </div>
+        </div>
+        <button class="dropdown-picker-icon-button" type="button">
+            <div class="dropdown-picker-icon">
+                <img src="../../../../../assets/icons/arrows/chevron-down.svg" alt="Select option">
+            </div>
+        </button>
+    </div>
+</div>
+```
+
+## CSS Classes
+
+### Main Container
+- `.dropdown-picker` - Main container
+- `.dropdown-picker.layout-inline` - Inline/horizontal layout
+- `.dropdown-picker.is-disabled` - Disabled state
+
+### Label
+- `.dropdown-picker-label` - Label for default layout (type-style-6, 15px)
+- `.dropdown-picker-label-inline` - Label inside input for inline layout
+- `.dropdown-picker-colon` - Colon separator in inline layout
+
+### Input Components
+- `.dropdown-picker-input-wrapper` - Wrapper for input
+- `.dropdown-picker-input` - Input container
+- `.dropdown-picker-input.is-active` - Active/focused state (2px black border)
+- `.dropdown-picker-content` - Content wrapper for inline layout
+- `.dropdown-picker-value` - Value display text
+
+### Icon
+- `.dropdown-picker-icon` - Icon container (16px × 16px)
+- `.dropdown-picker-icon-button` - Icon button for inline layout
+
+## JavaScript Events
+
+The component dispatches a custom `dropdown-picker-click` event when clicked:
+
+```javascript
+element.addEventListener('dropdown-picker-click', function(e) {
+    console.log(e.detail.isActive); // true if active state is toggled on
+});
+```
+
+## Design Tokens Used
+
+### Typography
+- `--type-style-6-family` - Label and value font (GT Ultra)
+- `--type-style-6-size` - Label and value size (15px)
+- `--type-style-6-weight` - Font weight
+- `--type-style-6-line-height` - Line height (20px)
+
+### Colors
+- `--text-default` - Label and value text (changes in dark mode)
+- `--text-input-disabled` - Disabled text color (gray-500)
+- `--bg-input-default` - Input background (white)
+- `--bg-input-disabled` - Disabled background (gray-100)
+- `--border-default` - Border color (gray-300 light, gray-600 dark)
+- `--color-black` - Active border (light mode)
+- `--color-white` - Active border (dark mode)
+
+### Spacing
+- `--spacing-08` - Gap between elements (8px)
+- `--spacing-12` - Gap between input and icon button (inline layout, 12px)
+- `--spacing-16` - Container padding, input padding (16px)
+
+### Borders
+- `--input-corner-radius` - Input border radius (12px)
+- `--input-border-width-default` - Default border (1px)
+- `--input-border-width-active` - Active border (2px)
+- `--input-min-height` - Minimum input height (56px)
+
+## Dimensions
+
+- **Input padding**: 16px
+- **Border radius**: 12px
+- **Icon**: 16px × 16px
+- **Gap (inline layout)**: 12px between input and icon button
+- **Min height**: 56px
+
+## States
+
+### Default
+- White background
+- 1px border using `--border-default`
+- Black text
+- Chevron icon visible (inside for default, outside for inline)
+
+### Active/Focused
+- 2px black border (white in dark mode)
+- Triggered by click
+
+### Disabled
+- Gray-100 background
+- Gray-500 text
+- No chevron icon (default layout) or disabled icon button (inline layout)
+- Not clickable
+
+## Behavior
+
+- Clicking input toggles active state
+- Clicking icon button (inline layout) toggles active state
+- Clicking outside removes active state
+- Disabled inputs cannot be clicked
+- Custom event dispatched on click
+
+## Icon
+
+**Location:** `assets/icons/arrows/chevron-down.svg`
+- **Size:** 16px × 16px
+- **Format:** SVG
+- **Dark mode:** Icon inverts color automatically
+- **Position:** Inside input for default layout, outside as button for inline layout
+
+## Usage Examples
+
+### Basic Dropdown Picker
+```html
+<div class="dropdown-picker">
+    <label class="dropdown-picker-label">Label</label>
+    <div class="dropdown-picker-input-wrapper">
+        <div class="dropdown-picker-input">
+            <span class="dropdown-picker-value">Select one option</span>
+            <div class="dropdown-picker-icon">
+                <img src="../../../../../assets/icons/arrows/chevron-down.svg" alt="Select option">
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+### Inline Layout
+```html
+<div class="dropdown-picker layout-inline">
+    <div class="dropdown-picker-input-wrapper">
+        <div class="dropdown-picker-input">
+            <div class="dropdown-picker-content">
+                <span class="dropdown-picker-label-inline">Label</span>
+                <span class="dropdown-picker-colon">:</span>
+                <span class="dropdown-picker-value">Select one option</span>
+            </div>
+        </div>
+        <button class="dropdown-picker-icon-button" type="button">
+            <div class="dropdown-picker-icon">
+                <img src="../../../../../assets/icons/arrows/chevron-down.svg" alt="Select option">
+            </div>
+        </button>
+    </div>
+</div>
+```
+
+### Disabled State
+```html
+<div class="dropdown-picker is-disabled">
+    <!-- ... same structure ... -->
+</div>
+```
+
+## Dark Mode Support
+
+All colors automatically adapt to dark mode:
+- Text changes to gray-200
+- Borders use dark mode values
+- Active border becomes white
+- Chevron icon inverts
+
+## Accessibility
+
+- Proper label associations
+- Keyboard accessible (click to toggle)
+- Clear visual states
+- Alt text for icon
+- Disabled states properly indicated
+- Icon button uses proper button element (inline layout)
+
+## Notes
+
+- This is a display-only component - actual dropdown menu functionality would need to be added
+- Icon is 16px × 16px (larger than country picker's 12px icon)
+- Component structure similar to calendar-picker but for general dropdown selections
+- Component is self-contained and can be used standalone

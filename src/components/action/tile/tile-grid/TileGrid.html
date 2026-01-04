@@ -1,0 +1,202 @@
+<!-- 
+  TileGrid HTML Component - SELF-CONTAINED - TOKEN LED
+  
+  A 2x2 grid layout (2 rows, 2 tiles per row) with a heading and "View All" link.
+  Contains nested Tile components from the Tile component.
+  
+  Two Variants:
+  1. tile-grid-link-only: Tiles with just link text (centered)
+  2. tile-grid-link-description: Tiles with description + link text (left-aligned)
+  
+  Nested Component:
+  - Tile (vertical layout) - from /tile/Tile.html
+  
+  Dependencies:
+  - Design tokens (cancara-tokens.css)
+  - TileGrid.vanilla.css (SELF-CONTAINED - includes embedded Tile styles)
+  - Tile.vanilla.js (auto-initializes images for nested tiles)
+  
+  Usage:
+  1. Import CSS and JS
+  2. Copy HTML structure for desired variant
+  3. Customize heading and tile content
+-->
+
+<!-- VARIANT 1: Link Only -->
+<div class="tile-grid-link-only">
+  <!-- Header: Heading + View All button -->
+  <div class="tile-grid-header">
+    <h2 class="tile-grid-heading">Quick Actions</h2>
+    <a href="#" class="tile-grid-view-all">View All</a>
+  </div>
+
+  <!-- Tiles Container: 2 rows × 2 tiles -->
+  <div class="tile-grid-tiles">
+    <!-- Row 1 -->
+    <div class="tile-grid-row">
+      <!-- Tile 1 -->
+      <div class="tile tile-vertical">
+        <div class="pictogram pict-default">
+          <img data-pictogram="Piggy_Bank_Lloyds_-_V2" alt="">
+        </div>
+        <div class="tile-text-link">Open savings account</div>
+      </div>
+
+      <!-- Tile 2 -->
+      <div class="tile tile-vertical">
+        <div class="pictogram pict-default">
+          <img data-pictogram="Cards_Lloyds_-_V2" alt="">
+        </div>
+        <div class="tile-text-link">Apply for credit card</div>
+      </div>
+    </div>
+
+    <!-- Row 2 -->
+    <div class="tile-grid-row">
+      <!-- Tile 3 -->
+      <div class="tile tile-vertical">
+        <div class="pictogram pict-default">
+          <img data-pictogram="Calendar_Lloyds_-_V2" alt="">
+        </div>
+        <div class="tile-text-link">Set up direct debit</div>
+      </div>
+
+      <!-- Tile 4 -->
+      <div class="tile tile-vertical">
+        <div class="pictogram pict-default">
+          <img data-pictogram="Insurance_Soft_Lloyds_-_V2" alt="">
+        </div>
+        <div class="tile-text-link">Get insurance</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VARIANT 2: Link + Description -->
+<div class="tile-grid-link-description">
+  <!-- Header: Heading + View All button -->
+  <div class="tile-grid-header">
+    <h2 class="tile-grid-heading">Popular Services</h2>
+    <a href="#" class="tile-grid-view-all">View All</a>
+  </div>
+
+  <!-- Tiles Container: 2 rows × 2 tiles -->
+  <div class="tile-grid-tiles">
+    <!-- Row 1 -->
+    <div class="tile-grid-row">
+      <!-- Tile 1 -->
+      <div class="tile tile-vertical">
+        <div class="pictogram pict-default">
+          <img data-pictogram="Piggy_Bank_Lloyds_-_V2" alt="">
+        </div>
+        <div class="tile-vstack">
+          <div class="tile-text-description">Grow your money</div>
+          <div class="tile-text-link">Open savings account</div>
+        </div>
+      </div>
+
+      <!-- Tile 2 -->
+      <div class="tile tile-vertical">
+        <div class="pictogram pict-default">
+          <img data-pictogram="Cards_Lloyds_-_V2" alt="">
+        </div>
+        <div class="tile-vstack">
+          <div class="tile-text-description">Flexible spending</div>
+          <div class="tile-text-link">Apply for credit card</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 2 -->
+    <div class="tile-grid-row">
+      <!-- Tile 3 -->
+      <div class="tile tile-vertical">
+        <div class="pictogram pict-default">
+          <img data-pictogram="Calendar_Lloyds_-_V2" alt="">
+        </div>
+        <div class="tile-vstack">
+          <div class="tile-text-description">Never miss a payment</div>
+          <div class="tile-text-link">Set up direct debit</div>
+        </div>
+      </div>
+
+      <!-- Tile 4 -->
+      <div class="tile tile-vertical">
+        <div class="pictogram pict-default">
+          <img data-pictogram="Insurance_Soft_Lloyds_-_V2" alt="">
+        </div>
+        <div class="tile-vstack">
+          <div class="tile-text-description">Protect what matters</div>
+          <div class="tile-text-link">Get insurance</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
+  STRUCTURE:
+  
+  tile-grid-link-only / tile-grid-link-description
+  ├── tile-grid-header
+  │   ├── tile-grid-heading (H2)
+  │   └── tile-grid-view-all (link)
+  └── tile-grid-tiles
+      ├── tile-grid-row (Row 1)
+      │   ├── tile (Tile component from /tile/)
+      │   └── tile (Tile component from /tile/)
+      └── tile-grid-row (Row 2)
+          ├── tile (Tile component from /tile/)
+          └── tile (Tile component from /tile/)
+  
+  VARIANTS:
+  
+  1. tile-grid-link-only:
+     - Tiles with just link text
+     - Centered alignment
+     
+  2. tile-grid-link-description:
+     - Tiles with description + link text
+     - Left-aligned
+     - Uses tile-vstack for text stacking
+  
+  PICTOGRAM VARIANTS (from Tile component):
+  - pict-default: Mint green
+  - pict-primary: Green
+  - pict-primary-alt-01: Dark green
+  - pict-primary-alt-02: Darker green
+  - pict-primary-alt-03: Light green
+  - pict-secondary-alt-01: Purple
+  - pict-secondary-alt-02: Pink
+  - pict-secondary-alt-03: Cyan
+  - pict-secondary-alt-04: Orange
+  
+  COMPLETE USAGE:
+  
+  <head>
+      <link rel="stylesheet" href="../../../../css/cancara-tokens.css">
+      <link rel="stylesheet" href="TileGrid.vanilla.css">
+  </head>
+  <body>
+      <!-- Choose variant -->
+      <div class="tile-grid-link-only">
+          <div class="tile-grid-header">
+              <h2 class="tile-grid-heading">Quick Actions</h2>
+              <a href="#" class="tile-grid-view-all">View All</a>
+          </div>
+          
+          <div class="tile-grid-tiles">
+              <div class="tile-grid-row">
+                  <div class="tile tile-vertical">...</div>
+                  <div class="tile tile-vertical">...</div>
+              </div>
+              <div class="tile-grid-row">
+                  <div class="tile tile-vertical">...</div>
+                  <div class="tile tile-vertical">...</div>
+              </div>
+          </div>
+      </div>
+      
+      <script src="../tile/Tile.vanilla.js"></script>
+  </body>
+-->

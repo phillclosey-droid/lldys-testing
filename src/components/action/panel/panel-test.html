@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Component Test</title>
+    
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="../../../css/cancara-tokens.css">
+    
+    <!-- Nested Component Styles -->
+    <link rel="stylesheet" href="../../content/icon/pictogram/Pictogram.vanilla.css">
+    
+    <!-- Panel Component Styles -->
+    <link rel="stylesheet" href="Panel.vanilla.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family-body);
+            background: var(--bg-page-default);
+            color: var(--text-default);
+            padding: 40px 20px;
+            transition: background-color 0.3s, color 0.3s;
+            min-height: 100vh;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .toggle-button {
+            background: var(--bg-action-default);
+            color: var(--text-action-inverse);
+            border: none;
+            border-radius: var(--radius-default);
+            padding: var(--spacing-12) var(--spacing-24);
+            font-family: var(--font-family-body);
+            font-size: 14px;
+            font-weight: var(--font-weight-bold);
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .toggle-button:active {
+            background: var(--bg-action-pressed);
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            margin-bottom: var(--spacing-48);
+            font-size: 32px;
+            text-align: center;
+        }
+
+        .section {
+            margin-bottom: var(--spacing-48);
+        }
+
+        .section h2 {
+            margin-bottom: var(--spacing-24);
+            font-size: 24px;
+        }
+
+        .section p {
+            margin-bottom: var(--spacing-24);
+            color: var(--text-subdued);
+            line-height: 1.6;
+        }
+
+        .section-label {
+            margin-top: var(--spacing-32);
+            margin-bottom: var(--spacing-12);
+            font-size: 14px;
+            font-weight: var(--font-weight-bold);
+            color: var(--text-subdued);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .demo-container {
+            background: var(--bg-section-alt);
+            padding: var(--spacing-24);
+            border-radius: var(--radius-default);
+            margin-bottom: var(--spacing-24);
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <div class="theme-toggle">
+        <button class="toggle-button" onclick="toggleTheme()">
+            <span id="theme-text">Switch to Dark Mode</span>
+        </button>
+    </div>
+
+    <div class="container">
+        <h1>Panel Component Test</h1>
+
+        <div class="section">
+            <h2>Component Overview</h2>
+            <p>The Panel component is a versatile clickable container with three variants: text-only, with icon, and with pictogram. It includes a chevron indicator for navigation. The pictogram variant uses the nested Pictogram component.</p>
+        </div>
+
+        <div class="section">
+            <h2>Variant 1: Text Only</h2>
+            <p>Basic panel with heading, description, and chevron.</p>
+            
+            <div class="demo-container">
+                <div class="panel-wrapper">
+                    <div class="panel">
+                        <div class="panel-vstack">
+                            <div class="panel-heading">View All Accounts</div>
+                            <div class="panel-description">Complete financial overview</div>
+                        </div>
+                        <div class="panel-chevron">
+                            <img src="../../../../assets/icons/arrows/chevron-right.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel-wrapper">
+                    <div class="panel">
+                        <div class="panel-vstack">
+                            <div class="panel-heading">Transaction History</div>
+                            <div class="panel-description">View recent activity</div>
+                        </div>
+                        <div class="panel-chevron">
+                            <img src="../../../../assets/icons/arrows/chevron-right.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Variant 2: With Icon</h2>
+            <p>Panel with 24px icon on the left.</p>
+            
+            <div class="demo-container">
+                <div class="panel-wrapper">
+                    <div class="panel">
+                        <div class="panel-icon">
+                            <img src="../../../../assets/icons/navigation/home.svg" alt="">
+                        </div>
+                        <div class="panel-vstack">
+                            <div class="panel-heading">Home</div>
+                            <div class="panel-description">Return to homepage</div>
+                        </div>
+                        <div class="panel-chevron">
+                            <img src="../../../../assets/icons/arrows/chevron-right.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel-wrapper">
+                    <div class="panel">
+                        <div class="panel-icon">
+                            <img src="../../../../assets/icons/finance/current-account.svg" alt="">
+                        </div>
+                        <div class="panel-vstack">
+                            <div class="panel-heading">Current Account</div>
+                            <div class="panel-description">£2,547.89 available</div>
+                        </div>
+                        <div class="panel-chevron">
+                            <img src="../../../../assets/icons/arrows/chevron-right.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel-wrapper">
+                    <div class="panel">
+                        <div class="panel-icon">
+                            <img src="../../../../assets/icons/people/person.svg" alt="">
+                        </div>
+                        <div class="panel-vstack">
+                            <div class="panel-heading">Account Settings</div>
+                            <div class="panel-description">Manage your preferences</div>
+                        </div>
+                        <div class="panel-chevron">
+                            <img src="../../../../assets/icons/arrows/chevron-right.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Variant 3: With Pictogram (Nested Component)</h2>
+            <p>Panel with 40px pictogram circle on the left. Uses the nested Pictogram component with different color variants.</p>
+            
+            <div class="section-label">Default (Mint Green)</div>
+            <div class="demo-container">
+                <div class="panel-wrapper">
+                    <div class="panel">
+                        <!-- Pictogram Component (Nested) -->
+                        <div class="pictogram pict-default">
+                            <img src="../../../../assets/pictograms/Piggy_Bank_Lloyds_-_V2.svg" alt="">
+                        </div>
+                        <div class="panel-vstack">
+                            <div class="panel-heading">Savings Account</div>
+                            <div class="panel-description">£12,450.00 saved</div>
+                        </div>
+                        <div class="panel-chevron">
+                            <img src="../../../../assets/icons/arrows/chevron-right.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-label">Primary (Green)</div>
+            <div class="demo-container">
+                <div class="panel-wrapper">
+                    <div class="panel">
+                        <!-- Pictogram Component (Nested) -->
+                        <div class="pictogram pict-primary">
+                            <img src="../../../../assets/pictograms/Cards_Lloyds_-_V2.svg" alt="">
+                        </div>
+                        <div class="panel-vstack">
+                            <div class="panel-heading">Credit Cards</div>
+                            <div class="panel-description">Manage your cards</div>
+                        </div>
+                        <div class="panel-chevron">
+                            <img src="../../../../assets/icons/arrows/chevron-right.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-label">Secondary Alt 04 (Orange)</div>
+            <div class="demo-container">
+                <div class="panel-wrapper">
+                    <div class="panel">
+                        <!-- Pictogram Component (Nested) -->
+                        <div class="pictogram pict-secondary-alt-04">
+                            <img src="../../../../assets/pictograms/Calendar_Lloyds_-_V2.svg" alt="">
+                        </div>
+                        <div class="panel-vstack">
+                            <div class="panel-heading">Set up direct debit</div>
+                            <div class="panel-description">Never miss a payment</div>
+                        </div>
+                        <div class="panel-chevron">
+                            <img src="../../../../assets/icons/arrows/chevron-right.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-label">Secondary Alt 01 (Purple)</div>
+            <div class="demo-container">
+                <div class="panel-wrapper">
+                    <div class="panel">
+                        <!-- Pictogram Component (Nested) -->
+                        <div class="pictogram pict-secondary-alt-01">
+                            <img src="../../../../assets/pictograms/Bank_Lloyds_-_V2.svg" alt="">
+                        </div>
+                        <div class="panel-vstack">
+                            <div class="panel-heading">Bank Branch Locator</div>
+                            <div class="panel-description">Find your nearest branch</div>
+                        </div>
+                        <div class="panel-chevron">
+                            <img src="../../../../assets/icons/arrows/chevron-right.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-label">Secondary Alt 02 (Pink)</div>
+            <div class="demo-container">
+                <div class="panel-wrapper">
+                    <div class="panel">
+                        <!-- Pictogram Component (Nested) -->
+                        <div class="pictogram pict-secondary-alt-02">
+                            <img src="../../../../assets/pictograms/Trophy_Lloyds_-_V2.svg" alt="">
+                        </div>
+                        <div class="panel-vstack">
+                            <div class="panel-heading">Rewards & Offers</div>
+                            <div class="panel-description">Check your available rewards</div>
+                        </div>
+                        <div class="panel-chevron">
+                            <img src="../../../../assets/icons/arrows/chevron-right.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Mixed Example</h2>
+            <p>Real-world example combining different panel variants.</p>
+            
+            <div class="demo-container">
+                <div class="panel-wrapper">
+                    <div class="panel">
+                        <!-- Pictogram Component (Nested) -->
+                        <div class="pictogram pict-default">
+                            <img src="../../../../assets/pictograms/Piggy_Bank_Lloyds_-_V2.svg" alt="">
+                        </div>
+                        <div class="panel-vstack">
+                            <div class="panel-heading">Savings Account</div>
+                            <div class="panel-description">£12,450.00 saved</div>
+                        </div>
+                        <div class="panel-chevron">
+                            <img src="../../../../assets/icons/arrows/chevron-right.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel-wrapper">
+                    <div class="panel">
+                        <div class="panel-icon">
+                            <img src="../../../../assets/icons/finance/current-account.svg" alt="">
+                        </div>
+                        <div class="panel-vstack">
+                            <div class="panel-heading">Current Account</div>
+                            <div class="panel-description">£2,547.89 available</div>
+                        </div>
+                        <div class="panel-chevron">
+                            <img src="../../../../assets/icons/arrows/chevron-right.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel-wrapper">
+                    <div class="panel">
+                        <div class="panel-vstack">
+                            <div class="panel-heading">View All Accounts</div>
+                            <div class="panel-description">Complete financial overview</div>
+                        </div>
+                        <div class="panel-chevron">
+                            <img src="../../../../assets/icons/arrows/chevron-right.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function detectSystemTheme() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-text').textContent = 'Switch to Light Mode';
+            } else {
+                document.body.setAttribute('data-theme', 'light');
+                document.getElementById('theme-text').textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', detectSystemTheme);
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const themeText = document.getElementById('theme-text');
+            const currentTheme = body.getAttribute('data-theme');
+            
+            if (currentTheme === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                themeText.textContent = 'Switch to Light Mode';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeText.textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', function() {
+            detectSystemTheme();
+        });
+    </script>
+</body>
+</html>

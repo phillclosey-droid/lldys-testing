@@ -1,0 +1,184 @@
+/* TileGrid Vanilla CSS - SELF-CONTAINED - TOKEN LED */
+
+/* ========== TILE GRID VARIANTS ========== */
+.tile-grid-link-only,
+.tile-grid-link-description {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-16);
+}
+
+/* ========== HEADER SECTION ========== */
+.tile-grid-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-left: var(--spacing-16);
+}
+
+.tile-grid-heading {
+  font-family: var(--type-style-3-family);
+  font-size: var(--type-style-3-size);
+  font-weight: var(--type-style-3-weight);
+  line-height: var(--type-style-3-line-height);
+  letter-spacing: var(--type-style-3-letter-spacing);
+  color: var(--text-default);
+  margin: 0;
+  padding-bottom: var(--spacing-16);
+}
+
+.tile-grid-view-all {
+  font-family: var(--type-style-5-family);
+  font-size: var(--type-style-5-size);
+  font-weight: var(--type-style-5-weight);
+  line-height: var(--type-style-5-line-height);
+  color: var(--text-default);
+  text-decoration: underline;
+  padding: var(--spacing-12) var(--spacing-16);
+  border-radius: var(--radius-default);
+  background-color: transparent;
+  cursor: pointer;
+}
+
+/* ========== TILES CONTAINER ========== */
+.tile-grid-tiles {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-16);
+}
+
+/* ========== TILE ROW (2 tiles side by side) ========== */
+.tile-grid-row {
+  display: flex;
+  flex-direction: row;
+  gap: var(--spacing-16);
+  padding: 0 var(--spacing-16);
+}
+
+/* ========== EMBEDDED TILE COMPONENT STYLES ========== */
+
+/* Tile Container - embedded from Tile.vanilla.css */
+.tile-grid-link-only .tile,
+.tile-grid-link-description .tile {
+  border-radius: var(--radius-default);
+  display: flex;
+  padding: var(--spacing-16);
+  gap: var(--spacing-16);
+  background-color: var(--bg-panel-default);
+  border: var(--border-width-01) solid var(--border-panel);
+  transition: background-color 0.2s;
+  cursor: pointer;
+  flex: 1;
+}
+
+.tile-grid-link-only .tile:hover,
+.tile-grid-link-description .tile:hover {
+  background-color: var(--bg-panel-pressed);
+}
+
+/* Tile Vertical Layout */
+.tile-grid-link-only .tile-vertical,
+.tile-grid-link-description .tile-vertical {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Left-aligned for tiles with description */
+.tile-grid-link-description .tile-vertical {
+  align-items: flex-start;
+  text-align: left;
+}
+
+/* ========== PICTOGRAM (Nested in Tile) ========== */
+.tile-grid-link-only .pictogram,
+.tile-grid-link-description .pictogram {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-circle);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.tile-grid-link-only .pictogram img,
+.tile-grid-link-description .pictogram img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+/* Pictogram Variants */
+.tile-grid-link-only .pictogram.pict-default,
+.tile-grid-link-description .pictogram.pict-default {
+  background-color: var(--promo-bg-secondary-default);
+}
+
+.tile-grid-link-only .pictogram.pict-primary,
+.tile-grid-link-description .pictogram.pict-primary {
+  background-color: var(--promo-bg-primary-default);
+}
+
+.tile-grid-link-only .pictogram.pict-primary-alt-01,
+.tile-grid-link-description .pictogram.pict-primary-alt-01 {
+  background-color: var(--promo-bg-primary-dark);
+}
+
+.tile-grid-link-only .pictogram.pict-primary-alt-02,
+.tile-grid-link-description .pictogram.pict-primary-alt-02 {
+  background-color: var(--promo-bg-primary-darker);
+}
+
+.tile-grid-link-only .pictogram.pict-primary-alt-03,
+.tile-grid-link-description .pictogram.pict-primary-alt-03 {
+  background-color: var(--promo-bg-primary-light);
+}
+
+.tile-grid-link-only .pictogram.pict-secondary-alt-01,
+.tile-grid-link-description .pictogram.pict-secondary-alt-01 {
+  background-color: var(--promo-bg-secondary-purple);
+}
+
+.tile-grid-link-only .pictogram.pict-secondary-alt-02,
+.tile-grid-link-description .pictogram.pict-secondary-alt-02 {
+  background-color: var(--promo-bg-secondary-pink);
+}
+
+.tile-grid-link-only .pictogram.pict-secondary-alt-03,
+.tile-grid-link-description .pictogram.pict-secondary-alt-03 {
+  background-color: var(--promo-bg-secondary-cyan);
+}
+
+.tile-grid-link-only .pictogram.pict-secondary-alt-04,
+.tile-grid-link-description .pictogram.pict-secondary-alt-04 {
+  background-color: var(--promo-bg-secondary-orange);
+}
+
+/* ========== TILE TEXT STACK ========== */
+.tile-grid-link-only .tile-vstack,
+.tile-grid-link-description .tile-vstack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-04);
+  flex: 1;
+}
+
+/* ========== TILE TEXT STYLES (Token-Led) ========== */
+.tile-grid-link-only .tile-text-link,
+.tile-grid-link-description .tile-text-link {
+  font-family: var(--type-style-5-family);
+  font-size: var(--type-style-5-size);
+  font-weight: var(--type-style-5-weight);
+  line-height: var(--type-style-5-line-height);
+  color: var(--text-default);
+}
+
+.tile-grid-link-description .tile-text-description {
+  font-family: var(--type-style-5-family);
+  font-size: var(--type-style-5-size);
+  font-weight: var(--type-style-5-weight);
+  line-height: var(--type-style-5-line-height);
+  color: var(--text-subdued);
+}

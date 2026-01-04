@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkbox Group Component - Demo</title>
+    
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="../../../css/cancara-tokens.css">
+    
+    <!-- Nested Checkbox Component -->
+    <link rel="stylesheet" href="../checkbox/Checkbox.vanilla.css">
+    
+    <!-- Checkbox Group Component (SELF-CONTAINED) -->
+    <link rel="stylesheet" href="CheckboxGroup.vanilla.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family-body);
+            background: var(--bg-page-default);
+            color: var(--text-default);
+            transition: background-color 0.3s, color 0.3s;
+            padding: 40px;
+            min-height: 100vh;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .toggle-button {
+            background: var(--bg-action-default);
+            color: var(--text-action-inverse);
+            border: none;
+            border-radius: var(--radius-default);
+            padding: 12px 24px;
+            font-family: var(--font-family-body);
+            font-size: 14px;
+            font-weight: var(--font-weight-bold);
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .toggle-button:hover {
+            background: var(--bg-action-pressed);
+        }
+
+        h1 {
+            margin-bottom: 40px;
+            font-size: 32px;
+        }
+        
+        .demo-section {
+            margin-bottom: 40px;
+        }
+        
+        .demo-section-title {
+            margin-bottom: 12px;
+            font-size: 20px;
+        }
+
+        .demo-section p {
+            margin-bottom: 16px;
+            color: var(--text-subdued);
+            font-size: 14px;
+        }
+
+        .demo-container {
+            background: var(--bg-panel-default);
+            padding: 32px;
+            border-radius: var(--radius-default);
+            display: inline-block;
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <div class="theme-toggle">
+        <button class="toggle-button" onclick="toggleTheme()">
+            <span id="theme-text">Switch to Dark Mode</span>
+        </button>
+    </div>
+
+    <h1>Checkbox Group Component - All Variants</h1>
+    
+    <!-- 1 ITEM - DEFAULT -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">1 Item - Default</h2>
+        <p>Single checkbox with label</p>
+        
+        <div class="demo-container">
+            <div class="checkbox-group">
+                <div class="checkbox-group-label">Label</div>
+                
+                <div class="checkbox-item">
+                    <div class="checkbox-item-checkbox">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" class="checkbox-input" id="cb1-1">
+                            <label for="cb1-1" class="checkbox">
+                                <div class="checkbox-icon">
+                                    <div class="checkbox-icon-wrapper">
+                                        <img data-icon="checkmark" alt="">
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="checkbox-item-text">
+                        <label for="cb1-1" class="checkbox-item-label">Item</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3 ITEMS - DEFAULT -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">3 Items - Default</h2>
+        <p>Multiple checkboxes in a group</p>
+        
+        <div class="demo-container">
+            <div class="checkbox-group">
+                <div class="checkbox-group-label">Label</div>
+                
+                <div class="checkbox-item">
+                    <div class="checkbox-item-checkbox">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" class="checkbox-input" id="cb3-1">
+                            <label for="cb3-1" class="checkbox">
+                                <div class="checkbox-icon">
+                                    <div class="checkbox-icon-wrapper">
+                                        <img data-icon="checkmark" alt="">
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="checkbox-item-text">
+                        <label for="cb3-1" class="checkbox-item-label">Item 1</label>
+                    </div>
+                </div>
+
+                <div class="checkbox-item">
+                    <div class="checkbox-item-checkbox">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" class="checkbox-input" id="cb3-2" checked>
+                            <label for="cb3-2" class="checkbox">
+                                <div class="checkbox-icon">
+                                    <div class="checkbox-icon-wrapper">
+                                        <img data-icon="checkmark" alt="">
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="checkbox-item-text">
+                        <label for="cb3-2" class="checkbox-item-label">Item 2</label>
+                    </div>
+                </div>
+
+                <div class="checkbox-item">
+                    <div class="checkbox-item-checkbox">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" class="checkbox-input" id="cb3-3">
+                            <label for="cb3-3" class="checkbox">
+                                <div class="checkbox-icon">
+                                    <div class="checkbox-icon-wrapper">
+                                        <img data-icon="checkmark" alt="">
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="checkbox-item-text">
+                        <label for="cb3-3" class="checkbox-item-label">Item 3</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5 ITEMS - DEFAULT -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">5 Items - Default</h2>
+        <p>Larger group with mixed checked states</p>
+        
+        <div class="demo-container">
+            <div class="checkbox-group">
+                <div class="checkbox-group-label">Select options</div>
+                
+                <div class="checkbox-item">
+                    <div class="checkbox-item-checkbox">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" class="checkbox-input" id="cb5-1" checked>
+                            <label for="cb5-1" class="checkbox">
+                                <div class="checkbox-icon">
+                                    <div class="checkbox-icon-wrapper">
+                                        <img data-icon="checkmark" alt="">
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="checkbox-item-text">
+                        <label for="cb5-1" class="checkbox-item-label">Option A</label>
+                    </div>
+                </div>
+
+                <div class="checkbox-item">
+                    <div class="checkbox-item-checkbox">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" class="checkbox-input" id="cb5-2">
+                            <label for="cb5-2" class="checkbox">
+                                <div class="checkbox-icon">
+                                    <div class="checkbox-icon-wrapper">
+                                        <img data-icon="checkmark" alt="">
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="checkbox-item-text">
+                        <label for="cb5-2" class="checkbox-item-label">Option B</label>
+                    </div>
+                </div>
+
+                <div class="checkbox-item">
+                    <div class="checkbox-item-checkbox">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" class="checkbox-input" id="cb5-3" checked>
+                            <label for="cb5-3" class="checkbox">
+                                <div class="checkbox-icon">
+                                    <div class="checkbox-icon-wrapper">
+                                        <img data-icon="checkmark" alt="">
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="checkbox-item-text">
+                        <label for="cb5-3" class="checkbox-item-label">Option C</label>
+                    </div>
+                </div>
+
+                <div class="checkbox-item">
+                    <div class="checkbox-item-checkbox">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" class="checkbox-input" id="cb5-4">
+                            <label for="cb5-4" class="checkbox">
+                                <div class="checkbox-icon">
+                                    <div class="checkbox-icon-wrapper">
+                                        <img data-icon="checkmark" alt="">
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="checkbox-item-text">
+                        <label for="cb5-4" class="checkbox-item-label">Option D</label>
+                    </div>
+                </div>
+
+                <div class="checkbox-item">
+                    <div class="checkbox-item-checkbox">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" class="checkbox-input" id="cb5-5">
+                            <label for="cb5-5" class="checkbox">
+                                <div class="checkbox-icon">
+                                    <div class="checkbox-icon-wrapper">
+                                        <img data-icon="checkmark" alt="">
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="checkbox-item-text">
+                        <label for="cb5-5" class="checkbox-item-label">Option E</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3 ITEMS - DISABLED -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">3 Items - Disabled</h2>
+        <p>Disabled checkbox group</p>
+        
+        <div class="demo-container">
+            <div class="checkbox-group">
+                <div class="checkbox-group-label">Label</div>
+                
+                <div class="checkbox-item is-disabled">
+                    <div class="checkbox-item-checkbox">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" class="checkbox-input" id="cbd-1" disabled>
+                            <label for="cbd-1" class="checkbox">
+                                <div class="checkbox-icon">
+                                    <div class="checkbox-icon-wrapper">
+                                        <img data-icon="checkmark" alt="">
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="checkbox-item-text">
+                        <label for="cbd-1" class="checkbox-item-label">Item 1</label>
+                    </div>
+                </div>
+
+                <div class="checkbox-item is-disabled">
+                    <div class="checkbox-item-checkbox">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" class="checkbox-input" id="cbd-2" disabled checked>
+                            <label for="cbd-2" class="checkbox">
+                                <div class="checkbox-icon">
+                                    <div class="checkbox-icon-wrapper">
+                                        <img data-icon="checkmark" alt="">
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="checkbox-item-text">
+                        <label for="cbd-2" class="checkbox-item-label">Item 2</label>
+                    </div>
+                </div>
+
+                <div class="checkbox-item is-disabled">
+                    <div class="checkbox-item-checkbox">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" class="checkbox-input" id="cbd-3" disabled>
+                            <label for="cbd-3" class="checkbox">
+                                <div class="checkbox-icon">
+                                    <div class="checkbox-icon-wrapper">
+                                        <img data-icon="checkmark" alt="">
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="checkbox-item-text">
+                        <label for="cbd-3" class="checkbox-item-label">Item 3</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Nested Checkbox Component Script -->
+    <script src="../checkbox/Checkbox.vanilla.js"></script>
+    
+    <!-- Checkbox Group Component Script -->
+    <script src="CheckboxGroup.vanilla.js"></script>
+
+    <script>
+        // Listen for checkbox group changes
+        document.querySelectorAll('.checkbox-group').forEach(group => {
+            group.addEventListener('checkbox-group-change', function(e) {
+                console.log(`Checkbox changed:`, e.detail);
+            });
+        });
+
+        function detectSystemTheme() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-text').textContent = 'Switch to Light Mode';
+            } else {
+                document.body.setAttribute('data-theme', 'light');
+                document.getElementById('theme-text').textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', detectSystemTheme);
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const themeText = document.getElementById('theme-text');
+            const currentTheme = body.getAttribute('data-theme');
+            
+            if (currentTheme === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                themeText.textContent = 'Switch to Light Mode';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeText.textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', function() {
+            detectSystemTheme();
+        });
+    </script>
+</body>
+</html>

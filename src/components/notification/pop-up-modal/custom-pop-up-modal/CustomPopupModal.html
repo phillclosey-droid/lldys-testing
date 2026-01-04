@@ -1,0 +1,97 @@
+# Custom Popup Modal Component
+
+Customizable modal dialog with title, message, and configurable button layouts. Supports sentiment colors and multiple button arrangements.
+
+## Files
+
+- `CustomPopupModal.vanilla.css` - Token-led styling
+- `CustomPopupModal.vanilla.js` - Interactive functionality
+- `CustomPopupModal-demo.html` - Demo with 6 variants
+
+## Component Structure
+
+```html
+<div class="popup-modal-overlay">
+    <div class="popup-modal sentiment-default link-layout-single">
+        <div class="popup-modal-title">
+            <div class="popup-modal-title-text">Title</div>
+        </div>
+        <div class="popup-modal-body">
+            <div class="popup-modal-message">Message text</div>
+        </div>
+        <div class="popup-modal-buttons">
+            <div class="popup-modal-divider"></div>
+            <div class="popup-modal-buttons-container">
+                <button class="popup-modal-button">
+                    <span class="popup-modal-button-text">Button</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+## CSS Classes
+
+### Sentiments
+- `.sentiment-default` - Gray title background
+- `.sentiment-success` - Gray title background
+- `.sentiment-critical` - Red title background with white text
+- `.sentiment-warning` - Orange title background
+
+### Link Layouts
+- `.link-layout-single` - One button
+- `.link-layout-2horizontal` - Two buttons side by side
+- `.link-layout-2vertical` - Two buttons stacked
+
+## Features
+
+- **Full-screen overlay**: Dark semi-transparent background
+- **4 sentiment types**: Default, Success, Critical, Warning
+- **3 button layouts**: Single, 2 Horizontal, 2 Vertical
+- **Close on overlay click**: Clicking outside modal closes it
+- **Button hover states**: Hover changes background
+- **Token-led**: All colors use semantic tokens
+- **Auto dark mode**: Adapts automatically
+
+## JavaScript API
+
+```javascript
+// Show modal
+window.CustomPopupModalComponent.show('modal-id');
+
+// Hide modal
+window.CustomPopupModalComponent.hide('modal-id');
+
+// Listen for events
+element.addEventListener('popup-modal-button-click', function(e) {
+    console.log('Button index:', e.detail.buttonIndex);
+});
+
+element.addEventListener('popup-modal-close', function() {
+    console.log('Modal closed');
+});
+```
+
+## Design Tokens
+
+- Overlay: `--bg-overlay-default`
+- Modal background: `--bg-panel-default`
+- Title backgrounds: `--bg-panel-secondary`, `--color-red-critical`, `--color-orange-warning`
+- Text: `--text-default`, `--text-inverse`
+- Borders: `--border-default`
+- Typography: `--type-style-3-*` (19px title), 14px body, 15px buttons
+- Spacing: `--spacing-16`, `--spacing-32`
+- Border radius: `--radius-medium` (16px), `--radius-default` (12px)
+
+## Dimensions
+
+- Modal width: 343px
+- Title: 19px GT Ultra Median, padding 16px
+- Body: 14px, padding 16px (32px bottom for 2-button layouts)
+- Buttons: 15px, min-height 48px
+- Dividers: 1px gray lines
+
+## Token-Led
+
+All colors and styles use semantic tokens, automatically adapt to dark mode.

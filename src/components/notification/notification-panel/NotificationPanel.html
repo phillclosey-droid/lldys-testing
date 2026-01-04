@@ -1,0 +1,92 @@
+# Notification Panel Component
+
+Notification panel with sentiment icons, title, message, and optional action button. Supports two types (Primary/Secondary), four sentiments, and optional arrow.
+
+## Files
+
+- `NotificationPanel.vanilla.css` - Token-led styling
+- `NotificationPanel.vanilla.js` - Interactive functionality
+- `NotificationPanel-demo.html` - Demo with all variants
+
+## Component Structure
+
+```html
+<div class="notification-panel type-primary sentiment-critical">
+    <div class="notification-panel-content">
+        <div class="notification-panel-icon-container">
+            <div class="notification-panel-icon">
+                <svg><!-- Sentiment icon (16px) --></svg>
+            </div>
+        </div>
+        <div class="notification-panel-text">
+            <div class="notification-panel-title">Title</div>
+            <div class="notification-panel-message">Message</div>
+        </div>
+        <button class="notification-panel-action">
+            <div class="notification-panel-action-icon">
+                <svg><!-- Action icon (12px) --></svg>
+            </div>
+        </button>
+    </div>
+</div>
+```
+
+## CSS Classes
+
+### Types
+- `.type-primary` - White background (`--bg-panel-default`)
+- `.type-secondary` - Gray background (`--bg-section-default`)
+
+### Sentiments
+- `.sentiment-critical` - Red icon (`--icon-sentiment-critical`)
+- `.sentiment-warning` - Orange icon (`--icon-sentiment-warning`)
+- `.sentiment-success` - Green icon (`--icon-sentiment-success`)
+- `.sentiment-info` - Blue icon (`--icon-sentiment-info`)
+
+### Optional Arrow
+- `.arrow-top` - Arrow points up (panel below element)
+- `.arrow-bottom` - Arrow points down (panel above element)
+
+## Features
+
+- **Two types**: Primary (white) and Secondary (gray)
+- **Four sentiments**: Critical, Warning, Success, Info
+- **Pressed state**: Darker background on click
+- **Optional arrow**: Can point to specific UI element
+- **Action button**: Optional clickable icon
+- **Drop shadow**: 0 4px 12px rgba(0,0,0,0.15)
+
+## Events
+
+```javascript
+// Panel clicked (not action button)
+element.addEventListener('notification-panel-click', function() {
+    console.log('Panel clicked');
+});
+
+// Action button clicked
+element.addEventListener('notification-panel-action', function() {
+    console.log('Action button clicked');
+});
+```
+
+## Design Tokens
+
+- Backgrounds: `--bg-panel-*`, `--bg-section-*`
+- Icons: `--icon-sentiment-*`
+- Text: `--text-default`
+- Typography: `--type-style-6-*` (title 15px), body 14px
+- Spacing: `--spacing-08`, `--spacing-12`, `--spacing-16`
+- Border: `--radius-default` (12px)
+
+## Dimensions
+
+- Sentiment icon: 16px × 16px
+- Action icon: 12px × 12px
+- Max width: 343px
+- Padding: 12px vertical, 16px horizontal
+- Gap: 12px between elements
+
+## Token-Led
+
+All colors and styles use semantic tokens, automatically adapt to dark mode.

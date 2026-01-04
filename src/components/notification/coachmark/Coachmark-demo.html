@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coachmark Component - Demo</title>
+    
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="../../../css/cancara-tokens.css">
+    
+    <!-- Coachmark Component -->
+    <link rel="stylesheet" href="Coachmark.vanilla.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family-body);
+            background: var(--bg-page-default);
+            color: var(--text-default);
+            transition: background-color 0.3s, color 0.3s;
+            padding: 40px;
+            min-height: 100vh;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 2000;
+        }
+
+        .toggle-button {
+            background: var(--bg-action-default);
+            color: var(--text-action-inverse);
+            border: none;
+            border-radius: var(--radius-default);
+            padding: 12px 24px;
+            font-family: var(--font-family-body);
+            font-size: 14px;
+            font-weight: var(--font-weight-bold);
+            cursor: pointer;
+        }
+
+        h1 {
+            margin-bottom: 40px;
+            font-size: 32px;
+        }
+        
+        .demo-section {
+            margin-bottom: 80px;
+        }
+        
+        .demo-section-title {
+            margin-bottom: 12px;
+            font-size: 20px;
+        }
+
+        .demo-section p {
+            margin-bottom: 24px;
+            color: var(--text-subdued);
+            font-size: 14px;
+        }
+
+        /* Simple arrow using CSS triangle */
+        .simple-arrow-up {
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-bottom: 8px solid var(--bg-panel-default);
+            margin: 0 auto 0 32px;
+            filter: drop-shadow(0 -2px 2px rgba(0, 0, 0, 0.1));
+        }
+
+        .simple-arrow-down {
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-top: 8px solid var(--bg-panel-default);
+            margin: 0 auto 0 32px;
+            filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.1));
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <div class="theme-toggle">
+        <button class="toggle-button" onclick="toggleTheme()">
+            <span id="theme-text">Switch to Dark Mode</span>
+        </button>
+    </div>
+
+    <h1>Coachmark Component - All Variants</h1>
+    
+    <!-- SINGLE - ARROW TOP -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">Single - Arrow Top</h2>
+        <p>Standalone tooltip with arrow pointing up</p>
+        
+        <div class="simple-arrow-up"></div>
+        <div class="coachmark-content">
+            <div class="coachmark-main">
+                <div class="coachmark-icon-container">
+                    <div class="coachmark-icon">
+                        <!-- Inline SVG info-filled icon (blue with white i) -->
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="8" cy="8" r="8" fill="currentColor"/>
+                            <path d="M8 7V12M8 5V5.5" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="coachmark-text">
+                    <div class="coachmark-header">
+                        <div class="coachmark-messages">
+                            <div class="coachmark-title">Welcome!</div>
+                            <div class="coachmark-message">This is a helpful tip</div>
+                        </div>
+                        <div class="coachmark-close-container">
+                            <button class="coachmark-close">
+                                <div class="coachmark-close-icon">
+                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1 1L11 11M11 1L1 11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SINGLE - ARROW BOTTOM -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">Single - Arrow Bottom</h2>
+        <p>Standalone tooltip with arrow pointing down</p>
+        
+        <div class="coachmark-content">
+            <div class="coachmark-main">
+                <div class="coachmark-icon-container">
+                    <div class="coachmark-icon">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="8" cy="8" r="8" fill="currentColor"/>
+                            <path d="M8 7V12M8 5V5.5" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="coachmark-text">
+                    <div class="coachmark-header">
+                        <div class="coachmark-messages">
+                            <div class="coachmark-title">Bottom Arrow</div>
+                            <div class="coachmark-message">Arrow points down to element</div>
+                        </div>
+                        <div class="coachmark-close-container">
+                            <button class="coachmark-close">
+                                <div class="coachmark-close-icon">
+                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1 1L11 11M11 1L1 11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="simple-arrow-down"></div>
+    </div>
+
+    <!-- MULTIPLE - START/MIDDLE -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">Multiple - Start/Middle</h2>
+        <p>Part of tour sequence with counter and "Next" button</p>
+        
+        <div class="simple-arrow-up"></div>
+        <div class="coachmark-content">
+            <div class="coachmark-main">
+                <div class="coachmark-icon-container">
+                    <div class="coachmark-icon">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="8" cy="8" r="8" fill="currentColor"/>
+                            <path d="M8 7V12M8 5V5.5" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="coachmark-text">
+                    <div class="coachmark-header">
+                        <div class="coachmark-messages">
+                            <div class="coachmark-title">Step 2 of 5</div>
+                            <div class="coachmark-message">This is part of a guided tour</div>
+                        </div>
+                        <div class="coachmark-close-container">
+                            <button class="coachmark-close">
+                                <div class="coachmark-close-icon">
+                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1 1L11 11M11 1L1 11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="coachmark-footer">
+                <div class="coachmark-counter">
+                    <span class="coachmark-counter-text">2</span>
+                    <span class="coachmark-counter-text">/</span>
+                    <span class="coachmark-counter-text">5</span>
+                </div>
+                <button class="coachmark-action">
+                    <span class="coachmark-action-text">Next</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MULTIPLE - END -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">Multiple - End</h2>
+        <p>Last step in tour with "Done" button</p>
+        
+        <div class="simple-arrow-up"></div>
+        <div class="coachmark-content">
+            <div class="coachmark-main">
+                <div class="coachmark-icon-container">
+                    <div class="coachmark-icon">
+                        <!-- Success checkmark icon -->
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M5 8L7 10L11 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="coachmark-text">
+                    <div class="coachmark-header">
+                        <div class="coachmark-messages">
+                            <div class="coachmark-title">Tour Complete!</div>
+                            <div class="coachmark-message">You're all set to get started</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="coachmark-footer">
+                <div class="coachmark-counter">
+                    <span class="coachmark-counter-text">5</span>
+                    <span class="coachmark-counter-text">/</span>
+                    <span class="coachmark-counter-text">5</span>
+                </div>
+                <button class="coachmark-action">
+                    <span class="coachmark-action-text">Done</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="Coachmark.vanilla.js"></script>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const themeText = document.getElementById('theme-text');
+            const currentTheme = body.getAttribute('data-theme');
+            
+            if (currentTheme === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                themeText.textContent = 'Switch to Light Mode';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeText.textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        // Listen for coachmark events
+        document.body.addEventListener('coachmark-close', function(e) {
+            console.log('Close clicked');
+        });
+
+        document.body.addEventListener('coachmark-next', function(e) {
+            console.log('Next clicked');
+        });
+
+        document.body.addEventListener('coachmark-done', function(e) {
+            console.log('Done clicked');
+        });
+    </script>
+</body>
+</html>

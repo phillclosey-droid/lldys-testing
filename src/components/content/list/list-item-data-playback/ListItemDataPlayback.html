@@ -1,0 +1,144 @@
+<!-- 
+  List Item Data Playback HTML Component - TOKEN LED - SELF-CONTAINED
+  
+  Clickable list item for displaying data with chevron indicator.
+  Supports 1-3 data sets (title/value pairs).
+  Has pressed state (NO hover state).
+  Auto-initializes chevron icon with ListItemDataPlayback.vanilla.js
+  
+  Dependencies:
+  - Design tokens (cancara-tokens.css)
+  - Divider component (nested)
+  - ListItemDataPlayback.vanilla.css (SELF-CONTAINED)
+  - ListItemDataPlayback.vanilla.js (auto-initializes icons)
+  
+  Usage:
+  1. Import CSS and JS
+  2. Copy HTML structure
+  3. Choose dataset variant (dataset-01, dataset-02, dataset-03)
+  4. Set position and width
+  5. Icon auto-populates on page load
+-->
+
+<!-- Example 1: DataSet 01 - Single title/data pair, Compact, Top Position -->
+<div class="list-item-data-playback dataset-01 width-compact position-top state-default">
+    <div class="list-item-data-heading">
+        <span class="list-item-data-heading-text">ACCOUNT DETAILS</span>
+    </div>
+    
+    <div class="list-item-data-content">
+        <div class="list-item-dataset">
+            <span class="list-item-data-title">Account Number</span>
+            <span class="list-item-data-value">1234 5678 9012</span>
+        </div>
+        
+        <div class="list-item-data-action-icon">
+            <img data-action-icon="chevron-right" alt="">
+        </div>
+    </div>
+    
+    <div class="divider width-default"><div class="divider-line"></div></div>
+</div>
+
+<!-- Example 2: DataSet 02 - Two title/data pairs, Compact, Middle Position -->
+<div class="list-item-data-playback dataset-02 width-compact position-middle state-default">
+    <div class="list-item-data-content">
+        <div class="list-item-data-vstack">
+            <div class="list-item-dataset">
+                <span class="list-item-data-title">Sort Code</span>
+                <span class="list-item-data-value">12-34-56</span>
+            </div>
+            <div class="list-item-dataset">
+                <span class="list-item-data-title">IBAN</span>
+                <span class="list-item-data-value">GB29 NWBK 6016 1331 9268 19</span>
+            </div>
+        </div>
+        
+        <div class="list-item-data-action-icon">
+            <img data-action-icon="chevron-right" alt="">
+        </div>
+    </div>
+    
+    <div class="divider width-default"><div class="divider-line"></div></div>
+</div>
+
+<!-- Example 3: DataSet 03 - Three title/data pairs, Compact, Bottom Position -->
+<div class="list-item-data-playback dataset-03 width-compact position-bottom state-default">
+    <div class="list-item-data-content">
+        <div class="list-item-data-vstack">
+            <div class="list-item-dataset">
+                <span class="list-item-data-title">Account Type</span>
+                <span class="list-item-data-value">Current Account</span>
+            </div>
+            <div class="list-item-dataset">
+                <span class="list-item-data-title">Balance</span>
+                <span class="list-item-data-value">£2,450.00</span>
+            </div>
+            <div class="list-item-dataset">
+                <span class="list-item-data-title">Available</span>
+                <span class="list-item-data-value">£2,400.00</span>
+            </div>
+        </div>
+        
+        <div class="list-item-data-action-icon">
+            <img data-action-icon="chevron-right" alt="">
+        </div>
+    </div>
+</div>
+
+<!-- Example 4: Pressed State -->
+<div class="list-item-data-playback dataset-01 width-compact position-single state-pressed">
+    <div class="list-item-data-heading">
+        <span class="list-item-data-heading-text">TRANSACTION</span>
+    </div>
+    
+    <div class="list-item-data-content">
+        <div class="list-item-dataset">
+            <span class="list-item-data-title">Reference</span>
+            <span class="list-item-data-value">PAYMENT-2024-001</span>
+        </div>
+        
+        <div class="list-item-data-action-icon">
+            <img data-action-icon="chevron-right" alt="">
+        </div>
+    </div>
+</div>
+
+<!--
+  DATA ATTRIBUTES:
+  - data-action-icon: Icon filename without .svg (default: "chevron-right")
+  
+  VARIANTS:
+  
+  DATASET:
+  - dataset-01: Single title/data pair
+  - dataset-02: Two title/data pairs
+  - dataset-03: Three title/data pairs
+  
+  WIDTH:
+  - width-compact: Has horizontal padding (16px)
+  - width-fullwidth: No horizontal padding, extends to edges
+  
+  POSITION:
+  - position-top: Rounded top corners, has heading
+  - position-middle: No rounded corners, no heading
+  - position-bottom: Rounded bottom corners, no heading, no divider
+  - position-single: All corners rounded, standalone item
+  
+  STATE:
+  - state-default: Default appearance
+  - state-pressed: Pressed/active state with darker background
+  
+  COMPLETE USAGE:
+  
+  <head>
+      <link rel="stylesheet" href="path/to/cancara-tokens.css">
+      <link rel="stylesheet" href="path/to/Divider.vanilla.css">
+      <link rel="stylesheet" href="path/to/ListItemDataPlayback.vanilla.css">
+  </head>
+  <body>
+      <!-- HTML structure above -->
+      
+      <script src="path/to/ListItemDataPlayback.vanilla.js"></script>
+  </body>
+-->

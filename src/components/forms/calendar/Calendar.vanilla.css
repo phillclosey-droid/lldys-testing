@@ -1,0 +1,337 @@
+/* Calendar Vanilla CSS - SELF-CONTAINED - TOKEN LED */
+
+/* ========== CALENDAR CONTAINER ========== */
+.calendar {
+  display: flex;
+  flex-direction: column;
+  width: 343px;
+  min-width: 343px;
+  max-width: 343px;
+  background-color: var(--bg-panel-default);
+  border-radius: var(--radius-medium);
+  overflow: hidden;
+}
+
+/* ========== CALENDAR TITLE (Native only) ========== */
+.calendar-title {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-16);
+  background-color: var(--component-temp-popup-header-default-background, var(--color-gray-100));
+  border-bottom: 1px solid var(--component-temp-popup-button-border-default, var(--border-default));
+}
+
+.calendar-title-text {
+  flex: 1;
+  font-family: var(--type-style-3-family);
+  font-size: var(--type-style-3-size);
+  font-weight: var(--type-style-3-weight);
+  line-height: var(--type-style-3-line-height);
+  letter-spacing: var(--type-style-3-letter-spacing);
+  color: var(--component-temp-popup-title-default, var(--text-default));
+  text-align: center;
+}
+
+/* ========== CALENDAR HEADER (Native - Month/Year + Small Navigation) ========== */
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 44px;
+  padding: 16px 16px 10px 16px;
+}
+
+.calendar-month-year {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.calendar-month-text {
+  font-family: var(--font-family-body);
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: -0.5px;
+  color: var(--text-default);
+}
+
+.calendar-dropdown-icon {
+  width: 7px;
+  height: 12px;
+  color: var(--icon-default);
+}
+
+.calendar-nav-arrows {
+  display: flex;
+  gap: var(--spacing-08);
+}
+
+.calendar-nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--icon-default);
+  padding: 0;
+}
+
+.calendar-nav-btn:hover {
+  opacity: 0.7;
+}
+
+.calendar-nav-btn svg {
+  width: 10px;
+  height: 18px;
+}
+
+/* ========== DAY NAMES ========== */
+.calendar-day-names {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 48px;
+  padding: 0 var(--spacing-04);
+}
+
+.calendar-day-name {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  font-family: var(--type-style-6-family);
+  font-size: var(--type-style-6-size);
+  font-weight: var(--type-style-6-weight);
+  line-height: var(--type-style-6-line-height);
+  color: var(--component-temp-calendar-day-names-text, var(--color-gray-500));
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* ========== CALENDAR GRID ========== */
+.calendar-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.calendar-week {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  height: 48px;
+  padding: 0 var(--spacing-04);
+}
+
+/* ========== DATE CELLS ========== */
+.calendar-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  min-height: 48px;
+  max-width: 48px;
+  max-height: 48px;
+  border-radius: var(--radius-circle);
+  background-color: var(--component-temp-calendar-date-background, var(--bg-panel-default));
+  border: none;
+  cursor: pointer;
+  font-family: var(--type-style-5-family);
+  font-size: var(--type-style-5-size);
+  font-weight: var(--type-style-5-weight);
+  line-height: var(--type-style-5-line-height);
+  letter-spacing: var(--type-style-5-letter-spacing);
+  color: var(--component-temp-calendar-date-text-default, var(--text-default));
+}
+
+.calendar-date:hover:not(.calendar-date-disabled):not(.calendar-date-empty):not(.calendar-date-selected) {
+  background-color: var(--component-temp-calendar-date-background, var(--bg-panel-pressed));
+}
+
+/* Empty state - no content, not clickable */
+.calendar-date-empty {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Disabled state */
+.calendar-date-disabled {
+  color: var(--component-temp-calendar-date-text-disabled, var(--color-gray-500));
+  cursor: not-allowed;
+}
+
+/* Today indicator */
+.calendar-date-today {
+  background-color: var(--component-temp-calendar-today-background-indicator, var(--color-gray-100));
+  color: var(--component-temp-calendar-today-text-indicator, var(--text-default));
+}
+
+/* Selected state */
+.calendar-date-selected {
+  background-color: var(--component-temp-calendar-date-selected-background, var(--color-black));
+  color: var(--component-temp-calendar-date-selected-text, var(--color-white));
+}
+
+.calendar-date-selected:hover {
+  background-color: var(--component-temp-calendar-date-selected-background, var(--color-black));
+  opacity: 0.9;
+}
+
+/* ========== SEPARATOR (Native only) ========== */
+.calendar-separator {
+  padding-left: var(--spacing-16);
+  padding-right: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.calendar-separator::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 11px;
+  border-bottom: 0.333px solid rgba(60, 60, 67, 0.36);
+}
+
+/* ========== CUSTOM PRESET STYLES ========== */
+
+/* Instruction Header */
+.calendar-custom .calendar-instructions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background-color: var(--bg-panel-default);
+  border: 1px solid var(--component-temp-calendar-header-border, rgba(0, 0, 0, 0));
+  border-radius: var(--radius-medium) var(--radius-medium) 0 0;
+}
+
+.calendar-custom .calendar-instructions-text {
+  font-family: var(--type-style-6-family);
+  font-size: var(--type-style-6-size);
+  font-weight: var(--type-style-6-weight);
+  line-height: var(--type-style-6-line-height);
+  letter-spacing: var(--type-style-6-letter-spacing);
+  color: var(--text-default);
+}
+
+/* Month Stepper Header (with large black square buttons) */
+.calendar-custom .calendar-stepper-header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.calendar-custom .calendar-month-stepper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  min-height: 48px;
+  max-width: 48px;
+  max-height: 48px;
+  background-color: var(--component-temp-calendar-month-stepper-background, var(--color-black));
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.calendar-custom .calendar-month-stepper:hover {
+  opacity: 0.8;
+}
+
+.calendar-custom .calendar-month-stepper svg {
+  width: 18px;
+  height: 18px;
+  color: var(--color-white);
+}
+
+.calendar-custom .calendar-month-display {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-12);
+  min-height: 48px;
+  background-color: var(--component-temp-calendar-quick-selection-background, var(--bg-panel-default));
+}
+
+.calendar-custom .calendar-dropdown-icon {
+  width: 12px;
+  height: 12px;
+}
+
+/* Cancel Link */
+.calendar-custom .calendar-cancel-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 48px;
+  padding: var(--spacing-12) var(--spacing-16);
+  border-radius: 0;
+  cursor: pointer;
+  text-decoration: underline;
+  font-family: var(--type-style-4-family);
+  font-size: var(--type-style-4-size);
+  font-weight: var(--type-style-4-weight);
+  line-height: var(--type-style-4-line-height);
+  letter-spacing: var(--type-style-4-letter-spacing);
+  color: var(--text-default);
+  background: none;
+  border: none;
+}
+
+.calendar-custom .calendar-cancel-link:hover {
+  opacity: 0.7;
+}
+
+/* ========== DARK MODE ========== */
+[data-theme="dark"] .calendar {
+  background-color: var(--bg-panel-default);
+}
+
+[data-theme="dark"] .calendar-title {
+  background-color: var(--component-temp-popup-header-default-background, var(--color-gray-850));
+}
+
+[data-theme="dark"] .calendar-date {
+  background-color: var(--component-temp-calendar-date-background, var(--bg-panel-default));
+  color: var(--component-temp-calendar-date-text-default, var(--text-default));
+}
+
+/* DARK MODE: Selected date should be green background with black text */
+[data-theme="dark"] .calendar-date-selected {
+  background-color: var(--color-green-bright);
+  color: var(--color-black);
+}
+
+[data-theme="dark"] .calendar-date-selected:hover {
+  background-color: var(--color-green-bright);
+  opacity: 0.9;
+}
+
+/* DARK MODE: Instruction header should maintain same background as calendar body */
+[data-theme="dark"] .calendar-custom .calendar-instructions {
+  background-color: var(--bg-panel-default);
+}
+
+/* DARK MODE: Month stepper buttons should be green background with black chevrons */
+[data-theme="dark"] .calendar-custom .calendar-month-stepper {
+  background-color: var(--color-green-bright);
+}
+
+[data-theme="dark"] .calendar-custom .calendar-month-stepper svg {
+  color: var(--color-black);
+}

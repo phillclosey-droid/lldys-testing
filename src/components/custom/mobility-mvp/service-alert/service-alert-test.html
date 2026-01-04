@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ServiceAlert Component - Demo</title>
+    
+    <!-- Design Tokens (ALWAYS REQUIRED) -->
+    <link rel="stylesheet" href="../../../../css/cancara-tokens.css">
+    
+    <!-- Component Dependencies -->
+    <link rel="stylesheet" href="../../../action/button/action-button/ActionButton.vanilla.css">
+    
+    <!-- ServiceAlert Component -->
+    <link rel="stylesheet" href="ServiceAlert.vanilla.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family-body);
+            background: var(--bg-page-default);
+            color: var(--text-default);
+            transition: background-color 0.3s, color 0.3s;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 2000;
+        }
+
+        .toggle-button {
+            background: var(--bg-action-default);
+            color: var(--text-action-inverse);
+            border: none;
+            border-radius: var(--radius-default);
+            padding: 12px 24px;
+            font-family: var(--font-family-body);
+            font-size: 14px;
+            font-weight: var(--font-weight-bold);
+            cursor: pointer;
+        }
+
+        h1 {
+            margin-bottom: 40px;
+            font-size: 32px;
+            text-align: center;
+        }
+        
+        .demo-section {
+            max-width: 430px;
+            margin: 0 auto 60px;
+        }
+        
+        .demo-section-title {
+            margin-bottom: 16px;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .demo-section p {
+            margin-bottom: 24px;
+            color: var(--text-subdued);
+            font-size: 14px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <div class="theme-toggle">
+        <button class="toggle-button" onclick="toggleTheme()">
+            <span id="theme-text">Switch to Dark Mode</span>
+        </button>
+    </div>
+
+    <h1>Service Alert Component</h1>
+    
+    <!-- DEMO: Service Alert -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">Service Due Alert</h2>
+        <p>Alert with warning border, clock icon, action buttons, and close button</p>
+        
+        <div class="service-alert">
+            <div class="service-alert-content">
+                <!-- Top Row: Clock + Text + X -->
+                <div class="service-alert-top">
+                    <!-- Clock Icon -->
+                    <div class="service-alert-icon-container">
+                        <div class="service-alert-icon">
+                            <img src="../../../../../assets/icons/date-and-time/clock.svg" alt="">
+                        </div>
+                    </div>
+                    
+                    <!-- Text Content -->
+                    <div class="service-alert-main">
+                        <div class="service-alert-title">Your service is due soon</div>
+                        <div class="service-alert-text">Your service is due in 30 days. If you've already booked it, let us know when you'd like a reminder.</div>
+                    </div>
+                    
+                    <!-- Close Button -->
+                    <button class="service-alert-close" aria-label="Close alert">
+                        <img src="../../../../../assets/icons/navigation/close.svg" alt="">
+                    </button>
+                </div>
+                
+                <!-- Bottom Row: Action Buttons (Full Width) -->
+                <div class="service-alert-buttons">
+                    <button class="action-button btn-secondary">
+                        <div class="action-button-inner">
+                            <span class="action-button-text">Book service</span>
+                        </div>
+                    </button>
+                    
+                    <button class="action-button btn-secondary">
+                        <div class="action-button-inner">
+                            <span class="action-button-text">Update details</span>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Component JavaScript -->
+    <script src="../../../action/button/action-button/ActionButton.vanilla.js"></script>
+    <script src="ServiceAlert.vanilla.js"></script>
+
+    <script>
+        function detectSystemTheme() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-text').textContent = 'Switch to Light Mode';
+            } else {
+                document.body.setAttribute('data-theme', 'light');
+                document.getElementById('theme-text').textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', detectSystemTheme);
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const themeText = document.getElementById('theme-text');
+            const currentTheme = body.getAttribute('data-theme');
+            
+            if (currentTheme === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                themeText.textContent = 'Switch to Light Mode';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeText.textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', function() {
+            detectSystemTheme();
+            
+            // Listen for alert close events
+            document.addEventListener('service-alert-closed', function(e) {
+                console.log('Alert closed:', e.detail.alert);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+/* Divider Vanilla CSS - SELF-CONTAINED - TOKEN LED */
+
+/* Base divider */
+.divider {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: var(--divider-margin) 0;
+}
+
+/* Divider line */
+.divider-line {
+  height: var(--divider-height);
+  background-color: var(--divider-bg);
+  border: none;
+}
+
+/* ========== WIDTH VARIANTS ========== */
+
+/* Default width - has horizontal padding/margin from container */
+.divider.width-default {
+  padding: 0 var(--spacing-16);
+}
+
+.divider.width-default .divider-line {
+  width: 100%;
+}
+
+/* Fullwidth - extends to container edges */
+.divider.width-fullwidth {
+  padding: 0;
+}
+
+.divider.width-fullwidth .divider-line {
+  width: 100%;
+}
+
+/* ========== TYPE VARIANTS ========== */
+
+/* Default type - solid line */
+.divider.type-default .divider-line {
+  background-color: var(--divider-bg);
+}
+
+/* Dashed type - dashed border instead of solid background */
+.divider.type-dash .divider-line {
+  background-color: transparent;
+  border-top: var(--divider-height) dashed var(--divider-bg);
+  height: 0;
+}
+
+/* ========== DARK MODE ========== */
+[data-theme="dark"] .divider-line {
+  /* Token already handles dark mode color change */
+}

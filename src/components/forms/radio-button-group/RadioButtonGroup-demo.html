@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radio Button Group Component - Demo</title>
+    
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="../../../css/cancara-tokens.css">
+    
+    <!-- Nested Radio Button Component -->
+    <link rel="stylesheet" href="../radio-button/RadioButton.vanilla.css">
+    
+    <!-- Radio Button Group Component (SELF-CONTAINED) -->
+    <link rel="stylesheet" href="RadioButtonGroup.vanilla.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family-body);
+            background: var(--bg-page-default);
+            color: var(--text-default);
+            transition: background-color 0.3s, color 0.3s;
+            padding: 40px;
+            min-height: 100vh;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .toggle-button {
+            background: var(--bg-action-default);
+            color: var(--text-action-inverse);
+            border: none;
+            border-radius: var(--radius-default);
+            padding: 12px 24px;
+            font-family: var(--font-family-body);
+            font-size: 14px;
+            font-weight: var(--font-weight-bold);
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .toggle-button:hover {
+            background: var(--bg-action-pressed);
+        }
+
+        h1 {
+            margin-bottom: 40px;
+            font-size: 32px;
+        }
+        
+        .demo-section {
+            margin-bottom: 40px;
+        }
+        
+        .demo-section-title {
+            margin-bottom: 12px;
+            font-size: 20px;
+        }
+
+        .demo-section p {
+            margin-bottom: 16px;
+            color: var(--text-subdued);
+            font-size: 14px;
+        }
+
+        .demo-container {
+            background: var(--bg-panel-default);
+            padding: 32px;
+            border-radius: var(--radius-default);
+            display: inline-block;
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <div class="theme-toggle">
+        <button class="toggle-button" onclick="toggleTheme()">
+            <span id="theme-text">Switch to Dark Mode</span>
+        </button>
+    </div>
+
+    <h1>Radio Button Group Component - All Variants</h1>
+    
+    <!-- 1 ITEM - DEFAULT -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">1 Item - Default</h2>
+        <p>Single radio button with label</p>
+        
+        <div class="demo-container">
+            <div class="radio-button-group" data-group-name="group-1">
+                <div class="radio-button-group-label">Label</div>
+                
+                <div class="radio-button-item">
+                    <div class="radio-button-item-radio">
+                        <!-- Nested RadioButton component -->
+                        <div class="radio-button" role="radio" aria-checked="false" tabindex="0" data-radio-group="group-1" data-value="item1">
+                            <div class="radio-button-circle">
+                                <div class="radio-button-dot"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="radio-button-item-text">
+                        <span class="radio-button-item-label">Item</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3 ITEMS - DEFAULT -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">3 Items - Default</h2>
+        <p>Multiple radio buttons in a group</p>
+        
+        <div class="demo-container">
+            <div class="radio-button-group" data-group-name="group-3">
+                <div class="radio-button-group-label">Label</div>
+                
+                <div class="radio-button-item">
+                    <div class="radio-button-item-radio">
+                        <div class="radio-button" role="radio" aria-checked="false" tabindex="0" data-radio-group="group-3" data-value="item1">
+                            <div class="radio-button-circle">
+                                <div class="radio-button-dot"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="radio-button-item-text">
+                        <span class="radio-button-item-label">Item 1</span>
+                    </div>
+                </div>
+
+                <div class="radio-button-item">
+                    <div class="radio-button-item-radio">
+                        <div class="radio-button selected" role="radio" aria-checked="true" tabindex="0" data-radio-group="group-3" data-value="item2">
+                            <div class="radio-button-circle">
+                                <div class="radio-button-dot"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="radio-button-item-text">
+                        <span class="radio-button-item-label">Item 2</span>
+                    </div>
+                </div>
+
+                <div class="radio-button-item">
+                    <div class="radio-button-item-radio">
+                        <div class="radio-button" role="radio" aria-checked="false" tabindex="0" data-radio-group="group-3" data-value="item3">
+                            <div class="radio-button-circle">
+                                <div class="radio-button-dot"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="radio-button-item-text">
+                        <span class="radio-button-item-label">Item 3</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5 ITEMS - DEFAULT -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">5 Items - Default</h2>
+        <p>Larger group with a selected option</p>
+        
+        <div class="demo-container">
+            <div class="radio-button-group" data-group-name="group-5">
+                <div class="radio-button-group-label">Select an option</div>
+                
+                <div class="radio-button-item">
+                    <div class="radio-button-item-radio">
+                        <div class="radio-button selected" role="radio" aria-checked="true" tabindex="0" data-radio-group="group-5" data-value="optionA">
+                            <div class="radio-button-circle">
+                                <div class="radio-button-dot"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="radio-button-item-text">
+                        <span class="radio-button-item-label">Option A</span>
+                    </div>
+                </div>
+
+                <div class="radio-button-item">
+                    <div class="radio-button-item-radio">
+                        <div class="radio-button" role="radio" aria-checked="false" tabindex="0" data-radio-group="group-5" data-value="optionB">
+                            <div class="radio-button-circle">
+                                <div class="radio-button-dot"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="radio-button-item-text">
+                        <span class="radio-button-item-label">Option B</span>
+                    </div>
+                </div>
+
+                <div class="radio-button-item">
+                    <div class="radio-button-item-radio">
+                        <div class="radio-button" role="radio" aria-checked="false" tabindex="0" data-radio-group="group-5" data-value="optionC">
+                            <div class="radio-button-circle">
+                                <div class="radio-button-dot"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="radio-button-item-text">
+                        <span class="radio-button-item-label">Option C</span>
+                    </div>
+                </div>
+
+                <div class="radio-button-item">
+                    <div class="radio-button-item-radio">
+                        <div class="radio-button" role="radio" aria-checked="false" tabindex="0" data-radio-group="group-5" data-value="optionD">
+                            <div class="radio-button-circle">
+                                <div class="radio-button-dot"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="radio-button-item-text">
+                        <span class="radio-button-item-label">Option D</span>
+                    </div>
+                </div>
+
+                <div class="radio-button-item">
+                    <div class="radio-button-item-radio">
+                        <div class="radio-button" role="radio" aria-checked="false" tabindex="0" data-radio-group="group-5" data-value="optionE">
+                            <div class="radio-button-circle">
+                                <div class="radio-button-dot"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="radio-button-item-text">
+                        <span class="radio-button-item-label">Option E</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3 ITEMS - DISABLED -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">3 Items - Disabled</h2>
+        <p>Disabled radio button group</p>
+        
+        <div class="demo-container">
+            <div class="radio-button-group" data-group-name="group-disabled">
+                <div class="radio-button-group-label">Label</div>
+                
+                <div class="radio-button-item is-disabled">
+                    <div class="radio-button-item-radio">
+                        <div class="radio-button disabled" role="radio" aria-checked="false" aria-disabled="true" tabindex="-1" data-radio-group="group-disabled" data-value="item1">
+                            <div class="radio-button-circle">
+                                <div class="radio-button-dot"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="radio-button-item-text">
+                        <span class="radio-button-item-label">Item 1</span>
+                    </div>
+                </div>
+
+                <div class="radio-button-item is-disabled">
+                    <div class="radio-button-item-radio">
+                        <div class="radio-button disabled selected" role="radio" aria-checked="true" aria-disabled="true" tabindex="-1" data-radio-group="group-disabled" data-value="item2">
+                            <div class="radio-button-circle">
+                                <div class="radio-button-dot"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="radio-button-item-text">
+                        <span class="radio-button-item-label">Item 2</span>
+                    </div>
+                </div>
+
+                <div class="radio-button-item is-disabled">
+                    <div class="radio-button-item-radio">
+                        <div class="radio-button disabled" role="radio" aria-checked="false" aria-disabled="true" tabindex="-1" data-radio-group="group-disabled" data-value="item3">
+                            <div class="radio-button-circle">
+                                <div class="radio-button-dot"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="radio-button-item-text">
+                        <span class="radio-button-item-label">Item 3</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Nested Radio Button Component Script -->
+    <script src="../radio-button/RadioButton.vanilla.js"></script>
+    
+    <!-- Radio Button Group Component Script -->
+    <script src="RadioButtonGroup.vanilla.js"></script>
+
+    <script>
+        // Listen for radio button group changes
+        document.querySelectorAll('.radio-button-group').forEach(group => {
+            group.addEventListener('radiochange', function(e) {
+                console.log(`Radio button changed in group:`, e.detail);
+            });
+        });
+
+        function detectSystemTheme() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-text').textContent = 'Switch to Light Mode';
+            } else {
+                document.body.setAttribute('data-theme', 'light');
+                document.getElementById('theme-text').textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', detectSystemTheme);
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const themeText = document.getElementById('theme-text');
+            const currentTheme = body.getAttribute('data-theme');
+            
+            if (currentTheme === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                themeText.textContent = 'Switch to Light Mode';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeText.textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', function() {
+            detectSystemTheme();
+        });
+
+        // Make labels clickable to select radio buttons
+        document.querySelectorAll('.radio-button-item-label').forEach(label => {
+            label.addEventListener('click', function() {
+                const item = label.closest('.radio-button-item');
+                const radioButton = item.querySelector('.radio-button');
+                if (radioButton && !radioButton.classList.contains('disabled')) {
+                    radioButton.click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

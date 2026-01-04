@@ -1,0 +1,72 @@
+<!-- 
+  Illustration HTML Component - STANDALONE - TOKEN LED
+  
+  64px container with 48px icon, multiple color variants.
+  Auto-initializes with Illustration.vanilla.js
+  
+  Props:
+  - data-illustration: Illustration filename without .svg extension
+  - Variant classes: ill-default, ill-primary, etc. (determines folder)
+  
+  Dependencies:
+  - Design tokens (cancara-tokens.css)
+  - Illustration.vanilla.css (SELF-CONTAINED)
+  - Illustration.vanilla.js (auto-initializes images and determines folder)
+  
+  Usage:
+  1. Import CSS and JS
+  2. Copy HTML structure
+  3. Set data-illustration attribute
+  4. Choose variant class (determines which folder to load from)
+  5. Image auto-populates on page load
+-->
+
+<!-- Default Alt 01 variant (white background) -->
+<div class="illustration ill-default-alt-01">
+    <img data-illustration="Savings_Lloyds_-_V2" alt="">
+</div>
+
+<!-- Primary variant (green background) -->
+<div class="illustration ill-primary">
+    <img data-illustration="Cards_Lloyds_-_V2" alt="">
+</div>
+
+<!-- Secondary Alt 04 variant (orange background) -->
+<div class="illustration ill-secondary-alt-04">
+    <img data-illustration="Calendar_Lloyds_-_V2" alt="">
+</div>
+
+<!--
+  DATA ATTRIBUTES:
+  - data-illustration: Filename without extension (e.g., "Savings_Lloyds_-_V2")
+  
+  VARIANT CLASSES (determines background color AND folder):
+  - ill-default: Mint green → loads from /illustrations/default/
+  - ill-default-alt-01: White → loads from /illustrations/default-alt-01/
+  - ill-default-alt-02: Gray → loads from /illustrations/default-alt-02/
+  - ill-primary: Green → loads from /illustrations/primary/
+  - ill-primary-alt-01: Dark green → loads from /illustrations/primary-alt-01/
+  - ill-primary-alt-02: Darker green → loads from /illustrations/primary-alt-02/
+  - ill-primary-alt-03: Light green → loads from /illustrations/primary-alt-03/
+  - ill-secondary: Mint green → loads from /illustrations/secondary/
+  - ill-secondary-alt-01: Purple → loads from /illustrations/secondary-alt-01/
+  - ill-secondary-alt-02: Pink → loads from /illustrations/secondary-alt-02/
+  - ill-secondary-alt-03: Cyan → loads from /illustrations/secondary-alt-03/
+  - ill-secondary-alt-04: Orange → loads from /illustrations/secondary-alt-04/
+  
+  NOTE: The variant class MUST match the folder name in /assets/illustrations/
+  
+  COMPLETE USAGE:
+  
+  <head>
+      <link rel="stylesheet" href="path/to/cancara-tokens.css">
+      <link rel="stylesheet" href="path/to/Illustration.vanilla.css">
+  </head>
+  <body>
+      <div class="illustration ill-default-alt-01">
+          <img data-illustration="Savings_Lloyds_-_V2" alt="">
+      </div>
+      
+      <script src="path/to/Illustration.vanilla.js"></script>
+  </body>
+-->

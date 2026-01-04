@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mileage Graph Component - Test</title>
+    
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="../../../../css/cancara-tokens.css">
+    
+    <!-- Mileage Graph Component -->
+    <link rel="stylesheet" href="MileageGraph.vanilla.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family-body);
+            background: var(--bg-page-default);
+            color: var(--text-default);
+            transition: background-color 0.3s, color 0.3s;
+            padding: 40px;
+            min-height: 100vh;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .toggle-button {
+            background: var(--bg-action-default);
+            color: var(--text-action-inverse);
+            border: none;
+            border-radius: var(--radius-default);
+            padding: 12px 24px;
+            font-family: var(--font-family-body);
+            font-size: 14px;
+            font-weight: var(--font-weight-bold);
+            cursor: pointer;
+        }
+
+        h1 {
+            margin-bottom: 40px;
+            font-size: 32px;
+        }
+        
+        .demo-container {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <div class="theme-toggle">
+        <button class="toggle-button" onclick="toggleTheme()">
+            <span id="theme-text">Switch to Dark Mode</span>
+        </button>
+    </div>
+
+    <h1>Mileage Graph Component</h1>
+    
+    <div class="demo-container">
+        <!-- Mileage Graph Component -->
+        <div class="mileage-graph">
+            <div class="mileage-graph-header">
+                <span class="mileage-graph-number">11,886</span>
+                <span class="mileage-graph-unit">miles</span>
+            </div>
+            <div class="mileage-graph-subtitle">Mileage for your 2025 MOT</div>
+            <div class="mileage-graph-chart">
+                <!-- Grid lines -->
+                <div class="mileage-graph-grid">
+                    <div class="mileage-graph-grid-line">
+                        <span class="mileage-graph-grid-label">12k</span>
+                        <div class="mileage-graph-grid-dash"></div>
+                    </div>
+                    <div class="mileage-graph-grid-line">
+                        <span class="mileage-graph-grid-label">8k</span>
+                        <div class="mileage-graph-grid-dash"></div>
+                    </div>
+                    <div class="mileage-graph-grid-line">
+                        <span class="mileage-graph-grid-label">4k</span>
+                        <div class="mileage-graph-grid-dash"></div>
+                    </div>
+                    <div class="mileage-graph-grid-line">
+                        <span class="mileage-graph-grid-label">0</span>
+                        <div class="mileage-graph-grid-dash"></div>
+                    </div>
+                </div>
+                
+                <!-- Bars -->
+                <div class="mileage-graph-bars">
+                    <div class="mileage-graph-bar-container">
+                        <div class="mileage-graph-bar" style="height: 60%;">
+                            <div class="mileage-graph-bar-dot"></div>
+                        </div>
+                        <div class="mileage-graph-bar-label">2024</div>
+                    </div>
+                    <div class="mileage-graph-bar-container">
+                        <div class="mileage-graph-bar" style="height: 90%;">
+                            <div class="mileage-graph-bar-dot"></div>
+                        </div>
+                        <div class="mileage-graph-bar-label">2025</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="MileageGraph.vanilla.js"></script>
+
+    <script>
+        function detectSystemTheme() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-text').textContent = 'Switch to Light Mode';
+            } else {
+                document.body.setAttribute('data-theme', 'light');
+                document.getElementById('theme-text').textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', detectSystemTheme);
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const themeText = document.getElementById('theme-text');
+            const currentTheme = body.getAttribute('data-theme');
+            
+            if (currentTheme === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                themeText.textContent = 'Switch to Light Mode';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeText.textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', function() {
+            detectSystemTheme();
+        });
+    </script>
+</body>
+</html>

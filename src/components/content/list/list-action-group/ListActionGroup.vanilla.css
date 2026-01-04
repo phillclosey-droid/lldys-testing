@@ -1,0 +1,43 @@
+/* List Action Group Vanilla CSS - SELF-CONTAINED - TOKEN LED */
+
+/* ===================== BASE STRUCTURE ===================== */
+
+.list-action-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ===================== WIDTH VARIANTS ===================== */
+
+/* Compact - has horizontal padding on container */
+.list-action-group.width-compact {
+  padding: 0;
+  width: 100%;
+}
+
+/* FullWidth - no horizontal padding */
+.list-action-group.width-fullwidth {
+  padding: 0;
+  width: 100%;
+}
+
+/* ===================== NESTED COMPONENT SPACING ===================== */
+
+/* Remove any spacing between nested list items */
+.list-action-group .list-item-action {
+  margin: 0;
+  width: 100%;
+}
+
+/* ===================== DARK MODE ===================== */
+
+[data-theme="dark"] .list-action-group {
+  background-color: transparent;
+}

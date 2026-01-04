@@ -1,0 +1,31 @@
+/* NotificationBadge Vanilla CSS - Standalone version for HTML usage - TOKEN LED */
+
+/* Base Badge Styles - Perfect Circle */
+.notification-badge {
+  border-radius: var(--radius-circle);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px var(--spacing-04);
+  min-width: 16px;
+  min-height: 16px;
+  background-color: var(--color-red-critical);
+}
+
+.notification-badge-text {
+  font-family: var(--type-style-12-family);
+  font-size: var(--type-style-12-size);
+  font-weight: var(--type-style-12-weight);
+  line-height: var(--type-style-12-line-height);
+  color: var(--color-white);
+  text-align: center;
+}
+
+/* Type: Offers - Green bright background, black text */
+.notification-badge-offers {
+  background-color: var(--color-green-bright);
+}
+
+.notification-badge-offers .notification-badge-text {
+  color: var(--color-black);
+}

@@ -1,0 +1,930 @@
+const ListActionGroup: React.VFC = () => {
+  return (
+    <ListActionGroup>
+      <Width=Compact>
+        <ActionListItem01>
+          <Container>
+            <Text>Heading</Text>
+          </Container>
+          <HStack>
+            <VStack>
+              <Text>Title</Text>
+            </VStack>
+            <ActionIcon>
+              <Wrapper(Required)>
+                <Union(Required)>
+                  <img src="" />
+                </Union(Required)>
+              </Wrapper(Required)>
+            </ActionIcon>
+          </HStack>
+          <Divider>
+            <Border />
+          </Divider>
+        </ActionListItem01>
+        <ActionListItem02>
+          <HStack>
+            <VStack>
+              <Text>Title</Text>
+            </VStack>
+            <ActionIcon>
+              <Wrapper(Required)>
+                <Union(Required)>
+                  <img src="" />
+                </Union(Required)>
+              </Wrapper(Required)>
+            </ActionIcon>
+          </HStack>
+          <Divider>
+            <Border />
+          </Divider>
+        </ActionListItem02>
+        <ActionListItem03>
+          <HStack>
+            <VStack>
+              <Text>Title</Text>
+            </VStack>
+            <ActionIcon>
+              <Wrapper(Required)>
+                <Union(Required)>
+                  <img src="" />
+                </Union(Required)>
+              </Wrapper(Required)>
+            </ActionIcon>
+          </HStack>
+          <Divider>
+            <Border />
+          </Divider>
+        </ActionListItem03>
+        <ActionListItem04>
+          <HStack>
+            <VStack>
+              <Text>Title</Text>
+            </VStack>
+            <ActionIcon>
+              <Wrapper(Required)>
+                <Union(Required)>
+                  <img src="" />
+                </Union(Required)>
+              </Wrapper(Required)>
+            </ActionIcon>
+          </HStack>
+          <Divider>
+            <Border />
+          </Divider>
+        </ActionListItem04>
+        <ActionListItem05>
+          <HStack>
+            <VStack>
+              <Text>Title</Text>
+            </VStack>
+            <ActionIcon>
+              <Wrapper(Required)>
+                <Union(Required)>
+                  <img src="" />
+                </Union(Required)>
+              </Wrapper(Required)>
+            </ActionIcon>
+          </HStack>
+          <Divider>
+            <Border />
+          </Divider>
+        </ActionListItem05>
+        <ActionListItem06>
+          <HStack>
+            <VStack>
+              <Text>Title</Text>
+            </VStack>
+            <ActionIcon>
+              <Wrapper(Required)>
+                <Union(Required)>
+                  <img src="" />
+                </Union(Required)>
+              </Wrapper(Required)>
+            </ActionIcon>
+          </HStack>
+        </ActionListItem06>
+      </Width=Compact>
+      <Width=FullWidth>
+        <ActionListItem01>
+          <Container>
+            <Text>Heading</Text>
+          </Container>
+          <HStack>
+            <VStack>
+              <Text>Title</Text>
+            </VStack>
+            <ActionIcon>
+              <Wrapper(Required)>
+                <Union(Required)>
+                  <img src="" />
+                </Union(Required)>
+              </Wrapper(Required)>
+            </ActionIcon>
+          </HStack>
+          <Divider>
+            <Border />
+          </Divider>
+        </ActionListItem01>
+        <ActionListItem02>
+          <HStack>
+            <VStack>
+              <Text>Title</Text>
+            </VStack>
+            <ActionIcon>
+              <Wrapper(Required)>
+                <Union(Required)>
+                  <img src="" />
+                </Union(Required)>
+              </Wrapper(Required)>
+            </ActionIcon>
+          </HStack>
+          <Divider>
+            <Border />
+          </Divider>
+        </ActionListItem02>
+        <ActionListItem03>
+          <HStack>
+            <VStack>
+              <Text>Title</Text>
+            </VStack>
+            <ActionIcon>
+              <Wrapper(Required)>
+                <Union(Required)>
+                  <img src="" />
+                </Union(Required)>
+              </Wrapper(Required)>
+            </ActionIcon>
+          </HStack>
+          <Divider>
+            <Border />
+          </Divider>
+        </ActionListItem03>
+        <ActionListItem04>
+          <HStack>
+            <VStack>
+              <Text>Title</Text>
+            </VStack>
+            <ActionIcon>
+              <Wrapper(Required)>
+                <Union(Required)>
+                  <img src="" />
+                </Union(Required)>
+              </Wrapper(Required)>
+            </ActionIcon>
+          </HStack>
+          <Divider>
+            <Border />
+          </Divider>
+        </ActionListItem04>
+        <ActionListItem05>
+          <HStack>
+            <VStack>
+              <Text>Title</Text>
+            </VStack>
+            <ActionIcon>
+              <Wrapper(Required)>
+                <Union(Required)>
+                  <img src="" />
+                </Union(Required)>
+              </Wrapper(Required)>
+            </ActionIcon>
+          </HStack>
+          <Divider>
+            <Border />
+          </Divider>
+        </ActionListItem05>
+        <ActionListItem06>
+          <HStack>
+            <VStack>
+              <Text>Title</Text>
+            </VStack>
+            <ActionIcon>
+              <Wrapper(Required)>
+                <Union(Required)>
+                  <img src="" />
+                </Union(Required)>
+              </Wrapper(Required)>
+            </ActionIcon>
+          </HStack>
+        </ActionListItem06>
+      </Width=FullWidth>
+    </ListActionGroup>
+  )
+}
+
+const Width=Compact = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+`
+const ActionListItem01 = styled.div`
+  border-radius: 12px 12px 0px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0px 16px;
+`
+const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0px 0px 16px 0px;
+`
+const text1 = styled.div`
+  text-align: left;
+  vertical-align: middle;
+  font-size: 15px;
+  font-family: GT Ultra;
+  line-height: 20px;
+  color: #000000;
+`
+const HStack = styled.div`
+  border-radius: 12px 12px 0px 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 16px;
+  gap: 12px;
+  background-color: #ffffff;
+`
+const VStack = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4px;
+`
+const text2 = styled.div`
+  text-align: left;
+  vertical-align: middle;
+  font-size: 15px;
+  font-family: GT Ultra;
+  line-height: 20px;
+  color: #000000;
+`
+const ActionIcon = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
+`
+const Wrapper(Required) = styled.div`
+  height: 12px;
+  width: 12px;
+  background-color: #ffffff;
+`
+const img3 = styled.div`
+  height: 12px;
+  width: 12px;
+`
+const Divider = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+`
+const Border = styled.div`
+  height: 1px;
+  width: 343px;
+  border: 1px solid #f1f1f1;
+`
+const ActionListItem02 = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0px 16px;
+`
+const HStack = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 16px;
+  gap: 12px;
+  background-color: #ffffff;
+`
+const VStack = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4px;
+`
+const text4 = styled.div`
+  text-align: left;
+  vertical-align: middle;
+  font-size: 15px;
+  font-family: GT Ultra;
+  line-height: 20px;
+  color: #000000;
+`
+const ActionIcon = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
+`
+const Wrapper(Required) = styled.div`
+  height: 12px;
+  width: 12px;
+  background-color: #ffffff;
+`
+const img5 = styled.div`
+  height: 12px;
+  width: 12px;
+`
+const Divider = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+`
+const Border = styled.div`
+  height: 1px;
+  width: 343px;
+  border: 1px solid #f1f1f1;
+`
+const ActionListItem03 = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0px 16px;
+`
+const HStack = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 16px;
+  gap: 12px;
+  background-color: #ffffff;
+`
+const VStack = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4px;
+`
+const text6 = styled.div`
+  text-align: left;
+  vertical-align: middle;
+  font-size: 15px;
+  font-family: GT Ultra;
+  line-height: 20px;
+  color: #000000;
+`
+const ActionIcon = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
+`
+const Wrapper(Required) = styled.div`
+  height: 12px;
+  width: 12px;
+  background-color: #ffffff;
+`
+const img7 = styled.div`
+  height: 12px;
+  width: 12px;
+`
+const Divider = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+`
+const Border = styled.div`
+  height: 1px;
+  width: 343px;
+  border: 1px solid #f1f1f1;
+`
+const ActionListItem04 = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0px 16px;
+`
+const HStack = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 16px;
+  gap: 12px;
+  background-color: #ffffff;
+`
+const VStack = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4px;
+`
+const text8 = styled.div`
+  text-align: left;
+  vertical-align: middle;
+  font-size: 15px;
+  font-family: GT Ultra;
+  line-height: 20px;
+  color: #000000;
+`
+const ActionIcon = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
+`
+const Wrapper(Required) = styled.div`
+  height: 12px;
+  width: 12px;
+  background-color: #ffffff;
+`
+const img9 = styled.div`
+  height: 12px;
+  width: 12px;
+`
+const Divider = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+`
+const Border = styled.div`
+  height: 1px;
+  width: 343px;
+  border: 1px solid #f1f1f1;
+`
+const ActionListItem05 = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0px 16px;
+`
+const HStack = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 16px;
+  gap: 12px;
+  background-color: #ffffff;
+`
+const VStack = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4px;
+`
+const text10 = styled.div`
+  text-align: left;
+  vertical-align: middle;
+  font-size: 15px;
+  font-family: GT Ultra;
+  line-height: 20px;
+  color: #000000;
+`
+const ActionIcon = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
+`
+const Wrapper(Required) = styled.div`
+  height: 12px;
+  width: 12px;
+  background-color: #ffffff;
+`
+const img11 = styled.div`
+  height: 12px;
+  width: 12px;
+`
+const Divider = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+`
+const Border = styled.div`
+  height: 1px;
+  width: 343px;
+  border: 1px solid #f1f1f1;
+`
+const ActionListItem06 = styled.div`
+  border-radius: 0px 0px 12px 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0px 16px;
+`
+const HStack = styled.div`
+  border-radius: 0px 0px 12px 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 16px;
+  gap: 12px;
+  background-color: #ffffff;
+`
+const VStack = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4px;
+`
+const text12 = styled.div`
+  text-align: left;
+  vertical-align: middle;
+  font-size: 15px;
+  font-family: GT Ultra;
+  line-height: 20px;
+  color: #000000;
+`
+const ActionIcon = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
+`
+const Wrapper(Required) = styled.div`
+  height: 12px;
+  width: 12px;
+  background-color: #ffffff;
+`
+const img13 = styled.div`
+  height: 12px;
+  width: 12px;
+`
+const Width=FullWidth = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+`
+const ActionListItem01 = styled.div`
+  border-radius: 12px 12px 0px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+`
+const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0px 16px 16px 16px;
+`
+const text14 = styled.div`
+  text-align: left;
+  vertical-align: middle;
+  font-size: 15px;
+  font-family: GT Ultra;
+  line-height: 20px;
+  color: #000000;
+`
+const HStack = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 16px;
+  gap: 12px;
+  background-color: #ffffff;
+`
+const VStack = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4px;
+`
+const text15 = styled.div`
+  text-align: left;
+  vertical-align: middle;
+  font-size: 15px;
+  font-family: GT Ultra;
+  line-height: 20px;
+  color: #000000;
+`
+const ActionIcon = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
+`
+const Wrapper(Required) = styled.div`
+  height: 12px;
+  width: 12px;
+  background-color: #ffffff;
+`
+const img16 = styled.div`
+  height: 12px;
+  width: 12px;
+`
+const Divider = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+`
+const Border = styled.div`
+  height: 1px;
+  width: 375px;
+  border: 1px solid #f1f1f1;
+`
+const ActionListItem02 = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+`
+const HStack = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 16px;
+  gap: 12px;
+  background-color: #ffffff;
+`
+const VStack = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4px;
+`
+const text17 = styled.div`
+  text-align: left;
+  vertical-align: middle;
+  font-size: 15px;
+  font-family: GT Ultra;
+  line-height: 20px;
+  color: #000000;
+`
+const ActionIcon = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
+`
+const Wrapper(Required) = styled.div`
+  height: 12px;
+  width: 12px;
+  background-color: #ffffff;
+`
+const img18 = styled.div`
+  height: 12px;
+  width: 12px;
+`
+const Divider = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+`
+const Border = styled.div`
+  height: 1px;
+  width: 375px;
+  border: 1px solid #f1f1f1;
+`
+const ActionListItem03 = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+`
+const HStack = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 16px;
+  gap: 12px;
+  background-color: #ffffff;
+`
+const VStack = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4px;
+`
+const text19 = styled.div`
+  text-align: left;
+  vertical-align: middle;
+  font-size: 15px;
+  font-family: GT Ultra;
+  line-height: 20px;
+  color: #000000;
+`
+const ActionIcon = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
+`
+const Wrapper(Required) = styled.div`
+  height: 12px;
+  width: 12px;
+  background-color: #ffffff;
+`
+const img20 = styled.div`
+  height: 12px;
+  width: 12px;
+`
+const Divider = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+`
+const Border = styled.div`
+  height: 1px;
+  width: 375px;
+  border: 1px solid #f1f1f1;
+`
+const ActionListItem04 = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+`
+const HStack = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 16px;
+  gap: 12px;
+  background-color: #ffffff;
+`
+const VStack = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4px;
+`
+const text21 = styled.div`
+  text-align: left;
+  vertical-align: middle;
+  font-size: 15px;
+  font-family: GT Ultra;
+  line-height: 20px;
+  color: #000000;
+`
+const ActionIcon = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
+`
+const Wrapper(Required) = styled.div`
+  height: 12px;
+  width: 12px;
+  background-color: #ffffff;
+`
+const img22 = styled.div`
+  height: 12px;
+  width: 12px;
+`
+const Divider = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+`
+const Border = styled.div`
+  height: 1px;
+  width: 375px;
+  border: 1px solid #f1f1f1;
+`
+const ActionListItem05 = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+`
+const HStack = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 16px;
+  gap: 12px;
+  background-color: #ffffff;
+`
+const VStack = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4px;
+`
+const text23 = styled.div`
+  text-align: left;
+  vertical-align: middle;
+  font-size: 15px;
+  font-family: GT Ultra;
+  line-height: 20px;
+  color: #000000;
+`
+const ActionIcon = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
+`
+const Wrapper(Required) = styled.div`
+  height: 12px;
+  width: 12px;
+  background-color: #ffffff;
+`
+const img24 = styled.div`
+  height: 12px;
+  width: 12px;
+`
+const Divider = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+`
+const Border = styled.div`
+  height: 1px;
+  width: 375px;
+  border: 1px solid #f1f1f1;
+`
+const ActionListItem06 = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+`
+const HStack = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 16px;
+  gap: 12px;
+  background-color: #ffffff;
+`
+const VStack = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4px;
+`
+const text25 = styled.div`
+  text-align: left;
+  vertical-align: middle;
+  font-size: 15px;
+  font-family: GT Ultra;
+  line-height: 20px;
+  color: #000000;
+`
+const ActionIcon = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
+`
+const Wrapper(Required) = styled.div`
+  height: 12px;
+  width: 12px;
+  background-color: #ffffff;
+`
+const img26 = styled.div`
+  height: 12px;
+  width: 12px;
+`

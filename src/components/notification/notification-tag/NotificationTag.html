@@ -1,0 +1,92 @@
+<!-- 
+  NotificationTag HTML Component - SELF-CONTAINED - TOKEN LED
+  
+  A pill-shaped tag for displaying status, notifications, or labels.
+  No JavaScript needed - pure CSS component.
+  
+  Six types available:
+  - 'new': Bright green background with black text (for new features/items)
+  - 'neutral': Gray background with border (for general labels)
+  - 'critical': Light red background with red border (for urgent items)
+  - 'warning': Light orange background with orange border (for warnings)
+  - 'success': Light green background with green border (for success states)
+  - 'info': Light blue background with blue border (for informational items)
+  
+  Dependencies:
+  - Design tokens (cancara-tokens.css)
+  - NotificationTag.vanilla.css (SELF-CONTAINED)
+  
+  Usage:
+  1. Import CSS
+  2. Copy HTML structure
+  3. Choose type class (tag-new, tag-neutral, etc.)
+  4. Text automatically uppercases
+-->
+
+<!-- Type: NEW (Bright green, black text) -->
+<div class="notification-tag tag-new">
+  <div class="notification-tag-text">New</div>
+</div>
+
+<!-- Type: NEUTRAL (Gray with border) -->
+<div class="notification-tag tag-neutral">
+  <div class="notification-tag-text">Pending</div>
+</div>
+
+<!-- Type: CRITICAL (Red with border) -->
+<div class="notification-tag tag-critical">
+  <div class="notification-tag-text">Urgent</div>
+</div>
+
+<!-- Type: WARNING (Orange with border) -->
+<div class="notification-tag tag-warning">
+  <div class="notification-tag-text">Warning</div>
+</div>
+
+<!-- Type: SUCCESS (Green with border) -->
+<div class="notification-tag tag-success">
+  <div class="notification-tag-text">Approved</div>
+</div>
+
+<!-- Type: INFO (Blue with border) -->
+<div class="notification-tag tag-info">
+  <div class="notification-tag-text">Info</div>
+</div>
+
+<!--
+  USAGE EXAMPLES:
+  
+  Banking context:
+  <div class="notification-tag tag-new">
+    <div class="notification-tag-text">New Feature</div>
+  </div>
+  
+  <div class="notification-tag tag-success">
+    <div class="notification-tag-text">Verified</div>
+  </div>
+  
+  <div class="notification-tag tag-critical">
+    <div class="notification-tag-text">Action Required</div>
+  </div>
+  
+  Payment status:
+  <div class="notification-tag tag-neutral">
+    <div class="notification-tag-text">Processing</div>
+  </div>
+  
+  <div class="notification-tag tag-warning">
+    <div class="notification-tag-text">Overdue</div>
+  </div>
+  
+  COMPLETE USAGE:
+  
+  <head>
+      <link rel="stylesheet" href="path/to/cancara-tokens.css">
+      <link rel="stylesheet" href="path/to/NotificationTag.vanilla.css">
+  </head>
+  <body>
+      <div class="notification-tag tag-new">
+          <div class="notification-tag-text">New</div>
+      </div>
+  </body>
+-->

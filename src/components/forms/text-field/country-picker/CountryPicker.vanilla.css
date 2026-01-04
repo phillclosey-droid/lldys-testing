@@ -1,0 +1,127 @@
+/* Country Picker Vanilla CSS - SELF-CONTAINED - TOKEN LED */
+
+/* ========== COUNTRY PICKER CONTAINER ========== */
+.country-picker {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-08);
+}
+
+/* ========== LABEL ========== */
+.country-picker-label {
+  font-family: var(--type-style-6-family);
+  font-size: var(--type-style-6-size);
+  font-weight: var(--type-style-6-weight);
+  line-height: var(--type-style-6-line-height);
+  letter-spacing: var(--type-style-6-letter-spacing);
+  color: var(--text-default);
+}
+
+/* ========== INPUT CONTAINER ========== */
+.country-picker-input {
+  border-radius: var(--input-corner-radius);
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  padding: var(--spacing-16) var(--spacing-12);
+  background-color: var(--bg-input-default);
+  border: var(--input-border-width-default) solid var(--border-default);
+  cursor: pointer;
+  transition: border 0.2s;
+  box-sizing: border-box;
+  gap: 0;
+}
+
+/* ========== FLAG EMOJI ========== */
+.country-picker-flag {
+  width: 24px;
+  height: 24px;
+  font-size: 24px;
+  line-height: 24px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ========== COUNTRY CODE ========== */
+.country-picker-code {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 var(--spacing-08);
+}
+
+.country-picker-code-text {
+  font-family: var(--type-style-6-family);
+  font-size: var(--type-style-6-size);
+  font-weight: var(--type-style-6-weight);
+  line-height: var(--type-style-6-line-height);
+  color: var(--text-default);
+  text-align: center;
+}
+
+/* ========== CHEVRON ICON ========== */
+.country-picker-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  flex-shrink: 0;
+}
+
+.country-picker-icon-wrapper {
+  width: 12px;
+  height: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.country-picker-icon img {
+  width: 12px;
+  height: 12px;
+  object-fit: contain;
+  display: block;
+}
+
+/* ========== STATE: ACTIVE (FOCUSED) ========== */
+.country-picker-input.is-active {
+  border-width: var(--input-border-width-active);
+  border-color: var(--color-black);
+}
+
+/* ========== STATE: DISABLED ========== */
+.country-picker.is-disabled .country-picker-input {
+  background-color: var(--bg-input-disabled);
+  border-color: var(--border-default);
+  cursor: not-allowed;
+}
+
+.country-picker.is-disabled .country-picker-code-text {
+  color: var(--text-input-disabled);
+}
+
+/* Hide icon in disabled state */
+.country-picker.is-disabled .country-picker-icon {
+  display: none;
+}
+
+/* ========== STATE: ERROR ========== */
+.country-picker.has-error .country-picker-input {
+  border-color: var(--color-red-critical);
+}
+
+.country-picker.has-error .country-picker-input.is-active {
+  border-color: var(--color-red-critical);
+}
+
+/* ========== DARK MODE ========== */
+[data-theme="dark"] .country-picker-icon img {
+  filter: invert(1);
+}
+
+[data-theme="dark"] .country-picker-input.is-active {
+  border-color: var(--color-white);
+}

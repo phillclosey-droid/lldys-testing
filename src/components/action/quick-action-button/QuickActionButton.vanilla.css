@@ -1,0 +1,159 @@
+/* QuickActionButton Vanilla CSS - SELF-CONTAINED - TOKEN LED */
+
+/* Quick Action Button Container */
+.quick-action-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-04);
+  cursor: pointer;
+  min-width: 80px;
+}
+
+.quick-action-button.disabled {
+  cursor: not-allowed;
+}
+
+/* Button Container - 48px - contains icon, badge/tag */
+.button-container {
+  position: relative;
+  width: 48px;
+  height: 48px;
+}
+
+/* ========== SHAPE BACKGROUND (for account-quick-links preset) ========== */
+.shape-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--radius-default);
+  width: 48px;
+  height: 48px;
+  background-color: var(--bg-panel-default);
+  border: var(--border-width-01) solid var(--border-default);
+  transition: background-color 0.2s;
+}
+
+.quick-action-button.pressed .shape-background {
+  background-color: var(--bg-panel-pressed);
+}
+
+.quick-action-button.disabled .shape-background {
+  background-color: var(--bg-panel-secondary);
+}
+
+/* ========== ICON CONTAINER ========== */
+.icon-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Icon sizes */
+.icon-19 {
+  width: 19px;
+  height: 19px;
+}
+
+.icon-24 {
+  width: 24px;
+  height: 24px;
+}
+
+.icon-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Icon color filter for dark mode */
+[data-theme="dark"] .icon-container img {
+  filter: invert(1);
+}
+
+.quick-action-button.disabled .icon-container {
+  opacity: 0.5;
+}
+
+/* ========== NOTIFICATION BADGE (Nested - Self-contained) ========== */
+.notification-badge-nested {
+  position: absolute;
+  top: -13px;
+  right: -13px;
+}
+
+.notification-badge-nested .notification-badge {
+  border-radius: var(--radius-circle);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px var(--spacing-04);
+  min-width: 16px;
+  min-height: 16px;
+  background-color: var(--color-red-critical);
+}
+
+.notification-badge-nested .notification-badge-text {
+  font-size: 11px;
+  font-weight: var(--font-weight-bold);
+  line-height: 16px;
+  color: var(--color-white);
+}
+
+/* ========== NOTIFICATION TAG (Nested - Self-contained) ========== */
+.notification-tag-nested {
+  position: absolute;
+  right: -31px;
+  top: -10px;
+}
+
+.notification-tag-nested .notification-tag {
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacing-04) var(--spacing-08);
+  background-color: var(--color-green-bright);
+}
+
+.notification-tag-nested .notification-tag-text {
+  font-family: var(--type-style-10-family);
+  font-size: var(--type-style-10-size);
+  font-weight: var(--type-style-10-weight);
+  line-height: var(--type-style-10-line-height);
+  color: var(--color-black);
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* ========== LABEL TEXT ========== */
+.label-text-small {
+  font-family: var(--font-family-body);
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: var(--font-weight-regular);
+  color: var(--text-default);
+  text-align: center;
+  max-width: 80px;
+}
+
+.label-text-medium {
+  font-family: var(--font-family-body);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: var(--font-weight-regular);
+  color: var(--text-default);
+  text-align: center;
+  max-width: 80px;
+}
+
+.quick-action-button.disabled .label-text-small,
+.quick-action-button.disabled .label-text-medium {
+  color: var(--text-subdued);
+}

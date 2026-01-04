@@ -1,0 +1,101 @@
+<!--
+  EmptyStateHeroPanel HTML Component - TOKEN LED - SELF-CONTAINED
+  
+  Hero panel variant for disconnected/empty state when no vehicle is connected.
+  Shows call-to-action to connect a vehicle with benefits overview.
+  
+  Dependencies:
+  - Design tokens (cancara-tokens.css)
+  - EmptyStateHeroPanel.vanilla.css (SELF-CONTAINED)
+  - EmptyStateHeroPanel.vanilla.js (auto-initializes assets)
+  - Pictogram component (nested, not recreated)
+  - ActionButton component (nested, not recreated)
+  
+  Features:
+  - User greeting with pictogram
+  - Car placeholder image (covered car)
+  - Benefits description text
+  - Icon grid showing 4 key services
+  - Primary action button to connect vehicle
+  
+  Usage:
+  1. Import CSS and JS
+  2. Copy HTML structure
+  3. Customize user name and content
+  4. Assets auto-populate on page load
+-->
+
+<div class="empty-state-container">
+  
+  <!-- Top Row: User Greeting -->
+  <div class="empty-state-top-row">
+    <div class="empty-state-user-info">
+      <!-- Pictogram -->
+      <div class="pictogram pict-default">
+        <img src="../../../../../assets/pictograms/Person_Lloyds_-_V2.svg" alt="Person icon">
+      </div>
+      <div class="empty-state-user-text">
+        <div class="empty-state-user-name">Alex</div>
+        <div class="empty-state-user-cta">Connect your car</div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Car Placeholder Image -->
+  <div class="empty-state-car-placeholder">
+    <img src="../../../../../assets/images/car-placeholder.png" alt="Connect your car" class="empty-state-car-image">
+  </div>
+  
+  <!-- Description Text -->
+  <div class="empty-state-description">
+    Drive hassle free with MOT, tax, insurance, service reminders and much more.
+  </div>
+  
+  <!-- Benefits Icon Grid -->
+  <div class="empty-state-benefits-grid">
+    
+    <!-- Tax -->
+    <div class="empty-state-benefit-item">
+      <div class="empty-state-benefit-icon">
+        <img src="../../../../../assets/icons/date-and-time/timer.svg" alt="Tax">
+      </div>
+      <div class="empty-state-benefit-label">Tax</div>
+    </div>
+    
+    <!-- MOT -->
+    <div class="empty-state-benefit-item">
+      <div class="empty-state-benefit-icon">
+        <img src="../../../../../assets/icons/security/id.svg" alt="MOT">
+      </div>
+      <div class="empty-state-benefit-label">MOT</div>
+    </div>
+    
+    <!-- Insurance -->
+    <div class="empty-state-benefit-item">
+      <div class="empty-state-benefit-icon">
+        <img src="../../../../../assets/icons/security/shield.svg" alt="Insurance">
+      </div>
+      <div class="empty-state-benefit-label">Insurance</div>
+    </div>
+    
+    <!-- Servicing -->
+    <div class="empty-state-benefit-item">
+      <div class="empty-state-benefit-icon">
+        <img src="../../../../../assets/icons/travel/car.svg" alt="Servicing">
+      </div>
+      <div class="empty-state-benefit-label">Servicing</div>
+    </div>
+    
+  </div>
+  
+  <!-- Primary Action Button -->
+  <div class="empty-state-action">
+    <!-- Nested Action Button Component -->
+    <button class="action-button btn-primary empty-state-button">
+      <div class="action-button-inner">
+        <span class="action-button-text">Connect my car</span>
+      </div>
+    </button>
+  </div>
+  
+</div>

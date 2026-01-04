@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Category Item - Demo</title>
+    
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="../../../../css/cancara-tokens.css">
+    
+    <!-- Component CSS -->
+    <link rel="stylesheet" href="SelectCategoryItem.vanilla.css">
+    
+    <style>
+        body {
+            font-family: var(--font-family-body);
+            background-color: var(--bg-page-default);
+            color: var(--text-default);
+            padding: var(--spacing-32);
+            margin: 0;
+        }
+        
+        .demo-section {
+            margin-bottom: var(--spacing-48);
+            padding: var(--spacing-24);
+            background-color: var(--bg-panel-default);
+            border-radius: var(--radius-default);
+        }
+        
+        .demo-title {
+            font-family: var(--type-style-2-family);
+            font-size: var(--type-style-2-size);
+            font-weight: var(--type-style-2-weight);
+            line-height: var(--type-style-2-line-height);
+            margin: 0 0 var(--spacing-24) 0;
+            color: var(--text-default);
+        }
+        
+        .demo-description {
+            font-family: var(--type-style-6-family);
+            font-size: var(--type-style-6-size);
+            line-height: var(--type-style-6-line-height);
+            color: var(--text-subdued);
+            margin: 0 0 var(--spacing-24) 0;
+        }
+        
+        .demo-row {
+            display: flex;
+            gap: var(--spacing-32);
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+        
+        .demo-item {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-08);
+        }
+        
+        .demo-label {
+            font-family: var(--type-style-7-family);
+            font-size: var(--type-style-7-size);
+            font-weight: var(--type-style-7-weight);
+            color: var(--text-subdued);
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 0.5px;
+        }
+        
+        .theme-toggle {
+            position: fixed;
+            top: var(--spacing-24);
+            right: var(--spacing-24);
+            padding: var(--spacing-12) var(--spacing-24);
+            background-color: var(--bg-action-default);
+            color: var(--text-action-inverse);
+            border: none;
+            border-radius: var(--radius-default);
+            font-family: var(--font-family-body);
+            cursor: pointer;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()">Toggle Dark Mode</button>
+    
+    <h1 class="demo-title" style="margin-bottom: var(--spacing-48);">Select Category Item Component</h1>
+    
+    <!-- Demo 1: Default State -->
+    <div class="demo-section">
+        <h2 class="demo-title">Default State</h2>
+        <p class="demo-description">The unselected state with white background and gray border.</p>
+        
+        <div class="demo-row">
+            <div class="demo-item">
+                <span class="demo-label">Default</span>
+                <label class="select-category-item">
+                    <input type="radio" name="demo1" value="savings" class="select-category-input">
+                    <div class="select-category-button">
+                        <div class="select-category-icon">
+                            <img data-icon="piggy-bank" data-icon-category="finance" alt="">
+                        </div>
+                    </div>
+                    <span class="select-category-label">Savings</span>
+                </label>
+            </div>
+
+            <div class="demo-item">
+                <span class="demo-label">Default</span>
+                <label class="select-category-item">
+                    <input type="radio" name="demo1" value="investment" class="select-category-input">
+                    <div class="select-category-button">
+                        <div class="select-category-icon">
+                            <img data-icon="investment" data-icon-category="finance" alt="">
+                        </div>
+                    </div>
+                    <span class="select-category-label">Investment</span>
+                </label>
+            </div>
+
+            <div class="demo-item">
+                <span class="demo-label">Default</span>
+                <label class="select-category-item">
+                    <input type="radio" name="demo1" value="bills" class="select-category-input">
+                    <div class="select-category-button">
+                        <div class="select-category-icon">
+                            <img data-icon="bill" data-icon-category="finance" alt="">
+                        </div>
+                    </div>
+                    <span class="select-category-label">Bills</span>
+                </label>
+            </div>
+
+            <div class="demo-item">
+                <span class="demo-label">Default</span>
+                <label class="select-category-item">
+                    <input type="radio" name="demo1" value="cash" class="select-category-input">
+                    <div class="select-category-button">
+                        <div class="select-category-icon">
+                            <img data-icon="cash" data-icon-category="finance" alt="">
+                        </div>
+                    </div>
+                    <span class="select-category-label">Cash</span>
+                </label>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Demo 2: Active State -->
+    <div class="demo-section">
+        <h2 class="demo-title">Active State</h2>
+        <p class="demo-description">The selected state with bright green background and black border.</p>
+        
+        <div class="demo-row">
+            <div class="demo-item">
+                <span class="demo-label">Active</span>
+                <label class="select-category-item">
+                    <input type="radio" name="demo2" value="savings" class="select-category-input" checked>
+                    <div class="select-category-button">
+                        <div class="select-category-icon">
+                            <img data-icon="piggy-bank" data-icon-category="finance" alt="">
+                        </div>
+                    </div>
+                    <span class="select-category-label">Savings</span>
+                </label>
+            </div>
+
+            <div class="demo-item">
+                <span class="demo-label">Active</span>
+                <label class="select-category-item">
+                    <input type="radio" name="demo3" value="investment" class="select-category-input" checked>
+                    <div class="select-category-button">
+                        <div class="select-category-icon">
+                            <img data-icon="investment" data-icon-category="finance" alt="">
+                        </div>
+                    </div>
+                    <span class="select-category-label">Investment</span>
+                </label>
+            </div>
+
+            <div class="demo-item">
+                <span class="demo-label">Active</span>
+                <label class="select-category-item">
+                    <input type="radio" name="demo4" value="bills" class="select-category-input" checked>
+                    <div class="select-category-button">
+                        <div class="select-category-icon">
+                            <img data-icon="bill" data-icon-category="finance" alt="">
+                        </div>
+                    </div>
+                    <span class="select-category-label">Bills</span>
+                </label>
+            </div>
+
+            <div class="demo-item">
+                <span class="demo-label">Active</span>
+                <label class="select-category-item">
+                    <input type="radio" name="demo5" value="cash" class="select-category-input" checked>
+                    <div class="select-category-button">
+                        <div class="select-category-icon">
+                            <img data-icon="cash" data-icon-category="finance" alt="">
+                        </div>
+                    </div>
+                    <span class="select-category-label">Cash</span>
+                </label>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Component JavaScript -->
+    <script src="SelectCategoryItem.vanilla.js"></script>
+    
+    <!-- Demo JavaScript -->
+    <script>
+        // Detect system theme preference on load
+        function detectSystemTheme() {
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+        }
+        
+        // Theme toggle
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+        }
+        
+        // Set theme on page load
+        detectSystemTheme();
+        
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,306 @@
+/* List Item Action Vanilla CSS - SELF-CONTAINED - TOKEN LED */
+
+/* ===================== BASE STRUCTURE ===================== */
+
+/* Main Container */
+.list-item-action {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: transparent;
+  cursor: pointer;
+  user-select: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ===================== WIDTH VARIANTS ===================== */
+
+/* Compact - has horizontal padding */
+.list-item-action.width-compact {
+  padding: 0px 16px;
+}
+
+/* FullWidth - no horizontal padding */
+.list-item-action.width-fullwidth {
+  padding: 0;
+}
+
+/* ===================== POSITION VARIANTS (Border Radius) ===================== */
+
+/* Top Position - rounded top corners */
+.list-item-action.position-top {
+  border-radius: 12px 12px 0px 0px;
+}
+
+.list-item-action.position-top .list-item-content {
+  border-radius: 12px 12px 0px 0px;
+}
+
+/* Middle Position - no rounded corners */
+.list-item-action.position-middle {
+  border-radius: 0;
+}
+
+.list-item-action.position-middle .list-item-content {
+  border-radius: 0;
+}
+
+/* Bottom Position - rounded bottom corners */
+.list-item-action.position-bottom {
+  border-radius: 0px 0px 12px 12px;
+}
+
+.list-item-action.position-bottom .list-item-content {
+  border-radius: 0px 0px 12px 12px;
+}
+
+/* Single Position - all corners rounded (standalone) */
+.list-item-action.position-single {
+  border-radius: 12px;
+}
+
+.list-item-action.position-single .list-item-content {
+  border-radius: 12px;
+}
+
+/* ===================== HEADING (Optional) ===================== */
+
+.list-item-heading {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0px 0px 16px 0px;
+  margin: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Hide heading for middle, bottom positions when not needed */
+.list-item-action.position-middle .list-item-heading,
+.list-item-action.position-bottom .list-item-heading {
+  display: none;
+}
+
+.list-item-heading-text {
+  text-align: left;
+  vertical-align: middle;
+  font-size: 15px;
+  font-family: var(--font-family-body);
+  line-height: 20px;
+  color: var(--text-default);
+  font-weight: 400;
+}
+
+/* ===================== CONTENT ROW (HStack) ===================== */
+
+.list-item-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 16px;
+  gap: 12px;
+  background-color: var(--bg-panel-default);
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+/* Adjust padding for fullwidth variant */
+.list-item-action.width-fullwidth .list-item-content {
+  padding: 16px;
+}
+
+/* ===================== ASSET TYPES ===================== */
+
+/* Asset: None - just text, no icon */
+.list-item-action.asset-none .list-item-content {
+  /* Default structure */
+}
+
+/* Asset: Icon - 24x24 icon */
+.list-item-icon {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.list-item-icon svg,
+.list-item-icon img {
+  width: 24px;
+  height: 24px;
+  color: var(--icon-default);
+}
+
+/* Asset: Illustration - uses Pictogram component with image */
+/* Pictogram will be styled by Pictogram.vanilla.css */
+
+/* Asset: Pictogram - uses Pictogram component with icon inside */
+/* Pictogram will be styled by Pictogram.vanilla.css */
+
+/* Remove underline from link text when used with pictogram */
+.list-item-action.asset-pictogram .list-item-link {
+  text-decoration: none;
+}
+
+/* ===================== TEXT CONTENT (VStack) ===================== */
+
+.list-item-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+}
+
+.list-item-title {
+  text-align: left;
+  vertical-align: middle;
+  font-size: 15px;
+  font-family: var(--font-family-body);
+  line-height: 20px;
+  color: var(--text-default);
+  font-weight: 400;
+}
+
+.list-item-description {
+  text-align: left;
+  vertical-align: middle;
+  font-size: 15px;
+  font-family: var(--font-family-body);
+  line-height: 20px;
+  color: var(--text-subdued);
+  font-weight: 400;
+}
+
+.list-item-link {
+  text-align: left;
+  vertical-align: middle;
+  font-size: 15px;
+  font-family: var(--font-family-body);
+  line-height: 20px;
+  color: var(--text-default);
+  font-weight: 400;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* ===================== ACTION ICON (Chevron) ===================== */
+
+.list-item-action-icon {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
+  flex-shrink: 0;
+}
+
+.list-item-action-icon svg,
+.list-item-action-icon img {
+  width: 12px;
+  height: 12px;
+  color: var(--icon-default);
+}
+
+/* ===================== DIVIDER ===================== */
+
+/* Remove ALL spacing from divider */
+.list-item-action .divider {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.list-item-action .divider-line {
+  margin: 0;
+  width: 100%;
+}
+
+/* Width handling */
+.list-item-action.width-compact .divider {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.list-item-action.width-fullwidth .divider {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* ===================== STATE VARIANTS ===================== */
+
+/* Default State */
+.list-item-action.state-default {
+  /* Default styling already applied */
+}
+
+/* Pressed State - changes background */
+.list-item-action.state-pressed .list-item-content,
+.list-item-action:active .list-item-content {
+  background-color: var(--bg-panel-pressed);
+}
+
+/* ===================== HOVER STATE ===================== */
+
+.list-item-action:hover .list-item-content {
+  background-color: var(--bg-panel-pressed);
+}
+
+/* ===================== DARK MODE ===================== */
+
+[data-theme="dark"] .list-item-action {
+  background-color: transparent;
+}
+
+[data-theme="dark"] .list-item-content {
+  background-color: var(--bg-panel-default);
+}
+
+[data-theme="dark"] .list-item-action:hover .list-item-content {
+  background-color: var(--bg-panel-pressed);
+}
+
+[data-theme="dark"] .list-item-action.state-pressed .list-item-content,
+[data-theme="dark"] .list-item-action:active .list-item-content {
+  background-color: var(--bg-panel-pressed);
+}
+
+[data-theme="dark"] .list-item-heading-text {
+  color: var(--text-default);
+}
+
+[data-theme="dark"] .list-item-title {
+  color: var(--text-default);
+}
+
+[data-theme="dark"] .list-item-description {
+  color: var(--text-subdued);
+}
+
+[data-theme="dark"] .list-item-link {
+  color: var(--text-default);
+}
+
+[data-theme="dark"] .list-item-icon svg,
+[data-theme="dark"] .list-item-icon img {
+  color: var(--icon-default);
+}
+
+[data-theme="dark"] .list-item-action-icon svg,
+[data-theme="dark"] .list-item-action-icon img {
+  color: var(--icon-default);
+  filter: invert(1);
+}

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Popup Modal Component - Demo</title>
+    
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="../../../../css/cancara-tokens.css">
+    
+    <!-- Custom Popup Modal Component -->
+    <link rel="stylesheet" href="CustomPopupModal.vanilla.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family-body);
+            background: var(--bg-page-default);
+            color: var(--text-default);
+            transition: background-color 0.3s, color 0.3s;
+            padding: 40px;
+            min-height: 100vh;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 2000;
+        }
+
+        .toggle-button {
+            background: var(--bg-action-default);
+            color: var(--text-action-inverse);
+            border: none;
+            border-radius: var(--radius-default);
+            padding: 12px 24px;
+            font-family: var(--font-family-body);
+            font-size: 14px;
+            font-weight: var(--font-weight-bold);
+            cursor: pointer;
+        }
+
+        h1 {
+            margin-bottom: 40px;
+            font-size: 32px;
+        }
+        
+        .demo-section {
+            margin-bottom: 30px;
+        }
+        
+        .demo-section-title {
+            margin-bottom: 12px;
+            font-size: 20px;
+        }
+
+        .demo-section p {
+            margin-bottom: 16px;
+            color: var(--text-subdued);
+            font-size: 14px;
+        }
+
+        .demo-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .popup-modal-overlay {
+            display: none;
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <div class="theme-toggle">
+        <button class="toggle-button" onclick="toggleTheme()">
+            <span id="theme-text">Switch to Dark Mode</span>
+        </button>
+    </div>
+
+    <h1>Custom Popup Modal Component - All Variants</h1>
+    
+    <div class="demo-section">
+        <h2 class="demo-section-title">Demo Controls</h2>
+        <p>Click buttons to show different modal variants</p>
+        
+        <div class="demo-buttons">
+            <button class="toggle-button" onclick="window.CustomPopupModalComponent.show('modal-default-single')">Default - Single Button</button>
+            <button class="toggle-button" onclick="window.CustomPopupModalComponent.show('modal-default-2h')">Default - 2 Horizontal</button>
+            <button class="toggle-button" onclick="window.CustomPopupModalComponent.show('modal-default-2v')">Default - 2 Vertical</button>
+            <button class="toggle-button" onclick="window.CustomPopupModalComponent.show('modal-critical-2h')">Critical - 2 Horizontal</button>
+            <button class="toggle-button" onclick="window.CustomPopupModalComponent.show('modal-warning-2v')">Warning - 2 Vertical</button>
+            <button class="toggle-button" onclick="window.CustomPopupModalComponent.show('modal-success-single')">Success - Single</button>
+        </div>
+    </div>
+
+    <!-- DEFAULT - SINGLE BUTTON -->
+    <div class="popup-modal-overlay" id="modal-default-single">
+        <div class="popup-modal sentiment-default link-layout-single">
+            <div class="popup-modal-title">
+                <div class="popup-modal-title-text">Confirm Action</div>
+            </div>
+            <div class="popup-modal-body">
+                <div class="popup-modal-message">Are you sure you want to proceed with this action?</div>
+            </div>
+            <div class="popup-modal-buttons">
+                <div class="popup-modal-divider"></div>
+                <div class="popup-modal-buttons-container">
+                    <button class="popup-modal-button">
+                        <span class="popup-modal-button-text">OK</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DEFAULT - 2 HORIZONTAL -->
+    <div class="popup-modal-overlay" id="modal-default-2h">
+        <div class="popup-modal sentiment-default link-layout-2horizontal">
+            <div class="popup-modal-title">
+                <div class="popup-modal-title-text">Unsaved Changes</div>
+            </div>
+            <div class="popup-modal-body">
+                <div class="popup-modal-message">You have unsaved changes. Do you want to save before leaving?</div>
+            </div>
+            <div class="popup-modal-buttons">
+                <div class="popup-modal-divider"></div>
+                <div class="popup-modal-buttons-container">
+                    <button class="popup-modal-button">
+                        <span class="popup-modal-button-text">Don't Save</span>
+                    </button>
+                    <div class="popup-modal-separator"></div>
+                    <button class="popup-modal-button">
+                        <span class="popup-modal-button-text">Save</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DEFAULT - 2 VERTICAL -->
+    <div class="popup-modal-overlay" id="modal-default-2v">
+        <div class="popup-modal sentiment-default link-layout-2vertical">
+            <div class="popup-modal-title">
+                <div class="popup-modal-title-text">Choose an Option</div>
+            </div>
+            <div class="popup-modal-body">
+                <div class="popup-modal-message">Please select one of the following options to continue.</div>
+            </div>
+            <div class="popup-modal-buttons">
+                <div class="popup-modal-divider"></div>
+                <div class="popup-modal-buttons-container">
+                    <button class="popup-modal-button">
+                        <span class="popup-modal-button-text">Option 1</span>
+                    </button>
+                    <div class="popup-modal-separator"></div>
+                    <button class="popup-modal-button">
+                        <span class="popup-modal-button-text">Option 2</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CRITICAL - 2 HORIZONTAL -->
+    <div class="popup-modal-overlay" id="modal-critical-2h">
+        <div class="popup-modal sentiment-critical link-layout-2horizontal">
+            <div class="popup-modal-title">
+                <div class="popup-modal-title-text">Delete Account</div>
+            </div>
+            <div class="popup-modal-body">
+                <div class="popup-modal-message">This action cannot be undone. Are you sure you want to delete your account?</div>
+            </div>
+            <div class="popup-modal-buttons">
+                <div class="popup-modal-divider"></div>
+                <div class="popup-modal-buttons-container">
+                    <button class="popup-modal-button">
+                        <span class="popup-modal-button-text">Cancel</span>
+                    </button>
+                    <div class="popup-modal-separator"></div>
+                    <button class="popup-modal-button">
+                        <span class="popup-modal-button-text">Delete</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- WARNING - 2 VERTICAL -->
+    <div class="popup-modal-overlay" id="modal-warning-2v">
+        <div class="popup-modal sentiment-warning link-layout-2vertical">
+            <div class="popup-modal-title">
+                <div class="popup-modal-title-text">Warning</div>
+            </div>
+            <div class="popup-modal-body">
+                <div class="popup-modal-message">This action requires additional verification. Please choose how to proceed.</div>
+            </div>
+            <div class="popup-modal-buttons">
+                <div class="popup-modal-divider"></div>
+                <div class="popup-modal-buttons-container">
+                    <button class="popup-modal-button">
+                        <span class="popup-modal-button-text">Continue</span>
+                    </button>
+                    <div class="popup-modal-separator"></div>
+                    <button class="popup-modal-button">
+                        <span class="popup-modal-button-text">Go Back</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SUCCESS - SINGLE -->
+    <div class="popup-modal-overlay" id="modal-success-single">
+        <div class="popup-modal sentiment-success link-layout-single">
+            <div class="popup-modal-title">
+                <div class="popup-modal-title-text">Success</div>
+            </div>
+            <div class="popup-modal-body">
+                <div class="popup-modal-message">Your payment has been processed successfully.</div>
+            </div>
+            <div class="popup-modal-buttons">
+                <div class="popup-modal-divider"></div>
+                <div class="popup-modal-buttons-container">
+                    <button class="popup-modal-button">
+                        <span class="popup-modal-button-text">Done</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="CustomPopupModal.vanilla.js"></script>
+
+    <script>
+        // Listen for modal events
+        document.body.addEventListener('popup-modal-button-click', function(e) {
+            console.log('Button clicked:', e.detail.buttonIndex);
+            e.target.style.display = 'none';
+        });
+
+        document.body.addEventListener('popup-modal-close', function(e) {
+            console.log('Modal closed by overlay click');
+        });
+
+        function detectSystemTheme() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-text').textContent = 'Switch to Light Mode';
+            } else {
+                document.body.setAttribute('data-theme', 'light');
+                document.getElementById('theme-text').textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', detectSystemTheme);
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const themeText = document.getElementById('theme-text');
+            const currentTheme = body.getAttribute('data-theme');
+            
+            if (currentTheme === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                themeText.textContent = 'Switch to Light Mode';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeText.textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', function() {
+            detectSystemTheme();
+        });
+    </script>
+</body>
+</html>

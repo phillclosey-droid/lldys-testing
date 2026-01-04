@@ -1,0 +1,169 @@
+/* Switch Vanilla CSS - SELF-CONTAINED - TOKEN LED */
+/* Figma dimensions: 51×31px track, 27×27px handle */
+
+/* ========== SWITCH CONTAINER ========== */
+.switch-container {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-12);
+  cursor: pointer;
+  user-select: none;
+}
+
+.switch-container:has(.switch-input:disabled) {
+  cursor: not-allowed;
+}
+
+/* ========== HIDDEN CHECKBOX INPUT ========== */
+.switch-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+/* ========== SWITCH VISUAL WRAPPER ========== */
+.switch {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* ========== SWITCH TRACK ========== */
+.switch-track {
+  position: relative;
+  width: 51px;
+  height: 31px;
+  background-color: var(--color-white);
+  border: var(--border-width-01) solid var(--color-gray-700);
+  border-radius: var(--radius-full);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+/* Track - Checked State (ON) */
+.switch-input:checked + .switch .switch-track {
+  background-color: var(--color-black);
+  border-color: var(--color-transparent);
+}
+
+/* Track - Disabled State (OFF) */
+.switch-input:disabled + .switch .switch-track {
+  background-color: var(--color-gray-300);
+  border-color: var(--color-gray-300);
+}
+
+/* Track - Disabled State (ON) */
+.switch-input:checked:disabled + .switch .switch-track {
+  background-color: var(--color-gray-300);
+  border-color: var(--color-transparent);
+}
+
+/* Track - Focus Visible */
+.switch-input:focus-visible + .switch .switch-track {
+  outline: 2px solid var(--color-blue-info);
+  outline-offset: 2px;
+}
+
+/* ========== SWITCH HANDLE ========== */
+.switch-handle {
+  position: absolute;
+  width: 27px;
+  height: 27px;
+  background-color: var(--color-black);
+  border-radius: var(--radius-full);
+  left: 2px;
+  transition: left 0.3s ease, background-color 0.3s ease;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Handle - Checked State (ON) */
+.switch-input:checked + .switch .switch-handle {
+  left: 22px; /* 51px - 27px - 2px */
+  background-color: var(--color-white);
+}
+
+/* Handle - Disabled State */
+.switch-input:disabled + .switch .switch-handle {
+  background-color: var(--color-gray-500);
+}
+
+/* Handle - Active State (pressing) */
+.switch-container:active .switch-input:not(:disabled) + .switch .switch-handle {
+  width: 30px;
+}
+
+.switch-container:active .switch-input:checked:not(:disabled) + .switch .switch-handle {
+  left: 19px; /* adjusted for stretch */
+}
+
+/* ========== SWITCH LABEL ========== */
+.switch-label {
+  font-family: var(--type-style-5-family);
+  font-size: var(--type-style-5-size);
+  font-weight: var(--type-style-5-weight);
+  line-height: var(--type-style-5-line-height);
+  color: var(--text-default);
+}
+
+.switch-container:has(.switch-input:disabled) .switch-label {
+  color: var(--text-subdued);
+}
+
+/* ========== DARK MODE ========== */
+[data-theme="dark"] .switch-track {
+  background-color: var(--color-gray-600);
+  border-color: var(--color-gray-600);
+}
+
+[data-theme="dark"] .switch-input:checked + .switch .switch-track {
+  background-color: var(--color-green-light);
+  border-color: var(--color-transparent);
+}
+
+[data-theme="dark"] .switch-handle {
+  background-color: var(--color-gray-800);
+}
+
+[data-theme="dark"] .switch-input:checked + .switch .switch-handle {
+  background-color: var(--color-black);
+}
+
+[data-theme="dark"] .switch-input:disabled + .switch .switch-track {
+  background-color: var(--color-gray-700);
+  border-color: var(--color-gray-700);
+}
+
+[data-theme="dark"] .switch-input:checked:disabled + .switch .switch-track {
+  background-color: var(--color-gray-700);
+  border-color: var(--color-transparent);
+}
+
+/* ========== RTL SUPPORT ========== */
+[dir="rtl"] .switch-handle {
+  left: auto;
+  right: 2px;
+}
+
+[dir="rtl"] .switch-input:checked + .switch .switch-handle {
+  right: 22px;
+  left: auto;
+}
+
+[dir="rtl"] .switch-container:active .switch-input:checked:not(:disabled) + .switch .switch-handle {
+  right: 19px;
+}
+
+/* ========== REDUCED MOTION ========== */
+@media (prefers-reduced-motion: reduce) {
+  .switch-track,
+  .switch-handle,
+  .switch-label {
+    transition: none;
+  }
+}

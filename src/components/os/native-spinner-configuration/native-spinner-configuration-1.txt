@@ -1,0 +1,161 @@
+const NativeSpinnerConfiguration: React.VFC = () => {
+  return (
+    <NativeSpinnerConfiguration>
+      <OS=iOS,OnColour=False>
+        <_SpinnerSet03>
+          <Spinnergroup>
+            <img src="" />
+            <img src="" />
+            <img src="" />
+            <img src="" />
+            <img src="" />
+            <img src="" />
+            <img src="" />
+            <img src="" />
+            <img src="" />
+            <img src="" />
+          </Spinnergroup>
+        </_SpinnerSet03>
+      </OS=iOS,OnColour=False>
+      <OS=iPadOS,OnColour=False>
+        <_SpinnerSet03>
+          <Spinnergroup>
+            <img src="" />
+            <img src="" />
+            <img src="" />
+            <img src="" />
+            <img src="" />
+            <img src="" />
+            <img src="" />
+            <img src="" />
+            <img src="" />
+            <img src="" />
+          </Spinnergroup>
+        </_SpinnerSet03>
+      </OS=iPadOS,OnColour=False>
+      <OS=Android,OnColour=False>
+        <img src="" />
+      </OS=Android,OnColour=False>
+      <OS=iOS,OnColour=True>
+        <_SpinnerSet03>
+          <Spinnergroup>
+            <img src="" />
+            <img src="" />
+            <img src="" />
+            <img src="" />
+            <img src="" />
+            <img src="" />
+            <img src="" />
+            <img src="" />
+            <img src="" />
+            <img src="" />
+          </Spinnergroup>
+        </_SpinnerSet03>
+      </OS=iOS,OnColour=True>
+      <OS=iPadOS,OnColour=True>
+        <_SpinnerSet03>
+          <Spinnergroup>
+            <img src="" />
+            <img src="" />
+            <img src="" />
+            <img src="" />
+            <img src="" />
+            <img src="" />
+            <img src="" />
+            <img src="" />
+            <img src="" />
+            <img src="" />
+          </Spinnergroup>
+        </_SpinnerSet03>
+      </OS=iPadOS,OnColour=True>
+      <OS=Android,OnColour=True>
+        <img src="" />
+      </OS=Android,OnColour=True>
+    </NativeSpinnerConfiguration>
+  )
+}
+
+const OS=iOS,OnColour=False = styled.div`
+  height: 24px;
+  width: 24px;
+`
+const _SpinnerSet03 = styled.div`
+  height: 24px;
+  width: 24px;
+`
+const Spinnergroup = styled.div`
+  height: 24px;
+  width: 24px;
+`
+const img1 = styled.div`
+  opacity: 0.15000000596046448;
+  height: 12px;
+  width: 7px;
+`
+const OS=iPadOS,OnColour=False = styled.div`
+  height: 24px;
+  width: 24px;
+`
+const _SpinnerSet03 = styled.div`
+  height: 24px;
+  width: 24px;
+`
+const Spinnergroup = styled.div`
+  height: 24px;
+  width: 24px;
+`
+const img2 = styled.div`
+  opacity: 0.15000000596046448;
+  height: 12px;
+  width: 7px;
+`
+const OS=Android,OnColour=False = styled.div`
+  height: 44px;
+  width: 44px;
+`
+const img3 = styled.div`
+  height: 44px;
+  width: 44px;
+`
+const OS=iOS,OnColour=True = styled.div`
+  height: 24px;
+  width: 24px;
+`
+const _SpinnerSet03 = styled.div`
+  height: 24px;
+  width: 24px;
+`
+const Spinnergroup = styled.div`
+  height: 24px;
+  width: 24px;
+`
+const img4 = styled.div`
+  opacity: 0.15000000596046448;
+  height: 12px;
+  width: 7px;
+`
+const OS=iPadOS,OnColour=True = styled.div`
+  height: 24px;
+  width: 24px;
+`
+const _SpinnerSet03 = styled.div`
+  height: 24px;
+  width: 24px;
+`
+const Spinnergroup = styled.div`
+  height: 24px;
+  width: 24px;
+`
+const img5 = styled.div`
+  opacity: 0.15000000596046448;
+  height: 12px;
+  width: 7px;
+`
+const OS=Android,OnColour=True = styled.div`
+  height: 44px;
+  width: 44px;
+`
+const img6 = styled.div`
+  height: 44px;
+  width: 44px;
+`

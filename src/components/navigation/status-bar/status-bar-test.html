@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StatusBar Component Test</title>
+    
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="../../../css/cancara-tokens.css">
+    
+    <!-- StatusBar Component Styles -->
+    <link rel="stylesheet" href="StatusBar.vanilla.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family-body);
+            background: var(--bg-page-default);
+            color: var(--text-default);
+            transition: background-color 0.3s, color 0.3s;
+            padding: 40px;
+            min-height: 100vh;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .toggle-button {
+            background: var(--bg-action-default);
+            color: var(--text-action-inverse);
+            border: none;
+            border-radius: var(--radius-default);
+            padding: 12px 24px;
+            font-family: var(--font-family-body);
+            font-size: 14px;
+            font-weight: var(--font-weight-bold);
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .toggle-button:hover {
+            background: var(--bg-action-pressed);
+        }
+
+        h1 {
+            margin-bottom: 40px;
+            font-size: 32px;
+        }
+
+        .section {
+            margin-bottom: 60px;
+        }
+
+        .section h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .section p {
+            margin-bottom: 20px;
+            color: var(--text-subdued);
+        }
+
+        .status-bar-demo {
+            background: var(--bg-panel-secondary);
+            border-radius: var(--radius-default);
+            padding: 20px;
+            margin-bottom: 20px;
+            max-width: 390px;
+        }
+
+        .demo-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: var(--font-weight-bold);
+            color: var(--text-subdued);
+            margin-bottom: 12px;
+        }
+
+        .code-block {
+            background: var(--bg-panel-secondary);
+            padding: 20px;
+            border-radius: var(--radius-default);
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+
+        .code-block code {
+            font-family: monospace;
+            font-size: 13px;
+            color: var(--text-default);
+        }
+
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .comparison-item {
+            background: var(--bg-panel-default);
+            border-radius: var(--radius-default);
+            padding: 20px;
+        }
+
+        .comparison-item h3 {
+            margin-bottom: 16px;
+            font-size: 18px;
+        }
+
+        .feature-list {
+            margin-top: 12px;
+            padding-left: 20px;
+        }
+
+        .feature-list li {
+            margin-bottom: 8px;
+            color: var(--text-subdued);
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <div class="theme-toggle">
+        <button class="toggle-button" onclick="toggleTheme()">
+            <span id="theme-text">Switch to Dark Mode</span>
+        </button>
+    </div>
+
+    <h1>StatusBar Component Test</h1>
+
+    <div class="section">
+        <h2>iOS Status Bar (Default)</h2>
+        <p>iOS-style status bar with centered time and right-aligned indicators</p>
+        
+        <div class="status-bar-demo">
+            <div class="demo-label">iOS Status Bar</div>
+            <div class="status-bar status-bar-ios">
+                <div class="status-bar-time">9:41</div>
+                <div class="status-bar-levels">
+                    <div class="cellular-signal">
+                        <div class="signal-bar signal-bar-1"></div>
+                        <div class="signal-bar signal-bar-2"></div>
+                        <div class="signal-bar signal-bar-3"></div>
+                        <div class="signal-bar signal-bar-4"></div>
+                        <div class="signal-bar signal-bar-5"></div>
+                    </div>
+                    <div class="wifi-indicator">
+                        <div class="wifi-dot"></div>
+                        <div class="wifi-arc wifi-arc-1"></div>
+                        <div class="wifi-arc wifi-arc-2"></div>
+                        <div class="wifi-arc wifi-arc-3"></div>
+                    </div>
+                    <div class="status-bar-battery">
+                        <div class="battery-border"></div>
+                        <div class="battery-capacity"></div>
+                        <div class="battery-tip"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="code-block">
+            <code>&lt;div class="status-bar status-bar-ios"&gt;<br>
+    &lt;div class="status-bar-time"&gt;9:41&lt;/div&gt;<br>
+    &lt;div class="status-bar-levels"&gt;<br>
+        &lt;!-- Signal, WiFi, Battery --&gt;<br>
+    &lt;/div&gt;<br>
+&lt;/div&gt;</code>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Android Status Bar</h2>
+        <p>Android-style status bar with left-aligned time and grouped right icons</p>
+        
+        <div class="status-bar-demo">
+            <div class="demo-label">Android Status Bar</div>
+            <div class="status-bar status-bar-android">
+                <div class="status-bar-time">9:30</div>
+                <div class="android-right-icons">
+                    <div class="cellular-signal">
+                        <div class="signal-bar signal-bar-1"></div>
+                        <div class="signal-bar signal-bar-2"></div>
+                        <div class="signal-bar signal-bar-3"></div>
+                        <div class="signal-bar signal-bar-4"></div>
+                        <div class="signal-bar signal-bar-5"></div>
+                    </div>
+                    <div class="wifi-indicator">
+                        <div class="wifi-dot"></div>
+                        <div class="wifi-arc wifi-arc-1"></div>
+                        <div class="wifi-arc wifi-arc-2"></div>
+                        <div class="wifi-arc wifi-arc-3"></div>
+                    </div>
+                    <div class="status-bar-battery">
+                        <div class="battery-border"></div>
+                        <div class="battery-capacity"></div>
+                        <div class="battery-tip"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="code-block">
+            <code>&lt;div class="status-bar status-bar-android"&gt;<br>
+    &lt;div class="status-bar-time"&gt;9:30&lt;/div&gt;<br>
+    &lt;div class="android-right-icons"&gt;<br>
+        &lt;!-- Signal, WiFi, Battery --&gt;<br>
+    &lt;/div&gt;<br>
+&lt;/div&gt;</code>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>iOS vs Android Comparison</h2>
+        <div class="comparison">
+            <div class="comparison-item">
+                <h3>iOS</h3>
+                <ul class="feature-list">
+                    <li>Time: 9:41 (iOS default)</li>
+                    <li>Font: SF Pro</li>
+                    <li>Time: Centered left side</li>
+                    <li>Icons: Right-aligned with padding</li>
+                    <li>Height: 54px</li>
+                </ul>
+            </div>
+            <div class="comparison-item">
+                <h3>Android</h3>
+                <ul class="feature-list">
+                    <li>Time: 9:30 (Android default)</li>
+                    <li>Font: Roboto</li>
+                    <li>Time: Left-aligned</li>
+                    <li>Icons: Grouped right with gap</li>
+                    <li>Height: 54px</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Features</h2>
+        <ul class="feature-list">
+            <li>✅ Pure CSS - No JavaScript needed</li>
+            <li>✅ Token-based colors (adapts to theme)</li>
+            <li>✅ Two platform variants (iOS & Android)</li>
+            <li>✅ Cellular signal (5 bars)</li>
+            <li>✅ WiFi indicator with arcs</li>
+            <li>✅ Battery indicator with capacity</li>
+            <li>✅ Self-contained (no dependencies)</li>
+        </ul>
+    </div>
+
+    <script>
+        function detectSystemTheme() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-text').textContent = 'Switch to Light Mode';
+            } else {
+                document.body.setAttribute('data-theme', 'light');
+                document.getElementById('theme-text').textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', detectSystemTheme);
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const themeText = document.getElementById('theme-text');
+            const currentTheme = body.getAttribute('data-theme');
+            
+            if (currentTheme === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                themeText.textContent = 'Switch to Light Mode';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeText.textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', function() {
+            detectSystemTheme();
+        });
+    </script>
+</body>
+</html>

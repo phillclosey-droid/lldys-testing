@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification Panel Component - Demo</title>
+    
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="../../../css/cancara-tokens.css">
+    
+    <!-- Notification Panel Component -->
+    <link rel="stylesheet" href="NotificationPanel.vanilla.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family-body);
+            background: var(--bg-page-default);
+            color: var(--text-default);
+            transition: background-color 0.3s, color 0.3s;
+            padding: 40px;
+            min-height: 100vh;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 2000;
+        }
+
+        .toggle-button {
+            background: var(--bg-action-default);
+            color: var(--text-action-inverse);
+            border: none;
+            border-radius: var(--radius-default);
+            padding: 12px 24px;
+            font-family: var(--font-family-body);
+            font-size: 14px;
+            font-weight: var(--font-weight-bold);
+            cursor: pointer;
+        }
+
+        h1 {
+            margin-bottom: 40px;
+            font-size: 32px;
+        }
+        
+        .demo-section {
+            margin-bottom: 60px;
+        }
+        
+        .demo-section-title {
+            margin-bottom: 12px;
+            font-size: 20px;
+        }
+
+        .demo-section p {
+            margin-bottom: 24px;
+            color: var(--text-subdued);
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <div class="theme-toggle">
+        <button class="toggle-button" onclick="toggleTheme()">
+            <span id="theme-text">Switch to Dark Mode</span>
+        </button>
+    </div>
+
+    <h1>Notification Panel Component - All Variants</h1>
+    
+    <!-- TITLE ONLY -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">Title Only</h2>
+        <p>Critical notification with only a title</p>
+        
+        <div class="notification-panel type-primary sentiment-critical">
+            <div class="notification-panel-content">
+                <div class="notification-panel-icon-container">
+                    <div class="notification-panel-icon">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="8" cy="8" r="8" fill="currentColor"/>
+                            <path d="M8 4V9M8 11V11.5" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="notification-panel-text">
+                    <div class="notification-panel-title">Payment Failed</div>
+                </div>
+                <button class="notification-panel-action">
+                    <div class="notification-panel-action-icon">
+                        <img src="../../../../assets/icons/arrows/chevron-right.svg" alt="">
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TITLE + MESSAGE -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">Title + Message</h2>
+        <p>Warning notification with title and message</p>
+        
+        <div class="notification-panel type-primary sentiment-warning">
+            <div class="notification-panel-content">
+                <div class="notification-panel-icon-container">
+                    <div class="notification-panel-icon">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="8" cy="8" r="8" fill="currentColor"/>
+                            <path d="M8 4V9M8 11V11.5" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="notification-panel-text">
+                    <div class="notification-panel-title">Storage Almost Full</div>
+                    <div class="notification-panel-message">You have used 95% of your storage</div>
+                </div>
+                <button class="notification-panel-action">
+                    <div class="notification-panel-action-icon">
+                        <img src="../../../../assets/icons/arrows/chevron-right.svg" alt="">
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TITLE + MESSAGE + LINK -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">Title + Message + Link</h2>
+        <p>Success notification with title, message and link</p>
+        
+        <div class="notification-panel type-primary sentiment-success">
+            <div class="notification-panel-content">
+                <div class="notification-panel-icon-container">
+                    <div class="notification-panel-icon">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="8" cy="8" r="8" fill="currentColor"/>
+                            <path d="M5 8L7 10L11 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="notification-panel-text">
+                    <div class="notification-panel-title">Upload Complete</div>
+                    <div class="notification-panel-message">Your file has been uploaded successfully</div>
+                    <div class="notification-panel-link">View file</div>
+                </div>
+                <button class="notification-panel-action">
+                    <div class="notification-panel-action-icon">
+                        <img src="../../../../assets/icons/arrows/chevron-right.svg" alt="">
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TITLE + LINK -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">Title + Link</h2>
+        <p>Info notification with title and link</p>
+        
+        <div class="notification-panel type-secondary sentiment-info">
+            <div class="notification-panel-content">
+                <div class="notification-panel-icon-container">
+                    <div class="notification-panel-icon">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="8" cy="8" r="8" fill="currentColor"/>
+                            <path d="M8 7V12M8 5V5.5" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="notification-panel-text">
+                    <div class="notification-panel-title">New Feature Available</div>
+                    <div class="notification-panel-link">Learn more</div>
+                </div>
+                <button class="notification-panel-action">
+                    <div class="notification-panel-action-icon">
+                        <img src="../../../../assets/icons/arrows/chevron-right.svg" alt="">
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MESSAGE + LINK -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">Message + Link</h2>
+        <p>Critical notification with message and link only</p>
+        
+        <div class="notification-panel type-secondary sentiment-critical">
+            <div class="notification-panel-content">
+                <div class="notification-panel-icon-container">
+                    <div class="notification-panel-icon">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="8" cy="8" r="8" fill="currentColor"/>
+                            <path d="M8 4V9M8 11V11.5" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="notification-panel-text">
+                    <div class="notification-panel-message">Your payment could not be processed</div>
+                    <div class="notification-panel-link">Retry payment</div>
+                </div>
+                <button class="notification-panel-action">
+                    <div class="notification-panel-action-icon">
+                        <img src="../../../../assets/icons/arrows/chevron-right.svg" alt="">
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECONDARY TYPE VARIANTS -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">Secondary Type - Warning</h2>
+        <p>Secondary background with warning sentiment</p>
+        
+        <div class="notification-panel type-secondary sentiment-warning">
+            <div class="notification-panel-content">
+                <div class="notification-panel-icon-container">
+                    <div class="notification-panel-icon">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="8" cy="8" r="8" fill="currentColor"/>
+                            <path d="M8 4V9M8 11V11.5" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="notification-panel-text">
+                    <div class="notification-panel-title">Action Required</div>
+                    <div class="notification-panel-message">Please update your payment method</div>
+                    <div class="notification-panel-link">Update now</div>
+                </div>
+                <button class="notification-panel-action">
+                    <div class="notification-panel-action-icon">
+                        <img src="../../../../assets/icons/arrows/chevron-right.svg" alt="">
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="NotificationPanel.vanilla.js"></script>
+
+    <script>
+        function detectSystemTheme() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-text').textContent = 'Switch to Light Mode';
+            } else {
+                document.body.setAttribute('data-theme', 'light');
+                document.getElementById('theme-text').textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', detectSystemTheme);
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const themeText = document.getElementById('theme-text');
+            const currentTheme = body.getAttribute('data-theme');
+            
+            if (currentTheme === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                themeText.textContent = 'Switch to Light Mode';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeText.textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', function() {
+            detectSystemTheme();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!-- List Item Action Component -->
+<!-- Self-contained HTML structure for all variants -->
+
+<!-- 
+NESTED COMPONENTS (Loaded Separately):
+- Pictogram: Requires Pictogram.vanilla.css + Pictogram.vanilla.js
+- Illustration: Requires Illustration.vanilla.css + Illustration.vanilla.js
+- Divider: Requires Divider.vanilla.css
+
+USAGE:
+1. Load required CSS files (tokens + Pictogram + Illustration + Divider + ListItemAction)
+2. Load required JS files (Pictogram + Illustration + ListItemAction)
+3. Use HTML structure below
+-->
+
+<!-- EXAMPLE 1: Asset=None -->
+<div class="list-item-action asset-none width-compact position-top state-default">
+    <div class="list-item-heading">
+        <span class="list-item-heading-text">Settings</span>
+    </div>
+    
+    <div class="list-item-content">
+        <div class="list-item-text">
+            <span class="list-item-title">Notifications</span>
+        </div>
+        
+        <div class="list-item-action-icon">
+            <img data-chevron="right" alt="">
+        </div>
+    </div>
+    
+    <div class="divider width-default">
+        <div class="divider-line"></div>
+    </div>
+</div>
+
+<!-- EXAMPLE 2: Asset=Icon -->
+<div class="list-item-action asset-icon width-compact position-middle state-default">
+    <div class="list-item-content">
+        <div class="list-item-icon">
+            <img src="../../../../assets/icons/people/profile-settings.svg" alt="">
+        </div>
+        
+        <div class="list-item-text">
+            <span class="list-item-title">Profile Settings</span>
+        </div>
+        
+        <div class="list-item-action-icon">
+            <img data-chevron="right" alt="">
+        </div>
+    </div>
+    
+    <div class="divider width-default">
+        <div class="divider-line"></div>
+    </div>
+</div>
+
+<!-- EXAMPLE 3: Asset=Illustration -->
+<div class="list-item-action asset-illustration width-compact position-middle state-default">
+    <div class="list-item-content">
+        <!-- NESTED Illustration Component -->
+        <div class="illustration ill-primary">
+            <img data-illustration="Savings_Lloyds_-_V2" alt="">
+        </div>
+        
+        <div class="list-item-text">
+            <span class="list-item-title">Open a savings account</span>
+            <span class="list-item-description">Start saving for your future</span>
+        </div>
+        
+        <div class="list-item-action-icon">
+            <img data-chevron="right" alt="">
+        </div>
+    </div>
+    
+    <div class="divider width-default">
+        <div class="divider-line"></div>
+    </div>
+</div>
+
+<!-- EXAMPLE 4: Asset=Pictogram -->
+<div class="list-item-action asset-pictogram width-compact position-single state-default">
+    <div class="list-item-heading">
+        <span class="list-item-heading-text">Quick Actions</span>
+    </div>
+    
+    <div class="list-item-content">
+        <!-- NESTED Pictogram Component -->
+        <div class="pictogram pict-primary">
+            <img data-pictogram="Car_Lloyds_-_V2" alt="">
+        </div>
+        
+        <div class="list-item-text">
+            <span class="list-item-title">My Car</span>
+            <span class="list-item-description">Manage your vehicle details</span>
+        </div>
+        
+        <div class="list-item-action-icon">
+            <img data-chevron="right" alt="">
+        </div>
+    </div>
+    
+    <div class="divider width-default">
+        <div class="divider-line"></div>
+    </div>
+</div>
+
+<!--
+COMPLETE USAGE:
+
+<head>
+    <link rel="stylesheet" href="../../../../css/cancara-tokens.css">
+    <link rel="stylesheet" href="../../icon/pictogram/Pictogram.vanilla.css">
+    <link rel="stylesheet" href="../../icon/illustration/Illustration.vanilla.css">
+    <link rel="stylesheet" href="../../divider/Divider.vanilla.css">
+    <link rel="stylesheet" href="ListItemAction.vanilla.css">
+</head>
+<body>
+    <!-- HTML structure above -->
+    
+    <script src="../../icon/pictogram/Pictogram.vanilla.js"></script>
+    <script src="../../icon/illustration/Illustration.vanilla.js"></script>
+    <script src="ListItemAction.vanilla.js"></script>
+</body>
+-->

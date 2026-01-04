@@ -1,0 +1,68 @@
+<!-- 
+  Native Spinner HTML Component - TOKEN LED - SELF-CONTAINED
+  
+  Animated loading spinner with 4 different sets.
+  Auto-initializes frames and switches between light/dark mode.
+  
+  Dependencies:
+  - NativeSpinner.vanilla.css (SELF-CONTAINED)
+  - NativeSpinner.vanilla.js (auto-initializes frames)
+  
+  Usage:
+  1. Import CSS and JS
+  2. Copy HTML structure
+  3. Set data-spinner-set attribute (1-4)
+  4. Set size variant class
+  5. Frames and theme auto-populate on page load
+-->
+
+<!-- Example 1: Set 1 - Default size (24px) -->
+<div class="native-spinner size-default" data-spinner-set="1">
+    <!-- Frames auto-populate via JavaScript -->
+</div>
+
+<!-- Example 2: Set 2 - Large size (32px) -->
+<div class="native-spinner size-large" data-spinner-set="2">
+    <!-- Frames auto-populate via JavaScript -->
+</div>
+
+<!-- Example 3: Set 3 - Small size (16px) -->
+<div class="native-spinner size-small" data-spinner-set="3">
+    <!-- Frames auto-populate via JavaScript -->
+</div>
+
+<!-- Example 4: Set 4 - XLarge size (44px max) -->
+<div class="native-spinner size-xlarge" data-spinner-set="4">
+    <!-- Frames auto-populate via JavaScript -->
+</div>
+
+<!--
+  DATA ATTRIBUTES:
+  - data-spinner-set: Spinner set number (1-4)
+    - Set 1: 8 frames (iOS radial bars style)
+    - Set 2: 4 frames (circular gradient)
+    - Set 3: 4 frames
+    - Set 4: 4 frames
+  
+  SIZE VARIANTS:
+  - size-small: 16x16px
+  - size-default: 24x24px
+  - size-large: 32x32px
+  - size-xlarge: 64x64px for Sets 1 & 2, 44x44px for Sets 3 & 4
+  
+  THEME:
+  - Automatically switches between light/dark based on data-theme attribute
+  - Light theme: loads from /assets/spinners/spinner-set-X/light/
+  - Dark theme: loads from /assets/spinners/spinner-set-X/dark/
+  
+  COMPLETE USAGE:
+  
+  <head>
+      <link rel="stylesheet" href="path/to/NativeSpinner.vanilla.css">
+  </head>
+  <body>
+      <!-- HTML structure above -->
+      
+      <script src="path/to/NativeSpinner.vanilla.js"></script>
+  </body>
+-->

@@ -1,0 +1,155 @@
+/* Custom Pop-up Modal Vanilla CSS - SELF-CONTAINED - TOKEN LED */
+
+/* ========== OVERLAY ========== */
+.popup-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--bg-overlay-default);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* ========== MODAL CONTAINER ========== */
+.popup-modal {
+  border-radius: var(--radius-medium);
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-panel-default);
+  width: 343px;
+  max-width: 90vw;
+}
+
+/* ========== TITLE ========== */
+.popup-modal-title {
+  padding: var(--spacing-16);
+  border-radius: var(--radius-medium) var(--radius-medium) 0 0;
+}
+
+/* Title sentiment backgrounds */
+.popup-modal.sentiment-default .popup-modal-title,
+.popup-modal.sentiment-success .popup-modal-title {
+  background-color: var(--bg-panel-secondary);
+}
+
+.popup-modal.sentiment-critical .popup-modal-title {
+  background-color: var(--color-red-critical);
+}
+
+.popup-modal.sentiment-warning .popup-modal-title {
+  background-color: var(--color-orange-warning);
+}
+
+/* Title text */
+.popup-modal-title-text {
+  font-family: var(--type-style-3-family);
+  font-size: var(--type-style-3-size);
+  font-weight: var(--type-style-3-weight);
+  line-height: var(--type-style-3-line-height);
+  letter-spacing: var(--type-style-3-letter-spacing);
+  text-align: center;
+  color: var(--text-default);
+}
+
+.popup-modal.sentiment-critical .popup-modal-title-text {
+  color: var(--text-inverse);
+}
+
+/* ========== BODY ========== */
+.popup-modal-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-16);
+  gap: var(--spacing-16);
+}
+
+.popup-modal.link-layout-2horizontal .popup-modal-body,
+.popup-modal.link-layout-2vertical .popup-modal-body {
+  padding-bottom: var(--spacing-32);
+}
+
+.popup-modal-message {
+  font-family: var(--font-family-body);
+  font-size: 14px;
+  font-weight: var(--font-weight-regular);
+  line-height: 20px;
+  text-align: center;
+  color: var(--text-default);
+}
+
+/* ========== LINK BUTTONS ========== */
+.popup-modal-buttons {
+  border-radius: 0 0 var(--radius-default) var(--radius-default);
+  display: flex;
+  flex-direction: column;
+}
+
+.popup-modal-divider {
+  height: 1px;
+  background-color: var(--border-default);
+  width: 100%;
+}
+
+/* Single button layout */
+.popup-modal.link-layout-single .popup-modal-buttons-container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 2 Horizontal layout */
+.popup-modal.link-layout-2horizontal .popup-modal-buttons-container {
+  display: flex;
+  flex-direction: row;
+}
+
+/* 2 Vertical layout */
+.popup-modal.link-layout-2vertical .popup-modal-buttons-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.popup-modal-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px var(--spacing-16);
+  min-height: 48px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  flex: 1;
+  transition: background-color 0.2s;
+}
+
+.popup-modal-button:hover {
+  background-color: var(--bg-panel-secondary);
+}
+
+.popup-modal-button-text {
+  font-family: var(--font-family-body);
+  font-size: 15px;
+  font-weight: var(--font-weight-regular);
+  line-height: 20px;
+  text-align: center;
+  color: var(--text-default);
+}
+
+/* Vertical separator for horizontal layout */
+.popup-modal.link-layout-2horizontal .popup-modal-separator {
+  width: 1px;
+  height: 48px;
+  background-color: var(--border-default);
+}
+
+/* Horizontal separator for vertical layout */
+.popup-modal.link-layout-2vertical .popup-modal-separator {
+  height: 1px;
+  width: 100%;
+  background-color: var(--border-default);
+}

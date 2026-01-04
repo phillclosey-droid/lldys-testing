@@ -1,0 +1,147 @@
+/* BottomNav Vanilla CSS - TOKEN LED */
+
+/* Bottom Nav Container */
+.bottom-nav {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: var(--bg-panel-primary);
+  position: relative;
+}
+
+/* Active Border Container */
+.bottom-nav-active-border {
+  display: flex;
+  width: 100%;
+  height: 4px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.active-border-segment {
+  flex: 1;
+  height: 4px;
+  background-color: transparent;
+}
+
+.active-border-segment.active {
+  background-color: var(--color-green-bright);
+}
+
+/* Tabs Container */
+.bottom-nav-tabs {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  padding-top: var(--spacing-04);
+}
+
+/* Individual Tab */
+.bottom-nav-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--spacing-04);
+  padding: var(--spacing-08) 0;
+  flex: 1;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.bottom-nav-tab:hover {
+  opacity: 0.7;
+}
+
+.bottom-nav-tab:active {
+  opacity: 0.5;
+}
+
+/* Tab Icon Container */
+.bottom-nav-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3px;
+  width: 30px;
+  height: 30px;
+}
+
+.bottom-nav-icon img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+/* Theme Support - Invert icons in dark mode */
+[data-theme="dark"] .bottom-nav-icon img {
+  filter: invert(1);
+}
+
+/* Tab Label */
+.bottom-nav-label {
+  font-family: var(--type-style-12-family);
+  font-size: var(--type-style-12-size);
+  font-weight: var(--type-style-12-weight);
+  line-height: var(--type-style-12-line-height);
+  letter-spacing: var(--type-style-12-letter-spacing);
+  color: var(--text-default);
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Active Tab State */
+.bottom-nav-tab.active .bottom-nav-label {
+  font-weight: var(--font-weight-bold);
+}
+
+/* Icon state management - swap between normal and active icons */
+.bottom-nav-tab .icon-inactive {
+  display: block;
+}
+
+.bottom-nav-tab .icon-active {
+  display: none;
+}
+
+.bottom-nav-tab.active .icon-inactive {
+  display: none;
+}
+
+.bottom-nav-tab.active .icon-active {
+  display: block;
+}
+
+/* iOS Home Indicator */
+.bottom-nav-home-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacing-08) 0;
+  width: 100%;
+}
+
+.home-indicator-handle {
+  width: 139px;
+  height: 5px;
+  background-color: var(--text-default);
+  border-radius: var(--radius-pill);
+  opacity: 0.3;
+}
+
+/* Dark mode handle adjustment */
+[data-theme="dark"] .home-indicator-handle {
+  opacity: 0.5;
+}
+
+/* Responsive adjustments */
+@media (max-width: 375px) {
+  .bottom-nav-label {
+    font-size: 10px;
+  }
+}

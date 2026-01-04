@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Header Component Test</title>
+    
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="../../../../css/cancara-tokens.css">
+    
+    <!-- Notification Badge Component (NESTED DEPENDENCY) -->
+    <link rel="stylesheet" href="../../../notification/notification-badge/NotificationBadge.vanilla.css">
+    
+    <!-- Custom Header Component Styles -->
+    <link rel="stylesheet" href="CustomHeader.vanilla.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family-body);
+            background: var(--bg-page-default);
+            color: var(--text-default);
+            transition: background-color 0.3s, color 0.3s;
+            padding: 40px;
+            min-height: 100vh;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .toggle-button {
+            background: var(--bg-action-default);
+            color: var(--text-action-inverse);
+            border: none;
+            border-radius: var(--radius-default);
+            padding: 12px 24px;
+            font-family: var(--font-family-body);
+            font-size: 14px;
+            font-weight: var(--font-weight-bold);
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .toggle-button:hover {
+            background: var(--bg-action-pressed);
+        }
+
+        h1 {
+            margin-bottom: 40px;
+            font-size: 32px;
+        }
+
+        .section {
+            margin-bottom: 60px;
+        }
+
+        .section h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .section h3 {
+            margin-bottom: 16px;
+            margin-top: 32px;
+            font-size: 18px;
+            color: var(--text-subdued);
+        }
+
+        .header-demo {
+            max-width: 390px;
+            margin: 0 auto 40px;
+        }
+
+        .header-label {
+            text-align: center;
+            font-size: 14px;
+            color: var(--text-subdued);
+            margin-top: 12px;
+            margin-bottom: 32px;
+        }
+
+        .code-block {
+            background: var(--bg-panel-secondary);
+            padding: 20px;
+            border-radius: var(--radius-default);
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+
+        .code-block code {
+            font-family: monospace;
+            font-size: 13px;
+            color: var(--text-default);
+            line-height: 1.6;
+        }
+
+        .grid-demos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(390px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .demo-item {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Override notification badge positioning for header */
+        .hit-target .notification-badge {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <div class="theme-toggle">
+        <button class="toggle-button" onclick="toggleTheme()">
+            <span id="theme-text">Switch to Dark Mode</span>
+        </button>
+    </div>
+
+    <h1>Custom Header Component Test</h1>
+
+    <div class="section">
+        <h2>iOS - AOV Retail Preset (Default)</h2>
+        <p style="margin-bottom: 20px; color: var(--text-subdued);">The most common preset with leading burger menu, title, and trailing search/profile icons.</p>
+        
+        <div class="header-demo">
+            <!-- AOV Retail Header - iOS -->
+            <div class="custom-header">
+                <!-- Status Bar -->
+                <div class="status-bar status-bar-ios">
+                    <div class="status-bar-time">9:41</div>
+                    <div class="status-bar-levels">
+                        <div class="cellular-signal">
+                            <div class="signal-bar signal-bar-1"></div>
+                            <div class="signal-bar signal-bar-2"></div>
+                            <div class="signal-bar signal-bar-3"></div>
+                            <div class="signal-bar signal-bar-4"></div>
+                            <div class="signal-bar signal-bar-5"></div>
+                        </div>
+                        <div class="wifi-indicator">
+                            <div class="wifi-dot"></div>
+                            <div class="wifi-arc wifi-arc-1"></div>
+                            <div class="wifi-arc wifi-arc-2"></div>
+                            <div class="wifi-arc wifi-arc-3"></div>
+                        </div>
+                        <div class="status-bar-battery">
+                            <div class="battery-border"></div>
+                            <div class="battery-capacity"></div>
+                            <div class="battery-tip"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Header Bar -->
+                <div class="header-bar">
+                    <!-- Leading Section -->
+                    <div class="header-leading">
+                        <div class="hit-target">
+                            <div class="icon-wrapper icon-18">
+                                <img src="../../../../../assets/icons/navigation/burger-menu.svg" alt="Menu">
+                            </div>
+                            <!-- Notification Badge (NESTED COMPONENT) -->
+                            <div class="notification-badge">
+                                <div class="notification-badge-text">12</div>
+                            </div>
+                        </div>
+                        <div class="header-gap"></div>
+                        <div class="empty-space"></div>
+                    </div>
+
+                    <!-- Title -->
+                    <div class="header-title-wrapper">
+                        <div class="header-title">Accounts</div>
+                    </div>
+
+                    <!-- Trailing Section -->
+                    <div class="header-trailing">
+                        <div class="hit-target">
+                            <div class="icon-wrapper icon-18">
+                                <img src="../../../../../assets/icons/navigation/search.svg" alt="Search">
+                            </div>
+                        </div>
+                        <div class="hit-target">
+                            <div class="icon-wrapper icon-18">
+                                <img src="../../../../../assets/icons/people/person.svg" alt="Profile">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-label">iOS - AOV Retail - Accounts View</div>
+
+        <div class="code-block">
+            <code>&lt;div class="custom-header"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;!-- Status Bar --&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="status-bar status-bar-ios"&gt;...&lt;/div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;!-- Header Bar --&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="header-bar"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="header-leading"&gt;...&lt;/div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="header-title-wrapper"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="header-title"&gt;Accounts&lt;/div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="header-trailing"&gt;...&lt;/div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+&lt;/div&gt;</code>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>iOS - AOV Commercial Preset</h2>
+        <p style="margin-bottom: 20px; color: var(--text-subdued);">Commercial preset with dual leading icons and notification badge.</p>
+        
+        <div class="header-demo">
+            <div class="custom-header">
+                <!-- Status Bar -->
+                <div class="status-bar status-bar-ios">
+                    <div class="status-bar-time">9:41</div>
+                    <div class="status-bar-levels">
+                        <div class="cellular-signal">
+                            <div class="signal-bar signal-bar-1"></div>
+                            <div class="signal-bar signal-bar-2"></div>
+                            <div class="signal-bar signal-bar-3"></div>
+                            <div class="signal-bar signal-bar-4"></div>
+                            <div class="signal-bar signal-bar-5"></div>
+                        </div>
+                        <div class="wifi-indicator">
+                            <div class="wifi-dot"></div>
+                            <div class="wifi-arc wifi-arc-1"></div>
+                            <div class="wifi-arc wifi-arc-2"></div>
+                            <div class="wifi-arc wifi-arc-3"></div>
+                        </div>
+                        <div class="status-bar-battery">
+                            <div class="battery-border"></div>
+                            <div class="battery-capacity"></div>
+                            <div class="battery-tip"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Header Bar -->
+                <div class="header-bar">
+                    <!-- Leading Section with Two Icons -->
+                    <div class="header-leading">
+                        <div class="hit-target">
+                            <div class="icon-wrapper icon-18">
+                                <img src="../../../../../assets/icons/navigation/burger-menu.svg" alt="Menu">
+                            </div>
+                        </div>
+                        <div class="hit-target">
+                            <div class="icon-wrapper icon-18">
+                                <img src="../../../../../assets/icons/navigation/notifications.svg" alt="Notifications">
+                            </div>
+                            <!-- Notification Badge (NESTED COMPONENT) -->
+                            <div class="notification-badge">
+                                <div class="notification-badge-text">12</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Title -->
+                    <div class="header-title-wrapper">
+                        <div class="header-title">Business</div>
+                    </div>
+
+                    <!-- Trailing Section with One Icon -->
+                    <div class="header-trailing">
+                        <div class="hit-target">
+                            <div class="icon-wrapper icon-18">
+                                <img src="../../../../../assets/icons/people/person.svg" alt="Profile">
+                            </div>
+                        </div>
+                        <div class="empty-space"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-label">iOS - AOV Commercial - With Notification Badge</div>
+    </div>
+
+    <div class="section">
+        <h2>iOS - Digital Transactions Preset</h2>
+        <p style="margin-bottom: 20px; color: var(--text-subdued);">Simplified preset for transaction views with back button and single trailing icon.</p>
+        
+        <div class="header-demo">
+            <div class="custom-header">
+                <!-- Status Bar -->
+                <div class="status-bar status-bar-ios">
+                    <div class="status-bar-time">9:41</div>
+                    <div class="status-bar-levels">
+                        <div class="cellular-signal">
+                            <div class="signal-bar signal-bar-1"></div>
+                            <div class="signal-bar signal-bar-2"></div>
+                            <div class="signal-bar signal-bar-3"></div>
+                            <div class="signal-bar signal-bar-4"></div>
+                            <div class="signal-bar signal-bar-5"></div>
+                        </div>
+                        <div class="wifi-indicator">
+                            <div class="wifi-dot"></div>
+                            <div class="wifi-arc wifi-arc-1"></div>
+                            <div class="wifi-arc wifi-arc-2"></div>
+                            <div class="wifi-arc wifi-arc-3"></div>
+                        </div>
+                        <div class="status-bar-battery">
+                            <div class="battery-border"></div>
+                            <div class="battery-capacity"></div>
+                            <div class="battery-tip"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Header Bar -->
+                <div class="header-bar">
+                    <!-- Leading Section with Back Button -->
+                    <div class="header-leading">
+                        <div class="hit-target">
+                            <div class="icon-wrapper icon-18">
+                                <img src="../../../../../assets/icons/arrows/chevron-left.svg" alt="Back">
+                            </div>
+                        </div>
+                        <div class="header-gap"></div>
+                        <div class="empty-space"></div>
+                    </div>
+
+                    <!-- Title -->
+                    <div class="header-title-wrapper">
+                        <div class="header-title">Transactions</div>
+                    </div>
+
+                    <!-- Trailing Section -->
+                    <div class="header-trailing">
+                        <div class="hit-target">
+                            <div class="icon-wrapper icon-18">
+                                <img src="../../../../../assets/icons/navigation/filter.svg" alt="Filter">
+                            </div>
+                        </div>
+                        <div class="empty-space"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-label">iOS - Digital Transactions - With Back Button</div>
+    </div>
+
+    <div class="section">
+        <h2>Variations</h2>
+        
+        <h3>With Different Titles</h3>
+        <div class="grid-demos">
+            <div class="demo-item">
+                <div class="header-demo">
+                    <div class="custom-header">
+                        <div class="status-bar status-bar-ios">
+                            <div class="status-bar-time">9:41</div>
+                            <div class="status-bar-levels">
+                                <div class="cellular-signal">
+                                    <div class="signal-bar signal-bar-1"></div>
+                                    <div class="signal-bar signal-bar-2"></div>
+                                    <div class="signal-bar signal-bar-3"></div>
+                                    <div class="signal-bar signal-bar-4"></div>
+                                    <div class="signal-bar signal-bar-5"></div>
+                                </div>
+                                <div class="wifi-indicator">
+                                    <div class="wifi-dot"></div>
+                                    <div class="wifi-arc wifi-arc-1"></div>
+                                    <div class="wifi-arc wifi-arc-2"></div>
+                                    <div class="wifi-arc wifi-arc-3"></div>
+                                </div>
+                                <div class="status-bar-battery">
+                                    <div class="battery-border"></div>
+                                    <div class="battery-capacity"></div>
+                                    <div class="battery-tip"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="header-bar">
+                            <div class="header-leading">
+                                <div class="hit-target">
+                                    <div class="icon-wrapper icon-18">
+                                        <img src="../../../../../assets/icons/navigation/burger-menu.svg" alt="Menu">
+                                    </div>
+                                </div>
+                                <div class="header-gap"></div>
+                                <div class="empty-space"></div>
+                            </div>
+                            <div class="header-title-wrapper">
+                                <div class="header-title">Payments</div>
+                            </div>
+                            <div class="header-trailing">
+                                <div class="hit-target">
+                                    <div class="icon-wrapper icon-18">
+                                        <img src="../../../../../assets/icons/navigation/search.svg" alt="Search">
+                                    </div>
+                                </div>
+                                <div class="hit-target">
+                                    <div class="icon-wrapper icon-18">
+                                        <img src="../../../../../assets/icons/people/person.svg" alt="Profile">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-label">Payments</div>
+            </div>
+
+            <div class="demo-item">
+                <div class="header-demo">
+                    <div class="custom-header">
+                        <div class="status-bar status-bar-ios">
+                            <div class="status-bar-time">9:41</div>
+                            <div class="status-bar-levels">
+                                <div class="cellular-signal">
+                                    <div class="signal-bar signal-bar-1"></div>
+                                    <div class="signal-bar signal-bar-2"></div>
+                                    <div class="signal-bar signal-bar-3"></div>
+                                    <div class="signal-bar signal-bar-4"></div>
+                                    <div class="signal-bar signal-bar-5"></div>
+                                </div>
+                                <div class="wifi-indicator">
+                                    <div class="wifi-dot"></div>
+                                    <div class="wifi-arc wifi-arc-1"></div>
+                                    <div class="wifi-arc wifi-arc-2"></div>
+                                    <div class="wifi-arc wifi-arc-3"></div>
+                                </div>
+                                <div class="status-bar-battery">
+                                    <div class="battery-border"></div>
+                                    <div class="battery-capacity"></div>
+                                    <div class="battery-tip"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="header-bar">
+                            <div class="header-leading">
+                                <div class="hit-target">
+                                    <div class="icon-wrapper icon-18">
+                                        <img src="../../../../../assets/icons/navigation/burger-menu.svg" alt="Menu">
+                                    </div>
+                                </div>
+                                <div class="header-gap"></div>
+                                <div class="empty-space"></div>
+                            </div>
+                            <div class="header-title-wrapper">
+                                <div class="header-title">Cards</div>
+                            </div>
+                            <div class="header-trailing">
+                                <div class="hit-target">
+                                    <div class="icon-wrapper icon-18">
+                                        <img src="../../../../../assets/icons/navigation/search.svg" alt="Search">
+                                    </div>
+                                </div>
+                                <div class="hit-target">
+                                    <div class="icon-wrapper icon-18">
+                                        <img src="../../../../../assets/icons/people/person.svg" alt="Profile">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-label">Cards</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CustomHeader Component JS -->
+    <script src="CustomHeader.vanilla.js"></script>
+
+    <script>
+        function detectSystemTheme() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-text').textContent = 'Switch to Light Mode';
+            } else {
+                document.body.setAttribute('data-theme', 'light');
+                document.getElementById('theme-text').textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', detectSystemTheme);
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const themeText = document.getElementById('theme-text');
+            const currentTheme = body.getAttribute('data-theme');
+            
+            if (currentTheme === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                themeText.textContent = 'Switch to Light Mode';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeText.textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', function() {
+            detectSystemTheme();
+        });
+    </script>
+</body>
+</html>

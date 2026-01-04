@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "name": "Cancara Design System Component Registry",
+  "description": "Comprehensive catalog of all components, variants, and usage patterns in the Cancara Design System",
+  "lastUpdated": "2024-12-30",
+  
+  "categories": {
+    "action": {
+      "description": "Interactive components that trigger actions",
+      "components": {
+        
+        "action-button": {
+          "name": "Action Button",
+          "path": "src/components/action/button/action-button",
+          "files": {
+            "html": "ActionButton.html",
+            "css": "ActionButton.vanilla.css",
+            "js": "ActionButton.vanilla.js"
+          },
+          "dependencies": ["cancara-tokens.css"],
+          "description": "Primary interactive button component with multiple types and states",
+          "baseClass": "action-button",
+          "structure": {
+            "wrapper": "button.action-button",
+            "inner": "div.action-button-inner",
+            "children": [
+              "span.action-button-text",
+              "div.action-button-icon > img"
+            ]
+          },
+          "variants": {
+            "types": {
+              "description": "Button visual style",
+              "required": true,
+              "options": {
+                "btn-primary": {
+                  "description": "Solid fill button",
+                  "default": "Black background, white text"
+                },
+                "btn-secondary": {
+                  "description": "Outlined button",
+                  "default": "Transparent background, black border and text"
+                },
+                "btn-tertiary": {
+                  "description": "Text-only button",
+                  "default": "Transparent background, underlined black text"
+                }
+              }
+            },
+            "modifiers": {
+              "description": "Optional style modifications",
+              "required": false,

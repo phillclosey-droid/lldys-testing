@@ -1,0 +1,236 @@
+# Calendar Picker Component
+
+A calendar date picker component that triggers the native browser date picker. Available in default (vertical) and inline (horizontal) layouts.
+
+## Files
+
+- `CalendarPicker.vanilla.css` - Self-contained CSS with token-led styling
+- `CalendarPicker.vanilla.js` - Interactive functionality for calendar picker
+- `CalendarPicker-demo.html` - Demo page showing all variants
+
+## Component Structure
+
+### Default Layout (Vertical)
+
+```html
+<div class="calendar-picker">
+    <label class="calendar-picker-label">When</label>
+    <div class="calendar-picker-input-wrapper">
+        <div class="calendar-picker-input">
+            <span class="calendar-picker-value">17 Sept 2021</span>
+            <div class="calendar-picker-icon">
+                <img src="../../../../../assets/icons/date-and-time/calendar.svg" alt="Calendar">
+            </div>
+        </div>
+        <input type="date" class="calendar-picker-native-input" value="2021-09-17">
+    </div>
+    <div class="calendar-picker-hint">
+        <span class="calendar-picker-hint-text">Hint message text</span>
+    </div>
+</div>
+```
+
+### Inline Layout (Horizontal)
+
+```html
+<div class="calendar-picker layout-inline">
+    <div class="calendar-picker-input-wrapper">
+        <div class="calendar-picker-input">
+            <div class="calendar-picker-content">
+                <span class="calendar-picker-label-inline">When</span>
+                <span class="calendar-picker-colon">:</span>
+                <span class="calendar-picker-value">17 Sept 2021</span>
+            </div>
+        </div>
+        <button class="calendar-picker-icon-button" type="button">
+            <div class="calendar-picker-icon">
+                <img src="../../../../../assets/icons/miscellaneous/calendar.svg" alt="Calendar">
+            </div>
+        </button>
+        <input type="date" class="calendar-picker-native-input" value="2021-09-17">
+    </div>
+    <div class="calendar-picker-hint-wrapper">
+        <div class="calendar-picker-hint">
+            <span class="calendar-picker-hint-text">Hint message text</span>
+        </div>
+        <div class="calendar-picker-icon-button-spacer"></div>
+    </div>
+</div>
+```
+
+## CSS Classes
+
+### Main Container
+- `.calendar-picker` - Main container
+- `.calendar-picker.layout-inline` - Inline/horizontal layout variant
+- `.calendar-picker.is-disabled` - Disabled state
+
+### Label
+- `.calendar-picker-label` - Label for default layout (type-style-6, 15px)
+- `.calendar-picker-label-inline` - Label inside input for inline layout
+- `.calendar-picker-colon` - Colon separator in inline layout
+
+### Input Components
+- `.calendar-picker-input-wrapper` - Wrapper for input and native date input
+- `.calendar-picker-input` - Visual input container
+- `.calendar-picker-input.is-active` - Active/focused state (2px black border)
+- `.calendar-picker-content` - Content wrapper for inline layout
+- `.calendar-picker-value` - Date value display text
+- `.calendar-picker-native-input` - Hidden native date input
+
+### Icon
+- `.calendar-picker-icon` - Icon container (24px × 24px)
+- `.calendar-picker-icon-button` - Icon button for inline layout
+- `.calendar-picker-icon-button-spacer` - Spacer for inline layout alignment
+
+### Hint Message
+- `.calendar-picker-hint` - Hint message container
+- `.calendar-picker-hint-text` - Hint message text (14px)
+- `.calendar-picker-hint-wrapper` - Wrapper for inline layout
+
+## JavaScript Events
+
+The component dispatches a custom `calendar-picker-change` event when the date changes:
+
+```javascript
+element.addEventListener('calendar-picker-change', function(e) {
+    console.log(e.detail.value); // ISO date string (e.g., "2021-09-17")
+    console.log(e.detail.formattedValue); // Formatted date (e.g., "17 Sept 2021")
+});
+```
+
+## Design Tokens Used
+
+### Typography
+- `--type-style-6-family` - Label and value font (GT Ultra)
+- `--type-style-6-size` - Label and value size (15px)
+- `--type-style-6-weight` - Label and value weight
+- `--type-style-6-line-height` - Label and value line height (20px)
+- `--font-family-body` - Hint text font
+- `--font-weight-regular` - Hint text weight
+
+### Colors
+- `--text-input-label` - Label text color (black)
+- `--text-input-default` - Value text color (black)
+- `--text-input-disabled` - Disabled text color (gray-500)
+- `--bg-input-default` - Input background (white)
+- `--bg-input-disabled` - Disabled background (gray-100)
+- `--border-default` - Default border color (gray-700)
+- `--color-black` - Active border color
+- `--color-gray-300` - Disabled border color
+
+### Spacing
+- `--spacing-08` - Gap between elements (8px)
+- `--spacing-16` - Padding and gaps (16px)
+
+### Borders & Dimensions
+- `--input-corner-radius` - Input border radius (12px)
+- `--input-border-width-default` - Default border (1px)
+- `--input-border-width-active` - Active border (2px)
+- `--input-min-height` - Minimum input height (56px)
+
+## Dimensions
+
+- **Input**: Min height 56px, 16px padding, 12px border radius
+- **Icon**: 24px × 24px
+- **Gap between value and icon**: 8px
+- **Hint text**: 14px font size, 20px line height
+
+## States
+
+### Default
+- White background
+- 1px gray-700 border
+- Black text
+- Calendar icon visible (default layout) or icon button (inline layout)
+- Hint message visible
+
+### Active/Focused
+- White background
+- 2px black border
+- Triggered when input is clicked or opened
+
+### Disabled
+- Gray-100 background
+- 1px gray-300 border
+- Gray-500 text
+- No icon in default layout
+- No hint message
+
+## Behavior
+
+- Clicking on the input container opens the native browser date picker
+- Clicking on the calendar icon opens the native date picker
+- In inline layout, clicking the icon button opens the date picker
+- Date is formatted as "17 Sept 2021" for display
+- Native `<input type="date">` is hidden but functional
+- Uses `showPicker()` API for modern browsers with fallback to focus
+- Active state applied when picker is open
+- Disabled inputs cannot be interacted with
+
+## Icon Requirements
+
+**Icon location:**
+- **Location:** `assets/icons/date-and-time/calendar.svg`
+- **Size:** 24px × 24px
+- **Format:** SVG
+- **Dark mode:** Icon inverts color automatically
+
+## Date Format
+
+The component formats dates using `toLocaleDateString` with en-GB locale:
+- Format: "17 Sept 2021"
+- Month names abbreviated (Jan, Feb, Mar, etc.)
+- Day without leading zero
+- Full 4-digit year
+
+## Browser Compatibility
+
+- Modern browsers: Uses `showPicker()` API
+- Fallback: Uses `focus()` for older browsers
+- All browsers: Native date picker functionality via `<input type="date">`
+
+## Accessibility
+
+- Proper label associations
+- Native date input for keyboard navigation
+- Clear focus states
+- Disabled states properly indicated
+- Alt text for icon images
+
+## Usage Examples
+
+### Basic Date Picker
+```html
+<div class="calendar-picker">
+    <label class="calendar-picker-label">Select Date</label>
+    <div class="calendar-picker-input-wrapper">
+        <div class="calendar-picker-input">
+            <span class="calendar-picker-value">Select date</span>
+            <div class="calendar-picker-icon">
+                <img src="../../../../../assets/icons/miscellaneous/calendar.svg" alt="Calendar">
+            </div>
+        </div>
+        <input type="date" class="calendar-picker-native-input">
+    </div>
+</div>
+```
+
+### With Pre-selected Date
+```html
+<input type="date" class="calendar-picker-native-input" value="2021-09-17">
+```
+
+### Disabled State
+```html
+<div class="calendar-picker is-disabled">
+    <!-- ... -->
+    <input type="date" class="calendar-picker-native-input" value="2021-09-17" disabled>
+</div>
+```
+
+## Dark Mode Support
+
+- Background colors adapt through design tokens
+- Calendar icon inverts color automatically via CSS filter
+- Border and text colors follow theme

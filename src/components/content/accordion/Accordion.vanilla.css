@@ -1,0 +1,228 @@
+/* Accordion Vanilla CSS - SELF-CONTAINED - TOKEN LED */
+
+/* ========== ACCORDION CONTAINER ========== */
+.accordion {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* ========== ACCORDION HEADING (Optional) ========== */
+.accordion-heading {
+  font-family: var(--type-style-3-family);
+  font-size: var(--type-style-3-size);
+  font-weight: var(--type-style-3-weight);
+  line-height: var(--type-style-3-line-height);
+  letter-spacing: var(--type-style-3-letter-spacing);
+  color: var(--text-default);
+  padding: var(--accordion-spacing);
+  margin: 0;
+}
+
+/* ========== ACCORDION ITEM ========== */
+.accordion-item {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Border radius for first item (top) */
+.accordion-item:first-of-type {
+  border-radius: var(--accordion-corner-radius) var(--accordion-corner-radius) 0 0;
+}
+
+/* Border radius for last item (bottom) */
+.accordion-item:last-of-type {
+  border-radius: 0 0 var(--accordion-corner-radius) var(--accordion-corner-radius);
+}
+
+/* Border radius for single item (all corners) */
+.accordion-item:only-of-type {
+  border-radius: var(--accordion-corner-radius);
+}
+
+/* ========== ACCORDION HEADER (Clickable) ========== */
+.accordion-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--accordion-spacing);
+  gap: var(--spacing-12);
+  background-color: var(--accordion-header-bg);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.accordion-header:hover {
+  background-color: var(--bg-panel-pressed);
+}
+
+.accordion-header.is-pressed {
+  background-color: var(--bg-panel-pressed);
+}
+
+/* ========== ACCORDION LABEL ========== */
+.accordion-label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-08);
+  flex: 1;
+}
+
+.accordion-label-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-04);
+  flex: 1;
+}
+
+.accordion-label-icon {
+  width: 18px;
+  height: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.accordion-label-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Icon color filter for dark mode */
+[data-theme="dark"] .accordion-label-icon img {
+  filter: invert(1);
+}
+
+.accordion-label-text {
+  font-family: var(--type-style-5-family);
+  font-size: var(--type-style-5-size);
+  font-weight: var(--type-style-5-weight);
+  line-height: var(--type-style-5-line-height);
+  color: var(--text-default);
+}
+
+.accordion-label-subtext {
+  font-family: var(--type-style-6-family);
+  font-size: var(--type-style-6-size);
+  font-weight: var(--type-style-6-weight);
+  line-height: var(--type-style-6-line-height);
+  color: var(--text-subdued);
+}
+
+/* ========== ACCORDION ICON (Plus/Minus or Chevron) ========== */
+.accordion-icon {
+  width: 12px;
+  height: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.accordion-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  color: var(--accordion-icon-default);
+}
+
+/* Icon color filter for dark mode */
+[data-theme="dark"] .accordion-icon img {
+  filter: invert(1);
+}
+
+/* Rotate chevron when open (if using chevron) */
+.accordion-item.is-open .accordion-icon.accordion-icon-chevron {
+  transform: rotate(180deg);
+}
+
+/* Hide minus icon by default, show plus */
+.accordion-icon-minus {
+  display: none;
+}
+
+.accordion-icon-plus {
+  display: flex;
+}
+
+/* When open, show minus and hide plus */
+.accordion-item.is-open .accordion-icon-minus {
+  display: flex;
+}
+
+.accordion-item.is-open .accordion-icon-plus {
+  display: none;
+}
+
+/* ========== ACCORDION DIVIDER ========== */
+.accordion-divider {
+  height: 1px;
+  width: 100%;
+  background-color: var(--border-default);
+}
+
+/* Divider after header is always visible */
+.accordion-header + .accordion-divider {
+  display: block;
+}
+
+/* Divider after panel is hidden by default */
+.accordion-panel + .accordion-divider {
+  display: none;
+}
+
+/* ========== ACCORDION PANEL (Content) ========== */
+.accordion-panel {
+  max-height: 0;
+  overflow: hidden;
+  background-color: var(--accordion-panel-bg);
+  transition: max-height 0.3s ease-out;
+}
+
+.accordion-item.is-open .accordion-panel {
+  max-height: 1000px; /* Large enough for content */
+  transition: max-height 0.4s ease-in;
+}
+
+.accordion-panel-content {
+  padding: var(--accordion-spacing);
+}
+
+.accordion-panel-text {
+  font-family: var(--type-style-8-family);
+  font-size: var(--type-style-8-size);
+  font-weight: var(--type-style-8-weight);
+  line-height: var(--type-style-8-line-height);
+  color: var(--text-default);
+}
+
+/* ========== VARIANTS ========== */
+
+/* Compact width - responsive */
+.accordion-compact {
+  width: 100%;
+  max-width: 600px;
+}
+
+/* Full width (default) */
+.accordion-full {
+  width: 100%;
+}
+
+/* ========== USAGE VARIANTS ========== */
+
+/* Group: Has heading */
+.accordion-group .accordion-heading {
+  display: block;
+}
+
+/* Single: No heading */
+.accordion-single .accordion-heading {
+  display: none;
+}

@@ -1,0 +1,186 @@
+/* Coachmark Vanilla CSS - SELF-CONTAINED - TOKEN LED */
+
+/* ========== COACHMARK POPUP (FULL OVERLAY) ========== */
+.coachmark-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+}
+
+/* Overlay background */
+.coachmark-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--bg-overlay-default);
+  pointer-events: all;
+}
+
+/* Cutout (highlighted element) */
+.coachmark-cutout {
+  position: absolute;
+  background-color: var(--bg-panel-default);
+  border-radius: var(--radius-circle);
+  pointer-events: none;
+}
+
+/* ========== MAIN CONTENT CONTAINER ========== */
+.coachmark-content {
+  border-radius: var(--radius-default);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: var(--spacing-12) var(--spacing-16);
+  background-color: var(--bg-panel-default);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  max-width: 343px;
+}
+
+/* ========== MAIN ROW ========== */
+.coachmark-main {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--spacing-12);
+  width: 100%;
+}
+
+/* ========== ICON CONTAINER ========== */
+.coachmark-icon-container {
+  display: flex;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+
+.coachmark-icon {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--icon-sentiment-info);
+}
+
+.coachmark-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* ========== TEXT SECTION ========== */
+.coachmark-text {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.coachmark-header {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--spacing-12);
+  width: 100%;
+}
+
+.coachmark-messages {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+}
+
+.coachmark-title {
+  font-family: var(--type-style-6-family);
+  font-size: var(--type-style-6-size);
+  font-weight: var(--type-style-6-weight);
+  line-height: var(--type-style-6-line-height);
+  letter-spacing: var(--type-style-6-letter-spacing);
+  color: var(--text-default);
+}
+
+.coachmark-message {
+  font-family: var(--font-family-body);
+  font-size: 14px;
+  font-weight: var(--font-weight-regular);
+  line-height: 20px;
+  color: var(--text-default);
+}
+
+/* ========== CLOSE BUTTON ========== */
+.coachmark-close-container {
+  display: flex;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+
+.coachmark-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+
+.coachmark-close-icon {
+  width: 12px;
+  height: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-default);
+}
+
+.coachmark-close-icon svg {
+  width: 12px;
+  height: 12px;
+}
+
+/* ========== FOOTER (MULTIPLE DISPLAY) ========== */
+.coachmark-footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--spacing-08);
+  width: 100%;
+  padding-left: 28px; /* Align with text content (16px icon + 12px gap) */
+}
+
+.coachmark-counter {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0;
+}
+
+.coachmark-counter-text {
+  font-family: var(--font-family-body);
+  font-size: 14px;
+  font-weight: var(--font-weight-regular);
+  line-height: 20px;
+  color: var(--text-default);
+}
+
+.coachmark-action {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.coachmark-action-text {
+  font-family: var(--font-family-body);
+  font-size: 14px;
+  font-weight: var(--font-weight-regular);
+  line-height: 20px;
+  color: var(--text-default);
+  text-decoration: underline;
+}

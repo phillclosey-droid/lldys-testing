@@ -1,0 +1,39 @@
+/* Select Category Grid Vanilla CSS - SELF-CONTAINED - TOKEN LED */
+
+/* ========== SELECT CATEGORY GRID CONTAINER ========== */
+.select-category-grid {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* ========== CATEGORY ROW ========== */
+.category-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px var(--spacing-16);
+  gap: var(--spacing-16);
+}
+
+/* All rows use space-between to maintain grid alignment */
+.category-row-3,
+.category-row-2,
+.category-row-1 {
+  justify-content: space-between;
+}
+
+/* Items take up equal space */
+.category-row .select-category-item {
+  flex: 1;
+  min-width: 0; /* Allow flex items to shrink below content size */
+}
+
+/* Invisible placeholders to maintain grid alignment */
+.category-row-placeholder {
+  flex: 1;
+  min-width: 0;
+  visibility: hidden;
+  pointer-events: none;
+}

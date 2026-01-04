@@ -1,0 +1,157 @@
+/* Select Category Item Vanilla CSS - SELF-CONTAINED - TOKEN LED */
+
+/* ========== CATEGORY SELECTOR CONTAINER (Optional) ========== */
+.category-selector {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-16);
+  width: 100%;
+}
+
+.category-selector-heading {
+  font-family: var(--type-style-3-family);
+  font-size: var(--type-style-3-size);
+  font-weight: var(--type-style-3-weight);
+  line-height: var(--type-style-3-line-height);
+  letter-spacing: var(--type-style-3-letter-spacing);
+  color: var(--text-default);
+  margin: 0;
+}
+
+.category-selector-subtext {
+  font-family: var(--type-style-6-family);
+  font-size: var(--type-style-6-size);
+  font-weight: var(--type-style-6-weight);
+  line-height: var(--type-style-6-line-height);
+  color: var(--text-subdued);
+  margin: calc(var(--spacing-04) * -1) 0 0 0;
+}
+
+.category-selector-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(64px, 1fr));
+  gap: var(--spacing-16);
+  width: 100%;
+}
+
+@media (max-width: 320px) {
+  .category-selector-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 480px) {
+  .category-selector-grid {
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  }
+}
+
+/* ========== SELECT CATEGORY ITEM ========== */
+.select-category-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-04);
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ========== HIDDEN INPUT ========== */
+.select-category-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+/* ========== CATEGORY BUTTON (48x48 circle) ========== */
+.select-category-button {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-circle);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--select-category-bg-default);
+  border: var(--border-width-02) solid transparent;
+  border-color: var(--select-category-border-default);
+  position: relative;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+/* Active/Selected state - border color changes, width stays at 2px */
+.select-category-input:checked + .select-category-button {
+  background-color: var(--select-category-bg-active);
+  border-color: var(--select-category-border-active);
+}
+
+/* ========== CATEGORY ICON (24x24) ========== */
+.select-category-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.select-category-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Dark mode - make default icons bright green #0BE248 */
+[data-theme="dark"] .select-category-icon img {
+  filter: invert(71%) sepia(97%) saturate(3157%) hue-rotate(92deg) brightness(105%) contrast(96%);
+  /* This filter converts black to #0BE248 (bright green) */
+}
+
+/* Active state in dark mode - keep icons black on green background */
+[data-theme="dark"] .select-category-input:checked + .select-category-button .select-category-icon img {
+  filter: none;
+  /* Remove filter so icon stays black */
+}
+
+/* Light mode active state - no filter needed, stays black */
+.select-category-input:checked + .select-category-button .select-category-icon img {
+  /* Icons stay black in active state */
+}
+
+/* ========== CATEGORY LABEL ========== */
+.select-category-label {
+  font-family: var(--type-style-9-family);
+  font-size: var(--type-style-9-size);
+  font-weight: var(--type-style-9-weight);
+  line-height: var(--type-style-9-line-height);
+  letter-spacing: var(--type-style-9-letter-spacing);
+  color: var(--text-default);
+  text-align: center;
+  max-width: 80px;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+/* ========== DISABLED STATE ========== */
+.select-category-input:disabled + .select-category-button {
+  background-color: var(--bg-action-disabled);
+  border-color: var(--border-default);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.select-category-input:disabled ~ .select-category-label {
+  color: var(--text-action-disabled);
+  cursor: not-allowed;
+}
+
+.select-category-input:disabled + .select-category-button .select-category-icon {
+  opacity: 0.5;
+}
+
+.select-category-item:has(.select-category-input:disabled) {
+  cursor: not-allowed;
+}

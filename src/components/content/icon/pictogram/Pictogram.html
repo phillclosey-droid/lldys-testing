@@ -1,0 +1,69 @@
+<!-- 
+  Pictogram HTML Component - STANDALONE - TOKEN LED
+  
+  40px circle with 24px icon, multiple color variants.
+  Auto-initializes with Pictogram.vanilla.js
+  
+  Props:
+  - data-pictogram: Pictogram filename without .svg extension
+  - Variant classes: pict-default, pict-primary, etc.
+  
+  Dependencies:
+  - Design tokens (cancara-tokens.css)
+  - Pictogram.vanilla.css (SELF-CONTAINED)
+  - Pictogram.vanilla.js (auto-initializes images)
+  
+  Usage:
+  1. Import CSS and JS
+  2. Copy HTML structure
+  3. Set data-pictogram attribute
+  4. Choose variant class
+  5. Image auto-populates on page load
+-->
+
+<!-- Default variant (mint green) -->
+<div class="pictogram pict-default">
+    <img data-pictogram="Piggy_Bank_Lloyds_-_V2" alt="">
+</div>
+
+<!-- Primary variant (green) -->
+<div class="pictogram pict-primary">
+    <img data-pictogram="Cards_Lloyds_-_V2" alt="">
+</div>
+
+<!-- Secondary Alt 04 variant (orange) -->
+<div class="pictogram pict-secondary-alt-04">
+    <img data-pictogram="Calendar_Lloyds_-_V2" alt="">
+</div>
+
+<!--
+  DATA ATTRIBUTES:
+  - data-pictogram: Filename without extension (e.g., "Piggy_Bank_Lloyds_-_V2")
+  
+  VARIANT CLASSES:
+  - pict-default: Mint green background
+  - pict-default-alt-01: Transparent with dashed border
+  - pict-default-alt-02: Gray background
+  - pict-primary: Green background
+  - pict-primary-alt-01: Dark green
+  - pict-primary-alt-02: Darker green
+  - pict-primary-alt-03: Light green
+  - pict-secondary-alt-01: Purple
+  - pict-secondary-alt-02: Pink
+  - pict-secondary-alt-03: Cyan
+  - pict-secondary-alt-04: Orange
+  
+  COMPLETE USAGE:
+  
+  <head>
+      <link rel="stylesheet" href="path/to/cancara-tokens.css">
+      <link rel="stylesheet" href="path/to/Pictogram.vanilla.css">
+  </head>
+  <body>
+      <div class="pictogram pict-default">
+          <img data-pictogram="Piggy_Bank_Lloyds_-_V2" alt="">
+      </div>
+      
+      <script src="path/to/Pictogram.vanilla.js"></script>
+  </body>
+-->

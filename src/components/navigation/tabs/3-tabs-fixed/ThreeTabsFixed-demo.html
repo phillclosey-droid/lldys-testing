@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3-Tabs-Fixed Component - Demo</title>
+    
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="../../../../css/cancara-tokens.css">
+    
+    <!-- Component Styles -->
+    <link rel="stylesheet" href="ThreeTabsFixed.vanilla.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family-body);
+            background: var(--bg-page-default);
+            color: var(--text-default);
+            transition: background-color 0.3s, color 0.3s;
+            padding: 40px;
+            min-height: 100vh;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .toggle-button {
+            background: var(--bg-action-default);
+            color: var(--text-action-inverse);
+            border: none;
+            border-radius: var(--radius-default);
+            padding: 12px 24px;
+            font-family: var(--font-family-body);
+            font-size: 14px;
+            font-weight: var(--font-weight-bold);
+            cursor: pointer;
+        }
+
+        h1 {
+            margin-bottom: 40px;
+            font-size: 32px;
+        }
+
+        .section {
+            margin-bottom: 60px;
+        }
+
+        .section h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .section p {
+            margin-bottom: 20px;
+            color: var(--text-subdued);
+        }
+
+        .demo-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        h3 {
+            margin-top: 32px;
+            margin-bottom: 16px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <div class="theme-toggle">
+        <button class="toggle-button" onclick="toggleTheme()">
+            <span id="theme-text">Switch to Dark Mode</span>
+        </button>
+    </div>
+
+    <h1>3-Tabs-Fixed Component - All Variants</h1>
+
+    <!-- DEFAULT LAYOUT -->
+    <div class="section">
+        <h2>Layout: Default (Pill Style)</h2>
+        <p>Rounded pill tabs with black active background and border on inactive</p>
+
+        <h3>Tab 01 Active</h3>
+        <div class="demo-wrapper">
+            <div class="tabs-3-fixed layout-default">
+                <div class="tabs-container">
+                    <button class="tab active">
+                        <span class="tab-text">Tab 01</span>
+                    </button>
+                    <button class="tab">
+                        <span class="tab-text">Tab 02</span>
+                    </button>
+                    <button class="tab">
+                        <span class="tab-text">Tab 03</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <h3>Tab 02 Active</h3>
+        <div class="demo-wrapper">
+            <div class="tabs-3-fixed layout-default">
+                <div class="tabs-container">
+                    <button class="tab">
+                        <span class="tab-text">Tab 01</span>
+                    </button>
+                    <button class="tab active">
+                        <span class="tab-text">Tab 02</span>
+                    </button>
+                    <button class="tab">
+                        <span class="tab-text">Tab 03</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <h3>Tab 03 Active</h3>
+        <div class="demo-wrapper">
+            <div class="tabs-3-fixed layout-default">
+                <div class="tabs-container">
+                    <button class="tab">
+                        <span class="tab-text">Tab 01</span>
+                    </button>
+                    <button class="tab">
+                        <span class="tab-text">Tab 02</span>
+                    </button>
+                    <button class="tab active">
+                        <span class="tab-text">Tab 03</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ALT 01 LAYOUT -->
+    <div class="section">
+        <h2>Layout: Alt 01 (Underline Style)</h2>
+        <p>Underline tabs with 2px black border on active tab</p>
+
+        <h3>Tab 01 Active</h3>
+        <div class="demo-wrapper">
+            <div class="tabs-3-fixed layout-alt-01">
+                <div class="tabs-container">
+                    <button class="tab active">
+                        <span class="tab-text">Tab 01</span>
+                    </button>
+                    <button class="tab">
+                        <span class="tab-text">Tab 02</span>
+                    </button>
+                    <button class="tab">
+                        <span class="tab-text">Tab 03</span>
+                    </button>
+                </div>
+                <div class="active-border">
+                    <div class="active-border-segment active"></div>
+                    <div class="active-border-segment"></div>
+                    <div class="active-border-segment"></div>
+                </div>
+            </div>
+        </div>
+
+        <h3>Tab 02 Active</h3>
+        <div class="demo-wrapper">
+            <div class="tabs-3-fixed layout-alt-01">
+                <div class="tabs-container">
+                    <button class="tab">
+                        <span class="tab-text">Tab 01</span>
+                    </button>
+                    <button class="tab active">
+                        <span class="tab-text">Tab 02</span>
+                    </button>
+                    <button class="tab">
+                        <span class="tab-text">Tab 03</span>
+                    </button>
+                </div>
+                <div class="active-border">
+                    <div class="active-border-segment"></div>
+                    <div class="active-border-segment active"></div>
+                    <div class="active-border-segment"></div>
+                </div>
+            </div>
+        </div>
+
+        <h3>Tab 03 Active</h3>
+        <div class="demo-wrapper">
+            <div class="tabs-3-fixed layout-alt-01">
+                <div class="tabs-container">
+                    <button class="tab">
+                        <span class="tab-text">Tab 01</span>
+                    </button>
+                    <button class="tab">
+                        <span class="tab-text">Tab 02</span>
+                    </button>
+                    <button class="tab active">
+                        <span class="tab-text">Tab 03</span>
+                    </button>
+                </div>
+                <div class="active-border">
+                    <div class="active-border-segment"></div>
+                    <div class="active-border-segment"></div>
+                    <div class="active-border-segment active"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="ThreeTabsFixed.vanilla.js"></script>
+
+    <script>
+        // Listen for tab change events
+        document.body.addEventListener('tab-changed', function(e) {
+            console.log('Tab changed:', e.detail);
+        });
+
+        function detectSystemTheme() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-text').textContent = 'Switch to Light Mode';
+            } else {
+                document.body.setAttribute('data-theme', 'light');
+                document.getElementById('theme-text').textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', detectSystemTheme);
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const themeText = document.getElementById('theme-text');
+            const currentTheme = body.getAttribute('data-theme');
+            
+            if (currentTheme === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                themeText.textContent = 'Switch to Light Mode';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeText.textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', function() {
+            detectSystemTheme();
+        });
+    </script>
+</body>
+</html>

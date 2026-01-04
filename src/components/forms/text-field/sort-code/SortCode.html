@@ -1,0 +1,86 @@
+# Sort Code Component
+
+UK bank sort code input component with three 2-digit fields separated by dashes. Auto-advances between fields and supports paste functionality.
+
+## Files
+
+- `SortCode.vanilla.css` - Token-led styling
+- `SortCode.vanilla.js` - Interactive functionality
+- `SortCode-demo.html` - Demo with 8 states
+
+## Component Structure
+
+```html
+<div class="sort-code">
+    <label class="sort-code-label">Sort code</label>
+    <div class="sort-code-inputs">
+        <div class="sort-code-input-wrapper">
+            <div class="sort-code-input-box">
+                <input type="text" class="sort-code-input-field" maxlength="2" inputmode="numeric">
+            </div>
+        </div>
+        <div class="sort-code-separator"></div>
+        <div class="sort-code-input-wrapper">
+            <div class="sort-code-input-box">
+                <input type="text" class="sort-code-input-field" maxlength="2" inputmode="numeric">
+            </div>
+        </div>
+        <div class="sort-code-separator"></div>
+        <div class="sort-code-input-wrapper">
+            <div class="sort-code-input-box">
+                <input type="text" class="sort-code-input-field" maxlength="2" inputmode="numeric">
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+## States
+
+- **Default**: Empty 3 input boxes with separators
+- **Active**: 2px border on focused input
+- **Valid**: All filled, optional bank name hint shown
+- **Error**: Red borders on all inputs
+- **Disabled**: Gray background, not editable
+
+## Behavior
+
+- **Auto-advance**: Typing 2 digits auto-focuses next field
+- **Backspace navigation**: Backspace on empty field focuses previous
+- **Paste support**: Pasting "309618" fills all three fields
+- **Numeric only**: Only digits 0-9 allowed
+- **Click container**: Click anywhere on box to focus input
+
+## Events
+
+```javascript
+// Input change
+element.addEventListener('sort-code-input', function(e) {
+    console.log(e.detail.index); // 0, 1, or 2
+    console.log(e.detail.value); // "30"
+    console.log(e.detail.complete); // true if all 3 fields filled
+});
+
+// All fields complete
+element.addEventListener('sort-code-complete', function(e) {
+    console.log(e.detail.sortCode); // "30-96-18"
+});
+```
+
+## Design Tokens
+
+- Typography: `--type-style-6-*` (15px)
+- Colors: `--text-default`, `--bg-input-*`, `--border-default`, `--color-red-critical`
+- Spacing: `--spacing-08`, `--spacing-16`
+- Borders: `--input-corner-radius` (12px), `--input-border-width-*`
+
+## Dimensions
+
+- Input box: 88px × 56px min
+- Separator: 2px × 8px
+- Padding: 16px
+- Gap: 8px
+
+## Token-Led
+
+All styling uses semantic tokens that automatically adapt for dark mode.

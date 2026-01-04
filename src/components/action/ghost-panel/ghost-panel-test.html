@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GhostPanel Component Test</title>
+    
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="../../../css/cancara-tokens.css">
+    
+    <!-- Illustration Component (NESTED DEPENDENCY) -->
+    <link rel="stylesheet" href="../../content/icon/illustration/Illustration.vanilla.css">
+    
+    <!-- GhostPanel Component Styles -->
+    <link rel="stylesheet" href="GhostPanel.vanilla.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family-body);
+            background: var(--bg-page-default);
+            color: var(--text-default);
+            transition: background-color 0.3s, color 0.3s;
+            padding: 40px;
+            min-height: 100vh;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .toggle-button {
+            background: var(--bg-action-default);
+            color: var(--text-action-inverse);
+            border: none;
+            border-radius: var(--radius-default);
+            padding: 12px 24px;
+            font-family: var(--font-family-body);
+            font-size: 14px;
+            font-weight: var(--font-weight-bold);
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .toggle-button:hover {
+            background: var(--bg-action-pressed);
+        }
+
+        h1 {
+            margin-bottom: 40px;
+            font-size: 32px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .code-block {
+            background: var(--bg-panel-secondary);
+            padding: 20px;
+            border-radius: var(--radius-default);
+            overflow-x: auto;
+            margin-top: 20px;
+            margin-bottom: 40px;
+        }
+
+        .code-block code {
+            font-family: monospace;
+            font-size: 13px;
+            color: var(--text-default);
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <div class="theme-toggle">
+        <button class="toggle-button" onclick="toggleTheme()">
+            <span id="theme-text">Switch to Dark Mode</span>
+        </button>
+    </div>
+
+    <h1>GhostPanel Component Test</h1>
+
+    <div class="section">
+        <h2>Basic GhostPanel (Default Illustration Variant)</h2>
+        
+        <!-- GhostPanel Component #1 -->
+        <div class="ghost-panel-wrapper">
+            <div class="ghost-panel">
+                <!-- Illustration Component (nested) -->
+                <div class="illustration ill-default-alt-01">
+                    <img src="../../../../assets/illustrations/default-alt-01/Savings_Lloyds_-_V2.svg" alt="">
+                </div>
+                
+                <div class="ghost-panel-vstack">
+                    <div class="ghost-panel-heading">Open a savings account</div>
+                    <div class="ghost-panel-description">Start saving for your future</div>
+                </div>
+                
+                <div class="ghost-panel-icon-button">
+                    <div class="ghost-panel-icon-button-icon">
+                        <img src="../../../../assets/icons/action/plus.svg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="code-block">
+            <code>&lt;div class="ghost-panel-wrapper"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="ghost-panel"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="illustration ill-default-alt-01"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;img src="path/to/Savings_Lloyds_-_V2.svg" alt=""&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="ghost-panel-vstack"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="ghost-panel-heading"&gt;Open a savings account&lt;/div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="ghost-panel-description"&gt;Start saving for your future&lt;/div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="ghost-panel-icon-button"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="ghost-panel-icon-button-icon"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;img src="path/to/plus.svg" alt=""&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+&lt;/div&gt;</code>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Different Illustration Variants</h2>
+        
+        <!-- Primary Variant -->
+        <div class="ghost-panel-wrapper">
+            <div class="ghost-panel">
+                <div class="illustration ill-primary">
+                    <img src="../../../../assets/illustrations/primary/Cards_Lloyds_-_V2.svg" alt="">
+                </div>
+                <div class="ghost-panel-vstack">
+                    <div class="ghost-panel-heading">Apply for a credit card</div>
+                    <div class="ghost-panel-description">Get access to exclusive rewards</div>
+                </div>
+                <div class="ghost-panel-icon-button">
+                    <div class="ghost-panel-icon-button-icon">
+                        <img src="../../../../assets/icons/action/plus.svg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Secondary Alt 04 (Orange) -->
+        <div class="ghost-panel-wrapper">
+            <div class="ghost-panel">
+                <div class="illustration ill-secondary-alt-04">
+                    <img src="../../../../assets/illustrations/secondary-alt-04/Clock_Lloyds_-_V2.svg" alt="">
+                </div>
+                <div class="ghost-panel-vstack">
+                    <div class="ghost-panel-heading">Set up direct debit</div>
+                    <div class="ghost-panel-description">Never miss a payment again</div>
+                </div>
+                <div class="ghost-panel-icon-button">
+                    <div class="ghost-panel-icon-button-icon">
+                        <img src="../../../../assets/icons/action/plus.svg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Primary Alt 01 -->
+        <div class="ghost-panel-wrapper">
+            <div class="ghost-panel">
+                <div class="illustration ill-primary-alt-01">
+                    <img src="../../../../assets/illustrations/primary-alt-01/Home_Lloyds_-_V2.svg" alt="">
+                </div>
+                <div class="ghost-panel-vstack">
+                    <div class="ghost-panel-heading">Get a mortgage</div>
+                    <div class="ghost-panel-description">Find the right mortgage for you</div>
+                </div>
+                <div class="ghost-panel-icon-button">
+                    <div class="ghost-panel-icon-button-icon">
+                        <img src="../../../../assets/icons/action/plus.svg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Secondary Alt 01 (Purple) -->
+        <div class="ghost-panel-wrapper">
+            <div class="ghost-panel">
+                <div class="illustration ill-secondary-alt-01">
+                    <img src="../../../../assets/illustrations/secondary-alt-01/Gift_Lloyds_-_V2.svg" alt="">
+                </div>
+                <div class="ghost-panel-vstack">
+                    <div class="ghost-panel-heading">Rewards & Benefits</div>
+                    <div class="ghost-panel-description">Explore exclusive member benefits</div>
+                </div>
+                <div class="ghost-panel-icon-button">
+                    <div class="ghost-panel-icon-button-icon">
+                        <img src="../../../../assets/icons/action/plus.svg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Token-Led Variants (Static Colors)</h2>
+        
+        <!-- Default Alt 01 - Uses --color-white token -->
+        <div class="ghost-panel-wrapper">
+            <div class="ghost-panel">
+                <div class="illustration ill-default-alt-01">
+                    <img src="../../../../assets/illustrations/default-alt-01/Bank_Lloyds_-_V2.svg" alt="">
+                </div>
+                <div class="ghost-panel-vstack">
+                    <div class="ghost-panel-heading">Static White Background</div>
+                    <div class="ghost-panel-description">This illustration uses static white background</div>
+                </div>
+                <div class="ghost-panel-icon-button">
+                    <div class="ghost-panel-icon-button-icon">
+                        <img src="../../../../assets/icons/action/plus.svg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Default Alt 02 - Uses --color-gray-100 token -->
+        <div class="ghost-panel-wrapper">
+            <div class="ghost-panel">
+                <div class="illustration ill-default-alt-02">
+                    <img src="../../../../assets/illustrations/default-alt-02/Agriculture_Lloyds_-_V2.svg" alt="">
+                </div>
+                <div class="ghost-panel-vstack">
+                    <div class="ghost-panel-heading">Static Gray Background</div>
+                    <div class="ghost-panel-description">This illustration uses static gray-100 background</div>
+                </div>
+                <div class="ghost-panel-icon-button">
+                    <div class="ghost-panel-icon-button-icon">
+                        <img src="../../../../assets/icons/action/plus.svg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function detectSystemTheme() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-text').textContent = 'Switch to Light Mode';
+            } else {
+                document.body.setAttribute('data-theme', 'light');
+                document.getElementById('theme-text').textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', detectSystemTheme);
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const themeText = document.getElementById('theme-text');
+            const currentTheme = body.getAttribute('data-theme');
+            
+            if (currentTheme === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                themeText.textContent = 'Switch to Light Mode';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeText.textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', function() {
+            detectSystemTheme();
+        });
+    </script>
+</body>
+</html>

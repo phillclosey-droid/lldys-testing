@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification Badge Component Test</title>
+    
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="../../../css/cancara-tokens.css">
+    
+    <!-- Notification Badge Component Styles -->
+    <link rel="stylesheet" href="NotificationBadge.vanilla.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family-body);
+            background: var(--bg-page-default);
+            color: var(--text-default);
+            transition: background-color 0.3s, color 0.3s;
+            padding: 40px;
+            min-height: 100vh;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .toggle-button {
+            background: var(--bg-action-default);
+            color: var(--text-action-inverse);
+            border: none;
+            border-radius: var(--radius-default);
+            padding: 12px 24px;
+            font-family: var(--font-family-body);
+            font-size: 14px;
+            font-weight: var(--font-weight-bold);
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .toggle-button:hover {
+            background: var(--bg-action-pressed);
+        }
+
+        h1 {
+            margin-bottom: 40px;
+            font-family: var(--type-style-1-family);
+            font-size: var(--type-style-1-size);
+            font-weight: var(--type-style-1-weight);
+            line-height: var(--type-style-1-line-height);
+        }
+
+        .section {
+            margin-bottom: 60px;
+        }
+
+        .section h2 {
+            margin-bottom: 20px;
+            font-family: var(--type-style-2-family);
+            font-size: var(--type-style-2-size);
+            font-weight: var(--type-style-2-weight);
+            line-height: var(--type-style-2-line-height);
+        }
+
+        .section h3 {
+            margin-bottom: 16px;
+            margin-top: 32px;
+            font-family: var(--type-style-3-family);
+            font-size: var(--type-style-3-size);
+            font-weight: var(--type-style-3-weight);
+            color: var(--text-subdued);
+        }
+
+        .section p {
+            margin-bottom: 20px;
+            color: var(--text-subdued);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .badge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 32px;
+            margin-bottom: 40px;
+        }
+
+        .badge-demo {
+            background: var(--bg-panel-default);
+            padding: 32px;
+            border-radius: var(--radius-default);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .badge-label {
+            font-size: 13px;
+            color: var(--text-subdued);
+            text-align: center;
+            margin-top: 8px;
+        }
+
+        .code-block {
+            background: var(--bg-panel-secondary);
+            padding: 20px;
+            border-radius: var(--radius-default);
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+
+        .code-block code {
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+            font-size: 13px;
+            color: var(--text-default);
+            line-height: 1.6;
+        }
+
+        /* Demo positioning examples */
+        .icon-with-badge {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            background: var(--bg-panel-secondary);
+            border-radius: var(--radius-default);
+        }
+
+        .icon-with-badge .notification-badge {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+        }
+
+        .icon-placeholder {
+            width: 24px;
+            height: 24px;
+            background: var(--text-subdued);
+            border-radius: 4px;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .comparison-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <div class="theme-toggle">
+        <button class="toggle-button" onclick="toggleTheme()">
+            <span id="theme-text">Switch to Dark Mode</span>
+        </button>
+    </div>
+
+    <h1>Notification Badge Component Test</h1>
+
+    <div class="section">
+        <h2>Badge Types</h2>
+        <p>The notification badge comes in two types: Default (red) and Offers (green).</p>
+        
+        <div class="badge-grid">
+            <div class="badge-demo">
+                <div class="notification-badge">
+                    <div class="notification-badge-text">12</div>
+                </div>
+                <div class="badge-label">Default (Red)</div>
+                <div class="code-block">
+                    <code>&lt;div class="notification-badge"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="notification-badge-text"&gt;12&lt;/div&gt;<br>
+&lt;/div&gt;</code>
+                </div>
+            </div>
+
+            <div class="badge-demo">
+                <div class="notification-badge notification-badge-offers">
+                    <div class="notification-badge-text">5</div>
+                </div>
+                <div class="badge-label">Offers (Green)</div>
+                <div class="code-block">
+                    <code>&lt;div class="notification-badge notification-badge-offers"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="notification-badge-text"&gt;5&lt;/div&gt;<br>
+&lt;/div&gt;</code>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Different Counts</h2>
+        <p>Badges automatically adjust width based on the number of digits.</p>
+        
+        <div class="comparison-grid">
+            <div class="comparison-item">
+                <div class="notification-badge">
+                    <div class="notification-badge-text">1</div>
+                </div>
+                <div class="badge-label">Single Digit</div>
+            </div>
+
+            <div class="comparison-item">
+                <div class="notification-badge">
+                    <div class="notification-badge-text">12</div>
+                </div>
+                <div class="badge-label">Double Digit</div>
+            </div>
+
+            <div class="comparison-item">
+                <div class="notification-badge">
+                    <div class="notification-badge-text">99+</div>
+                </div>
+                <div class="badge-label">99+ Format</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Offers Badges - Different Counts</h2>
+        <p>Green badges for promotional content and offers.</p>
+        
+        <div class="comparison-grid">
+            <div class="comparison-item">
+                <div class="notification-badge notification-badge-offers">
+                    <div class="notification-badge-text">3</div>
+                </div>
+                <div class="badge-label">3 Offers</div>
+            </div>
+
+            <div class="comparison-item">
+                <div class="notification-badge notification-badge-offers">
+                    <div class="notification-badge-text">8</div>
+                </div>
+                <div class="badge-label">8 Offers</div>
+            </div>
+
+            <div class="comparison-item">
+                <div class="notification-badge notification-badge-offers">
+                    <div class="notification-badge-text">15</div>
+                </div>
+                <div class="badge-label">15 Offers</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Usage with Icons</h2>
+        <p>Common pattern: positioning badges on icons in headers and navigation.</p>
+        
+        <div class="badge-grid">
+            <div class="badge-demo">
+                <div class="icon-with-badge">
+                    <div class="icon-placeholder"></div>
+                    <div class="notification-badge">
+                        <div class="notification-badge-text">5</div>
+                    </div>
+                </div>
+                <div class="badge-label">Top-Right Position</div>
+                <div class="code-block">
+                    <code>&lt;div class="icon-with-badge"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;!-- Your icon here --&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="notification-badge"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="notification-badge-text"&gt;5&lt;/div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+&lt;/div&gt;</code>
+                </div>
+            </div>
+
+            <div class="badge-demo">
+                <div class="icon-with-badge">
+                    <div class="icon-placeholder"></div>
+                    <div class="notification-badge notification-badge-offers">
+                        <div class="notification-badge-text">NEW</div>
+                    </div>
+                </div>
+                <div class="badge-label">With Text Label</div>
+                <div class="code-block">
+                    <code>&lt;div class="notification-badge notification-badge-offers"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="notification-badge-text"&gt;NEW&lt;/div&gt;<br>
+&lt;/div&gt;</code>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Dark Mode Support</h2>
+        <p>Toggle dark mode to see how badges adapt. All colors are token-led.</p>
+        
+        <div class="badge-grid">
+            <div class="badge-demo">
+                <div class="notification-badge">
+                    <div class="notification-badge-text">7</div>
+                </div>
+                <div class="notification-badge notification-badge-offers">
+                    <div class="notification-badge-text">3</div>
+                </div>
+                <div class="badge-label">Both Types</div>
+            </div>
+
+            <div class="badge-demo">
+                <div class="icon-with-badge">
+                    <div class="icon-placeholder"></div>
+                    <div class="notification-badge">
+                        <div class="notification-badge-text">12</div>
+                    </div>
+                </div>
+                <div class="icon-with-badge" style="margin-left: 24px;">
+                    <div class="icon-placeholder"></div>
+                    <div class="notification-badge notification-badge-offers">
+                        <div class="notification-badge-text">5</div>
+                    </div>
+                </div>
+                <div class="badge-label">On Icons</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Implementation Guide</h2>
+        <p>Complete HTML structure with all dependencies.</p>
+        
+        <div class="code-block">
+            <code>&lt;!DOCTYPE html&gt;<br>
+&lt;html lang="en"&gt;<br>
+&lt;head&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;!-- 1. Design Tokens (REQUIRED) --&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;link rel="stylesheet" href="path/to/cancara-tokens.css"&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;!-- 2. NotificationBadge CSS --&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;link rel="stylesheet" href="path/to/NotificationBadge.vanilla.css"&gt;<br>
+&lt;/head&gt;<br>
+&lt;body data-theme="light"&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;!-- Default badge (red) --&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="notification-badge"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="notification-badge-text"&gt;12&lt;/div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;!-- Offers badge (green) --&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="notification-badge notification-badge-offers"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="notification-badge-text"&gt;3&lt;/div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;!-- Positioned on icon --&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="position: relative;"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!-- Your icon --&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="notification-badge" style="position: absolute; top: -4px; right: -4px;"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="notification-badge-text"&gt;5&lt;/div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+<br>
+&lt;/body&gt;<br>
+&lt;/html&gt;</code>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Design Tokens Used</h2>
+        <div class="code-block">
+            <code>/* Colors */<br>
+--color-red-critical: #DB0F30<br>
+--color-green-bright: #0BE248<br>
+--color-white: #FFFFFF<br>
+--color-black: #000000<br>
+<br>
+/* Typography */<br>
+--type-style-12-family: 'GT Ultra', sans-serif<br>
+--type-style-12-size: 11px<br>
+--type-style-12-weight: 700<br>
+--type-style-12-line-height: 16px<br>
+<br>
+/* Spacing */<br>
+--spacing-04: 4px<br>
+<br>
+/* Border Radius */<br>
+--radius-circle: 9999px</code>
+        </div>
+    </div>
+
+    <script>
+        function detectSystemTheme() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-text').textContent = 'Switch to Light Mode';
+            } else {
+                document.body.setAttribute('data-theme', 'light');
+                document.getElementById('theme-text').textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', detectSystemTheme);
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const themeText = document.getElementById('theme-text');
+            const currentTheme = body.getAttribute('data-theme');
+            
+            if (currentTheme === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                themeText.textContent = 'Switch to Light Mode';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeText.textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', function() {
+            detectSystemTheme();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MI Field Component - Demo</title>
+    
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="../../../../css/cancara-tokens.css">
+    
+    <!-- MI Field Component (SELF-CONTAINED) -->
+    <link rel="stylesheet" href="MIField.vanilla.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family-body);
+            background: var(--bg-page-default);
+            color: var(--text-default);
+            transition: background-color 0.3s, color 0.3s;
+            padding: 40px;
+            min-height: 100vh;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .toggle-button {
+            background: var(--bg-action-default);
+            color: var(--text-action-inverse);
+            border: none;
+            border-radius: var(--radius-default);
+            padding: 12px 24px;
+            font-family: var(--font-family-body);
+            font-size: 14px;
+            font-weight: var(--font-weight-bold);
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .toggle-button:hover {
+            background: var(--bg-action-pressed);
+        }
+
+        h1 {
+            margin-bottom: 40px;
+            font-size: 32px;
+        }
+        
+        .demo-section {
+            margin-bottom: 40px;
+        }
+        
+        .demo-section-title {
+            margin-bottom: 12px;
+            font-size: 20px;
+        }
+
+        .demo-section p {
+            margin-bottom: 16px;
+            color: var(--text-subdued);
+            font-size: 14px;
+        }
+
+        .demo-container {
+            background: var(--bg-panel-default);
+            padding: 32px;
+            border-radius: var(--radius-default);
+            display: inline-block;
+        }
+
+        .event-log {
+            margin-top: 16px;
+            padding: 12px;
+            background: var(--bg-section-default);
+            border-radius: var(--radius-default);
+            font-size: 12px;
+            font-family: monospace;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+
+        .event-log-entry {
+            padding: 4px 0;
+            border-bottom: 1px solid var(--border-default);
+        }
+
+        .event-log-entry:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <div class="theme-toggle">
+        <button class="toggle-button" onclick="toggleTheme()">
+            <span id="theme-text">Switch to Dark Mode</span>
+        </button>
+    </div>
+
+    <h1>MI Field Component - All States</h1>
+    
+    <!-- DEFAULT STATE -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">Default State</h2>
+        <p>Empty inputs, ready for entry</p>
+        
+        <div class="demo-container">
+            <div class="mi-field">
+                <div class="mi-field-group">
+                    <label class="mi-field-label">1st</label>
+                    <div class="mi-field-input-wrapper">
+                        <input type="text" class="mi-field-input" maxlength="1" placeholder=" ">
+                        <div class="mi-field-bullet"></div>
+                    </div>
+                </div>
+                <div class="mi-field-group">
+                    <label class="mi-field-label">3rd</label>
+                    <div class="mi-field-input-wrapper">
+                        <input type="text" class="mi-field-input" maxlength="1" placeholder=" ">
+                        <div class="mi-field-bullet"></div>
+                    </div>
+                </div>
+                <div class="mi-field-group">
+                    <label class="mi-field-label">5th</label>
+                    <div class="mi-field-input-wrapper">
+                        <input type="text" class="mi-field-input" maxlength="1" placeholder=" ">
+                        <div class="mi-field-bullet"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- INPUT 01 ACTIVE -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">Input 01 Active</h2>
+        <p>First input focused with 2px black border</p>
+        
+        <div class="demo-container">
+            <div class="mi-field">
+                <div class="mi-field-group">
+                    <label class="mi-field-label">1st</label>
+                    <div class="mi-field-input-wrapper">
+                        <input type="text" class="mi-field-input" maxlength="1" placeholder=" " autofocus>
+                        <div class="mi-field-bullet"></div>
+                    </div>
+                </div>
+                <div class="mi-field-group">
+                    <label class="mi-field-label">3rd</label>
+                    <div class="mi-field-input-wrapper">
+                        <input type="text" class="mi-field-input" maxlength="1" placeholder=" ">
+                        <div class="mi-field-bullet"></div>
+                    </div>
+                </div>
+                <div class="mi-field-group">
+                    <label class="mi-field-label">5th</label>
+                    <div class="mi-field-input-wrapper">
+                        <input type="text" class="mi-field-input" maxlength="1" placeholder=" ">
+                        <div class="mi-field-bullet"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- INPUT 02 ACTIVE (WITH PASSWORD BULLET) -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">Input 02 Active</h2>
+        <p>First input filled (bullet shown), second input active</p>
+        
+        <div class="demo-container">
+            <div class="mi-field">
+                <div class="mi-field-group">
+                    <label class="mi-field-label">1st</label>
+                    <div class="mi-field-input-wrapper">
+                        <input type="text" class="mi-field-input" maxlength="1" value="A" placeholder=" ">
+                        <div class="mi-field-bullet"></div>
+                    </div>
+                </div>
+                <div class="mi-field-group">
+                    <label class="mi-field-label">3rd</label>
+                    <div class="mi-field-input-wrapper">
+                        <input type="text" class="mi-field-input" maxlength="1" placeholder=" " autofocus>
+                        <div class="mi-field-bullet"></div>
+                    </div>
+                </div>
+                <div class="mi-field-group">
+                    <label class="mi-field-label">5th</label>
+                    <div class="mi-field-input-wrapper">
+                        <input type="text" class="mi-field-input" maxlength="1" placeholder=" ">
+                        <div class="mi-field-bullet"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- INPUT 03 ACTIVE (TWO BULLETS) -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">Input 03 Active</h2>
+        <p>First two inputs filled (bullets shown), third input active</p>
+        
+        <div class="demo-container">
+            <div class="mi-field">
+                <div class="mi-field-group">
+                    <label class="mi-field-label">1st</label>
+                    <div class="mi-field-input-wrapper">
+                        <input type="text" class="mi-field-input" maxlength="1" value="A" placeholder=" ">
+                        <div class="mi-field-bullet"></div>
+                    </div>
+                </div>
+                <div class="mi-field-group">
+                    <label class="mi-field-label">3rd</label>
+                    <div class="mi-field-input-wrapper">
+                        <input type="text" class="mi-field-input" maxlength="1" value="B" placeholder=" ">
+                        <div class="mi-field-bullet"></div>
+                    </div>
+                </div>
+                <div class="mi-field-group">
+                    <label class="mi-field-label">5th</label>
+                    <div class="mi-field-input-wrapper">
+                        <input type="text" class="mi-field-input" maxlength="1" placeholder=" " autofocus>
+                        <div class="mi-field-bullet"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ALL FILLED -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">All Filled</h2>
+        <p>All three inputs have values (bullets shown)</p>
+        
+        <div class="demo-container">
+            <div class="mi-field">
+                <div class="mi-field-group">
+                    <label class="mi-field-label">1st</label>
+                    <div class="mi-field-input-wrapper">
+                        <input type="text" class="mi-field-input" maxlength="1" value="A" placeholder=" ">
+                        <div class="mi-field-bullet"></div>
+                    </div>
+                </div>
+                <div class="mi-field-group">
+                    <label class="mi-field-label">3rd</label>
+                    <div class="mi-field-input-wrapper">
+                        <input type="text" class="mi-field-input" maxlength="1" value="B" placeholder=" ">
+                        <div class="mi-field-bullet"></div>
+                    </div>
+                </div>
+                <div class="mi-field-group">
+                    <label class="mi-field-label">5th</label>
+                    <div class="mi-field-input-wrapper">
+                        <input type="text" class="mi-field-input" maxlength="1" value="C" placeholder=" ">
+                        <div class="mi-field-bullet"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ERROR STATE -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">Error State</h2>
+        <p>Red border on all inputs indicating error</p>
+        
+        <div class="demo-container">
+            <div class="mi-field has-error">
+                <div class="mi-field-group">
+                    <label class="mi-field-label">1st</label>
+                    <div class="mi-field-input-wrapper">
+                        <input type="text" class="mi-field-input" maxlength="1" placeholder=" ">
+                        <div class="mi-field-bullet"></div>
+                    </div>
+                </div>
+                <div class="mi-field-group">
+                    <label class="mi-field-label">3rd</label>
+                    <div class="mi-field-input-wrapper">
+                        <input type="text" class="mi-field-input" maxlength="1" placeholder=" ">
+                        <div class="mi-field-bullet"></div>
+                    </div>
+                </div>
+                <div class="mi-field-group">
+                    <label class="mi-field-label">5th</label>
+                    <div class="mi-field-input-wrapper">
+                        <input type="text" class="mi-field-input" maxlength="1" placeholder=" ">
+                        <div class="mi-field-bullet"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DISABLED STATE -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">Disabled State</h2>
+        <p>Gray background, not editable</p>
+        
+        <div class="demo-container">
+            <div class="mi-field is-disabled">
+                <div class="mi-field-group">
+                    <label class="mi-field-label">1st</label>
+                    <div class="mi-field-input-wrapper">
+                        <input type="text" class="mi-field-input" maxlength="1" placeholder=" " disabled>
+                        <div class="mi-field-bullet"></div>
+                    </div>
+                </div>
+                <div class="mi-field-group">
+                    <label class="mi-field-label">3rd</label>
+                    <div class="mi-field-input-wrapper">
+                        <input type="text" class="mi-field-input" maxlength="1" placeholder=" " disabled>
+                        <div class="mi-field-bullet"></div>
+                    </div>
+                </div>
+                <div class="mi-field-group">
+                    <label class="mi-field-label">5th</label>
+                    <div class="mi-field-input-wrapper">
+                        <input type="text" class="mi-field-input" maxlength="1" placeholder=" " disabled>
+                        <div class="mi-field-bullet"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- INTERACTIVE DEMO -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">Interactive Demo</h2>
+        <p>Fully functional - type characters, auto-advances to next field</p>
+        
+        <div class="demo-container">
+            <div class="mi-field" id="interactiveField">
+                <div class="mi-field-group">
+                    <label class="mi-field-label">1st</label>
+                    <div class="mi-field-input-wrapper">
+                        <input type="text" class="mi-field-input" maxlength="1" placeholder=" ">
+                        <div class="mi-field-bullet"></div>
+                    </div>
+                </div>
+                <div class="mi-field-group">
+                    <label class="mi-field-label">3rd</label>
+                    <div class="mi-field-input-wrapper">
+                        <input type="text" class="mi-field-input" maxlength="1" placeholder=" ">
+                        <div class="mi-field-bullet"></div>
+                    </div>
+                </div>
+                <div class="mi-field-group">
+                    <label class="mi-field-label">5th</label>
+                    <div class="mi-field-input-wrapper">
+                        <input type="text" class="mi-field-input" maxlength="1" placeholder=" ">
+                        <div class="mi-field-bullet"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="event-log" id="eventLog">
+                <div><strong>Event Log:</strong></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="MIField.vanilla.js"></script>
+
+    <script>
+        // Event logging for demo
+        const eventLog = document.getElementById('eventLog');
+        const logEvent = (message) => {
+            const entry = document.createElement('div');
+            entry.className = 'event-log-entry';
+            entry.textContent = `${new Date().toLocaleTimeString()}: ${message}`;
+            eventLog.appendChild(entry);
+            eventLog.scrollTop = eventLog.scrollHeight;
+        };
+
+        // Listen for MI field events
+        const interactiveField = document.getElementById('interactiveField');
+        
+        interactiveField.addEventListener('mi-field-input', function(e) {
+            logEvent(`Input ${e.detail.index + 1}: "${e.detail.value}"`);
+        });
+
+        interactiveField.addEventListener('mi-field-complete', function(e) {
+            logEvent(`✓ Complete: ${e.detail.combined}`);
+        });
+
+        function detectSystemTheme() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-text').textContent = 'Switch to Light Mode';
+            } else {
+                document.body.setAttribute('data-theme', 'light');
+                document.getElementById('theme-text').textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', detectSystemTheme);
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const themeText = document.getElementById('theme-text');
+            const currentTheme = body.getAttribute('data-theme');
+            
+            if (currentTheme === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                themeText.textContent = 'Switch to Light Mode';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeText.textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', function() {
+            detectSystemTheme();
+        });
+    </script>
+</body>
+</html>

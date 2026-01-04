@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HeroPanel Component - Test</title>
+    
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="../../../../css/cancara-tokens.css">
+    
+    <!-- Pictogram Component CSS (Required Dependency) -->
+    <link rel="stylesheet" href="../../../content/icon/pictogram/Pictogram.vanilla.css">
+    
+    <!-- HeroPanel Component CSS -->
+    <link rel="stylesheet" href="HeroPanel.vanilla.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family-body);
+            background: var(--bg-page-default);
+            color: var(--text-default);
+            transition: background-color 0.3s, color 0.3s;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .toggle-button {
+            background: var(--bg-action-default);
+            color: var(--text-action-inverse);
+            border: none;
+            border-radius: var(--radius-default);
+            padding: 12px 24px;
+            font-family: var(--font-family-body);
+            font-size: 14px;
+            font-weight: var(--font-weight-bold);
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .toggle-button:hover {
+            background: var(--bg-action-pressed);
+        }
+        
+        .test-container {
+            max-width: 428px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-family: var(--font-family-heading);
+            color: var(--text-default);
+            margin-bottom: 24px;
+            font-size: 32px;
+        }
+        
+        .component-info {
+            background-color: var(--bg-panel-default);
+            padding: 16px;
+            border-radius: var(--radius-default);
+            margin-top: 32px;
+        }
+        
+        .component-info h2 {
+            font-family: var(--font-family-heading);
+            font-size: 19px;
+            margin-top: 0;
+            margin-bottom: 12px;
+        }
+        
+        .component-info p {
+            font-size: 14px;
+            line-height: 1.5;
+            margin: 8px 0;
+            color: var(--text-subdued);
+        }
+        
+        .component-info code {
+            background-color: var(--bg-section-default);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <div class="theme-toggle">
+        <button class="toggle-button" onclick="toggleTheme()">
+            <span id="theme-text">Switch to Dark Mode</span>
+        </button>
+    </div>
+
+    <div class="test-container">
+        <h1>HeroPanel Component Test</h1>
+        
+        <!-- HERO PANEL COMPONENT -->
+        <div class="hero-panel-container">
+  
+          <!-- Top Row: Vehicle Information -->
+          <div class="hero-panel-top-row">
+            <div class="hero-panel-vehicle-info">
+              <!-- Nested Pictogram Component -->
+              <div class="pictogram pict-default">
+                <img data-pictogram="Car_Lloyds_-_V2" alt="Car icon">
+              </div>
+              <div class="hero-panel-vehicle-text">
+                <div class="hero-panel-vehicle-model">Renault Rafale</div>
+                <div class="hero-panel-vehicle-reg">VX73 TZB</div>
+              </div>
+            </div>
+            <div class="hero-panel-edit-link">
+              <img class="hero-panel-edit-icon" data-icon="edit" data-icon-folder="edit" alt="Edit icon">
+              <span class="hero-panel-edit-text">Edit</span>
+            </div>
+          </div>
+          
+          <!-- Car Placement with Video -->
+          <div class="hero-panel-car-placement">
+            <video muted playsinline class="hero-panel-car-video" id="hero-car-video">
+              <source src="../../../../../assets/videos/car-spin.webm" type="video/webm">
+            </video>
+          </div>
+          
+          <!-- Progress Section -->
+          <div class="hero-panel-progress-section">
+            <div class="hero-panel-progress-text">Your car profile is 50% complete</div>
+            <div class="hero-panel-progress-bar" id="progress-bar">
+              <div class="hero-panel-progress-fill" id="progress-fill" data-target-width="50"></div>
+            </div>
+            <div class="hero-panel-progress-subtext">2 of 4 tasks completed</div>
+          </div>
+          
+          <!-- Dashboard Grid -->
+          <div class="hero-panel-dashboard-grid">
+            
+            <!-- Row 1: Service Panels -->
+            <div class="hero-panel-dashboard-row">
+              
+              <!-- Tax Service Panel -->
+              <div class="hero-panel-service-panel">
+                <div class="hero-panel-service-circle">
+                  <img data-icon="subscription" data-icon-folder="miscellaneous" alt="Subscription icon">
+                </div>
+                <div class="hero-panel-service-text">
+                  <div class="hero-panel-service-title">Tax</div>
+                  <div class="hero-panel-service-date">06 Aug 25</div>
+                </div>
+              </div>
+              
+              <!-- MOT Service Panel -->
+              <div class="hero-panel-service-panel">
+                <div class="hero-panel-service-circle">
+                  <img data-icon="id" data-icon-folder="security" alt="ID icon">
+                </div>
+                <div class="hero-panel-service-text">
+                  <div class="hero-panel-service-title">MOT</div>
+                  <div class="hero-panel-service-date">11 Dec 25</div>
+                </div>
+              </div>
+              
+            </div>
+            
+            <!-- Row 2: Ghost Panels -->
+            <div class="hero-panel-dashboard-row">
+              
+              <!-- Insurance Ghost Panel -->
+              <div class="hero-panel-ghost-compact">
+                <div class="hero-panel-ghost-text">
+                  <div class="hero-panel-ghost-title">Insurance</div>
+                  <div class="hero-panel-ghost-subtitle">Get reminder</div>
+                </div>
+                <div class="hero-panel-ghost-button">
+                  <div class="hero-panel-ghost-button-icon">
+                    <img data-action-icon="plus" data-icon-folder="action" alt="Plus icon">
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Servicing Ghost Panel -->
+              <div class="hero-panel-ghost-compact">
+                <div class="hero-panel-ghost-text">
+                  <div class="hero-panel-ghost-title">Servicing</div>
+                  <div class="hero-panel-ghost-subtitle">Keep track</div>
+                </div>
+                <div class="hero-panel-ghost-button">
+                  <div class="hero-panel-ghost-button-icon">
+                    <img data-action-icon="plus" data-icon-folder="action" alt="Plus icon">
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+            
+          </div>
+          
+        </div>
+        <!-- END HERO PANEL COMPONENT -->
+        
+        <div class="component-info">
+            <h2>Component Features:</h2>
+            <p>✓ Token-led design system</p>
+            <p>✓ Self-contained HTML component</p>
+            <p>✓ Nested Pictogram component</p>
+            <p>✓ Progress tracking with visual bar (2px padding)</p>
+            <p>✓ Service dashboard panels</p>
+            <p>✓ Ghost panel quick actions (dashed border)</p>
+            <p>✓ Responsive 4:2 aspect ratio car placement</p>
+            <p>✓ Grey-600 40% gradient overlay (hard stop at 20%)</p>
+            <p>✓ Light/Dark mode support</p>
+            <p>✓ Dark mode: Bright green icons, white edit icon</p>
+            <p><strong>Note:</strong> Car image placeholder is empty - add via <code>data-car-image</code> attribute</p>
+        </div>
+        
+    </div>
+    
+    <!-- Pictogram Component JS (Required Dependency) -->
+    <script src="../../../content/icon/pictogram/Pictogram.vanilla.js"></script>
+    
+    <!-- Manual asset path override for test page -->
+    <script>
+        window.HERO_PANEL_ASSETS_PATH = '../../../../../assets';
+    </script>
+    
+    <!-- HeroPanel Component JS -->
+    <script src="HeroPanel.vanilla.js"></script>
+
+    <!-- Theme Toggle Script -->
+    <script>
+        function detectSystemTheme() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-text').textContent = 'Switch to Light Mode';
+            } else {
+                document.body.setAttribute('data-theme', 'light');
+                document.getElementById('theme-text').textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', detectSystemTheme);
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const themeText = document.getElementById('theme-text');
+            const currentTheme = body.getAttribute('data-theme');
+            
+            if (currentTheme === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                themeText.textContent = 'Switch to Light Mode';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeText.textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', function() {
+            detectSystemTheme();
+            
+            // Video control: hold first frame 500ms, play once, then stop
+            const video = document.getElementById('hero-car-video');
+            const progressFill = document.getElementById('progress-fill');
+            const targetWidth = progressFill.getAttribute('data-target-width');
+            
+            if (video) {
+                // Wait 500ms then play
+                setTimeout(function() {
+                    video.play();
+                }, 500);
+                
+                // When video ends: animate progress bar fill
+                video.addEventListener('ended', function() {
+                    video.pause();
+                    
+                    // Animate the fill from circle to target width
+                    progressFill.classList.add('animated');
+                    progressFill.style.width = targetWidth + '%';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

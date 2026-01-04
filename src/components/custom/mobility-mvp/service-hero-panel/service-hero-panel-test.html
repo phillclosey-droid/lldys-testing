@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ServiceHeroPanel Component - Demo</title>
+    
+    <!-- Design Tokens (ALWAYS REQUIRED) -->
+    <link rel="stylesheet" href="../../../../css/cancara-tokens.css">
+    
+    <!-- Component Dependencies -->
+    <link rel="stylesheet" href="../../../content/icon/pictogram/Pictogram.vanilla.css">
+    <link rel="stylesheet" href="../../../notification/notification-tag/NotificationTag.vanilla.css">
+    <link rel="stylesheet" href="../../../notification/notification-hint/NotificationHint.vanilla.css">
+    <link rel="stylesheet" href="../../../content/accordion/Accordion.vanilla.css">
+    <link rel="stylesheet" href="../../../action/button/action-button/ActionButton.vanilla.css">
+    <link rel="stylesheet" href="../../../content/divider/Divider.vanilla.css">
+    
+    <!-- ServiceHeroPanel Component -->
+    <link rel="stylesheet" href="ServiceHeroPanel.vanilla.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family-body);
+            background: var(--bg-page-default);
+            color: var(--text-default);
+            transition: background-color 0.3s, color 0.3s;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 2000;
+        }
+
+        .toggle-button {
+            background: var(--bg-action-default);
+            color: var(--text-action-inverse);
+            border: none;
+            border-radius: var(--radius-default);
+            padding: 12px 24px;
+            font-family: var(--font-family-body);
+            font-size: 14px;
+            font-weight: var(--font-weight-bold);
+            cursor: pointer;
+        }
+
+        h1 {
+            margin-bottom: 40px;
+            font-size: 32px;
+            text-align: center;
+        }
+        
+        .demo-section {
+            max-width: 430px;
+            margin: 0 auto 60px;
+        }
+        
+        .demo-section-title {
+            margin-bottom: 16px;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .demo-section p {
+            margin-bottom: 24px;
+            color: var(--text-subdued);
+            font-size: 14px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <div class="theme-toggle">
+        <button class="toggle-button" onclick="toggleTheme()">
+            <span id="theme-text">Switch to Dark Mode</span>
+        </button>
+    </div>
+
+    <h1>Service Hero Panel Component</h1>
+    
+    <!-- DEMO: Service Reminder -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">Service Reminder</h2>
+        <p>Car service reminder with cost breakdown accordion</p>
+        
+        <div class="service-hero-panel">
+            <!-- Pictogram (left aligned with margin) -->
+            <div class="service-hero-panel-pictogram">
+                <div class="pictogram pict-default">
+                    <img src="../../../../../assets/icons/travel/car.svg" alt="">
+                </div>
+            </div>
+            
+            <!-- Main Card -->
+            <div class="service-hero-panel-card">
+                <!-- Registration Row -->
+                <div class="service-hero-panel-reg-row">
+                    <span class="service-hero-panel-reg-label">Renault Rafale</span>
+                    <span class="service-hero-panel-pips">|</span>
+                    <span class="service-hero-panel-reg-number">VX23 TZB</span>
+                </div>
+                
+                <!-- Service Type -->
+                <div class="service-hero-panel-service-type">Service due</div>
+                
+                <!-- Date Row with Tag -->
+                <div class="service-hero-panel-date-row">
+                    <div class="service-hero-panel-date">21 Aug 2026</div>
+                    <div class="notification-tag tag-warning">
+                        <div class="notification-tag-text">38 days</div>
+                    </div>
+                </div>
+                
+                <!-- Notification Hint -->
+                <div class="service-hero-panel-hint">
+                    <div class="notification-hint type-secondary">
+                        <div class="notification-hint-content">
+                            <div class="notification-hint-icon-container">
+                                <div class="notification-hint-icon">
+                                    <img src="../../../../../assets/icons/sentiment-system/info.svg" alt="">
+                                </div>
+                            </div>
+                            <div class="notification-hint-text">The AA recommends you get your vehicle serviced once a year.</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Divider -->
+                <div class="service-hero-panel-divider">
+                    <div class="divider width-fullwidth type-default">
+                        <div class="divider-line"></div>
+                    </div>
+                </div>
+                
+                <!-- Accordion -->
+                <div class="service-hero-panel-accordion">
+                    <div class="accordion accordion-full accordion-single">
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <div class="accordion-icon-left">
+                                    <img src="../../../../../assets/icons/navigation/notifications.svg" alt="">
+                                </div>
+                                <div class="accordion-label">
+                                    <div class="accordion-label-text">Manage reminder</div>
+                                </div>
+                                <div class="accordion-icon">
+                                    <div class="accordion-icon-plus">
+                                        <img src="../../../../../assets/icons/action/plus.svg" alt="">
+                                    </div>
+                                    <div class="accordion-icon-minus">
+                                        <img src="../../../../../assets/icons/action/minus.svg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-panel">
+                                <div class="accordion-panel-content">
+                                    <!-- Cost Breakdown Container with page background -->
+                                    <div class="service-hero-panel-cost-container">
+                                        <!-- Row 1 -->
+                                        <div class="service-hero-panel-cost-row">
+                                            <span class="service-hero-panel-cost-label">Serviced until</span>
+                                            <span class="service-hero-panel-cost-value">21 Aug 2026</span>
+                                        </div>
+                                        
+                                        <!-- Divider -->
+                                        <div class="divider width-fullwidth type-dash">
+                                            <div class="divider-line"></div>
+                                        </div>
+                                        
+                                        <!-- Row 2 -->
+                                        <div class="service-hero-panel-cost-row">
+                                            <span class="service-hero-panel-cost-label">Reminder</span>
+                                            <span class="service-hero-panel-cost-value">21 Jul 2026</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Secondary Button -->
+                                    <div class="service-hero-panel-button">
+                                        <button class="action-button btn-secondary">
+                                            <div class="action-button-inner">
+                                                <span class="action-button-text">Turn reminder off</span>
+                                                <div class="action-button-icon">
+                                                    <img src="../../../../../assets/icons/edit/delete.svg" alt="">
+                                                </div>
+                                            </div>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Component JavaScript -->
+    <script src="../../../content/icon/pictogram/Pictogram.vanilla.js"></script>
+    <script src="../../../notification/notification-hint/NotificationHint.vanilla.js"></script>
+    <script src="../../../content/accordion/Accordion.vanilla.js"></script>
+    <script src="../../../action/button/action-button/ActionButton.vanilla.js"></script>
+    <script src="ServiceHeroPanel.vanilla.js"></script>
+
+    <script>
+        function detectSystemTheme() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-text').textContent = 'Switch to Light Mode';
+            } else {
+                document.body.setAttribute('data-theme', 'light');
+                document.getElementById('theme-text').textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', detectSystemTheme);
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const themeText = document.getElementById('theme-text');
+            const currentTheme = body.getAttribute('data-theme');
+            
+            if (currentTheme === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                themeText.textContent = 'Switch to Light Mode';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeText.textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', function() {
+            detectSystemTheme();
+        });
+    </script>
+</body>
+</html>

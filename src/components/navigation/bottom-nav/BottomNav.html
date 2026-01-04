@@ -1,0 +1,87 @@
+<!-- 
+  BottomNav HTML Component - SELF-CONTAINED - TOKEN LED
+  
+  Auto-initializes with BottomNav.vanilla.js
+  
+  Dependencies:
+  - Design tokens (cancara-tokens.css)
+  - BottomNav.vanilla.css (SELF-CONTAINED)
+  - BottomNav.vanilla.js (auto-initializes icons)
+  
+  Usage:
+  1. Import CSS and JS
+  2. Copy HTML structure
+  3. Set data-tab-icon attributes (1-5)
+  4. Icons auto-populate on page load
+-->
+
+<div class="bottom-nav" id="bottom-nav">
+    <div class="bottom-nav-active-border">
+        <div class="active-border-segment active"></div>
+        <div class="active-border-segment"></div>
+        <div class="active-border-segment"></div>
+        <div class="active-border-segment"></div>
+        <div class="active-border-segment"></div>
+    </div>
+    
+    <div class="bottom-nav-tabs">
+        <button class="bottom-nav-tab active" onclick="setActiveTab(0, this.closest('.bottom-nav'))">
+            <div class="bottom-nav-icon">
+                <img data-tab-icon="1" data-icon-state="inactive" alt="" class="icon-inactive">
+                <img data-tab-icon="1" data-icon-state="active" alt="" class="icon-active">
+            </div>
+            <span class="bottom-nav-label">Home</span>
+        </button>
+        
+        <button class="bottom-nav-tab" onclick="setActiveTab(1, this.closest('.bottom-nav'))">
+            <div class="bottom-nav-icon">
+                <img data-tab-icon="2" data-icon-state="inactive" alt="" class="icon-inactive">
+                <img data-tab-icon="2" data-icon-state="active" alt="" class="icon-active">
+            </div>
+            <span class="bottom-nav-label">Apply</span>
+        </button>
+        
+        <button class="bottom-nav-tab" onclick="setActiveTab(2, this.closest('.bottom-nav'))">
+            <div class="bottom-nav-icon">
+                <img data-tab-icon="3" data-icon-state="inactive" alt="" class="icon-inactive">
+                <img data-tab-icon="3" data-icon-state="active" alt="" class="icon-active">
+            </div>
+            <span class="bottom-nav-label">Payments</span>
+        </button>
+        
+        <button class="bottom-nav-tab" onclick="setActiveTab(3, this.closest('.bottom-nav'))">
+            <div class="bottom-nav-icon">
+                <img data-tab-icon="4" data-icon-state="inactive" alt="" class="icon-inactive">
+                <img data-tab-icon="4" data-icon-state="active" alt="" class="icon-active">
+            </div>
+            <span class="bottom-nav-label">Search</span>
+        </button>
+        
+        <button class="bottom-nav-tab" onclick="setActiveTab(4, this.closest('.bottom-nav'))">
+            <div class="bottom-nav-icon">
+                <img data-tab-icon="5" data-icon-state="inactive" alt="" class="icon-inactive">
+                <img data-tab-icon="5" data-icon-state="active" alt="" class="icon-active">
+            </div>
+            <span class="bottom-nav-label">Cards</span>
+        </button>
+    </div>
+    
+    <!-- iOS Home Indicator -->
+    <div class="bottom-nav-home-indicator">
+        <div class="home-indicator-handle"></div>
+    </div>
+</div>
+
+<!-- 
+  COMPLETE USAGE:
+  
+  <head>
+      <link rel="stylesheet" href="path/to/cancara-tokens.css">
+      <link rel="stylesheet" href="path/to/BottomNav.vanilla.css">
+  </head>
+  <body>
+      <!-- HTML structure above -->
+      
+      <script src="path/to/BottomNav.vanilla.js"></script>
+  </body>
+-->

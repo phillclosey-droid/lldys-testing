@@ -1,0 +1,96 @@
+# 2-Tabs-Fixed Component
+
+Two-tab navigation component with two layout styles: pill-style toggle and underline tabs.
+
+## Files
+
+- `TwoTabsFixed.vanilla.css` - Token-led styling
+- `TwoTabsFixed.vanilla.js` - Interactive tab switching
+- `TwoTabsFixed-demo.html` - Demo with all variants
+
+## Component Structure
+
+### Layout: Default (Pill Style)
+```html
+<div class="tabs-2-fixed layout-default">
+    <div class="tabs-container">
+        <button class="tab active">
+            <span class="tab-text">Tab 01</span>
+        </button>
+        <button class="tab">
+            <span class="tab-text">Tab 02</span>
+        </button>
+    </div>
+</div>
+```
+
+### Layout: Alt 01 (Underline Style)
+```html
+<div class="tabs-2-fixed layout-alt-01">
+    <div class="tabs-container">
+        <button class="tab active">
+            <span class="tab-text">Tab 01</span>
+        </button>
+        <button class="tab">
+            <span class="tab-text">Tab 02</span>
+        </button>
+    </div>
+    <div class="active-border">
+        <div class="active-border-segment active"></div>
+        <div class="active-border-segment"></div>
+    </div>
+</div>
+```
+
+## CSS Classes
+
+### Layouts
+- `.layout-default` - Pill-style with rounded corners and black active background
+- `.layout-alt-01` - Underline style with 2px border indicator
+
+### States
+- `.active` - Applied to active tab and border segment
+
+## Features
+
+- **Two layouts**: Default (pill) and Alt 01 (underline)
+- **Click to switch**: Tabs update on click
+- **Active state management**: JavaScript handles active class toggling
+- **Active border**: Alt 01 layout shows 2px underline on active tab
+- **Token-led**: All colors use semantic tokens
+- **Auto dark mode**: Adapts automatically
+
+## JavaScript API
+
+```javascript
+// Listen for tab changes
+element.addEventListener('tab-changed', function(e) {
+    console.log('Tab index:', e.detail.tabIndex);
+    console.log('Tab element:', e.detail.tabElement);
+});
+
+// Manual initialization
+window.TwoTabsFixedComponent.init();
+```
+
+## Design Tokens
+
+- Active background: `--bg-action-default` (black in light, green in dark)
+- Active text: `--text-action-inverse` (white)
+- Inactive text: `--text-default`
+- Border: `--border-default`
+- Inactive border (alt-01): `--border-subdued`
+- Typography: 14px, `--font-family-body`, 20px line-height
+- Spacing: `--spacing-08`, `--spacing-16`
+- Border radius: `--radius-default` (12px)
+
+## Dimensions
+
+- Default layout: 48px height, 36px inner height
+- Alt 01 layout: 16px padding per tab
+- Active border: 2px height
+- Max width: 375px
+
+## Token-Led
+
+All colors and styles use semantic tokens, automatically adapt to dark mode.

@@ -1,0 +1,67 @@
+/* ButtonStack Vanilla CSS - SELF-CONTAINED - TOKEN LED */
+
+/* Container for button stacks */
+.button-stack {
+  display: flex;
+  gap: var(--spacing-16);
+  width: 100%;
+}
+
+/* Vertical layout - buttons stacked vertically */
+.button-stack.stack-vertical {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+/* Horizontal layout - buttons side by side */
+.button-stack.stack-horizontal {
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+/* When horizontal layout has Default variant (3 buttons), wrap them */
+.button-stack.stack-horizontal.stack-default {
+  flex-direction: column;
+  gap: var(--spacing-16);
+}
+
+/* Inner horizontal row for 2-button horizontal layouts */
+.button-stack-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: var(--spacing-16);
+  width: 100%;
+}
+
+/* Buttons in horizontal layout should fill available space equally */
+.button-stack.stack-horizontal .action-button {
+  flex: 1;
+}
+
+.button-stack-row .action-button {
+  flex: 1;
+}
+
+/* Adjust button padding when in horizontal 2-button layout */
+.button-stack.stack-horizontal:not(.stack-default) .action-button .action-button-inner {
+  padding: var(--spacing-12) var(--spacing-24);
+}
+
+/* Also adjust padding for buttons in the row within default horizontal layout */
+.button-stack.stack-horizontal.stack-default .button-stack-row .action-button .action-button-inner {
+  padding: var(--spacing-12) var(--spacing-24);
+}
+
+/* Ensure vertical layouts have full-width buttons */
+.button-stack.stack-vertical .action-button {
+  width: 100%;
+}
+
+/* Center the tertiary button in horizontal default layout */
+.button-stack.stack-horizontal.stack-default > .action-button {
+  align-self: center;
+}

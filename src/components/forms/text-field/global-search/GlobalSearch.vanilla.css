@@ -1,0 +1,146 @@
+/* Global Search Vanilla CSS - SELF-CONTAINED - TOKEN LED */
+
+/* ========== GLOBAL SEARCH CONTAINER ========== */
+.global-search {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 var(--spacing-16);
+}
+
+/* ========== INPUT CONTAINER ========== */
+.global-search-input {
+  border-radius: var(--input-corner-radius);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: var(--spacing-16);
+  gap: var(--spacing-08);
+  background-color: var(--bg-input-default);
+  border: var(--input-border-width-default) solid var(--border-default);
+  cursor: text;
+  transition: border 0.2s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ========== SEARCH ICON ========== */
+.global-search-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px;
+  flex-shrink: 0;
+}
+
+.global-search-icon-wrapper {
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.global-search-icon img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  display: block;
+}
+
+/* ========== TEXT INPUT AREA ========== */
+.global-search-text-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex: 1;
+  position: relative;
+  min-height: 20px;
+}
+
+.global-search-input-field {
+  font-family: var(--type-style-6-family);
+  font-size: var(--type-style-6-size);
+  font-weight: var(--type-style-6-weight);
+  line-height: var(--type-style-6-line-height);
+  color: var(--text-default);
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 100%;
+  padding: 0;
+}
+
+.global-search-input-field::placeholder {
+  color: var(--text-placeholder);
+}
+
+/* ========== VOICE ICON ========== */
+.global-search-voice {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  cursor: pointer;
+  padding: 0;
+  min-width: 24px;
+  min-height: 24px;
+}
+
+.global-search-voice img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  display: block;
+}
+
+/* ========== CLOSE ICON ========== */
+.global-search-close {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  cursor: pointer;
+  padding: 0;
+  min-width: 16px;
+  min-height: 16px;
+}
+
+.global-search-close img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  display: block;
+}
+
+/* ========== STATE: ACTIVE (FOCUSED) ========== */
+.global-search-input.is-active {
+  border-width: var(--input-border-width-active);
+  border-color: var(--color-black);
+}
+
+/* ========== STATE: EDIT (HAS TEXT) ========== */
+.global-search-input.has-text .global-search-close {
+  display: flex;
+}
+
+.global-search-input.has-text .global-search-voice {
+  display: none;
+}
+
+/* ========== STATE: SUBMITTED ========== */
+.global-search-input.is-submitted {
+  border-width: var(--input-border-width-default);
+  border-color: var(--border-default);
+}
+
+/* ========== DARK MODE ========== */
+[data-theme="dark"] .global-search-icon img,
+[data-theme="dark"] .global-search-voice img,
+[data-theme="dark"] .global-search-close img {
+  filter: invert(1);
+}
+
+[data-theme="dark"] .global-search-input.is-active {
+  border-color: var(--color-white);
+}

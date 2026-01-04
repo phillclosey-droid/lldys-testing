@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Tray Template - Bottom Drawer</title>
+    
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="../../css/cancara-tokens.css">
+    
+    <!-- Template Styles -->
+    <link rel="stylesheet" href="tray-template.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family-body);
+            background: var(--bg-page-default);
+            color: var(--text-default);
+            transition: background-color 0.3s, color 0.3s;
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <!-- Dark Mode Toggle -->
+    <div class="theme-toggle">
+        <button class="toggle-button" onclick="toggleTheme()">
+            <span id="theme-text">Switch to Dark Mode</span>
+        </button>
+    </div>
+
+    <!-- Tray Template -->
+    <div class="tray-template">
+        
+        <!-- ========== DROP YOUR PAGE CONTENT HERE ========== -->
+        <div class="content-slot">
+            <p>Page content here</p>
+            <button class="demo-button" onclick="openTray()">Open Tray</button>
+        </div>
+        <!-- ========== END PAGE CONTENT ========== -->
+
+        <!-- Overlay -->
+        <div class="tray-overlay" onclick="closeTray()"></div>
+        
+        <!-- Tray Container -->
+        <div class="tray-container">
+            <div class="tray">
+                <div class="tray-content">
+                    
+                    <!-- Handlebar -->
+                    <div class="tray-handlebar">
+                        <div class="tray-grabber"></div>
+                    </div>
+                    
+                    <!-- Header -->
+                    <div class="tray-header">
+                        <!-- Leading Icon -->
+                        <div class="tray-header-leading">
+                            <div class="hit-target">
+                                <div class="icon-wrapper">
+                                    <img id="leading-icon" src="" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Title (Centered) -->
+                        <div class="tray-header-title-wrapper">
+                            <div class="tray-header-title">Title</div>
+                        </div>
+                        
+                        <!-- Trailing Icon -->
+                        <div class="tray-header-trailing">
+                            <div class="hit-target">
+                                <div class="icon-wrapper">
+                                    <img id="trailing-icon" src="" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- ========== DROP YOUR TRAY CONTENT HERE ========== -->
+                    <div class="tray-content-area">
+                        <p>Tray content here</p>
+                    </div>
+                    <!-- ========== END TRAY CONTENT ========== -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /*
+         * PATH CONFIGURATION
+         * Update these paths when copying to journey pages or other locations
+         * 
+         * From /src/templates/tray-template/:
+         * - ASSETS_BASE: '../../../assets' (3 levels up to root)
+         * 
+         * From /journeys/[journey-name]/:
+         * - ASSETS_BASE: '../../assets' (2 levels up to root)
+         */
+        const ASSETS_BASE = '../../../assets';
+        
+        // Icon path helpers
+        const ICONS = {
+            leading: `${ASSETS_BASE}/icons/arrows/chevron-left.svg`,
+            trailing: `${ASSETS_BASE}/icons/navigation/close.svg`,
+        };
+
+        // Initialize all icon paths
+        function initializeIcons() {
+            document.getElementById('leading-icon').src = ICONS.leading;
+            document.getElementById('trailing-icon').src = ICONS.trailing;
+        }
+
+        // Open tray
+        function openTray() {
+            const tray = document.querySelector('.tray-template');
+            tray.classList.add('visible');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close tray
+        function closeTray() {
+            const tray = document.querySelector('.tray-template');
+            tray.classList.remove('visible');
+            document.body.style.overflow = '';
+        }
+
+        // Detect system dark mode preference and apply automatically
+        function detectSystemTheme() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-text').textContent = 'Switch to Light Mode';
+            } else {
+                document.body.setAttribute('data-theme', 'light');
+                document.getElementById('theme-text').textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        // Listen for system theme changes
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', detectSystemTheme);
+        }
+
+        // Toggle theme
+        function toggleTheme() {
+            const body = document.body;
+            const themeText = document.getElementById('theme-text');
+            const currentTheme = body.getAttribute('data-theme');
+            
+            if (currentTheme === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                themeText.textContent = 'Switch to Light Mode';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeText.textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        // Close on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeTray();
+            }
+        });
+
+        // Initialize on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            detectSystemTheme();
+            initializeIcons();
+        });
+    </script>
+</body>
+</html>

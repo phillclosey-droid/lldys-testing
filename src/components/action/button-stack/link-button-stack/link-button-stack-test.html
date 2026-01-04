@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkButtonStack Component Test</title>
+    
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="../../../../css/cancara-tokens.css">
+    
+    <!-- LinkButtonStack Component Styles -->
+    <link rel="stylesheet" href="LinkButtonStack.vanilla.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family-body);
+            background: var(--bg-page-default);
+            color: var(--text-default);
+            transition: background-color 0.3s, color 0.3s;
+            padding: var(--spacing-48);
+            min-height: 100vh;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: var(--spacing-24);
+            right: var(--spacing-24);
+            z-index: 1000;
+        }
+
+        .toggle-button {
+            background: var(--bg-action-default);
+            color: var(--text-action-inverse);
+            border: none;
+            border-radius: var(--radius-default);
+            padding: var(--spacing-12) var(--spacing-24);
+            font-family: var(--font-family-body);
+            font-size: var(--type-style-8-size);
+            font-weight: var(--font-weight-bold);
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .toggle-button:hover {
+            background: var(--bg-action-pressed);
+        }
+
+        h1 {
+            margin-bottom: var(--spacing-48);
+            font-size: var(--type-style-1-size);
+            font-weight: var(--type-style-1-weight);
+            line-height: var(--type-style-1-line-height);
+        }
+
+        .section {
+            margin-bottom: var(--spacing-48);
+            max-width: 600px;
+        }
+
+        .section h2 {
+            margin-bottom: var(--spacing-24);
+            font-size: var(--type-style-2-size);
+            font-weight: var(--type-style-2-weight);
+            line-height: var(--type-style-2-line-height);
+        }
+
+        .section h3 {
+            margin-bottom: var(--spacing-16);
+            margin-top: var(--spacing-32);
+            font-size: var(--type-style-3-size);
+            font-weight: var(--type-style-3-weight);
+        }
+
+        .section p {
+            margin-bottom: var(--spacing-24);
+            color: var(--text-subdued);
+            font-size: var(--type-style-6-size);
+            line-height: var(--type-style-6-line-height);
+        }
+
+        .demo-wrapper {
+            /* Removed background to show component's actual background */
+            padding: 0;
+            border-radius: 0;
+            margin-bottom: var(--spacing-24);
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <div class="theme-toggle">
+        <button class="toggle-button" onclick="toggleTheme()">
+            <span id="theme-text">Switch to Dark Mode</span>
+        </button>
+    </div>
+
+    <h1>LinkButtonStack Component - All Variants</h1>
+
+    <!-- TWO LINKS - HORIZONTAL -->
+    <div class="section">
+        <h2>Two Links - Horizontal Direction</h2>
+        <p>Two link buttons side by side with vertical separator</p>
+
+        <div class="demo-wrapper">
+            <div class="link-button-stack direction-horizontal">
+                <!-- Top divider -->
+                <div class="divider">
+                    <div class="divider-line"></div>
+                </div>
+                
+                <!-- Button container -->
+                <div class="button-container">
+                    <button class="link-button">
+                        <span class="link-button-text">First Link</span>
+                    </button>
+                    
+                    <div class="link-button-separator"></div>
+                    
+                    <button class="link-button">
+                        <span class="link-button-text">Second Link</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <h3>With States</h3>
+        <div class="demo-wrapper">
+            <div class="link-button-stack direction-horizontal">
+                <div class="divider">
+                    <div class="divider-line"></div>
+                </div>
+                
+                <div class="button-container">
+                    <button class="link-button">
+                        <span class="link-button-text">Default</span>
+                    </button>
+                    
+                    <div class="link-button-separator"></div>
+                    
+                    <button class="link-button pressed">
+                        <span class="link-button-text">Pressed</span>
+                    </button>
+                    
+                    <div class="link-button-separator"></div>
+                    
+                    <button class="link-button" disabled>
+                        <span class="link-button-text">Disabled</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TWO LINKS - VERTICAL -->
+    <div class="section">
+        <h2>Two Links - Vertical Direction</h2>
+        <p>Two link buttons stacked with horizontal divider between</p>
+
+        <div class="demo-wrapper">
+            <div class="link-button-stack direction-vertical">
+                <!-- Top divider -->
+                <div class="divider">
+                    <div class="divider-line"></div>
+                </div>
+                
+                <!-- Button container -->
+                <div class="button-container">
+                    <button class="link-button">
+                        <span class="link-button-text">First Link</span>
+                    </button>
+                    
+                    <div class="divider">
+                        <div class="divider-line"></div>
+                    </div>
+                    
+                    <button class="link-button">
+                        <span class="link-button-text">Second Link</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <h3>With States</h3>
+        <div class="demo-wrapper">
+            <div class="link-button-stack direction-vertical">
+                <div class="divider">
+                    <div class="divider-line"></div>
+                </div>
+                
+                <div class="button-container">
+                    <button class="link-button">
+                        <span class="link-button-text">Default State</span>
+                    </button>
+                    
+                    <div class="divider">
+                        <div class="divider-line"></div>
+                    </div>
+                    
+                    <button class="link-button pressed">
+                        <span class="link-button-text">Pressed State</span>
+                    </button>
+                    
+                    <div class="divider">
+                        <div class="divider-line"></div>
+                    </div>
+                    
+                    <button class="link-button" disabled>
+                        <span class="link-button-text">Disabled State</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ONE LINK - HORIZONTAL -->
+    <div class="section">
+        <h2>One Link - Horizontal Direction</h2>
+        <p>Single link button (direction doesn't matter visually)</p>
+
+        <div class="demo-wrapper">
+            <div class="link-button-stack direction-horizontal">
+                <div class="divider">
+                    <div class="divider-line"></div>
+                </div>
+                
+                <div class="button-container">
+                    <button class="link-button">
+                        <span class="link-button-text">Single Link</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ONE LINK - VERTICAL -->
+    <div class="section">
+        <h2>One Link - Vertical Direction</h2>
+        <p>Single link button (direction doesn't matter visually)</p>
+
+        <div class="demo-wrapper">
+            <div class="link-button-stack direction-vertical">
+                <div class="divider">
+                    <div class="divider-line"></div>
+                </div>
+                
+                <div class="button-container">
+                    <button class="link-button">
+                        <span class="link-button-text">Single Link</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- REAL WORLD EXAMPLES -->
+    <div class="section">
+        <h2>Real-World Usage Examples</h2>
+        
+        <h3>Action Menu</h3>
+        <div class="demo-wrapper">
+            <div class="link-button-stack direction-vertical">
+                <div class="divider">
+                    <div class="divider-line"></div>
+                </div>
+                
+                <div class="button-container">
+                    <button class="link-button">
+                        <span class="link-button-text">View Details</span>
+                    </button>
+                    
+                    <div class="divider">
+                        <div class="divider-line"></div>
+                    </div>
+                    
+                    <button class="link-button">
+                        <span class="link-button-text">Edit Information</span>
+                    </button>
+                    
+                    <div class="divider">
+                        <div class="divider-line"></div>
+                    </div>
+                    
+                    <button class="link-button">
+                        <span class="link-button-text">Share</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <h3>Navigation Choices</h3>
+        <div class="demo-wrapper">
+            <div class="link-button-stack direction-horizontal">
+                <div class="divider">
+                    <div class="divider-line"></div>
+                </div>
+                
+                <div class="button-container">
+                    <button class="link-button">
+                        <span class="link-button-text">Cancel</span>
+                    </button>
+                    
+                    <div class="link-button-separator"></div>
+                    
+                    <button class="link-button">
+                        <span class="link-button-text">Continue</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- COMPONENT FEATURES -->
+    <div class="section">
+        <h2>Component Features</h2>
+        <ul style="padding-left: var(--spacing-24); line-height: 2;">
+            <li>✅ Self-contained (includes nested link-button and divider styles)</li>
+            <li>✅ Token-led from cancara-tokens.css</li>
+            <li>✅ Two directions: Horizontal and Vertical</li>
+            <li>✅ Three button states: Default, Pressed/Hover, Disabled</li>
+            <li>✅ Supports 1-n link buttons</li>
+            <li>✅ Automatic separators (vertical line for horizontal, divider for vertical)</li>
+            <li>✅ Rounded bottom corners (12px)</li>
+            <li>✅ Dark mode support</li>
+            <li>✅ Fully responsive (100% width)</li>
+            <li>✅ Accessible (proper button semantics)</li>
+        </ul>
+    </div>
+
+    <script src="LinkButtonStack.vanilla.js"></script>
+
+    <script>
+        function detectSystemTheme() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-text').textContent = 'Switch to Light Mode';
+            } else {
+                document.body.setAttribute('data-theme', 'light');
+                document.getElementById('theme-text').textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', detectSystemTheme);
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const themeText = document.getElementById('theme-text');
+            const currentTheme = body.getAttribute('data-theme');
+            
+            if (currentTheme === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                themeText.textContent = 'Switch to Light Mode';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeText.textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', function() {
+            detectSystemTheme();
+        });
+    </script>
+</body>
+</html>

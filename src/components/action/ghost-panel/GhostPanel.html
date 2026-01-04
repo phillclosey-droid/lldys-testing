@@ -1,0 +1,102 @@
+<!-- 
+  GhostPanel HTML Component - TOKEN LED - SELF-CONTAINED
+  
+  Transparent panel with illustration, heading, description, and action button.
+  Auto-initializes with GhostPanel.vanilla.js
+  
+  Dependencies:
+  - Design tokens (cancara-tokens.css)
+  - GhostPanel.vanilla.css (SELF-CONTAINED - includes illustration styles)
+  - GhostPanel.vanilla.js (auto-initializes assets)
+  
+  Usage:
+  1. Import CSS and JS
+  2. Copy HTML structure
+  3. Set data-illustration and illustration variant class
+  4. Assets auto-populate on page load
+-->
+
+<!-- Example 1: Default variant (white background) -->
+<div class="ghost-panel-wrapper">
+    <div class="ghost-panel">
+        <!-- Illustration - 64px circle (Nested - Self-contained in CSS) -->
+        <div class="ghost-panel-illustration ill-default-alt-01">
+            <img data-illustration="Savings_Lloyds_-_V2" alt="">
+        </div>
+        <div class="ghost-panel-vstack">
+            <div class="ghost-panel-heading">Open a savings account</div>
+            <div class="ghost-panel-description">Start saving for your future</div>
+        </div>
+        <div class="ghost-panel-icon-button">
+            <div class="ghost-panel-icon-button-icon">
+                <img data-action-icon="plus" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example 2: Primary variant (green background) -->
+<div class="ghost-panel-wrapper">
+    <div class="ghost-panel">
+        <div class="ghost-panel-illustration ill-primary">
+            <img data-illustration="Cards_Lloyds_-_V2" alt="">
+        </div>
+        <div class="ghost-panel-vstack">
+            <div class="ghost-panel-heading">Apply for a credit card</div>
+            <div class="ghost-panel-description">Exclusive rewards available</div>
+        </div>
+        <div class="ghost-panel-icon-button">
+            <div class="ghost-panel-icon-button-icon">
+                <img data-action-icon="plus" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example 3: Secondary Alt 04 variant (orange background) -->
+<div class="ghost-panel-wrapper">
+    <div class="ghost-panel">
+        <div class="ghost-panel-illustration ill-secondary-alt-04">
+            <img data-illustration="Calendar_Lloyds_-_V2" alt="">
+        </div>
+        <div class="ghost-panel-vstack">
+            <div class="ghost-panel-heading">Set up direct debit</div>
+            <div class="ghost-panel-description">Never miss a payment</div>
+        </div>
+        <div class="ghost-panel-icon-button">
+            <div class="ghost-panel-icon-button-icon">
+                <img data-action-icon="plus" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--
+  DATA ATTRIBUTES:
+  - data-illustration: Illustration filename without .svg (e.g., "Savings_Lloyds_-_V2")
+  - data-action-icon: Action icon filename (default: "plus")
+  
+  ILLUSTRATION VARIANT CLASSES (determines folder):
+  - ill-default-alt-01: White background → /illustrations/default-alt-01/
+  - ill-default-alt-02: Gray background → /illustrations/default-alt-02/
+  - ill-primary: Green → /illustrations/primary/
+  - ill-primary-alt-01: Dark green → /illustrations/primary-alt-01/
+  - ill-primary-alt-02: Darker green → /illustrations/primary-alt-02/
+  - ill-primary-alt-03: Light green → /illustrations/primary-alt-03/
+  - ill-secondary-alt-01: Purple → /illustrations/secondary-alt-01/
+  - ill-secondary-alt-02: Pink → /illustrations/secondary-alt-02/
+  - ill-secondary-alt-03: Cyan → /illustrations/secondary-alt-03/
+  - ill-secondary-alt-04: Orange → /illustrations/secondary-alt-04/
+  
+  COMPLETE USAGE:
+  
+  <head>
+      <link rel="stylesheet" href="path/to/cancara-tokens.css">
+      <link rel="stylesheet" href="path/to/GhostPanel.vanilla.css">
+  </head>
+  <body>
+      <!-- HTML structure above -->
+      
+      <script src="path/to/GhostPanel.vanilla.js"></script>
+  </body>
+-->

@@ -1,0 +1,162 @@
+# Coachmark Component
+
+Onboarding tooltip/coachmark component with optional full-screen overlay. Supports standalone tooltips and multi-step tours.
+
+## Files
+
+- `Coachmark.vanilla.css` - Token-led styling
+- `Coachmark.vanilla.js` - Interactive functionality + positioning
+- `Coachmark-demo.html` - Demo with 6 variants
+
+## Two Modes
+
+### 1. Standalone Coachmark
+Simple tooltip that points to a UI element
+
+### 2. Popup with Overlay
+Full-screen overlay with cutout highlighting specific element
+
+## Component Structure
+
+### Standalone
+```html
+<div class="coachmark arrow-top">
+    <div class="coachmark-arrow">
+        <img src="arrow-piece.svg" alt="">
+        <!-- 5 arrow pieces total -->
+    </div>
+    <div class="coachmark-content">
+        <div class="coachmark-main">
+            <div class="coachmark-icon-container">
+                <div class="coachmark-icon">
+                    <img src="info.svg" alt="info">
+                </div>
+            </div>
+            <div class="coachmark-text">
+                <div class="coachmark-header">
+                    <div class="coachmark-messages">
+                        <div class="coachmark-title">Title</div>
+                        <div class="coachmark-message">Message</div>
+                    </div>
+                    <div class="coachmark-close-container">
+                        <button class="coachmark-close">
+                            <div class="coachmark-close-icon">
+                                <img src="close.svg" alt="close">
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+### With Footer (Multiple Steps)
+Add `.has-footer` class and footer:
+```html
+<div class="coachmark arrow-top has-footer">
+    <!-- ...main content... -->
+    <div class="coachmark-footer">
+        <div class="coachmark-counter">
+            <span class="coachmark-counter-text">2</span>
+            <span class="coachmark-counter-text">/</span>
+            <span class="coachmark-counter-text">5</span>
+        </div>
+        <button class="coachmark-action">
+            <span class="coachmark-action-text">Next</span>
+        </button>
+    </div>
+</div>
+```
+
+### Popup with Overlay
+```html
+<div class="coachmark-popup">
+    <div class="coachmark-overlay"></div>
+    <div class="coachmark-cutout"></div>
+    <div class="coachmark arrow-top">
+        <!-- ...coachmark content... -->
+    </div>
+</div>
+```
+
+## CSS Classes
+
+- `.coachmark` - Main container
+- `.coachmark.arrow-top` - Arrow points up (coachmark below element)
+- `.coachmark.arrow-bottom` - Arrow points down (coachmark above element)
+- `.coachmark.has-footer` - Has counter/action footer
+- `.coachmark-popup` - Full-screen popup container
+- `.coachmark-overlay` - Gray overlay background
+- `.coachmark-cutout` - Highlighted circle cutout
+
+## JavaScript API
+
+### Events
+```javascript
+element.addEventListener('coachmark-close', function() {
+    // Close button clicked
+});
+
+element.addEventListener('coachmark-next', function() {
+    // Next button clicked
+});
+
+element.addEventListener('coachmark-done', function() {
+    // Done button clicked
+});
+
+element.addEventListener('coachmark-popup-close', function() {
+    // Overlay clicked
+});
+```
+
+### Positioning
+```javascript
+// Position popup coachmark
+window.CoachmarkComponent.position(
+    popup,          // popup element
+    100,            // cutout X
+    200,            // cutout Y  
+    44,             // cutout width
+    44,             // cutout height
+    'top'           // 'top' or 'bottom'
+);
+```
+
+## Design Tokens
+
+- Typography: `--type-style-6-*` (title 15px), body 14px
+- Colors: `--text-default`, `--bg-panel-default`, `--bg-overlay-default`
+- Spacing: `--spacing-08`, `--spacing-12`, `--spacing-16`
+- Borders: `--radius-default` (12px), `--radius-circle`
+
+## Dimensions
+
+- Icon: 16px × 16px
+- Close icon: 12px × 12px
+- Arrow pieces: 12px × 16px (5 pieces)
+- Cutout: Circular (border-radius: 9999px)
+- Content padding: 12px-16px
+- Shadow: 0 4px 12px rgba(0,0,0,0.15)
+
+## Variants
+
+1. **Single - Arrow Top**: Standalone, arrow up
+2. **Single - Arrow Bottom**: Standalone, arrow down
+3. **Multiple - Start/Middle**: Tour step with "Next"
+4. **Multiple - End**: Final tour step with "Done"
+5. **Popup**: Full overlay with cutout
+
+## Behavior
+
+- **Close button**: Dismisses coachmark
+- **Next button**: Advances to next tour step
+- **Done button**: Completes tour
+- **Overlay click**: Closes popup (not coachmark itself)
+- **Auto-positioning**: JS helper positions coachmark relative to cutout
+
+## Token-Led
+
+All styling uses semantic tokens, automatically adapts to dark mode.

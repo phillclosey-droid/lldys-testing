@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar Picker Component - Demo</title>
+    
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="../../../../css/cancara-tokens.css">
+    
+    <!-- Calendar Picker Component (SELF-CONTAINED) -->
+    <link rel="stylesheet" href="CalendarPicker.vanilla.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family-body);
+            background: var(--bg-page-default);
+            color: var(--text-default);
+            transition: background-color 0.3s, color 0.3s;
+            padding: 40px;
+            min-height: 100vh;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .toggle-button {
+            background: var(--bg-action-default);
+            color: var(--text-action-inverse);
+            border: none;
+            border-radius: var(--radius-default);
+            padding: 12px 24px;
+            font-family: var(--font-family-body);
+            font-size: 14px;
+            font-weight: var(--font-weight-bold);
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .toggle-button:hover {
+            background: var(--bg-action-pressed);
+        }
+
+        h1 {
+            margin-bottom: 40px;
+            font-size: 32px;
+        }
+        
+        .demo-section {
+            margin-bottom: 40px;
+        }
+        
+        .demo-section-title {
+            margin-bottom: 12px;
+            font-size: 20px;
+        }
+
+        .demo-section p {
+            margin-bottom: 16px;
+            color: var(--text-subdued);
+            font-size: 14px;
+        }
+
+        .demo-container {
+            background: var(--bg-panel-default);
+            padding: 32px;
+            border-radius: var(--radius-default);
+            display: inline-block;
+            min-width: 400px;
+        }
+
+        .note {
+            background: var(--color-yellow-warning);
+            padding: 16px;
+            border-radius: var(--radius-default);
+            margin-bottom: 24px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <div class="theme-toggle">
+        <button class="toggle-button" onclick="toggleTheme()">
+            <span id="theme-text">Switch to Dark Mode</span>
+        </button>
+    </div>
+
+    <h1>Calendar Picker Component - All Variants</h1>
+
+
+    
+    <!-- DEFAULT LAYOUT - DEFAULT STATE -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">Default Layout - Default State</h2>
+        <p>Vertical layout with label above input</p>
+        
+        <div class="demo-container">
+            <div class="calendar-picker">
+                <label class="calendar-picker-label">When</label>
+                <div class="calendar-picker-input-wrapper">
+                    <div class="calendar-picker-input">
+                        <span class="calendar-picker-value">17 Sept 2021</span>
+                        <div class="calendar-picker-icon">
+                            <img src="../../../../../assets/icons/date-and-time/calendar.svg" alt="Calendar">
+                        </div>
+                    </div>
+                    <input type="date" class="calendar-picker-native-input" value="2021-09-17">
+                </div>
+                <div class="calendar-picker-hint">
+                    <span class="calendar-picker-hint-text">Duis quis tempus dolor. Vivamus non pretium tortor, cursus pharetra turpis.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- INLINE LAYOUT - DEFAULT STATE -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">Inline Layout - Default State</h2>
+        <p>Horizontal layout with label inside input and icon button outside</p>
+        
+        <div class="demo-container">
+            <div class="calendar-picker layout-inline">
+                <div class="calendar-picker-input-wrapper">
+                    <div class="calendar-picker-input">
+                        <div class="calendar-picker-content">
+                            <span class="calendar-picker-label-inline">When</span>
+                            <span class="calendar-picker-colon">:</span>
+                            <span class="calendar-picker-value">17 Sept 2021</span>
+                        </div>
+                    </div>
+                    <button class="calendar-picker-icon-button" type="button">
+                        <div class="calendar-picker-icon">
+                            <img src="../../../../../assets/icons/date-and-time/calendar.svg" alt="Calendar">
+                        </div>
+                    </button>
+                    <input type="date" class="calendar-picker-native-input" value="2021-09-17">
+                </div>
+                <div class="calendar-picker-hint-wrapper">
+                    <div class="calendar-picker-hint">
+                        <span class="calendar-picker-hint-text">Duis quis tempus dolor. Vivamus non pretium tortor, cursus pharetra turpis.</span>
+                    </div>
+                    <div class="calendar-picker-icon-button-spacer"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DEFAULT LAYOUT - ACTIVE STATE -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">Default Layout - Active/Focused State</h2>
+        <p>Shows 2px black border when active</p>
+        
+        <div class="demo-container">
+            <div class="calendar-picker">
+                <label class="calendar-picker-label">When</label>
+                <div class="calendar-picker-input-wrapper">
+                    <div class="calendar-picker-input is-active">
+                        <span class="calendar-picker-value">17 Sept 2021</span>
+                        <div class="calendar-picker-icon">
+                            <img src="../../../../../assets/icons/date-and-time/calendar.svg" alt="Calendar">
+                        </div>
+                    </div>
+                    <input type="date" class="calendar-picker-native-input" value="2021-09-17">
+                </div>
+                <div class="calendar-picker-hint">
+                    <span class="calendar-picker-hint-text">Duis quis tempus dolor. Vivamus non pretium tortor, cursus pharetra turpis.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- INLINE LAYOUT - ACTIVE STATE -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">Inline Layout - Active/Focused State</h2>
+        <p>Shows 2px black border when active</p>
+        
+        <div class="demo-container">
+            <div class="calendar-picker layout-inline">
+                <div class="calendar-picker-input-wrapper">
+                    <div class="calendar-picker-input is-active">
+                        <div class="calendar-picker-content">
+                            <span class="calendar-picker-label-inline">When</span>
+                            <span class="calendar-picker-colon">:</span>
+                            <span class="calendar-picker-value">17 Sept 2021</span>
+                        </div>
+                    </div>
+                    <button class="calendar-picker-icon-button" type="button">
+                        <div class="calendar-picker-icon">
+                            <img src="../../../../../assets/icons/date-and-time/calendar.svg" alt="Calendar">
+                        </div>
+                    </button>
+                    <input type="date" class="calendar-picker-native-input" value="2021-09-17">
+                </div>
+                <div class="calendar-picker-hint-wrapper">
+                    <div class="calendar-picker-hint">
+                        <span class="calendar-picker-hint-text">Duis quis tempus dolor. Vivamus non pretium tortor, cursus pharetra turpis.</span>
+                    </div>
+                    <div class="calendar-picker-icon-button-spacer"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DEFAULT LAYOUT - DISABLED STATE -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">Default Layout - Disabled State</h2>
+        <p>Gray background, no icon, no hint message</p>
+        
+        <div class="demo-container">
+            <div class="calendar-picker is-disabled">
+                <label class="calendar-picker-label">When</label>
+                <div class="calendar-picker-input-wrapper">
+                    <div class="calendar-picker-input">
+                        <span class="calendar-picker-value">17 Sept 2021</span>
+                        <div class="calendar-picker-icon">
+                            <img src="../../../../../assets/icons/miscellaneous/calendar.svg" alt="Calendar">
+                        </div>
+                    </div>
+                    <input type="date" class="calendar-picker-native-input" value="2021-09-17" disabled>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- INLINE LAYOUT - DISABLED STATE -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">Inline Layout - Disabled State</h2>
+        <p>Gray background, no icon button, no hint message</p>
+        
+        <div class="demo-container">
+            <div class="calendar-picker layout-inline is-disabled">
+                <div class="calendar-picker-input-wrapper">
+                    <div class="calendar-picker-input">
+                        <div class="calendar-picker-content">
+                            <span class="calendar-picker-label-inline">When</span>
+                            <span class="calendar-picker-colon">:</span>
+                            <span class="calendar-picker-value">17 Sept 2021</span>
+                        </div>
+                    </div>
+                    <input type="date" class="calendar-picker-native-input" value="2021-09-17" disabled>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- INTERACTIVE DEMO -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">Interactive Demo</h2>
+        <p>Click on the input or icon to open native date picker</p>
+        
+        <div class="demo-container">
+            <div class="calendar-picker">
+                <label class="calendar-picker-label">Select a date</label>
+                <div class="calendar-picker-input-wrapper">
+                    <div class="calendar-picker-input">
+                        <span class="calendar-picker-value">Select date</span>
+                        <div class="calendar-picker-icon">
+                            <img src="../../../../../assets/icons/miscellaneous/calendar.svg" alt="Calendar">
+                        </div>
+                    </div>
+                    <input type="date" class="calendar-picker-native-input">
+                </div>
+                <div class="calendar-picker-hint">
+                    <span class="calendar-picker-hint-text">Pick any date you like</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="CalendarPicker.vanilla.js"></script>
+
+    <script>
+        // Listen for calendar picker changes
+        document.querySelectorAll('.calendar-picker').forEach(picker => {
+            picker.addEventListener('calendar-picker-change', function(e) {
+                console.log(`Date changed:`, e.detail);
+            });
+        });
+
+        function detectSystemTheme() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-text').textContent = 'Switch to Light Mode';
+            } else {
+                document.body.setAttribute('data-theme', 'light');
+                document.getElementById('theme-text').textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', detectSystemTheme);
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const themeText = document.getElementById('theme-text');
+            const currentTheme = body.getAttribute('data-theme');
+            
+            if (currentTheme === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                themeText.textContent = 'Switch to Light Mode';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeText.textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', function() {
+            detectSystemTheme();
+        });
+    </script>
+</body>
+</html>

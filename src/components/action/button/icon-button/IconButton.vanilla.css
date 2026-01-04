@@ -1,0 +1,309 @@
+/* IconButton Vanilla CSS - SELF-CONTAINED - TOKEN LED */
+
+/* Button base */
+.icon-button {
+  border-radius: var(--btn-icon-corner-radius);
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+}
+
+.icon-button:disabled {
+  cursor: not-allowed;
+}
+
+/* Icon container */
+.icon-button-icon {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-button-icon img {
+  object-fit: contain;
+}
+
+/* ========== SIZE: DEFAULT ========== */
+.icon-button.size-default {
+  height: 44px;
+  width: 44px;
+  padding: 0;
+}
+
+.icon-button.size-default .icon-button-icon {
+  width: 100%;
+  height: 100%;
+}
+
+.icon-button.size-default .icon-button-icon img {
+  height: 18px;
+  width: 18px;
+}
+
+/* ========== SIZE: SMALL ========== */
+.icon-button.size-small {
+  height: var(--btn-icon-min-size-small);
+  width: var(--btn-icon-min-size-small);
+  padding: 0;
+}
+
+.icon-button.size-small .icon-button-icon {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+
+.icon-button.size-small .icon-button-icon img {
+  height: var(--spacing-16);
+  width: var(--spacing-16);
+}
+
+/* ========== TYPE: PRIMARY ========== */
+.icon-button.btn-primary {
+  background-color: var(--bg-action-default);
+  border: var(--border-width-02) solid transparent;
+}
+
+.icon-button.btn-primary .icon-button-icon img {
+  filter: brightness(0) invert(1);
+}
+
+/* Pressed */
+.icon-button.btn-primary:active,
+.icon-button.btn-primary.pressed {
+  background-color: var(--bg-action-pressed);
+}
+
+/* Disabled */
+.icon-button.btn-primary:disabled,
+.icon-button.btn-primary.disabled {
+  background-color: var(--bg-action-disabled);
+}
+
+/* Dark mode icon adjustments */
+[data-theme="dark"] .icon-button.btn-primary .icon-button-icon img {
+  filter: none;
+}
+
+/* ========== TYPE: PRIMARY + BRAND ACCENT ========== */
+.icon-button.btn-primary.btn-brand-accent {
+  background-color: var(--btn-brand-accent-primary-bg-default);
+  border-color: var(--btn-brand-accent-primary-bg-default);
+}
+
+.icon-button.btn-primary.btn-brand-accent .icon-button-icon img {
+  filter: none;
+}
+
+/* Pressed */
+.icon-button.btn-primary.btn-brand-accent:active,
+.icon-button.btn-primary.btn-brand-accent.pressed {
+  background-color: var(--btn-brand-accent-primary-bg-pressed);
+  border-color: var(--btn-brand-accent-primary-bg-pressed);
+}
+
+/* Disabled */
+.icon-button.btn-primary.btn-brand-accent:disabled,
+.icon-button.btn-primary.btn-brand-accent.disabled {
+  background-color: var(--bg-action-disabled);
+  border-color: transparent;
+}
+
+/* ========== TYPE: PRIMARY + ON COLOR BG ========== */
+.icon-button.btn-primary.btn-on-color {
+  background-color: var(--bg-action-on-color-default);
+}
+
+.icon-button.btn-primary.btn-on-color .icon-button-icon img {
+  filter: none;
+}
+
+/* Pressed - light mode: gray, dark mode: green */
+.icon-button.btn-primary.btn-on-color:active,
+.icon-button.btn-primary.btn-on-color.pressed {
+  background-color: var(--bg-action-on-color-pressed);
+}
+
+.icon-button.btn-primary.btn-on-color:active .icon-button-icon img,
+.icon-button.btn-primary.btn-on-color.pressed .icon-button-icon img {
+  filter: brightness(0) invert(1);
+}
+
+/* Dark mode pressed: black icon on green */
+[data-theme="dark"] .icon-button.btn-primary.btn-on-color:active .icon-button-icon img,
+[data-theme="dark"] .icon-button.btn-primary.btn-on-color.pressed .icon-button-icon img {
+  filter: none;
+}
+
+/* Disabled */
+.icon-button.btn-primary.btn-on-color:disabled,
+.icon-button.btn-primary.btn-on-color.disabled {
+  background-color: var(--bg-action-on-color-disabled);
+}
+
+/* ========== TYPE: SECONDARY ========== */
+.icon-button.btn-secondary {
+  background-color: var(--bg-action-transparent);
+  border: var(--btn-icon-border-width) solid var(--text-default);
+}
+
+.icon-button.btn-secondary .icon-button-icon img {
+  filter: none;
+}
+
+/* Pressed */
+.icon-button.btn-secondary:active,
+.icon-button.btn-secondary.pressed {
+  background-color: var(--bg-action-pressed);
+  border-color: transparent;
+}
+
+.icon-button.btn-secondary:active .icon-button-icon img,
+.icon-button.btn-secondary.pressed .icon-button-icon img {
+  filter: brightness(0) invert(1);
+}
+
+/* Disabled */
+.icon-button.btn-secondary:disabled,
+.icon-button.btn-secondary.disabled {
+  background-color: var(--bg-action-disabled);
+  border-color: transparent;
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .icon-button.btn-secondary .icon-button-icon img {
+  filter: brightness(0) invert(1);
+}
+
+[data-theme="dark"] .icon-button.btn-secondary:active .icon-button-icon img,
+[data-theme="dark"] .icon-button.btn-secondary.pressed .icon-button-icon img {
+  filter: none;
+}
+
+/* ========== TYPE: SECONDARY + ON COLOR BG ========== */
+/* Light mode: black border and icon, Dark mode: white border and icon */
+.icon-button.btn-secondary.btn-on-color {
+  background-color: var(--bg-action-on-color-transparent);
+  border: var(--btn-icon-border-width) solid var(--color-black);
+}
+
+.icon-button.btn-secondary.btn-on-color .icon-button-icon img {
+  filter: none;
+}
+
+/* Dark mode: white border and icon */
+[data-theme="dark"] .icon-button.btn-secondary.btn-on-color {
+  border-color: var(--color-white);
+}
+
+[data-theme="dark"] .icon-button.btn-secondary.btn-on-color .icon-button-icon img {
+  filter: brightness(0) invert(1);
+}
+
+/* Pressed */
+.icon-button.btn-secondary.btn-on-color:active,
+.icon-button.btn-secondary.btn-on-color.pressed {
+  background-color: var(--bg-action-on-color-pressed);
+  border-color: transparent;
+}
+
+.icon-button.btn-secondary.btn-on-color:active .icon-button-icon img,
+.icon-button.btn-secondary.btn-on-color.pressed .icon-button-icon img {
+  filter: brightness(0) invert(1);
+}
+
+/* Dark mode pressed: black icon on green */
+[data-theme="dark"] .icon-button.btn-secondary.btn-on-color:active .icon-button-icon img,
+[data-theme="dark"] .icon-button.btn-secondary.btn-on-color.pressed .icon-button-icon img {
+  filter: none;
+}
+
+/* Disabled */
+.icon-button.btn-secondary.btn-on-color:disabled,
+.icon-button.btn-secondary.btn-on-color.disabled {
+  background-color: var(--bg-action-on-color-disabled);
+  border-color: transparent;
+}
+
+/* ========== TYPE: TERTIARY ========== */
+.icon-button.btn-tertiary {
+  background-color: var(--bg-action-transparent);
+  border: var(--border-width-02) solid transparent;
+}
+
+.icon-button.btn-tertiary .icon-button-icon img {
+  filter: none;
+}
+
+/* Pressed */
+.icon-button.btn-tertiary:active,
+.icon-button.btn-tertiary.pressed {
+  background-color: var(--bg-action-pressed);
+}
+
+.icon-button.btn-tertiary:active .icon-button-icon img,
+.icon-button.btn-tertiary.pressed .icon-button-icon img {
+  filter: brightness(0) invert(1);
+}
+
+/* Disabled */
+.icon-button.btn-tertiary:disabled,
+.icon-button.btn-tertiary.disabled {
+  background-color: var(--bg-action-disabled);
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .icon-button.btn-tertiary .icon-button-icon img {
+  filter: brightness(0) invert(1);
+}
+
+[data-theme="dark"] .icon-button.btn-tertiary:active .icon-button-icon img,
+[data-theme="dark"] .icon-button.btn-tertiary.pressed .icon-button-icon img {
+  filter: none;
+}
+
+/* ========== TYPE: TERTIARY + ON COLOR BG ========== */
+/* Light mode: black icon, Dark mode: white icon */
+.icon-button.btn-tertiary.btn-on-color {
+  background-color: var(--bg-action-on-color-transparent);
+  border: var(--border-width-02) solid transparent;
+}
+
+.icon-button.btn-tertiary.btn-on-color .icon-button-icon img {
+  filter: none;
+}
+
+/* Dark mode: white icon */
+[data-theme="dark"] .icon-button.btn-tertiary.btn-on-color .icon-button-icon img {
+  filter: brightness(0) invert(1);
+}
+
+/* Pressed */
+.icon-button.btn-tertiary.btn-on-color:active,
+.icon-button.btn-tertiary.btn-on-color.pressed {
+  background-color: var(--bg-action-on-color-pressed);
+}
+
+.icon-button.btn-tertiary.btn-on-color:active .icon-button-icon img,
+.icon-button.btn-tertiary.btn-on-color.pressed .icon-button-icon img {
+  filter: brightness(0) invert(1);
+}
+
+/* Dark mode pressed: black icon on green */
+[data-theme="dark"] .icon-button.btn-tertiary.btn-on-color:active .icon-button-icon img,
+[data-theme="dark"] .icon-button.btn-tertiary.btn-on-color.pressed .icon-button-icon img {
+  filter: none;
+}
+
+/* Disabled */
+.icon-button.btn-tertiary.btn-on-color:disabled,
+.icon-button.btn-tertiary.btn-on-color.disabled {
+  background-color: var(--bg-action-on-color-disabled);
+}

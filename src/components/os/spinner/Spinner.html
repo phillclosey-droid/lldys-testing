@@ -1,0 +1,102 @@
+<!-- 
+  Spinner (with Icon Overlay) HTML Component - TOKEN LED - SELF-CONTAINED
+  
+  Animated loading spinner with centered icon overlay.
+  Uses NativeSpinner component with icon badge on top.
+  
+  NOTE: Sets 1 & 2 have built-in padlock icons in the SVG.
+        Only use icon overlays with Sets 3 & 4.
+  
+  Dependencies:
+  - NativeSpinner.vanilla.css (nested)
+  - NativeSpinner.vanilla.js (nested, auto-initializes spinner frames)
+  - Spinner.vanilla.css (SELF-CONTAINED)
+  - Spinner.vanilla.js (auto-initializes icon overlay)
+  
+  Usage:
+  1. Import NativeSpinner CSS and JS
+  2. Import Spinner CSS and JS
+  3. Copy HTML structure
+  4. Set data-spinner-set and data-spinner-icon attributes
+  5. Frames and icon auto-populate on page load
+-->
+
+<!-- Example 1: Set 1 - NO icon overlay (has built-in padlock) -->
+<div class="spinner-with-icon size-default bg-light">
+    <div class="native-spinner size-xlarge" data-spinner-set="1">
+        <!-- Spinner frames auto-populate via NativeSpinner.vanilla.js -->
+    </div>
+    <!-- NO icon overlay - padlock is built into SVG -->
+</div>
+
+<!-- Example 2: Set 2 - NO icon overlay (has built-in padlock) -->
+<div class="spinner-with-icon size-default bg-colored">
+    <div class="native-spinner size-xlarge" data-spinner-set="2">
+        <!-- Spinner frames auto-populate via NativeSpinner.vanilla.js -->
+    </div>
+    <!-- NO icon overlay - padlock is built into SVG -->
+</div>
+
+<!-- Example 3: Set 3 with tick icon overlay -->
+<div class="spinner-with-icon size-default bg-light">
+    <div class="native-spinner size-xlarge" data-spinner-set="3">
+        <!-- Spinner frames auto-populate via NativeSpinner.vanilla.js -->
+    </div>
+    <div class="spinner-icon-overlay">
+        <img data-spinner-icon="tick" alt="">
+    </div>
+</div>
+
+<!-- Example 4: Set 4 with plus icon overlay -->
+<div class="spinner-with-icon size-default bg-light">
+    <div class="native-spinner size-xlarge" data-spinner-set="4">
+        <!-- Spinner frames auto-populate via NativeSpinner.vanilla.js -->
+    </div>
+    <div class="spinner-icon-overlay">
+        <img data-spinner-icon="plus" alt="">
+    </div>
+</div>
+
+<!-- Example 5: Small size with minus icon -->
+<div class="spinner-with-icon size-small bg-light">
+    <div class="native-spinner size-large" data-spinner-set="3">
+        <!-- Spinner frames auto-populate via NativeSpinner.vanilla.js -->
+    </div>
+    <div class="spinner-icon-overlay">
+        <img data-spinner-icon="minus" alt="">
+    </div>
+</div>
+
+<!--
+  DATA ATTRIBUTES:
+  - data-spinner-set: Spinner set number (1-4) on nested native-spinner
+    - Sets 1 & 2: Have built-in padlock icons - do NOT add icon overlay
+    - Sets 3 & 4: Support custom icon overlays
+  - data-spinner-icon: Icon filename without .svg from /assets/icons/action/
+    Available icons: tick, plus, minus, plus-alt-01, minus-alt-01, plus-alt-01-filled, minus-alt-01-filled
+  
+  SIZE VARIANTS:
+  - size-small: 32px container with 32px spinner, 12px icon
+  - size-default: 64px container with 64px spinner, 18px icon
+  
+  BACKGROUND VARIANTS:
+  - bg-light: White/light background (onColour=False)
+  - bg-colored: Colored background (onColour=True)
+  
+  NESTED COMPONENTS:
+  - Uses NativeSpinner component (size-xlarge for default, size-large for small)
+  - Icon overlay positioned absolutely on top, centered (only for Sets 3 & 4)
+  
+  COMPLETE USAGE:
+  
+  <head>
+      <link rel="stylesheet" href="path/to/NativeSpinner.vanilla.css">
+      <link rel="stylesheet" href="path/to/Spinner.vanilla.css">
+  </head>
+  <body>
+      <!-- HTML structure above -->
+      
+      <script src="path/to/NativeSpinner.vanilla.js"></script>
+      <script src="path/to/Spinner.vanilla.js"></script>
+  </body>
+-->

@@ -1,0 +1,1287 @@
+/*!
+ * CANCARA DESIGN TOKENS
+ * Lloyds Banking Group Design Language - Reimagined
+ * Version: 1.0.0
+ * Author: Phill of Ideas
+ * Generated from JSON design tokens following component-led best practices
+ * Typography system incorporated from typography.css - font faces and detailed style tokens
+ * Structure: Core → Semantic → Component → Typography → Themes → Utilities
+ * NOTE: Temp components included as placeholder sections - to be populated when values are defined
+ */
+
+/* ===================== FONT FACE DECLARATIONS ===================== */
+/* GT Ultra Median Family - extracted from typography.css */
+@font-face {
+  font-family: 'GT Ultra Median';
+  src: url('../../assets/fonts/GT-Ultra-Median-Black.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GT Ultra Median';
+  src: url('../../assets/fonts/GT-Ultra-Median-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GT Ultra Median';
+  src: url('../../assets/fonts/GT-Ultra-Median-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GT Ultra Median';
+  src: url('../../assets/fonts/GT-Ultra-Median-Thin.otf') format('opentype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GT Ultra Median';
+  src: url('../../assets/fonts/GT-Ultra-Median-Ultra.otf') format('opentype');
+  font-weight: 950;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* GT Ultra Standard Family - extracted from typography.css */
+@font-face {
+  font-family: 'GT Ultra';
+  src: url('../../assets/fonts/GT-Ultra-Standard-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GT Ultra';
+  src: url('../../assets/fonts/GT-Ultra-Standard-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GT Ultra';
+  src: url('../../assets/fonts/GT-Ultra-Standard-Thin.otf') format('opentype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ===================== CORE TOKENS ===================== */
+:root {
+  /* Colors - Base Palette */
+  --color-black: #000000;
+  --color-white: #FFFFFF;
+  --color-transparent: #00000000;
+
+  /* Gray Scale */
+  --color-gray-100: #F1F1F1;
+  --color-gray-200: #E8E8E8;
+  --color-gray-300: #C9C9C9;
+  --color-gray-400: #ADADAD;
+  --color-gray-500: #767676;
+  --color-gray-600: #636363;
+  --color-gray-700: #323233;
+  --color-gray-800: #222222;
+  --color-gray-850: #1B1B1B;
+  --color-gray-900: #121212;
+  --color-gray-950: #0F100F;
+
+  /* Green Palette */
+  --color-green-bright: #0BE248; /* Primary brand accent green */
+  --color-green-light: #6CF479;
+  --color-green-mint: #C7FFC6;
+  --color-green-success-dark: #007C56;
+  --color-green-success: #0F9F6A;
+  --color-green-success-medium: #11714F;
+  --color-green-success-deep: #014631;
+  --color-green-promo-primary: #11B67A;
+  --color-green-promo-primary-dark: #006A4D;
+  --color-green-promo-primary-darker: #024731;
+  --color-green-datavis-default: #11714F;
+  --color-green-datavis-800: #014631;
+  --color-green-datavis-400: #219E6E;
+
+  /* Red Palette */
+  --color-red-critical: #DB0F30;
+
+  /* Orange Palette */
+  --color-orange-warning: #E06900;
+  --color-orange-warning-dark: #E66D00;
+  --color-orange-promo: #FFB16A;
+  --color-orange-datavis-default: #AD2E00;
+  --color-orange-datavis-800: #740B01;
+  --color-orange-datavis-400: #DD5D26;
+
+  /* Blue Palette */
+  --color-blue-info: #276AE6;
+  --color-blue-datavis-default: #0F62B0;
+  --color-blue-datavis-800: #0B3760;
+  --color-blue-datavis-400: #3082CF;
+
+  /* Purple Palette */
+  --color-purple-promo: #A19FFF;
+  --color-purple-datavis-default: #6235E9;
+  --color-purple-datavis-800: #380F85;
+  --color-purple-datavis-400: #7F5CFB;
+
+  /* Pink Palette */
+  --color-pink-promo: #F5B2F2;
+  --color-pink-datavis-default: #A8239D;
+  --color-pink-datavis-800: #62135B;
+  --color-pink-datavis-400: #D054C6;
+
+  /* Cyan Palette */
+  --color-cyan-promo: #9DE7DE;
+
+  /* Overlay */
+  --color-overlay-default: #000000A5;
+
+  /* Sentiment Colors */
+  --color-sentiment-critical-light: #FFF6F5;
+  --color-sentiment-critical-dark: #1B1312;
+  --color-sentiment-warning-light: #FFF7E8;
+  --color-sentiment-warning-dark: #1A1611;
+  --color-sentiment-success-light: #F6F9F5;
+  --color-sentiment-success-dark: #121612;
+  --color-sentiment-info-light: #F8F8FF;
+  --color-sentiment-info-dark: #14151B;
+
+  /* Spacing Scale */
+  --spacing-none: 0px;
+  --spacing-04: 4px;
+  --spacing-08: 8px;
+  --spacing-12: 12px;
+  --spacing-16: 16px;
+  --spacing-24: 24px;
+  --spacing-32: 32px;
+  --spacing-48: 48px;
+
+  /* Border Radius */
+  --radius-none: 0px;
+  --radius-small: 8px;
+  --radius-default: 12px;
+  --radius-medium: 16px;
+  --radius-full: 200px;
+  --radius-circle: 9999px;
+
+  /* Border Width */
+  --border-width-none: 0px;
+  --border-width-01: 1px;
+  --border-width-02: 2px;
+
+  /* Typography - Global Font Families */
+  --font-family-display: 'GT Ultra Median', sans-serif;
+  --font-family-heading: 'GT Ultra Median', sans-serif;
+  --font-family-body: 'GT Ultra', sans-serif;
+
+  /* Typography - Global Font Weights */
+  --font-weight-thin: 100;
+  --font-weight-regular: 400;
+  --font-weight-medium: 700;
+  --font-weight-bold: 700;
+  --font-weight-extra-bold: 900;
+
+  /* Platform Specific */
+  --platform-ios-hit-target: 48px;
+}
+
+/* ===================== SEMANTIC TOKENS ===================== */
+:root {
+  /* Background Tokens */
+  --bg-page-default: var(--color-gray-100);
+  --bg-section-default: var(--color-gray-100);
+  --bg-section-alt: var(--color-white);
+  --bg-section-brand: var(--color-gray-100);
+  --bg-panel-default: var(--color-white);
+  --bg-panel-secondary: var(--color-gray-100);
+  --bg-panel-pressed: var(--color-gray-300);
+  --bg-panel-transparent: var(--color-transparent);
+  --bg-action-default: var(--color-black);
+  --bg-action-transparent: var(--color-transparent);
+  --bg-action-pressed: var(--color-gray-700);
+  --bg-action-disabled: var(--color-gray-300);
+  --bg-action-on-color-default: var(--color-white);
+  --bg-action-on-color-transparent: var(--color-transparent);
+  --bg-action-on-color-pressed: var(--color-gray-700);
+  --bg-action-on-color-disabled: var(--color-gray-300);
+  --bg-sentiment-critical: var(--color-sentiment-critical-light);
+  --bg-sentiment-critical-strong: var(--color-red-critical);
+  --bg-sentiment-warning: var(--color-sentiment-warning-light);
+  --bg-sentiment-success: var(--color-sentiment-success-light);
+  --bg-sentiment-info: var(--color-sentiment-info-light);
+  --bg-input-default: var(--color-white);
+  --bg-input-disabled: var(--color-gray-100);
+  --bg-overlay-default: var(--color-overlay-default);
+
+  /* Text Tokens */
+  --text-default: var(--color-black);
+  --text-inverse: var(--color-white);
+  --text-subdued: var(--color-gray-500);
+  --text-brand: var(--color-black);
+  --text-action-default: var(--color-black);
+  --text-action-inverse: var(--color-white);
+  --text-action-pressed: var(--color-black);
+  --text-action-disabled: var(--color-gray-500);
+  --text-sentiment-critical: var(--color-black);
+  --text-sentiment-critical-inverse: var(--color-white);
+  --text-sentiment-critical-strong: var(--color-red-critical);
+  --text-sentiment-warning: var(--color-black);
+  --text-sentiment-success: var(--color-black);
+  --text-sentiment-info: var(--color-black);
+  --text-input-label: var(--color-black);
+  --text-input-placeholder: var(--color-gray-500);
+  --text-input-default: var(--color-black);
+  --text-input-disabled: var(--color-gray-500);
+  --text-input-error: var(--color-red-critical);
+  --text-input-validated: var(--color-green-success-dark);
+
+  /* Icon Tokens */
+  --icon-default: var(--color-black);
+  --icon-inverse: var(--color-white);
+  --icon-subdued: var(--color-gray-500);
+  --icon-brand: var(--color-black);
+  --icon-action-default: var(--color-black);
+  --icon-sentiment-critical: var(--color-red-critical);
+  --icon-sentiment-critical-inverse: var(--color-white);
+  --icon-sentiment-warning: var(--color-orange-warning);
+  --icon-sentiment-success: var(--color-green-success);
+  --icon-sentiment-info: var(--color-blue-info);
+
+  /* Border Tokens */
+  --border-default: var(--color-gray-300);
+  --border-panel: var(--color-transparent);
+  --border-generic-default-alt-01: var(--color-gray-300);
+}
+
+/* ===================== COMPONENT TOKENS ===================== */
+
+/* Button Components */
+:root {
+  /* Action Button */
+  --btn-action-corner-radius: var(--radius-default);
+  --btn-action-border-width: var(--border-width-01);
+  --btn-action-bg-default: var(--bg-action-default);
+  --btn-action-bg-pressed: var(--bg-action-pressed);
+  --btn-action-bg-disabled: var(--bg-action-disabled);
+  --btn-action-text-default: var(--text-action-inverse);
+  --btn-action-text-pressed: var(--text-action-inverse);
+  --btn-action-text-disabled: var(--text-action-disabled);
+  --btn-action-icon-default: var(--icon-inverse);
+
+  /* Compact Button */
+  --btn-compact-corner-radius-default: var(--radius-default);
+  --btn-compact-corner-radius-small: var(--radius-small);
+  --btn-compact-border-width: var(--border-width-01);
+  --btn-compact-min-height-small: 36px;
+
+  /* Icon Button */
+  --btn-icon-corner-radius: var(--radius-circle);
+  --btn-icon-border-width: var(--border-width-01);
+  --btn-icon-min-size-small: 32px;
+
+  /* Brand Accent Button */
+  --btn-brand-accent-corner-radius: var(--radius-default);
+  --btn-brand-accent-primary-bg-default: var(--color-green-bright);
+  --btn-brand-accent-primary-bg-pressed: var(--color-green-light);
+  --btn-brand-accent-primary-border-default: var(--color-green-bright);
+  --btn-brand-accent-primary-border-pressed: var(--color-green-light);
+  --btn-brand-accent-primary-text-default: var(--color-black);
+  --btn-brand-accent-primary-text-pressed: var(--color-black);
+  --btn-brand-accent-primary-icon-default: var(--color-black);
+  --btn-brand-accent-primary-icon-pressed: var(--color-black);
+}
+
+/* Input Components */
+:root {
+  /* Radio Button */
+  --input-radiobutton-dot: var(--color-black);
+
+  /* General Input */
+  --input-min-height: 56px;
+  --input-border-width-default: 1px;
+  --input-border-width-active: 2px;
+  --input-corner-radius: var(--radius-default);
+  --input-bg-hint: var(--color-transparent);
+  --input-bg-success: var(--color-transparent);
+  --input-bg-error: var(--color-transparent);
+  --input-border-error: var(--color-transparent);
+  --input-icon-clear: var(--color-black);
+  --input-icon-action-bg: var(--color-transparent);
+  --input-icon-action-default: var(--color-black);
+  --input-icon-action-alt: var(--color-black);
+  --input-cursor-default: var(--color-black);
+  --input-cursor-selected: var(--color-black);
+  --input-label-left: var(--color-black);
+  --input-label-right: var(--color-black);
+  --input-text-hint-default: var(--color-black);
+  --input-text-hint-error: #DF1536;
+  --input-text-masked-default: var(--color-black);
+  --input-text-masked-disabled: var(--color-gray-500);
+  --input-hint-message-corner-radius: var(--radius-default);
+  --input-hint-message-margin-spacing: var(--spacing-none);
+  --input-hint-message-padding-spacing: 0px;
+  --input-checkbox-border-width: 1px;
+  --input-checkbox-corner-radius: var(--radius-small);
+  --input-radiobutton-border-width: 1px;
+  --input-sortcode-border-width-default: 1px;
+  --input-sortcode-border-width-active: 2px;
+  --input-validation-message-spacing: 0px;
+}
+
+/* Carousel Component */
+:root {
+  --carousel-indicator-active: var(--color-black);
+  --carousel-indicator-inactive: var(--color-gray-500);
+  --carousel-indicator-on-color-active: var(--color-black);
+  --carousel-indicator-on-color-inactive: var(--color-gray-500);
+}
+
+/* Pictogram Component */
+:root {
+  --pictogram-icon-default: var(--color-black);
+  --pictogram-icon-primary: var(--color-black);
+  --pictogram-canvas-default: var(--color-white);
+}
+
+/* Promo Components */
+:root {
+  --promo-bg-default: var(--color-white);
+  --promo-bg-primary-default: var(--color-green-promo-primary);
+  --promo-bg-primary-dark: var(--color-green-promo-primary-dark);
+  --promo-bg-primary-darker: var(--color-green-promo-primary-darker);
+  --promo-bg-primary-light: var(--color-green-light);
+  --promo-bg-secondary-default: var(--color-green-mint);
+  --promo-bg-secondary-purple: var(--color-purple-promo);
+  --promo-bg-secondary-pink: var(--color-pink-promo);
+  --promo-bg-secondary-cyan: var(--color-cyan-promo);
+  --promo-bg-secondary-orange: var(--color-orange-promo);
+  --promo-text-default: var(--color-black);
+  --promo-text-inverse: var(--color-white);
+  --promo-icon-default: var(--color-black);
+  --promo-icon-inverse: var(--color-white);
+}
+
+/* Data Visualization Components */
+:root {
+  /* Purple Scale */
+  --datavis-purple-800: var(--color-purple-datavis-800);
+  --datavis-purple-default: var(--color-purple-datavis-default);
+  --datavis-purple-400: var(--color-purple-datavis-400);
+
+  /* Orange Scale */
+  --datavis-orange-800: var(--color-orange-datavis-800);
+  --datavis-orange-default: var(--color-orange-datavis-default);
+  --datavis-orange-400: var(--color-orange-datavis-400);
+
+  /* Green Scale */
+  --datavis-green-800: var(--color-green-datavis-800);
+  --datavis-green-default: var(--color-green-datavis-default);
+  --datavis-green-400: var(--color-green-datavis-400);
+
+  /* Pink Scale */
+  --datavis-pink-800: var(--color-pink-datavis-800);
+  --datavis-pink-default: var(--color-pink-datavis-default);
+  --datavis-pink-400: var(--color-pink-datavis-400);
+
+  /* Blue Scale */
+  --datavis-blue-800: var(--color-blue-datavis-800);
+  --datavis-blue-default: var(--color-blue-datavis-default);
+  --datavis-blue-400: var(--color-blue-datavis-400);
+}
+
+/* Spinner Components */
+:root {
+  --spinner-modal-style01-border: var(--color-green-mint);
+  --spinner-modal-style01-border-highlight: var(--color-green-bright);
+  --spinner-modal-style01-icon: var(--color-green-bright);
+  --spinner-modal-style02-gradient-stop01: #0BE24800;
+  --spinner-modal-style02-gradient-stop02: var(--color-green-bright);
+  --spinner-modal-style02-icon: var(--color-green-bright);
+  --spinner-splashscreen-style02-gradient-stop01: var(--color-transparent);
+  --spinner-splashscreen-style02-gradient-stop02: var(--color-black);
+  --spinner-splashscreen-style02-icon: var(--color-black);
+}
+
+/* Notification Component */
+:root {
+  --notification-pill-critical-bg: #3E1514;
+  --notification-pill-critical-text: var(--color-white);
+}
+
+/* Header Component */
+:root {
+  --header-logo-brand: var(--color-black);
+  --header-logo-brand-alt: var(--color-green-promo-primary-dark);
+  --header-dropshadow-default: #00000033;
+  --header-dropshadow-blur: 4px;
+  --header-dropshadow-x-axis: 0px;
+  --header-dropshadow-y-axis: 6px;
+}
+
+/* Select Category Item Component */
+:root {
+  --select-category-bg-default: var(--bg-panel-default);
+  --select-category-bg-active: var(--color-green-bright);
+  --select-category-border-default: var(--border-default);
+  --select-category-border-active: var(--color-black);
+  --select-category-icon-default: var(--icon-default);
+  --select-category-icon-active: var(--color-black);
+}
+
+/* Skeleton Component */
+:root {
+  --skeleton-shimmer: var(--color-gray-100);
+}
+
+/* Status Bar Component */
+:root {
+  --statusbar-time-and-levels: var(--color-black);
+}
+
+/* Spaces Component - Account Tile */
+:root {
+  --spaces-account-tile-dropshadow-default: #0000000C;
+  --spaces-account-tile-dropshadow-blur: 20px;
+  --spaces-account-tile-dropshadow-x-axis: 0px;
+  --spaces-account-tile-dropshadow-y-axis: 4px;
+}
+
+/* Card Hub Components */
+:root {
+  --cardhub-card-corner-radius: 8px;
+  --cardhub-card-tag-corner-radius: 200px;
+  --cardhub-card-dropshadow-default: #0000003F;
+  --cardhub-card-dropshadow-blur: 24px;
+  --cardhub-card-dropshadow-x-axis: 24px;
+  --cardhub-card-dropshadow-y-axis: 4px;
+  --cardhub-notification-banner-bg: #00000033;
+  --cardhub-bg: var(--color-green-promo-primary-dark);
+  --cardhub-active-card-bg: #003F2E;
+  --cardhub-frozen-card-bg: var(--color-gray-400);
+  --cardhub-badges-new-card: #0D5595;
+  --cardhub-badges-expiring-card: var(--color-gray-500);
+  --cardhub-badges-partial-frozen: var(--color-gray-500);
+  --cardhub-text-pan: var(--color-gray-700);
+  --cardhub-text-cardholder-name: var(--color-white);
+  --cardhub-text-card-expiry: var(--color-white);
+  --cardhub-text-partial-pan: var(--color-white);
+  --cardhub-logos-card-brand: var(--color-white);
+  --cardhub-logos-card-provider: var(--color-white);
+  --cardhub-logos-network: #BFBFBF;
+  --cardhub-ccv-bg: var(--color-white);
+  --cardhub-ccv-text: var(--color-white);
+  --cardhub-magnetic-strip: var(--color-black);
+  --cardhub-full-pan-bg: var(--color-white);
+}
+
+/* Warning View Component */
+:root {
+  --warning-view-text: #E66D00;
+}
+
+/* Popup Component */
+:root {
+  --popup-button-border-default: var(--border-default);
+}
+
+/* Local - Digital Transaction Component */
+:root {
+  --local-digital-transaction-text-incoming: #00855D;
+  --local-digital-transaction-text-outgoing: var(--color-black);
+  --local-digital-transaction-merchant-logo-bg: var(--color-white);
+}
+
+/* Local - Payments Component */
+:root {
+  --local-payments-generated-image-bg: var(--color-white);
+}
+
+/* ===================== TEMP COMPONENTS - PLACEHOLDERS ===================== */
+/* These sections are placeholders for components in development. */
+/* They reference semantic tokens and will be populated with specific values when defined in JSON. */
+
+/* Accordion Component */
+:root {
+  /* Expandable/collapsible content sections - uses semantic panel and border tokens */
+  --accordion-header-bg: var(--bg-panel-default);
+  --accordion-header-text: var(--text-default);
+  --accordion-panel-bg: var(--bg-panel-secondary);
+  --accordion-panel-border: var(--border-default);
+  --accordion-icon-default: var(--icon-default);
+  --accordion-spacing: var(--spacing-16);
+  --accordion-corner-radius: var(--radius-default);
+}
+
+/* Bar Chart Component */
+:root {
+  /* Bar chart data visualization - uses datavis scales */
+  --barchart-bar-width: var(--spacing-24);
+  --barchart-spacing: var(--spacing-08);
+  --barchart-axis-color: var(--color-gray-500);
+  --barchart-label-text: var(--text-subdued);
+  /* Scale references available: --datavis-green-default, --datavis-orange-default, etc. */
+}
+
+/* Bottom Nav Component */
+:root {
+  /* Bottom navigation component */
+  --component-temp-bottom-nav-background: var(--color-white);
+  --bottomnav-bg: var(--component-temp-bottom-nav-background);
+  --bottomnav-active-icon: var(--icon-default);
+  --bottomnav-inactive-icon: var(--icon-subdued);
+  --bottomnav-active-text: var(--text-default);
+  --bottomnav-inactive-text: var(--text-subdued);
+  --bottomnav-border: var(--border-default);
+  --bottomnav-height: var(--platform-ios-hit-target);
+}
+
+/* Calendar Component */
+:root {
+  /* Calendar/date picker component */
+  --calendar-bg: var(--bg-panel-default);
+  --calendar-header-text: var(--text-default);
+  --calendar-day-selected-bg: var(--bg-action-default);
+  --calendar-day-selected-text: var(--text-action-inverse);
+  --calendar-day-default-text: var(--text-default);
+  --calendar-day-disabled-text: var(--text-subdued);
+  --calendar-border: var(--border-default);
+  --calendar-spacing: var(--spacing-12);
+}
+
+/* Divider Component */
+:root {
+  /* Content divider/separator */
+  --divider-bg: var(--border-generic-default-alt-01);
+  --divider-height: var(--border-width-01);
+  --divider-margin: var(--spacing-24);
+}
+
+/* EIA PIN Component */
+:root {
+  /* PIN entry interface */
+  --eiapin-input-bg: var(--bg-input-default);
+  --eiapin-input-border: var(--border-default);
+  --eiapin-input-text: var(--text-input-default);
+  --eiapin-label-text: var(--text-input-label);
+  --eiapin-error-text: var(--text-input-error);
+}
+
+/* Keyboard Component */
+:root {
+  /* Custom keyboard component */
+  --keyboard-bg: var(--bg-panel-default);
+  --keyboard-key-bg: var(--bg-action-default);
+  --keyboard-key-pressed: var(--bg-action-pressed);
+  --keyboard-key-text: var(--text-action-inverse);
+  --keyboard-key-border: var(--border-width-01);
+  --keyboard-spacing: var(--spacing-08);
+}
+
+/* Linear Progress Indicator Component */
+:root {
+  /* Linear progress bar */
+  --linear-progress-bg: var(--color-gray-200);
+  --linear-progress-fill: var(--color-green-success);
+  --linear-progress-height: var(--spacing-04);
+  --linear-progress-corner-radius: var(--radius-small);
+}
+
+/* List Component */
+:root {
+  /* List/table view component */
+  --list-item-bg: var(--bg-panel-secondary);
+  --list-item-hover: var(--bg-panel-pressed);
+  --list-item-border: var(--border-default);
+  --list-item-text: var(--text-default);
+  --list-item-subtext: var(--text-subdued);
+  --list-spacing: var(--spacing-16);
+}
+
+/* Message Component */
+:root {
+  /* Message/alert component */
+  --message-bg: var(--bg-sentiment-info);
+  --message-text: var(--text-sentiment-info);
+  --message-icon: var(--icon-sentiment-info);
+  --message-border: var(--border-width-01);
+  --message-padding: var(--spacing-16);
+  --message-corner-radius: var(--radius-default);
+}
+
+/* Quick Action Component */
+:root {
+  /* Quick action buttons */
+  --quickaction-bg: var(--bg-action-default);
+  --quickaction-pressed: var(--bg-action-pressed);
+  --quickaction-text: var(--text-action-inverse);
+  --quickaction-icon: var(--icon-inverse);
+  --quickaction-spacing: var(--spacing-12);
+  --quickaction-radius: var(--radius-full);
+}
+
+/* Scroll Indicator Component */
+:root {
+  /* Scroll indicator */
+  --scroll-indicator-bg: var(--color-gray-300);
+  --scroll-indicator-active: var(--color-black);
+  --scroll-indicator-height: var(--spacing-04);
+  --scroll-indicator-width: var(--spacing-04);
+}
+
+/* Step Progress Indicator Component */
+:root {
+  /* Step-by-step progress indicator */
+  --step-progress-step-bg: var(--color-gray-300);
+  --step-progress-step-active: var(--color-green-success);
+  --step-progress-step-completed: var(--color-green-success);
+  --step-progress-connector: var(--border-default);
+  --step-progress-text: var(--text-default);
+  --step-progress-spacing: var(--spacing-24);
+}
+
+/* Switch Component */
+:root {
+  /* Toggle switch component */
+  --switch-track-bg: var(--color-gray-300);
+  --switch-track-active: var(--color-green-success);
+  --switch-thumb-bg: var(--color-white);
+  --switch-thumb-active: var(--color-white);
+  --switch-width: 44px;
+  --switch-height: 24px;
+  --switch-thumb-size: 20px;
+}
+
+/* Table Component */
+:root {
+  /* Data table component */
+  --table-header-bg: var(--bg-panel-default);
+  --table-header-text: var(--text-default);
+  --table-row-bg: var(--bg-panel-secondary);
+  --table-row-hover: var(--bg-panel-pressed);
+  --table-border: var(--border-default);
+  --table-cell-padding: var(--spacing-16);
+}
+
+/* Tabs Component */
+:root {
+  /* Tab navigation component */
+  --tabs-bg: var(--bg-panel-default);
+  --tabs-active-bg: var(--bg-action-default);
+  --tabs-active-text: var(--text-action-inverse);
+  --tabs-inactive-text: var(--text-default);
+  --tabs-border: var(--border-default);
+  --tabs-indicator: var(--color-green-bright);
+  --tabs-spacing: var(--spacing-24);
+}
+
+/* Tile Component */
+:root {
+  /* Content tile component */
+  --tile-bg: var(--bg-panel-default);
+  --tile-border: var(--border-default);
+  --tile-shadow: none;
+  --tile-text: var(--text-default);
+  --tile-icon: var(--icon-default);
+  --tile-padding: var(--spacing-16);
+  --tile-radius: var(--radius-small);
+}
+
+/* Toggle Component */
+:root {
+  /* Toggle component */
+  --toggle-bg-off: var(--color-gray-300);
+  --toggle-bg-on: var(--color-green-success);
+  --toggle-knob-off: var(--color-white);
+  --toggle-knob-on: var(--color-white);
+  --toggle-width: 44px;
+  --toggle-height: 24px;
+  --toggle-knob-size: 20px;
+}
+
+/* Tray Component */
+:root {
+  /* Tray/drawer component */
+  --tray-bg: var(--bg-panel-default);
+  --tray-overlay: var(--bg-overlay-default);
+  --tray-border: var(--border-default);
+  --tray-handle-bg: var(--color-gray-400);
+  --tray-spacing: var(--spacing-16);
+  --tray-width: 320px;
+}
+
+/* UI View Component */
+:root {
+  /* Generic UI view container */
+  --uiview-bg: var(--bg-section-default);
+  --uiview-padding: var(--spacing-24);
+  --uiview-border: var(--border-width-none);
+  --uiview-shadow: none;
+}
+
+/* ===================== TYPOGRAPHY TOKENS ===================== */
+/* Detailed typography system from typography.css - all styles consolidated */
+
+/* Style 0 - Largest heading (GT Ultra Median Black) */
+:root {
+  --type-style-0-family: 'GT Ultra Median', sans-serif;
+  --type-style-0-size: 40px;
+  --type-style-0-weight: 900;
+  --type-style-0-line-height: 44px;
+  --type-style-0-letter-spacing: 0px;
+}
+
+/* Style 1 - Large heading (GT Ultra Median Bold) */
+:root {
+  --type-style-1-family: 'GT Ultra Median', sans-serif;
+  --type-style-1-size: 29px;
+  --type-style-1-weight: 700;
+  --type-style-1-line-height: 32px;
+  --type-style-1-letter-spacing: 0px;
+}
+
+/* Style 1B - Large heading alternate (GT Ultra Regular) */
+:root {
+  --type-style-1b-family: 'GT Ultra', sans-serif;
+  --type-style-1b-size: 29px;
+  --type-style-1b-weight: 400;
+  --type-style-1b-line-height: 32px;
+  --type-style-1b-letter-spacing: 0px;
+}
+
+/* Style 2 - Medium heading (GT Ultra Median Bold) */
+:root {
+  --type-style-2-family: 'GT Ultra Median', sans-serif;
+  --type-style-2-size: 23px;
+  --type-style-2-weight: 700;
+  --type-style-2-line-height: 26px;
+  --type-style-2-letter-spacing: 0px;
+}
+
+/* Style 2B - Medium heading alternate (GT Ultra Regular) */
+:root {
+  --type-style-2b-family: 'GT Ultra', sans-serif;
+  --type-style-2b-size: 23px;
+  --type-style-2b-weight: 400;
+  --type-style-2b-line-height: 26px;
+  --type-style-2b-letter-spacing: 0px;
+}
+
+/* Style 3 - Small heading (GT Ultra Median Bold) */
+:root {
+  --type-style-3-family: 'GT Ultra Median', sans-serif;
+  --type-style-3-size: 19px;
+  --type-style-3-weight: 700;
+  --type-style-3-line-height: 22px;
+  --type-style-3-letter-spacing: -0.2px;
+}
+
+/* Style 3B - Small heading alternate (GT Ultra Regular) */
+:root {
+  --type-style-3b-family: 'GT Ultra', sans-serif;
+  --type-style-3b-size: 19px;
+  --type-style-3b-weight: 400;
+  --type-style-3b-line-height: 22px;
+  --type-style-3b-letter-spacing: -0.2px;
+}
+
+/* Style 4 - Body large bold (GT Ultra Bold) */
+:root {
+  --type-style-4-family: 'GT Ultra', sans-serif;
+  --type-style-4-size: 17px;
+  --type-style-4-weight: 700;
+  --type-style-4-line-height: 22px;
+  --type-style-4-letter-spacing: 0px;
+}
+
+/* Style 5 - Body large (GT Ultra Regular) */
+:root {
+  --type-style-5-family: 'GT Ultra', sans-serif;
+  --type-style-5-size: 17px;
+  --type-style-5-weight: 400;
+  --type-style-5-line-height: 22px;
+  --type-style-5-letter-spacing: 0px;
+}
+
+/* Style 6 - Body medium (GT Ultra Regular) */
+:root {
+  --type-style-6-family: 'GT Ultra', sans-serif;
+  --type-style-6-size: 15px;
+  --type-style-6-weight: 400;
+  --type-style-6-line-height: 20px;
+  --type-style-6-letter-spacing: 0px;
+}
+
+/* Style 7 - Body medium bold (GT Ultra Bold) */
+:root {
+  --type-style-7-family: 'GT Ultra', sans-serif;
+  --type-style-7-size: 15px;
+  --type-style-7-weight: 700;
+  --type-style-7-line-height: 20px;
+  --type-style-7-letter-spacing: 0px;
+}
+
+/* Style 8 - Body small (GT Ultra Regular) */
+:root {
+  --type-style-8-family: 'GT Ultra', sans-serif;
+  --type-style-8-size: 14px;
+  --type-style-8-weight: 400;
+  --type-style-8-line-height: 20px;
+  --type-style-8-letter-spacing: 0px;
+}
+
+/* Style 9 - Caption (GT Ultra Regular) */
+:root {
+  --type-style-9-family: 'GT Ultra', sans-serif;
+  --type-style-9-size: 12px;
+  --type-style-9-weight: 400;
+  --type-style-9-line-height: 18px;
+  --type-style-9-letter-spacing: 0px;
+}
+
+/* Style 10 - Caption bold (GT Ultra Bold) */
+:root {
+  --type-style-10-family: 'GT Ultra', sans-serif;
+  --type-style-10-size: 12px;
+  --type-style-10-weight: 700;
+  --type-style-10-line-height: 18px;
+  --type-style-10-letter-spacing: 0px;
+}
+
+/* Style 11 - Small bold (GT Ultra Bold) */
+:root {
+  --type-style-11-family: 'GT Ultra', sans-serif;
+  --type-style-11-size: 14px;
+  --type-style-11-weight: 700;
+  --type-style-11-line-height: 20px;
+  --type-style-11-letter-spacing: 0px;
+}
+
+/* Style 12 - Micro bold (GT Ultra Bold) */
+:root {
+  --type-style-12-family: 'GT Ultra', sans-serif;
+  --type-style-12-size: 11px;
+  --type-style-12-weight: 700;
+  --type-style-12-line-height: 16px;
+  --type-style-12-letter-spacing: 0px;
+}
+
+/* Style 13 - Micro (GT Ultra Regular) */
+:root {
+  --type-style-13-family: 'GT Ultra', sans-serif;
+  --type-style-13-size: 11px;
+  --type-style-13-weight: 400;
+  --type-style-13-line-height: 16px;
+  --type-style-13-letter-spacing: 0px;
+}
+
+/* ===================== TYPOGRAPHY SYSTEM CLASSES ===================== */
+/* CSS classes for each typography style using the detailed tokens */
+
+.type-style-0,
+.text-large-title {
+  font-family: var(--type-style-0-family);
+  font-weight: var(--type-style-0-weight);
+  font-size: var(--type-style-0-size);
+  line-height: var(--type-style-0-line-height);
+  letter-spacing: var(--type-style-0-letter-spacing);
+}
+
+.type-style-1,
+.text-title-1 {
+  font-family: var(--type-style-1-family);
+  font-weight: var(--type-style-1-weight);
+  font-size: var(--type-style-1-size);
+  line-height: var(--type-style-1-line-height);
+  letter-spacing: var(--type-style-1-letter-spacing);
+}
+
+.type-style-1b,
+.text-title-1b {
+  font-family: var(--type-style-1b-family);
+  font-weight: var(--type-style-1b-weight);
+  font-size: var(--type-style-1b-size);
+  line-height: var(--type-style-1b-line-height);
+  letter-spacing: var(--type-style-1b-letter-spacing);
+}
+
+.type-style-2,
+.text-title-2 {
+  font-family: var(--type-style-2-family);
+  font-weight: var(--type-style-2-weight);
+  font-size: var(--type-style-2-size);
+  line-height: var(--type-style-2-line-height);
+  letter-spacing: var(--type-style-2-letter-spacing);
+}
+
+.type-style-2b,
+.text-title-2b {
+  font-family: var(--type-style-2b-family);
+  font-weight: var(--type-style-2b-weight);
+  font-size: var(--type-style-2b-size);
+  line-height: var(--type-style-2b-line-height);
+  letter-spacing: var(--type-style-2b-letter-spacing);
+}
+
+.type-style-3,
+.text-title-3 {
+  font-family: var(--type-style-3-family);
+  font-weight: var(--type-style-3-weight);
+  font-size: var(--type-style-3-size);
+  line-height: var(--type-style-3-line-height);
+  letter-spacing: var(--type-style-3-letter-spacing);
+}
+
+.type-style-3b,
+.text-title-3b {
+  font-family: var(--type-style-3b-family);
+  font-weight: var(--type-style-3b-weight);
+  font-size: var(--type-style-3b-size);
+  line-height: var(--type-style-3b-line-height);
+  letter-spacing: var(--type-style-3b-letter-spacing);
+}
+
+.type-style-4,
+.text-headline {
+  font-family: var(--type-style-4-family);
+  font-weight: var(--type-style-4-weight);
+  font-size: var(--type-style-4-size);
+  line-height: var(--type-style-4-line-height);
+  letter-spacing: var(--type-style-4-letter-spacing);
+}
+
+.type-style-5,
+.text-body {
+  font-family: var(--type-style-5-family);
+  font-weight: var(--type-style-5-weight);
+  font-size: var(--type-style-5-size);
+  line-height: var(--type-style-5-line-height);
+  letter-spacing: var(--type-style-5-letter-spacing);
+}
+
+.type-style-6,
+.text-callout {
+  font-family: var(--type-style-6-family);
+  font-weight: var(--type-style-6-weight);
+  font-size: var(--type-style-6-size);
+  line-height: var(--type-style-6-line-height);
+  letter-spacing: var(--type-style-6-letter-spacing);
+}
+
+.type-style-7,
+.text-subhead {
+  font-family: var(--type-style-7-family);
+  font-weight: var(--type-style-7-weight);
+  font-size: var(--type-style-7-size);
+  line-height: var(--type-style-7-line-height);
+  letter-spacing: var(--type-style-7-letter-spacing);
+}
+
+.type-style-8,
+.text-footnote {
+  font-family: var(--type-style-8-family);
+  font-weight: var(--type-style-8-weight);
+  font-size: var(--type-style-8-size);
+  line-height: var(--type-style-8-line-height);
+  letter-spacing: var(--type-style-8-letter-spacing);
+}
+
+.type-style-9,
+.text-caption-1 {
+  font-family: var(--type-style-9-family);
+  font-weight: var(--type-style-9-weight);
+  font-size: var(--type-style-9-size);
+  line-height: var(--type-style-9-line-height);
+  letter-spacing: var(--type-style-9-letter-spacing);
+}
+
+.type-style-10,
+.text-caption-2 {
+  font-family: var(--type-style-10-family);
+  font-weight: var(--type-style-10-weight);
+  font-size: var(--type-style-10-size);
+  line-height: var(--type-style-10-line-height);
+  letter-spacing: var(--type-style-10-letter-spacing);
+}
+
+.type-style-11,
+.text-footnote-bold {
+  font-family: var(--type-style-11-family);
+  font-weight: var(--type-style-11-weight);
+  font-size: var(--type-style-11-size);
+  line-height: var(--type-style-11-line-height);
+  letter-spacing: var(--type-style-11-letter-spacing);
+}
+
+.type-style-12,
+.text-caption-1-small {
+  font-family: var(--type-style-12-family);
+  font-weight: var(--type-style-12-weight);
+  font-size: var(--type-style-12-size);
+  line-height: var(--type-style-12-line-height);
+  letter-spacing: var(--type-style-12-letter-spacing);
+}
+
+.type-style-13,
+.text-caption-1-regular {
+  font-family: var(--type-style-13-family);
+  font-weight: var(--type-style-13-weight);
+  font-size: var(--type-style-13-size);
+  line-height: var(--type-style-13-line-height);
+  letter-spacing: var(--type-style-13-letter-spacing);
+}
+
+/* ===================== THEMES & MODES ===================== */
+
+/* Dark Theme */
+[data-theme="dark"],
+.theme-dark {
+  /* Background Overrides */
+  --bg-page-default: var(--color-gray-900);
+  --bg-section-default: var(--color-gray-950);
+  --bg-section-alt: var(--color-gray-800);
+  --bg-section-brand: var(--color-gray-950);
+  --bg-panel-default: var(--color-gray-800);
+  --bg-panel-secondary: var(--color-gray-950);
+  --bg-panel-pressed: var(--color-gray-850);
+  --bg-action-default: var(--color-green-bright);
+  --bg-action-pressed: var(--color-green-light);
+  --bg-action-disabled: var(--color-gray-850);
+  --bg-action-on-color-pressed: var(--color-green-light);
+  --bg-action-on-color-disabled: var(--color-gray-850);
+  --bg-sentiment-critical: var(--color-sentiment-critical-dark);
+  --bg-sentiment-warning: var(--color-sentiment-warning-dark);
+  --bg-sentiment-success: var(--color-sentiment-success-dark);
+  --bg-sentiment-info: var(--color-sentiment-info-dark);
+  --bg-input-default: var(--color-gray-800);
+  --bg-input-disabled: var(--color-gray-800);
+
+  /* Text Overrides */
+  --text-default: var(--color-gray-200);
+  --text-subdued: var(--color-gray-400);
+  --text-brand: var(--color-gray-200);
+  --text-action-default: var(--color-gray-200);
+  --text-action-inverse: var(--color-gray-900);
+  --text-action-pressed: var(--color-gray-200);
+  --text-input-default: var(--color-gray-200);
+
+  /* Icon Overrides */
+  --icon-default: var(--color-gray-200);
+  --icon-subdued: var(--color-gray-400);
+  --icon-brand: var(--color-gray-200);
+
+  /* Border Overrides - UPDATED 21:58 DEC 25 */
+  --border-default: #3A3A3A;
+  --border-generic-default-alt-01: #3A3A3A;
+  --divider-bg: #3A3A3A;
+
+  /* Component Overrides */
+  --input-radiobutton-dot: var(--color-green-light);
+  --spinner-splashscreen-style02-icon: var(--color-black);
+  --local-digital-transaction-text-incoming: var(--color-green-bright);
+  --local-digital-transaction-text-outgoing: var(--color-gray-200);
+  --statusbar-time-and-levels: var(--color-gray-200);
+
+  /* Select Category Item Component Dark Mode Overrides */
+  --select-category-icon-default: var(--color-green-bright);
+
+  /* Temp Component Dark Mode Overrides */
+  --accordion-header-bg: var(--bg-panel-default);
+  --accordion-panel-bg: var(--bg-panel-secondary);
+  --barchart-axis-color: var(--color-gray-400);
+  --barchart-label-text: var(--text-subdued);
+  --component-temp-bottom-nav-background: var(--color-gray-800);
+  --bottomnav-bg: var(--component-temp-bottom-nav-background);
+  --bottomnav-active-icon: var(--icon-default);
+  --bottomnav-inactive-icon: var(--icon-subdued);
+  --bottomnav-active-text: var(--text-default);
+  --bottomnav-inactive-text: var(--text-subdued);
+  --calendar-bg: var(--bg-panel-default);
+  --calendar-header-text: var(--text-default);
+  --calendar-day-selected-bg: var(--bg-action-default);
+  --calendar-day-selected-text: var(--text-action-inverse);
+  --calendar-day-default-text: var(--text-default);
+  --calendar-day-disabled-text: var(--text-subdued);
+  --eiapin-input-bg: var(--bg-input-default);
+  --eiapin-input-border: var(--border-default);
+  --eiapin-input-text: var(--text-input-default);
+  --eiapin-label-text: var(--text-input-label);
+  --eiapin-error-text: var(--text-input-error);
+  --keyboard-bg: var(--bg-panel-default);
+  --keyboard-key-bg: var(--bg-action-default);
+  --keyboard-key-pressed: var(--bg-action-pressed);
+  --keyboard-key-text: var(--text-action-inverse);
+  --linear-progress-bg: var(--color-gray-700);
+  --linear-progress-fill: var(--color-green-success);
+  --list-item-bg: var(--bg-panel-secondary);
+  --list-item-hover: var(--bg-panel-pressed);
+  --list-item-text: var(--text-default);
+  --list-item-subtext: var(--text-subdued);
+  --message-bg: var(--bg-sentiment-info);
+  --message-text: var(--text-sentiment-info);
+  --message-icon: var(--icon-sentiment-info);
+  --quickaction-bg: var(--bg-action-default);
+  --quickaction-pressed: var(--bg-action-pressed);
+  --quickaction-text: var(--text-action-inverse);
+  --quickaction-icon: var(--icon-inverse);
+  --scroll-indicator-bg: var(--color-gray-600);
+  --scroll-indicator-active: var(--color-gray-200);
+  --step-progress-step-bg: var(--color-gray-700);
+  --step-progress-step-active: var(--color-green-success);
+  --step-progress-step-completed: var(--color-green-success);
+  --step-progress-text: var(--text-default);
+  --switch-track-bg: var(--color-gray-600);
+  --switch-track-active: var(--color-green-success);
+  --switch-thumb-bg: var(--color-gray-800);
+  --switch-thumb-active: var(--color-white);
+  --table-header-bg: var(--bg-panel-default);
+  --table-header-text: var(--text-default);
+  --table-row-bg: var(--bg-panel-secondary);
+  --table-row-hover: var(--bg-panel-pressed);
+  --tabs-bg: var(--bg-panel-default);
+  --tabs-active-bg: var(--bg-action-default);
+  --tabs-active-text: var(--text-action-inverse);
+  --tabs-inactive-text: var(--text-default);
+  --tabs-indicator: var(--color-green-bright);
+  --tile-bg: var(--bg-panel-default);
+  --tile-text: var(--text-default);
+  --tile-icon: var(--icon-default);
+  --toggle-bg-off: var(--color-gray-600);
+  --toggle-bg-on: var(--color-green-success);
+  --toggle-knob-off: var(--color-gray-800);
+  --toggle-knob-on: var(--color-white);
+  --tray-bg: var(--bg-panel-default);
+  --tray-overlay: var(--bg-overlay-default);
+  --tray-handle-bg: var(--color-gray-600);
+  --uiview-bg: var(--bg-section-default);
+}
+
+/* High Contrast - Light */
+[data-theme="light"][data-contrast="high"],
+.theme-light-high-contrast {
+  --bg-page-default: #E7E7E7;
+  --text-subdued: var(--color-gray-700);
+  --border-default: var(--color-gray-300);
+  --border-panel: var(--color-gray-300);
+}
+
+/* High Contrast - Dark */
+[data-theme="dark"][data-contrast="high"],
+.theme-dark-high-contrast {
+  --bg-page-default: var(--color-black);
+  --bg-section-default: var(--color-black);
+  --bg-section-brand: var(--color-black);
+  --border-default: #3A3A3A;
+  --border-panel: var(--color-gray-600);
+}
+
+/* Bold Text Accessibility */
+[data-a11y-bold-text="true"],
+.a11y-bold-text {
+  --font-weight-regular: var(--font-weight-bold);
+  --type-style-5-weight: var(--font-weight-bold);
+  --type-style-6-weight: var(--font-weight-bold);
+  --type-style-8-weight: var(--font-weight-bold);
+  --type-style-9-weight: var(--font-weight-bold);
+  --type-style-13-weight: var(--font-weight-bold);
+}
+
+[data-a11y-bold-text="true"] .type-style-4,
+[data-a11y-bold-text="true"] .text-headline,
+.a11y-bold-text .type-style-4,
+.a11y-bold-text .text-headline {
+  font-weight: var(--font-weight-bold);
+}
+
+[data-a11y-bold-text="true"] .type-style-5,
+[data-a11y-bold-text="true"] .text-body,
+.a11y-bold-text .type-style-5,
+.a11y-bold-text .text-body {
+  font-weight: var(--font-weight-bold);
+}
+
+[data-a11y-bold-text="true"] .type-style-6,
+[data-a11y-bold-text="true"] .text-callout,
+.a11y-bold-text .type-style-6,
+.a11y-bold-text .text-callout {
+  font-weight: var(--font-weight-bold);
+}
+
+[data-a11y-bold-text="true"] .type-style-7,
+[data-a11y-bold-text="true"] .text-subhead,
+.a11y-bold-text .type-style-7,
+.a11y-bold-text .text-subhead {
+  font-weight: var(--font-weight-extra-bold);
+}
+
+[data-a11y-bold-text="true"] .type-style-8,
+[data-a11y-bold-text="true"] .text-footnote,
+.a11y-bold-text .type-style-8,
+.a11y-bold-text .text-footnote {
+  font-weight: var(--font-weight-bold);
+}
+
+[data-a11y-bold-text="true"] .type-style-9,
+[data-a11y-bold-text="true"] .text-caption-1,
+.a11y-bold-text .type-style-9,
+.a11y-bold-text .text-caption-1 {
+  font-weight: var(--font-weight-bold);
+}
+
+[data-a11y-bold-text="true"] .type-style-10,
+[data-a11y-bold-text="true"] .text-caption-2,
+.a11y-bold-text .type-style-10,
+.a11y-bold-text .text-caption-2 {
+  font-weight: var(--font-weight-extra-bold);
+}
+
+[data-a11y-bold-text="true"] .type-style-13,
+[data-a11y-bold-text="true"] .text-caption-1-regular,
+.a11y-bold-text .type-style-13,
+.a11y-bold-text .text-caption-1-regular {
+  font-weight: var(--font-weight-bold);
+}
+
+/* ===================== UTILITY CLASSES ===================== */
+
+/* Spacing Utilities */
+.m-none { margin: var(--spacing-none); }
+.m-04 { margin: var(--spacing-04); }
+.m-08 { margin: var(--spacing-08); }
+.m-12 { margin: var(--spacing-12); }
+.m-16 { margin: var(--spacing-16); }
+.m-24 { margin: var(--spacing-24); }
+.m-32 { margin: var(--spacing-32); }
+.m-48 { margin: var(--spacing-48); }
+
+.p-none { padding: var(--spacing-none); }
+.p-04 { padding: var(--spacing-04); }
+.p-08 { padding: var(--spacing-08); }
+.p-12 { padding: var(--spacing-12); }
+.p-16 { padding: var(--spacing-16); }
+.p-24 { padding: var(--spacing-24); }
+.p-32 { padding: var(--spacing-32); }
+.p-48 { padding: var(--spacing-48); }
+
+/* Border Radius Utilities */
+.radius-none { border-radius: var(--radius-none); }
+.radius-small { border-radius: var(--radius-small); }
+.radius-default { border-radius: var(--radius-default); }
+.radius-medium { border-radius: var(--radius-medium); }
+.radius-full { border-radius: var(--radius-full); }
+.radius-circle { border-radius: var(--radius-circle); }
+
+/* Text Color Utilities */
+.text-color-default { color: var(--text-default); }
+.text-color-inverse { color: var(--text-inverse); }
+.text-color-subdued { color: var(--text-subdued); }
+.text-color-brand { color: var(--

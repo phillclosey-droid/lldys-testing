@@ -1,0 +1,87 @@
+const Spinner: React.VFC = () => {
+  return (
+    <Spinner>
+      <onColour=False>
+        <_SpinnerSet01>
+          <img src="" />
+          <img src="" />
+          <Icon>
+            <Wrapper(Required)>
+              <Union(Required)>
+                <img src="" />
+              </Union(Required)>
+            </Wrapper(Required)>
+          </Icon>
+        </_SpinnerSet01>
+      </onColour=False>
+      <onColour=True>
+        <_SpinnerSet01>
+          <img src="" />
+          <img src="" />
+          <Icon>
+            <Wrapper(Required)>
+              <Union(Required)>
+                <img src="" />
+              </Union(Required)>
+            </Wrapper(Required)>
+          </Icon>
+        </_SpinnerSet01>
+      </onColour=True>
+    </Spinner>
+  )
+}
+
+const onColour=False = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+`
+const _SpinnerSet01 = styled.div`
+  height: 64px;
+  width: 64px;
+`
+const Icon = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 3px;
+`
+const Wrapper(Required) = styled.div`
+  height: 18px;
+  width: 18px;
+  background-color: #ffffff;
+`
+const img1 = styled.div`
+  height: 18px;
+  width: 18px;
+`
+const onColour=True = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+`
+const _SpinnerSet01 = styled.div`
+  height: 64px;
+  width: 64px;
+`
+const Icon = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 3px;
+`
+const Wrapper(Required) = styled.div`
+  height: 18px;
+  width: 18px;
+  background-color: #ffffff;
+`
+const img2 = styled.div`
+  height: 18px;
+  width: 18px;
+`

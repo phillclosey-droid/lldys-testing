@@ -1,0 +1,144 @@
+<!-- 
+  Switch HTML Component - SELF-CONTAINED - TOKEN LED
+  Based on Figma export: iOS/iPadOS switch variant
+  
+  Dimensions: 51px × 31px track, 27px × 27px handle
+  States: Off (white track, black handle), On (black track, white handle), Disabled
+  
+  Dependencies:
+  - Design tokens (cancara-tokens.css)
+  - Switch.vanilla.css (SELF-CONTAINED)
+  - Switch.vanilla.js (auto-initializes toggle behavior)
+  
+  Usage:
+  1. Import CSS and JS
+  2. Copy HTML structure
+  3. Add checked attribute for "on" state
+  4. Add disabled attribute for disabled state
+  5. Optionally add label with switch-label class
+-->
+
+<!-- BASIC SWITCH - OFF -->
+<label class="switch-container">
+  <input type="checkbox" class="switch-input">
+  <div class="switch">
+    <div class="switch-track">
+      <div class="switch-handle"></div>
+    </div>
+  </div>
+</label>
+
+<!-- BASIC SWITCH - ON -->
+<label class="switch-container">
+  <input type="checkbox" class="switch-input" checked>
+  <div class="switch">
+    <div class="switch-track">
+      <div class="switch-handle"></div>
+    </div>
+  </div>
+</label>
+
+<!-- SWITCH WITH LABEL - OFF -->
+<label class="switch-container">
+  <input type="checkbox" class="switch-input" id="switch-1">
+  <div class="switch">
+    <div class="switch-track">
+      <div class="switch-handle"></div>
+    </div>
+  </div>
+  <span class="switch-label">Enable notifications</span>
+</label>
+
+<!-- SWITCH WITH LABEL - ON -->
+<label class="switch-container">
+  <input type="checkbox" class="switch-input" id="switch-2" checked>
+  <div class="switch">
+    <div class="switch-track">
+      <div class="switch-handle"></div>
+    </div>
+  </div>
+  <span class="switch-label">Enable notifications</span>
+</label>
+
+<!-- DISABLED SWITCH - OFF -->
+<label class="switch-container">
+  <input type="checkbox" class="switch-input" disabled>
+  <div class="switch">
+    <div class="switch-track">
+      <div class="switch-handle"></div>
+    </div>
+  </div>
+  <span class="switch-label">Disabled option</span>
+</label>
+
+<!-- DISABLED SWITCH - ON -->
+<label class="switch-container">
+  <input type="checkbox" class="switch-input" checked disabled>
+  <div class="switch">
+    <div class="switch-track">
+      <div class="switch-handle"></div>
+    </div>
+  </div>
+  <span class="switch-label">Disabled option (on)</span>
+</label>
+
+<!--
+  FIGMA SPECIFICATIONS:
+  
+  iOS/iPadOS Off State (Default):
+  - Track: 51px × 31px, border-radius: 100px, background: #FFFFFF, border: 1px solid #323233
+  - Handle: 27px × 27px, border-radius: 100px, background: #000000
+  
+  iOS/iPadOS On State (Default):
+  - Track: 51px × 31px, border-radius: 100px, background: #000000, border: 1px solid transparent
+  - Handle: 27px × 27px, border-radius: 100px, background: #FFFFFF
+  
+  iOS/iPadOS Disabled State (Off):
+  - Track: 51px × 31px, border-radius: 100px, background: #C9C9C9, border: 1px solid #C9C9C9
+  - Handle: 27px × 27px, border-radius: 100px, background: #767676
+  
+  iOS/iPadOS Disabled State (On):
+  - Track: 51px × 31px, border-radius: 100px, background: #C9C9C9, border: 1px solid transparent
+  - Handle: 27px × 27px, border-radius: 100px, background: #767676
+  
+  TOKEN MAPPINGS:
+  - Track width: 51px (not using --switch-width token which is 44px)
+  - Track height: 31px (not using --switch-height token which is 24px)
+  - Handle size: 27px (not using --switch-thumb-size token which is 20px)
+  - Off track bg: var(--color-white) #FFFFFF
+  - Off track border: var(--color-gray-700) #323233
+  - Off handle: var(--color-black) #000000
+  - On track bg: var(--color-black) #000000
+  - On handle: var(--color-white) #FFFFFF
+  - Disabled track: var(--color-gray-300) #C9C9C9
+  - Disabled handle: var(--color-gray-500) #767676
+  - Border radius: var(--radius-full) 200px (rounds to circle)
+  
+  STRUCTURE:
+  .switch-container (label) - clickable container
+  .switch-input (checkbox) - hidden native input
+  .switch - visual wrapper
+  .switch-track - rounded rectangular background
+  .switch-handle - circular thumb that moves
+  .switch-label (optional) - text label
+  
+  COMPLETE USAGE:
+  
+  <head>
+      <link rel="stylesheet" href="../../../css/cancara-tokens.css">
+      <link rel="stylesheet" href="Switch.vanilla.css">
+  </head>
+  <body data-theme="light">
+      <label class="switch-container">
+          <input type="checkbox" class="switch-input" id="my-switch">
+          <div class="switch">
+              <div class="switch-track">
+                  <div class="switch-handle"></div>
+              </div>
+          </div>
+          <span class="switch-label">Toggle feature</span>
+      </label>
+      
+      <script src="Switch.vanilla.js"></script>
+  </body>
+-->

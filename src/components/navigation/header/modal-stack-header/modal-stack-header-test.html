@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal Stack Header Component Test</title>
+    
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="../../../../css/cancara-tokens.css">
+    
+    <!-- Status Bar Component (NESTED DEPENDENCY) -->
+    <link rel="stylesheet" href="../../status-bar/StatusBar.vanilla.css">
+    
+    <!-- Modal Stack Header Component Styles -->
+    <link rel="stylesheet" href="ModalStackHeader.vanilla.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family-body);
+            background: var(--bg-page-default);
+            color: var(--text-default);
+            transition: background-color 0.3s, color 0.3s;
+            padding: 40px;
+            min-height: 100vh;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .toggle-button {
+            background: var(--bg-action-default);
+            color: var(--text-action-inverse);
+            border: none;
+            border-radius: var(--radius-default);
+            padding: 12px 24px;
+            font-family: var(--font-family-body);
+            font-size: 14px;
+            font-weight: var(--font-weight-bold);
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .toggle-button:hover {
+            background: var(--bg-action-pressed);
+        }
+
+        h1 {
+            margin-bottom: 40px;
+            font-size: 32px;
+        }
+
+        .section {
+            margin-bottom: 60px;
+        }
+
+        .section h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .section p {
+            margin-bottom: 20px;
+            color: var(--text-subdued);
+        }
+
+        .header-demo {
+            max-width: 375px;
+            margin: 0 auto 40px;
+        }
+
+        .header-label {
+            text-align: center;
+            font-size: 14px;
+            color: var(--text-subdued);
+            margin-top: 12px;
+            margin-bottom: 32px;
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <div class="theme-toggle">
+        <button class="toggle-button" onclick="toggleTheme()">
+            <span id="theme-text">Switch to Dark Mode</span>
+        </button>
+    </div>
+
+    <h1>Modal Stack Header Component Test</h1>
+
+    <div class="section">
+        <h2>Layout: Default - With Leading Icon</h2>
+        <p>Default layout with back button and title in center</p>
+        
+        <div class="header-demo">
+            <div class="modal-stack-header layout-default has-leading-icon">
+                <!-- 1. Status Bar (nested component on black background) -->
+                <div class="status-bar status-bar-ios">
+                    <div class="status-bar-time">9:41</div>
+                    <div class="status-bar-levels">
+                        <div class="cellular-signal">
+                            <div class="signal-bar signal-bar-1"></div>
+                            <div class="signal-bar signal-bar-2"></div>
+                            <div class="signal-bar signal-bar-3"></div>
+                            <div class="signal-bar signal-bar-4"></div>
+                            <div class="signal-bar signal-bar-5"></div>
+                        </div>
+                        <div class="wifi-indicator">
+                            <div class="wifi-dot"></div>
+                            <div class="wifi-arc wifi-arc-1"></div>
+                            <div class="wifi-arc wifi-arc-2"></div>
+                            <div class="wifi-arc wifi-arc-3"></div>
+                        </div>
+                        <div class="status-bar-battery">
+                            <div class="battery-border"></div>
+                            <div class="battery-capacity"></div>
+                            <div class="battery-tip"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Card Top - Grey shape, 24px margins, 10px high, top radius -->
+                <div class="modal-stack-header-card-top"></div>
+
+                <!-- 3. Front - White shape, full width, 14px high, top radius -->
+                <div class="modal-stack-header-front"></div>
+
+                <!-- 4. Title Strip - White bar with title and icons -->
+                <div class="modal-stack-header-bar">
+                    <!-- Leading Icon (Back Button) -->
+                    <div class="modal-stack-header-leading">
+                        <div class="hit-target">
+                            <div class="icon-wrapper">
+                                <img src="../../../../../assets/icons/arrows/chevron-left.svg" alt="Back">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Title -->
+                    <div class="modal-stack-header-title-wrapper">
+                        <div class="modal-stack-header-title">Title</div>
+                    </div>
+
+                    <!-- Trailing Icon (Close Button) -->
+                    <div class="modal-stack-header-trailing">
+                        <div class="hit-target">
+                            <div class="icon-wrapper">
+                                <img src="../../../../../assets/icons/navigation/close.svg" alt="Close">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-label">Default - With Back Button</div>
+    </div>
+
+    <div class="section">
+        <h2>Layout: Default - Without Leading Icon</h2>
+        <p>Default layout without back button</p>
+        
+        <div class="header-demo">
+            <div class="modal-stack-header layout-default">
+                <div class="status-bar status-bar-ios">
+                    <div class="status-bar-time">9:41</div>
+                    <div class="status-bar-levels">
+                        <div class="cellular-signal">
+                            <div class="signal-bar signal-bar-1"></div>
+                            <div class="signal-bar signal-bar-2"></div>
+                            <div class="signal-bar signal-bar-3"></div>
+                            <div class="signal-bar signal-bar-4"></div>
+                            <div class="signal-bar signal-bar-5"></div>
+                        </div>
+                        <div class="wifi-indicator">
+                            <div class="wifi-dot"></div>
+                            <div class="wifi-arc wifi-arc-1"></div>
+                            <div class="wifi-arc wifi-arc-2"></div>
+                            <div class="wifi-arc wifi-arc-3"></div>
+                        </div>
+                        <div class="status-bar-battery">
+                            <div class="battery-border"></div>
+                            <div class="battery-capacity"></div>
+                            <div class="battery-tip"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-stack-header-card-top"></div>
+                <div class="modal-stack-header-front"></div>
+
+                <div class="modal-stack-header-bar">
+                    <!-- Empty Leading Space -->
+                    <div class="modal-stack-header-leading">
+                        <div class="empty-space"></div>
+                    </div>
+
+                    <!-- Title -->
+                    <div class="modal-stack-header-title-wrapper">
+                        <div class="modal-stack-header-title">Title</div>
+                    </div>
+
+                    <!-- Trailing Icon (Close Button) -->
+                    <div class="modal-stack-header-trailing">
+                        <div class="hit-target">
+                            <div class="icon-wrapper">
+                                <img src="../../../../../assets/icons/navigation/close.svg" alt="Close">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-label">Default - Without Back Button</div>
+    </div>
+
+    <div class="section">
+        <h2>Layout: Co-Serve - With Leading Icon</h2>
+        <p>Co-serve layout with Lloyds logo in center and back button</p>
+        
+        <div class="header-demo">
+            <div class="modal-stack-header layout-co-serve has-leading-icon">
+                <div class="status-bar status-bar-ios">
+                    <div class="status-bar-time">9:41</div>
+                    <div class="status-bar-levels">
+                        <div class="cellular-signal">
+                            <div class="signal-bar signal-bar-1"></div>
+                            <div class="signal-bar signal-bar-2"></div>
+                            <div class="signal-bar signal-bar-3"></div>
+                            <div class="signal-bar signal-bar-4"></div>
+                            <div class="signal-bar signal-bar-5"></div>
+                        </div>
+                        <div class="wifi-indicator">
+                            <div class="wifi-dot"></div>
+                            <div class="wifi-arc wifi-arc-1"></div>
+                            <div class="wifi-arc wifi-arc-2"></div>
+                            <div class="wifi-arc wifi-arc-3"></div>
+                        </div>
+                        <div class="status-bar-battery">
+                            <div class="battery-border"></div>
+                            <div class="battery-capacity"></div>
+                            <div class="battery-tip"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-stack-header-card-top"></div>
+                <div class="modal-stack-header-front"></div>
+
+                <div class="modal-stack-header-bar">
+                    <div class="modal-stack-header-leading">
+                        <div class="hit-target">
+                            <div class="icon-wrapper">
+                                <img src="../../../../../assets/icons/arrows/chevron-left.svg" alt="Back">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-stack-header-title-wrapper">
+                        <div class="modal-stack-header-logo">
+                            <!-- Lloyds horse logo placeholder -->
+                            <div style="width: 44px; height: 44px; background: var(--color-black); display: flex; align-items: center; justify-content: center; color: white; font-size: 12px;">LOGO</div>
+                        </div>
+                    </div>
+
+                    <div class="modal-stack-header-trailing">
+                        <div class="hit-target">
+                            <div class="icon-wrapper">
+                                <img src="../../../../../assets/icons/navigation/close.svg" alt="Close">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-label">Co-Serve - With Back Button</div>
+    </div>
+
+    <div class="section">
+        <h2>Layout: Co-Serve - Without Leading Icon</h2>
+        <p>Co-serve layout with Lloyds logo in center, no back button</p>
+        
+        <div class="header-demo">
+            <div class="modal-stack-header layout-co-serve">
+                <div class="status-bar status-bar-ios">
+                    <div class="status-bar-time">9:41</div>
+                    <div class="status-bar-levels">
+                        <div class="cellular-signal">
+                            <div class="signal-bar signal-bar-1"></div>
+                            <div class="signal-bar signal-bar-2"></div>
+                            <div class="signal-bar signal-bar-3"></div>
+                            <div class="signal-bar signal-bar-4"></div>
+                            <div class="signal-bar signal-bar-5"></div>
+                        </div>
+                        <div class="wifi-indicator">
+                            <div class="wifi-dot"></div>
+                            <div class="wifi-arc wifi-arc-1"></div>
+                            <div class="wifi-arc wifi-arc-2"></div>
+                            <div class="wifi-arc wifi-arc-3"></div>
+                        </div>
+                        <div class="status-bar-battery">
+                            <div class="battery-border"></div>
+                            <div class="battery-capacity"></div>
+                            <div class="battery-tip"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-stack-header-card-top"></div>
+                <div class="modal-stack-header-front"></div>
+
+                <div class="modal-stack-header-bar">
+                    <!-- Empty Leading Space -->
+                    <div class="modal-stack-header-leading">
+                        <div class="empty-space"></div>
+                    </div>
+
+                    <div class="modal-stack-header-title-wrapper">
+                        <div class="modal-stack-header-logo">
+                            <div style="width: 44px; height: 44px; background: var(--color-black); display: flex; align-items: center; justify-content: center; color: white; font-size: 12px;">LOGO</div>
+                        </div>
+                    </div>
+
+                    <div class="modal-stack-header-trailing">
+                        <div class="hit-target">
+                            <div class="icon-wrapper">
+                                <img src="../../../../../assets/icons/navigation/close.svg" alt="Close">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-label">Co-Serve - Without Back Button</div>
+    </div>
+
+    <!-- ModalStackHeader Component JS (not needed for hardcoded paths but included for future use) -->
+    <script src="ModalStackHeader.vanilla.js"></script>
+
+    <script>
+        function detectSystemTheme() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-text').textContent = 'Switch to Light Mode';
+            } else {
+                document.body.setAttribute('data-theme', 'light');
+                document.getElementById('theme-text').textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', detectSystemTheme);
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const themeText = document.getElementById('theme-text');
+            const currentTheme = body.getAttribute('data-theme');
+            
+            if (currentTheme === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                themeText.textContent = 'Switch to Light Mode';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeText.textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', function() {
+            detectSystemTheme();
+        });
+    </script>
+</body>
+</html>

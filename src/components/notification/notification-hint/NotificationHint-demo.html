@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification Hint Component - Demo</title>
+    
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="../../../css/cancara-tokens.css">
+    
+    <!-- Notification Hint Component -->
+    <link rel="stylesheet" href="NotificationHint.vanilla.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family-body);
+            background: var(--bg-page-default);
+            color: var(--text-default);
+            transition: background-color 0.3s, color 0.3s;
+            padding: 40px;
+            min-height: 100vh;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 2000;
+        }
+
+        .toggle-button {
+            background: var(--bg-action-default);
+            color: var(--text-action-inverse);
+            border: none;
+            border-radius: var(--radius-default);
+            padding: 12px 24px;
+            font-family: var(--font-family-body);
+            font-size: 14px;
+            font-weight: var(--font-weight-bold);
+            cursor: pointer;
+        }
+
+        h1 {
+            margin-bottom: 40px;
+            font-size: 32px;
+        }
+        
+        .demo-section {
+            margin-bottom: 60px;
+        }
+        
+        .demo-section-title {
+            margin-bottom: 12px;
+            font-size: 20px;
+        }
+
+        .demo-section p {
+            margin-bottom: 24px;
+            color: var(--text-subdued);
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <div class="theme-toggle">
+        <button class="toggle-button" onclick="toggleTheme()">
+            <span id="theme-text">Switch to Dark Mode</span>
+        </button>
+    </div>
+
+    <h1>Notification Hint Component - All Variants</h1>
+    
+    <!-- DEFAULT TYPE -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">Default Type</h2>
+        <p>White background with clock icon and hint text</p>
+        
+        <div class="notification-hint type-default">
+            <div class="notification-hint-content">
+                <div class="notification-hint-icon-container">
+                    <div class="notification-hint-icon">
+                        <img src="../../../../assets/icons/date-and-time/clock.svg" alt="">
+                    </div>
+                </div>
+                <div class="notification-hint-text">This payment should be received within two hours.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECONDARY TYPE -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">Secondary Type</h2>
+        <p>Gray background with clock icon and hint text</p>
+        
+        <div class="notification-hint type-secondary">
+            <div class="notification-hint-content">
+                <div class="notification-hint-icon-container">
+                    <div class="notification-hint-icon">
+                        <img src="../../../../assets/icons/date-and-time/clock.svg" alt="">
+                    </div>
+                </div>
+                <div class="notification-hint-text">This payment should be received within two hours.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DEFAULT - LONGER TEXT -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">Default - Longer Text</h2>
+        <p>White background with longer hint message</p>
+        
+        <div class="notification-hint type-default">
+            <div class="notification-hint-content">
+                <div class="notification-hint-icon-container">
+                    <div class="notification-hint-icon">
+                        <img src="../../../../assets/icons/date-and-time/clock.svg" alt="">
+                    </div>
+                </div>
+                <div class="notification-hint-text">Your transfer may take up to 3-5 business days to process. You'll receive a notification once it's complete.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECONDARY - SHORTER TEXT -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">Secondary - Short Text</h2>
+        <p>Gray background with short hint</p>
+        
+        <div class="notification-hint type-secondary">
+            <div class="notification-hint-content">
+                <div class="notification-hint-icon-container">
+                    <div class="notification-hint-icon">
+                        <img src="../../../../assets/icons/date-and-time/clock.svg" alt="">
+                    </div>
+                </div>
+                <div class="notification-hint-text">Processing may take a few minutes.</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="NotificationHint.vanilla.js"></script>
+
+    <script>
+        function detectSystemTheme() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-text').textContent = 'Switch to Light Mode';
+            } else {
+                document.body.setAttribute('data-theme', 'light');
+                document.getElementById('theme-text').textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', detectSystemTheme);
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const themeText = document.getElementById('theme-text');
+            const currentTheme = body.getAttribute('data-theme');
+            
+            if (currentTheme === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                themeText.textContent = 'Switch to Light Mode';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeText.textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', function() {
+            detectSystemTheme();
+        });
+    </script>
+</body>
+</html>

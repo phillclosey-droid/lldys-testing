@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Illustration Component Test</title>
+    
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="../../../../css/cancara-tokens.css">
+    
+    <!-- Illustration Component Styles -->
+    <link rel="stylesheet" href="Illustration.vanilla.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family-body);
+            background: var(--bg-page-default);
+            color: var(--text-default);
+            transition: background-color 0.3s, color 0.3s;
+            padding: 40px;
+            min-height: 100vh;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .toggle-button {
+            background: var(--bg-action-default);
+            color: var(--text-action-inverse);
+            border: none;
+            border-radius: var(--radius-default);
+            padding: 12px 24px;
+            font-family: var(--font-family-body);
+            font-size: 14px;
+            font-weight: var(--font-weight-bold);
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .toggle-button:hover {
+            background: var(--bg-action-pressed);
+        }
+
+        h1 {
+            margin-bottom: 40px;
+            font-size: 32px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .illustration-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .illustration-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            padding: 20px;
+            background: var(--bg-panel-default);
+            border-radius: var(--radius-default);
+        }
+
+        .illustration-label {
+            font-size: 14px;
+            color: var(--text-subdued);
+            text-align: center;
+        }
+
+        .code-block {
+            background: var(--bg-panel-secondary);
+            padding: 20px;
+            border-radius: var(--radius-default);
+            overflow-x: auto;
+            margin-top: 10px;
+        }
+
+        .code-block code {
+            font-family: monospace;
+            font-size: 13px;
+            color: var(--text-default);
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <div class="theme-toggle">
+        <button class="toggle-button" onclick="toggleTheme()">
+            <span id="theme-text">Switch to Dark Mode</span>
+        </button>
+    </div>
+
+    <h1>Illustration Component Test</h1>
+
+    <div class="section">
+        <h2>Default Illustration (Mint Green)</h2>
+        <div class="illustration-grid">
+            <div class="illustration-item">
+                <div class="illustration ill-default">
+                    <img src="../../../../../assets/illustrations/default/Bank_Lloyds_-_V2.svg" alt="">
+                </div>
+                <div class="illustration-label">Mint Green Background</div>
+            </div>
+        </div>
+        <div class="code-block">
+            <code>&lt;div class="illustration ill-default"&gt;<br>
+    &lt;img src="path/to/Savings_Lloyds_-_V2.svg" alt=""&gt;<br>
+&lt;/div&gt;</code>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Token-Led Variants (Static Colors)</h2>
+        <div class="illustration-grid">
+            <div class="illustration-item">
+                <div class="illustration ill-default-alt-01">
+                    <img src="../../../../../assets/illustrations/default-alt-01/Bank_Lloyds_-_V2.svg" alt="">
+                </div>
+                <div class="illustration-label">ill-default-alt-01<br>(Token: --color-white)<br>Static White</div>
+            </div>
+            <div class="illustration-item">
+                <div class="illustration ill-default-alt-02">
+                    <img src="../../../../../assets/illustrations/default-alt-02/Agriculture_Lloyds_-_V2.svg" alt="">
+                </div>
+                <div class="illustration-label">ill-default-alt-02<br>(Token: --color-gray-100)<br>Static Gray-100</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Primary Variants</h2>
+        <div class="illustration-grid">
+            <div class="illustration-item">
+                <div class="illustration ill-primary">
+                    <img src="../../../../../assets/illustrations/primary/Cards_Lloyds_-_V2.svg" alt="">
+                </div>
+                <div class="illustration-label">ill-primary<br>(Green)</div>
+            </div>
+            <div class="illustration-item">
+                <div class="illustration ill-primary-alt-01">
+                    <img src="../../../../../assets/illustrations/primary-alt-01/Home_Lloyds_-_V2.svg" alt="">
+                </div>
+                <div class="illustration-label">ill-primary-alt-01<br>(Dark Green)</div>
+            </div>
+            <div class="illustration-item">
+                <div class="illustration ill-primary-alt-02">
+                    <img src="../../../../../assets/illustrations/primary-alt-02/Car_Lloyds_-_V2.svg" alt="">
+                </div>
+                <div class="illustration-label">ill-primary-alt-02<br>(Darker Green)</div>
+            </div>
+            <div class="illustration-item">
+                <div class="illustration ill-primary-alt-03">
+                    <img src="../../../../../assets/illustrations/primary-alt-03/Gift_Lloyds_-_V2.svg" alt="">
+                </div>
+                <div class="illustration-label">ill-primary-alt-03<br>(Light Green)</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Secondary Variants</h2>
+        <div class="illustration-grid">
+            <div class="illustration-item">
+                <div class="illustration ill-secondary-alt-01">
+                    <img src="../../../../../assets/illustrations/secondary-alt-01/Heart_Lloyds_-_V2.svg" alt="">
+                </div>
+                <div class="illustration-label">ill-secondary-alt-01<br>(Purple)</div>
+            </div>
+            <div class="illustration-item">
+                <div class="illustration ill-secondary-alt-02">
+                    <img src="../../../../../assets/illustrations/secondary-alt-02/Celebrations_Lloyds_-_V2.svg" alt="">
+                </div>
+                <div class="illustration-label">ill-secondary-alt-02<br>(Pink)</div>
+            </div>
+            <div class="illustration-item">
+                <div class="illustration ill-secondary-alt-03">
+                    <img src="../../../../../assets/illustrations/secondary-alt-03/Compass_Lloyds_-_V2.svg" alt="">
+                </div>
+                <div class="illustration-label">ill-secondary-alt-03<br>(Cyan)</div>
+            </div>
+            <div class="illustration-item">
+                <div class="illustration ill-secondary-alt-04">
+                    <img src="../../../../../assets/illustrations/secondary-alt-04/Clock_Lloyds_-_V2.svg" alt="">
+                </div>
+                <div class="illustration-label">ill-secondary-alt-04<br>(Orange)</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function detectSystemTheme() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-text').textContent = 'Switch to Light Mode';
+            } else {
+                document.body.setAttribute('data-theme', 'light');
+                document.getElementById('theme-text').textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', detectSystemTheme);
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const themeText = document.getElementById('theme-text');
+            const currentTheme = body.getAttribute('data-theme');
+            
+            if (currentTheme === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                themeText.textContent = 'Switch to Light Mode';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeText.textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', function() {
+            detectSystemTheme();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+/* Notification Hint Vanilla CSS - SELF-CONTAINED - TOKEN LED */
+
+/* ========== NOTIFICATION HINT CONTAINER ========== */
+.notification-hint {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 var(--spacing-16);
+}
+
+/* ========== CONTENT ========== */
+.notification-hint-content {
+  border-radius: var(--radius-default);
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: var(--spacing-12);
+  gap: var(--spacing-12);
+  width: 100%;
+  max-width: 100%; /* Changed from 343px to 100% */
+}
+
+/* ========== TYPE: DEFAULT ========== */
+.notification-hint.type-default .notification-hint-content {
+  background-color: var(--bg-panel-default);
+}
+
+/* ========== TYPE: SECONDARY ========== */
+.notification-hint.type-secondary .notification-hint-content {
+  background-color: var(--bg-panel-secondary);
+}
+
+/* ========== ICON ========== */
+.notification-hint-icon-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 3px;
+  flex-shrink: 0;
+}
+
+.notification-hint-icon {
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.notification-hint-icon img {
+  width: 18px;
+  height: 18px;
+  filter: brightness(0) saturate(100%);
+}
+
+[data-theme="dark"] .notification-hint-icon img {
+  filter: brightness(0) saturate(100%) invert(1);
+}
+
+/* ========== TEXT ========== */
+.notification-hint-text {
+  font-family: var(--font-family-body);
+  font-size: 14px;
+  font-weight: var(--font-weight-regular);
+  line-height: 20px;
+  color: var(--text-default);
+  flex: 1;
+}

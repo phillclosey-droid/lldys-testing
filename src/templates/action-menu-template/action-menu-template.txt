@@ -1,0 +1,180 @@
+const ActionMenuTemplate: React.VFC = () => {
+  return (
+    <ActionMenuTemplate>
+      <_Swapmeout>
+        <Text>Content slot</Text>
+        <Text>No need to detach. Create the content you want to swap as an in-page component and swap it from the instance menu.</Text>
+      </_Swapmeout>
+      <Overlay />
+      <AppleTransparentGap />
+      <Header>
+        <Text>Title</Text>
+      </Header>
+      <Container />
+      <Container>
+        <ActionButton>
+          <HStack>
+            <Text>Button</Text>
+            <Righticoncontainer>
+              <Icon>
+                <Wrapper(Required)>
+                  <Union(Required)>
+                    <img src="" />
+                  </Union(Required)>
+                </Wrapper(Required)>
+              </Icon>
+            </Righticoncontainer>
+          </HStack>
+        </ActionButton>
+        <Homeindicator>
+          <_Handle>
+            <Handle />
+          </_Handle>
+        </Homeindicator>
+      </Container>
+    </ActionMenuTemplate>
+  )
+}
+
+const ActionMenuTemplate = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  background-color: #f1f1f1;
+`
+const _Swapmeout = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  gap: 6px;
+  background-color: #f1f1f1;
+  border: 1px solid #adadad;
+`
+const text1 = styled.div`
+  text-align: center;
+  vertical-align: top;
+  font-size: 23px;
+  font-family: GT Ultra Median;
+  line-height: 26px;
+  color: #767676;
+`
+const text2 = styled.div`
+  text-align: center;
+  vertical-align: top;
+  font-size: 15px;
+  font-family: GT Ultra;
+  line-height: 20px;
+  color: #767676;
+`
+const Overlay = styled.div`
+  height: 812px;
+  width: 375px;
+  background-color: rgba(0, 0, 0, 0.6499999761581421);
+`
+const AppleTransparentGap = styled.div`
+  height: 82px;
+  width: 375px;
+`
+const Header = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 16px;
+  background-color: #f1f1f1;
+`
+const text3 = styled.div`
+  text-align: center;
+  vertical-align: top;
+  font-size: 23px;
+  font-family: GT Ultra Median;
+  line-height: 26%;
+  color: #000000;
+`
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 16px 0px 0px 0px;
+  gap: 16px;
+  background-color: #ffffff;
+`
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 16px 0px 0px 0px;
+  gap: 16px;
+  background-color: #ffffff;
+`
+const ActionButton = styled.div`
+  border-radius: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 16px;
+`
+const HStack = styled.div`
+  border-radius: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 48px;
+  background-color: #000000;
+`
+const text4 = styled.div`
+  text-align: center;
+  vertical-align: top;
+  font-size: 17px;
+  font-family: GT Ultra;
+  line-height: 22px;
+  color: #ffffff;
+`
+const Righticoncontainer = styled.div`
+  height: 26px;
+  width: 24px;
+`
+const Icon = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 3px;
+`
+const Wrapper(Required) = styled.div`
+  height: 18px;
+  width: 18px;
+  background-color: #ffffff;
+`
+const img5 = styled.div`
+  height: 18px;
+  width: 18px;
+`
+const Homeindicator = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 0px;
+`
+const _Handle = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #ffffff;
+`
+const Handle = styled.div`
+  transform: rotate(-180deg);
+  border-radius: 100px;
+  height: 5px;
+  width: 139px;
+  background-color: #000000;
+`

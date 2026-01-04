@@ -1,0 +1,176 @@
+# Radio Button Group Component
+
+A radio button group component that displays multiple radio button options with a shared label. This component nests the RadioButton component for consistent styling and behavior.
+
+## Files
+
+- `RadioButtonGroup.vanilla.css` - Self-contained CSS with token-led styling
+- `RadioButtonGroup.vanilla.js` - Interactive functionality for radio button groups
+- `RadioButtonGroup-demo.html` - Demo page showing all variants
+
+## Dependencies
+
+This component requires the nested RadioButton component:
+- `../radio-button/RadioButton.vanilla.css`
+- `../radio-button/RadioButton.vanilla.js`
+
+## Component Structure
+
+```html
+<div class="radio-button-group" data-group-name="unique-group-name">
+    <div class="radio-button-group-label">Label</div>
+    
+    <div class="radio-button-item">
+        <div class="radio-button-item-radio">
+            <div class="radio-button">
+                <input type="radio" name="unique-group-name" id="rb-1" value="option1">
+                <div class="radio-button-circle">
+                    <div class="radio-button-dot"></div>
+                </div>
+            </div>
+        </div>
+        <div class="radio-button-item-text">
+            <label for="rb-1" class="radio-button-item-label">Item</label>
+        </div>
+    </div>
+    
+    <!-- Additional radio button items... -->
+</div>
+```
+
+## CSS Classes
+
+### Group Container
+- `.radio-button-group` - Main container for the radio button group
+
+### Group Label
+- `.radio-button-group-label` - Group label (type-style-6, 15px)
+
+### Radio Button Item
+- `.radio-button-item` - Container for each radio button + label pair
+- `.radio-button-item.is-disabled` - Disabled state for the item
+- `.radio-button-item-radio` - Radio button container with top padding
+- `.radio-button-item-text` - Text label container with top padding
+- `.radio-button-item-label` - Label text (type-style-5, 17px)
+
+### Nested Radio Button
+- Uses all classes from the RadioButton component
+- `.radio-button` - Radio button container
+- `.radio-button-circle` - Visual circle (32px × 32px)
+- `.radio-button-dot` - Inner dot (12px × 12px)
+- `.radio-button.selected` - Selected state
+- `.radio-button.disabled` - Disabled state
+
+## JavaScript Events
+
+The component dispatches a custom `radio-button-group-change` event when any radio button changes:
+
+```javascript
+element.addEventListener('radio-button-group-change', function(e) {
+    console.log(e.detail.radioId); // ID of the radio button
+    console.log(e.detail.value); // Value of selected radio
+    console.log(e.detail.groupName); // Name of the radio group
+});
+```
+
+## Design Tokens Used
+
+### Typography
+- `--type-style-6-family` - Group label font (GT Ultra)
+- `--type-style-6-size` - Group label size (15px)
+- `--type-style-6-weight` - Group label weight
+- `--type-style-6-line-height` - Group label line height (20px)
+- `--type-style-5-family` - Item label font (GT Ultra)
+- `--type-style-5-size` - Item label size (17px)
+- `--type-style-5-weight` - Item label weight (400)
+- `--type-style-5-line-height` - Item label line height (22px)
+
+### Colors
+- `--text-default` - Label text color
+- `--bg-input-default` - Radio button background (white)
+- `--border-default` - Radio button border (#323233)
+- `--color-black` - Selected border
+- `--input-radiobutton-dot` - Inner dot color (black, green in dark mode)
+- `--bg-input-disabled` - Disabled background (#F1F1F1)
+- `--color-gray-300` - Disabled border (#C9C9C9)
+
+### Spacing
+- `--spacing-08` - Gap between items and radio padding (8px)
+- `--spacing-12` - Gap between radio and text, text padding (12px)
+- `--spacing-16` - Horizontal padding (16px)
+
+### Borders
+- `--radius-circle` - Radio button border radius (9999px, fully round)
+- `--input-radiobutton-border-width` - Radio button border width (1px)
+
+## Dimensions
+
+- **Radio button**: 32px × 32px (circle)
+- **Inner dot**: 12px × 12px (circle)
+- **Gap between radio and text**: 12px
+- **Gap between items**: 8px
+- **Radio padding top**: 8px
+- **Text padding top**: 12px
+
+## Behavior
+
+- Label clicks select the associated radio button
+- Only one radio button can be selected per group (standard radio behavior)
+- Disabled radio buttons cannot be selected
+- Inner dot appears/disappears with smooth transitions
+- Custom events dispatched on selection changes
+- Proper label/input associations for accessibility
+
+## Usage Examples
+
+### Basic Group with 3 Items
+```html
+<div class="radio-button-group" data-group-name="payment-method">
+    <div class="radio-button-group-label">Payment Method</div>
+    
+    <div class="radio-button-item">
+        <!-- Radio button component structure -->
+    </div>
+    <div class="radio-button-item">
+        <!-- Radio button component structure -->
+    </div>
+    <div class="radio-button-item">
+        <!-- Radio button component structure -->
+    </div>
+</div>
+```
+
+### Disabled Group
+```html
+<div class="radio-button-group" data-group-name="disabled-group">
+    <div class="radio-button-group-label">Disabled options</div>
+    
+    <div class="radio-button-item is-disabled">
+        <div class="radio-button-item-radio">
+            <div class="radio-button disabled">
+                <input type="radio" name="disabled-group" id="rb-1" disabled>
+                <!-- Rest of radio button structure -->
+            </div>
+        </div>
+        <div class="radio-button-item-text">
+            <label for="rb-1" class="radio-button-item-label">Item</label>
+        </div>
+    </div>
+</div>
+```
+
+## Dark Mode Support
+
+All colors automatically adapt to dark mode through the nested RadioButton component:
+- Radio button borders adjust for visibility
+- Inner dot becomes green in dark mode
+- Background colors maintain proper contrast
+- Label text follows theme text colors
+
+## Accessibility
+
+- Proper label/input associations with `for` and `id` attributes
+- Keyboard navigation supported through native radio button behavior
+- Disabled states properly indicated
+- All radio buttons in a group share the same `name` attribute
+- Only one selection possible per group (standard radio button behavior)

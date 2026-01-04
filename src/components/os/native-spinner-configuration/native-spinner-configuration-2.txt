@@ -1,0 +1,45 @@
+const NativeSpinnerConfiguration: React.VFC = () => {
+  return (
+    <NativeSpinnerConfiguration>
+      <Configuration>
+        <_SpinnerSet03>
+          <Spinnergroup>
+            <img src="" />
+            <img src="" />
+            <img src="" />
+            <img src="" />
+            <img src="" />
+            <img src="" />
+            <img src="" />
+            <img src="" />
+            <img src="" />
+            <img src="" />
+          </Spinnergroup>
+        </_SpinnerSet03>
+      </Configuration>
+    </NativeSpinnerConfiguration>
+  )
+}
+
+const NativeSpinnerConfiguration = styled.div`
+  height: 24px;
+  width: 24px;
+  background-color: #ffffff;
+`
+const Configuration = styled.div`
+  height: 24px;
+  width: 24px;
+`
+const _SpinnerSet03 = styled.div`
+  height: 24px;
+  width: 24px;
+`
+const Spinnergroup = styled.div`
+  height: 24px;
+  width: 24px;
+`
+const img1 = styled.div`
+  opacity: 0.15000000596046448;
+  height: 12px;
+  width: 7px;
+`

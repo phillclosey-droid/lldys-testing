@@ -1,0 +1,190 @@
+<!-- 
+  Tile HTML Component - SELF-CONTAINED - TOKEN LED
+  
+  An interactive tile/card component with pictograms, icons, and text.
+  
+  Two layouts: horizontal, vertical
+  Three presets: link-only, link-description, heading-description
+  
+  Nested Component (self-contained in CSS):
+  - Pictogram
+  
+  Dependencies:
+  - Design tokens (cancara-tokens.css)
+  - Tile.vanilla.css (SELF-CONTAINED - includes pictogram)
+  - Tile.vanilla.js (auto-initializes images)
+  
+  Usage:
+  1. Import CSS and JS
+  2. Copy HTML structure
+  3. Set data attributes for images
+  4. Choose layout and preset classes
+-->
+
+<!-- PRESET: link-only (horizontal layout with pictogram) -->
+<div class="tile tile-horizontal">
+    <!-- Pictogram (Nested - Self-contained) -->
+    <div class="pictogram pict-default">
+        <img data-pictogram="Piggy_Bank_Lloyds_-_V2" alt="">
+    </div>
+    <div class="tile-vstack">
+        <div class="tile-text-link">Open a savings account</div>
+    </div>
+    <div class="tile-icon tile-icon-12">
+        <img data-chevron alt="">
+    </div>
+</div>
+
+<!-- PRESET: link-only (without chevron) -->
+<div class="tile tile-horizontal">
+    <div class="pictogram pict-primary">
+        <img data-pictogram="Cards_Lloyds_-_V2" alt="">
+    </div>
+    <div class="tile-vstack">
+        <div class="tile-text-link">Apply for a credit card</div>
+    </div>
+</div>
+
+<!-- PRESET: link-description (horizontal layout) -->
+<div class="tile tile-horizontal">
+    <div class="pictogram pict-secondary-alt-04">
+        <img data-pictogram="Calendar_Lloyds_-_V2" alt="">
+    </div>
+    <div class="tile-vstack">
+        <div class="tile-text-description">Never miss a payment again</div>
+        <div class="tile-text-link">Set up direct debit</div>
+    </div>
+    <div class="tile-icon tile-icon-12">
+        <img data-chevron alt="">
+    </div>
+</div>
+
+<!-- PRESET: heading-description (horizontal layout with icon) -->
+<div class="tile tile-horizontal">
+    <div class="tile-vstack">
+        <div class="tile-hstack">
+            <div class="tile-icon tile-icon-18">
+                <img data-icon="current-account" data-icon-category="finance" alt="">
+            </div>
+            <div class="tile-text-heading">Current Account</div>
+        </div>
+        <div class="tile-text-subtext">£2,547.89 available</div>
+    </div>
+    <div class="tile-icon tile-icon-12">
+        <img data-chevron alt="">
+    </div>
+</div>
+
+<!-- PRESET: heading-description (with 24px icon) -->
+<div class="tile tile-horizontal">
+    <div class="tile-vstack">
+        <div class="tile-hstack">
+            <div class="tile-icon tile-icon-24">
+                <img data-icon="person" data-icon-category="people" alt="">
+            </div>
+            <div class="tile-text-heading">Profile Settings</div>
+        </div>
+        <div class="tile-text-subtext">Update your personal information</div>
+    </div>
+    <div class="tile-icon tile-icon-12">
+        <img data-chevron alt="">
+    </div>
+</div>
+
+<!-- VERTICAL LAYOUT: link-only -->
+<div class="tile tile-vertical">
+    <div class="pictogram pict-primary-alt-01">
+        <img data-pictogram="Piggy_Bank_Lloyds_-_V2" alt="">
+    </div>
+    <div class="tile-vstack">
+        <div class="tile-text-link">Savings Account</div>
+    </div>
+    <div class="tile-icon tile-icon-12">
+        <img data-chevron alt="">
+    </div>
+</div>
+
+<!-- VERTICAL LAYOUT: link-description -->
+<div class="tile tile-vertical">
+    <div class="pictogram pict-secondary-alt-02">
+        <img data-pictogram="Heart_Lloyds_-_V2" alt="">
+    </div>
+    <div class="tile-vstack">
+        <div class="tile-text-description">Protect what matters most</div>
+        <div class="tile-text-link">Get Insurance</div>
+    </div>
+    <div class="tile-icon tile-icon-12">
+        <img data-chevron alt="">
+    </div>
+</div>
+
+<!--
+  LAYOUTS:
+  - tile-horizontal: Row layout (default)
+  - tile-vertical: Column layout
+  
+  PRESETS:
+  
+  1. link-only:
+     - Pictogram (optional)
+     - Link text
+     - Chevron (optional)
+  
+  2. link-description:
+     - Pictogram (optional)
+     - Description text (subdued)
+     - Link text
+     - Chevron (optional)
+  
+  3. heading-description:
+     - Icon (18px or 24px)
+     - Heading text
+     - Subtext (subdued)
+     - Chevron (optional)
+  
+  PICTOGRAM VARIANTS:
+  - pict-default: Mint green
+  - pict-primary: Green
+  - pict-primary-alt-01: Dark green
+  - pict-primary-alt-02: Darker green
+  - pict-primary-alt-03: Light green
+  - pict-secondary-alt-01: Purple
+  - pict-secondary-alt-02: Pink
+  - pict-secondary-alt-03: Cyan
+  - pict-secondary-alt-04: Orange
+  - pict-default-alt-01: Transparent with dashed border
+  - pict-default-alt-02: Gray
+  
+  ICON SIZES:
+  - tile-icon-12: 12px (chevrons)
+  - tile-icon-18: 18px (small icons)
+  - tile-icon-24: 24px (large icons)
+  
+  DATA ATTRIBUTES:
+  - data-pictogram: Pictogram filename without .svg
+  - data-icon: Icon filename
+  - data-icon-category: Icon folder (navigation, people, finance, etc.)
+  - data-chevron: Auto-populates chevron-right (no value needed)
+  
+  COMPLETE USAGE:
+  
+  <head>
+      <link rel="stylesheet" href="path/to/cancara-tokens.css">
+      <link rel="stylesheet" href="path/to/Tile.vanilla.css">
+  </head>
+  <body>
+      <div class="tile tile-horizontal">
+          <div class="pictogram pict-default">
+              <img data-pictogram="Piggy_Bank_Lloyds_-_V2" alt="">
+          </div>
+          <div class="tile-vstack">
+              <div class="tile-text-link">Open savings account</div>
+          </div>
+          <div class="tile-icon tile-icon-12">
+              <img data-chevron alt="">
+          </div>
+      </div>
+      
+      <script src="path/to/Tile.vanilla.js"></script>
+  </body>
+-->

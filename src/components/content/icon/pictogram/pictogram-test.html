@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pictogram Component Test</title>
+    
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="../../../../css/cancara-tokens.css">
+    
+    <!-- Pictogram Component Styles -->
+    <link rel="stylesheet" href="Pictogram.vanilla.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family-body);
+            background: var(--bg-page-default);
+            color: var(--text-default);
+            transition: background-color 0.3s, color 0.3s;
+            padding: 40px;
+            min-height: 100vh;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .toggle-button {
+            background: var(--bg-action-default);
+            color: var(--text-action-inverse);
+            border: none;
+            border-radius: var(--radius-default);
+            padding: 12px 24px;
+            font-family: var(--font-family-body);
+            font-size: 14px;
+            font-weight: var(--font-weight-bold);
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .toggle-button:hover {
+            background: var(--bg-action-pressed);
+        }
+
+        h1 {
+            margin-bottom: 40px;
+            font-size: 32px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .pictogram-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .pictogram-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            padding: 20px;
+            background: var(--bg-panel-default);
+            border-radius: var(--radius-default);
+        }
+
+        .pictogram-label {
+            font-size: 14px;
+            color: var(--text-subdued);
+            text-align: center;
+        }
+
+        .code-block {
+            background: var(--bg-panel-secondary);
+            padding: 20px;
+            border-radius: var(--radius-default);
+            overflow-x: auto;
+            margin-top: 10px;
+        }
+
+        .code-block code {
+            font-family: monospace;
+            font-size: 13px;
+            color: var(--text-default);
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <div class="theme-toggle">
+        <button class="toggle-button" onclick="toggleTheme()">
+            <span id="theme-text">Switch to Dark Mode</span>
+        </button>
+    </div>
+
+    <h1>Pictogram Component Test</h1>
+
+    <div class="section">
+        <h2>Default Pictogram</h2>
+        <div class="pictogram-grid">
+            <div class="pictogram-item">
+                <div class="pictogram pict-default">
+                    <img src="../../../../../assets/pictograms/Piggy_Bank_Lloyds_-_V2.svg" alt="">
+                </div>
+                <div class="pictogram-label">Mint Green Background</div>
+            </div>
+        </div>
+        <div class="code-block">
+            <code>&lt;div class="pictogram pict-default"&gt;<br>
+    &lt;img src="path/to/Piggy_Bank_Lloyds_-_V2.svg" alt=""&gt;<br>
+&lt;/div&gt;</code>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Primary Variants</h2>
+        <div class="pictogram-grid">
+            <div class="pictogram-item">
+                <div class="pictogram pict-primary">
+                    <img src="../../../../../assets/pictograms/Bank_Lloyds_-_V2.svg" alt="">
+                </div>
+                <div class="pictogram-label">Primary Green</div>
+            </div>
+            <div class="pictogram-item">
+                <div class="pictogram pict-primary-alt-01">
+                    <img src="../../../../../assets/pictograms/Shield_Lloyds_-_V2.svg" alt="">
+                </div>
+                <div class="pictogram-label">Primary Dark</div>
+            </div>
+            <div class="pictogram-item">
+                <div class="pictogram pict-primary-alt-02">
+                    <img src="../../../../../assets/pictograms/Lock_Lloyds_-_V2.svg" alt="">
+                </div>
+                <div class="pictogram-label">Primary Darker</div>
+            </div>
+            <div class="pictogram-item">
+                <div class="pictogram pict-primary-alt-03">
+                    <img src="../../../../../assets/pictograms/Home_Lloyds_-_V2.svg" alt="">
+                </div>
+                <div class="pictogram-label">Primary Light</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Secondary Variants</h2>
+        <div class="pictogram-grid">
+            <div class="pictogram-item">
+                <div class="pictogram pict-secondary-alt-01">
+                    <img src="../../../../../assets/pictograms/Wallet_Lloyds_-_V2.svg" alt="">
+                </div>
+                <div class="pictogram-label">Purple</div>
+            </div>
+            <div class="pictogram-item">
+                <div class="pictogram pict-secondary-alt-02">
+                    <img src="../../../../../assets/pictograms/Notifications_Lloyds_-_V2.svg" alt="">
+                </div>
+                <div class="pictogram-label">Pink</div>
+            </div>
+            <div class="pictogram-item">
+                <div class="pictogram pict-secondary-alt-03">
+                    <img src="../../../../../assets/pictograms/Chat_Lloyds_-_V2.svg" alt="">
+                </div>
+                <div class="pictogram-label">Cyan</div>
+            </div>
+            <div class="pictogram-item">
+                <div class="pictogram pict-secondary-alt-04">
+                    <img src="../../../../../assets/pictograms/Pay_Lloyds_-_V2.svg" alt="">
+                </div>
+                <div class="pictogram-label">Orange</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Default Alt Variants</h2>
+        <div class="pictogram-grid">
+            <div class="pictogram-item">
+                <div class="pictogram pict-default-alt-01">
+                    <img src="../../../../../assets/pictograms/Card_Lloyds_-_V2.svg" alt="">
+                </div>
+                <div class="pictogram-label">Transparent with Dashed Border</div>
+            </div>
+            <div class="pictogram-item">
+                <div class="pictogram pict-default-alt-02">
+                    <img src="../../../../../assets/pictograms/Calculator_Lloyds_-_V2.svg" alt="">
+                </div>
+                <div class="pictogram-label">Gray Background</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function detectSystemTheme() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-text').textContent = 'Switch to Light Mode';
+            } else {
+                document.body.setAttribute('data-theme', 'light');
+                document.getElementById('theme-text').textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', detectSystemTheme);
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const themeText = document.getElementById('theme-text');
+            const currentTheme = body.getAttribute('data-theme');
+            
+            if (currentTheme === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                themeText.textContent = 'Switch to Light Mode';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeText.textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', function() {
+            detectSystemTheme();
+        });
+    </script>
+</body>
+</html>

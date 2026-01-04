@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3-Tabs-Fixed Component Documentation</title>
+  <link rel="stylesheet" href="../../../css/cancara-tokens.css">
+  <link rel="stylesheet" href="ThreeTabsFixed.vanilla.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-family-body);
+      background-color: var(--bg-page-default);
+      color: var(--text-default);
+      line-height: 1.6;
+      padding: 40px 20px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .header {
+      margin-bottom: 48px;
+    }
+
+    h1 {
+      font-family: var(--type-style-1-family);
+      font-size: var(--type-style-1-size);
+      font-weight: var(--type-style-1-weight);
+      line-height: var(--type-style-1-line-height);
+      margin-bottom: 16px;
+    }
+
+    .lead {
+      font-size: var(--type-style-5-size);
+      color: var(--text-subdued);
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      font-family: var(--type-style-2-family);
+      font-size: var(--type-style-2-size);
+      font-weight: var(--type-style-2-weight);
+      line-height: var(--type-style-2-line-height);
+      margin-top: 48px;
+      margin-bottom: 24px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border-default);
+    }
+
+    h3 {
+      font-family: var(--type-style-3-family);
+      font-size: var(--type-style-3-size);
+      font-weight: var(--type-style-3-weight);
+      line-height: var(--type-style-3-line-height);
+      margin-top: 32px;
+      margin-bottom: 16px;
+    }
+
+    p {
+      margin-bottom: 16px;
+      font-size: var(--type-style-5-size);
+    }
+
+    .example {
+      background: var(--bg-panel-default);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-default);
+      padding: 32px;
+      margin-bottom: 24px;
+    }
+
+    .example-title {
+      font-size: var(--type-style-7-size);
+      font-weight: var(--type-style-7-weight);
+      margin-bottom: 16px;
+      color: var(--text-subdued);
+    }
+
+    pre {
+      background: var(--bg-panel-secondary);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-small);
+      padding: 16px;
+      overflow-x: auto;
+      margin-bottom: 16px;
+      font-family: 'Courier New', monospace;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    code {
+      font-family: 'Courier New', monospace;
+      background: var(--bg-panel-secondary);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 13px;
+    }
+
+    .token-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 24px;
+      font-size: 14px;
+    }
+
+    .token-table th,
+    .token-table td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--border-default);
+    }
+
+    .token-table th {
+      background: var(--bg-panel-secondary);
+      font-weight: var(--font-weight-bold);
+    }
+
+    .token-table code {
+      background: transparent;
+      padding: 0;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 12px 24px;
+      background: var(--bg-action-default);
+      color: var(--text-action-inverse);
+      border: none;
+      border-radius: var(--radius-default);
+      cursor: pointer;
+      font-family: var(--font-family-body);
+      font-size: 14px;
+      font-weight: var(--font-weight-bold);
+      transition: background-color 0.2s;
+      z-index: 1000;
+    }
+
+    .theme-toggle:hover {
+      background: var(--bg-action-pressed);
+    }
+
+    .note {
+      background: var(--bg-sentiment-info);
+      border-left: 4px solid var(--icon-sentiment-info);
+      padding: 16px;
+      margin-bottom: 24px;
+      border-radius: var(--radius-small);
+    }
+
+    .note strong {
+      color: var(--icon-sentiment-info);
+    }
+
+    ul, ol {
+      margin-left: 24px;
+      margin-bottom: 16px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    .demo-spacing {
+      margin-bottom: 32px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>3-Tabs-Fixed Component</h1>
+      <p class="lead">A three-tab navigation component with two layout variants (pill and underline styles). Self-contained, token-led, and fully interactive.</p>
+    </div>
+
+    <h2>Overview</h2>
+    <p>The 3-Tabs-Fixed component provides a simple three-tab navigation pattern with automatic dark mode support and two distinct visual styles.</p>
+
+    <h2>Layouts</h2>
+
+    <h3>Default Layout (Pill Style)</h3>
+    <div class="example demo-spacing">
+      <div class="example-title">Tab 01 Active</div>
+      <div class="tabs-3-fixed layout-default">
+        <div class="tabs-container">
+          <button class="tab active">
+            <span class="tab-text">Tab 01</span>
+          </button>
+          <button class="tab">
+            <span class="tab-text">Tab 02</span>
+          </button>
+          <button class="tab">
+            <span class="tab-text">Tab 03</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="example demo-spacing">
+      <div class="example-title">Tab 02 Active</div>
+      <div class="tabs-3-fixed layout-default">
+        <div class="tabs-container">
+          <button class="tab">
+            <span class="tab-text">Tab 01</span>
+          </button>
+          <button class="tab active">
+            <span class="tab-text">Tab 02</span>
+          </button>
+          <button class="tab">
+            <span class="tab-text">Tab 03</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="example demo-spacing">
+      <div class="example-title">Tab 03 Active</div>
+      <div class="tabs-3-fixed layout-default">
+        <div class="tabs-container">
+          <button class="tab">
+            <span class="tab-text">Tab 01</span>
+          </button>
+          <button class="tab">
+            <span class="tab-text">Tab 02</span>
+          </button>
+          <button class="tab active">
+            <span class="tab-text">Tab 03</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <h3>Alt 01 Layout (Underline Style)</h3>
+    <div class="example demo-spacing">
+      <div class="example-title">Tab 01 Active</div>
+      <div class="tabs-3-fixed layout-alt-01">
+        <div class="tabs-container">
+          <button class="tab active">
+            <span class="tab-text">Tab 01</span>
+          </button>
+          <button class="tab">
+            <span class="tab-text">Tab 02</span>
+          </button>
+          <button class="tab">
+            <span class="tab-text">Tab 03</span>
+          </button>
+        </div>
+        <div class="active-border">
+          <div class="active-border-segment active"></div>
+          <div class="active-border-segment"></div>
+          <div class="active-border-segment"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="example demo-spacing">
+      <div class="example-title">Tab 02 Active</div>
+      <div class="tabs-3-fixed layout-alt-01">
+        <div class="tabs-container">
+          <button class="tab">
+            <span class="tab-text">Tab 01</span>
+          </button>
+          <button class="tab active">
+            <span class="tab-text">Tab 02</span>
+          </button>
+          <button class="tab">
+            <span class="tab-text">Tab 03</span>
+          </button>
+        </div>
+        <div class="active-border">
+          <div class="active-border-segment"></div>
+          <div class="active-border-segment active"></div>
+          <div class="active-border-segment"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="example demo-spacing">
+      <div class="example-title">Tab 03 Active</div>
+      <div class="tabs-3-fixed layout-alt-01">
+        <div class="tabs-container">
+          <button class="tab">
+            <span class="tab-text">Tab 01</span>
+          </button>
+          <button class="tab">
+            <span class="tab-text">Tab 02</span>
+          </button>
+          <button class="tab active">
+            <span class="tab-text">Tab 03</span>
+          </button>
+        </div>
+        <div class="active-border">
+          <div class="active-border-segment"></div>
+          <div class="active-border-segment"></div>
+          <div class="active-border-segment active"></div>
+        </div>
+      </div>
+    </div>
+
+    <h2>HTML Structure</h2>
+
+    <h3>Default Layout</h3>
+    <pre>&lt;div class="tabs-3-fixed layout-default"&gt;
+  &lt;div class="tabs-container"&gt;
+    &lt;button class="tab active"&gt;
+      &lt;span class="tab-text"&gt;Tab 01&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;button class="tab"&gt;
+      &lt;span class="tab-text"&gt;Tab 02&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;button class="tab"&gt;
+      &lt;span class="tab-text"&gt;Tab 03&lt;/span&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+
+    <h3>Alt 01 Layout</h3>
+    <pre>&lt;div class="tabs-3-fixed layout-alt-01"&gt;
+  &lt;div class="tabs-container"&gt;
+    &lt;button class="tab active"&gt;
+      &lt;span class="tab-text"&gt;Tab 01&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;button class="tab"&gt;
+      &lt;span class="tab-text"&gt;Tab 02&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;button class="tab"&gt;
+      &lt;span class="tab-text"&gt;Tab 03&lt;/span&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="active-border"&gt;
+    &lt;div class="active-border-segment active"&gt;&lt;/div&gt;
+    &lt;div class="active-border-segment"&gt;&lt;/div&gt;
+    &lt;div class="active-border-segment"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+
+    <h2>JavaScript API</h2>
+
+    <h3>Auto-initialization</h3>
+    <p>The component automatically initializes on page load. Simply include the JavaScript file:</p>
+    <pre>&lt;script src="ThreeTabsFixed.vanilla.js"&gt;&lt;/script&gt;</pre>
+
+    <h3>Manual Initialization</h3>
+    <pre>// Initialize all 3-tabs-fixed components
+window.ThreeTabsFixedComponent.init();</pre>
+
+    <h3>Events</h3>
+    <p>Listen for tab changes:</p>
+    <pre>const component = document.querySelector('.tabs-3-fixed');
+component.addEventListener('tab-changed', function(e) {
+  console.log('Tab index:', e.detail.tabIndex);
+  console.log('Tab element:', e.detail.tabElement);
+});</pre>
+
+    <h2>Design Tokens</h2>
+
+    <table class="token-table">
+      <thead>
+        <tr>
+          <th>Token</th>
+          <th>Usage</th>
+          <th>Light Value</th>
+          <th>Dark Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>--tabs-active-bg</code></td>
+          <td>Active tab background</td>
+          <td>Black</td>
+          <td>Green Bright</td>
+        </tr>
+        <tr>
+          <td><code>--tabs-active-text</code></td>
+          <td>Active tab text</td>
+          <td>White</td>
+          <td>Gray 900</td>
+        </tr>
+        <tr>
+          <td><code>--tabs-indicator</code></td>
+          <td>Alt 01 active border</td>
+          <td>N/A</td>
+          <td>Green Bright</td>
+        </tr>
+        <tr>
+          <td><code>--text-default</code></td>
+          <td>Inactive tab text</td>
+          <td>Black</td>
+          <td>Gray 200</td>
+        </tr>
+        <tr>
+          <td><code>--color-black</code></td>
+          <td>Default border, Alt 01 active line (light)</td>
+          <td>Black</td>
+          <td>Black</td>
+        </tr>
+        <tr>
+          <td><code>--color-gray-100</code></td>
+          <td>Alt 01 inactive border</td>
+          <td>Light Gray</td>
+          <td>Light Gray</td>
+        </tr>
+        <tr>
+          <td><code>--color-gray-600</code></td>
+          <td>Default border (dark mode)</td>
+          <td>N/A</td>
+          <td>Medium Gray</td>
+        </tr>
+        <tr>
+          <td><code>--color-gray-800</code></td>
+          <td>Alt 01 inactive border (dark mode)</td>
+          <td>N/A</td>
+          <td>Dark Gray</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Typography Tokens</h2>
+    <table class="token-table">
+      <thead>
+        <tr>
+          <th>Property</th>
+          <th>Token</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Font Family</td>
+          <td><code>--type-style-8-family</code></td>
+          <td>GT Ultra</td>
+        </tr>
+        <tr>
+          <td>Font Size</td>
+          <td><code>--type-style-8-size</code></td>
+          <td>14px</td>
+        </tr>
+        <tr>
+          <td>Font Weight</td>
+          <td><code>--type-style-8-weight</code></td>
+          <td>400</td>
+        </tr>
+        <tr>
+          <td>Line Height</td>
+          <td><code>--type-style-8-line-height</code></td>
+          <td>20px</td>
+        </tr>
+        <tr>
+          <td>Letter Spacing</td>
+          <td><code>--type-style-8-letter-spacing</code></td>
+          <td>0px</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Dimensions</h2>
+    <ul>
+      <li><strong>Container max-width:</strong> 375px</li>
+      <li><strong>Default layout height:</strong> 48px (outer), 36px (tabs)</li>
+      <li><strong>Default layout padding:</strong> 16px horizontal, 8px vertical</li>
+      <li><strong>Alt 01 layout padding:</strong> 16px all sides</li>
+      <li><strong>Active border height:</strong> 2px</li>
+      <li><strong>Border radius:</strong> 12px (default layout corners)</li>
+    </ul>
+
+    <h2>Features</h2>
+    <ul>
+      <li>✅ Self-contained component (CSS + JS)</li>
+      <li>✅ Token-led design system integration</li>
+      <li>✅ Automatic dark mode support</li>
+      <li>✅ Click-to-switch interaction</li>
+      <li>✅ Custom event dispatch</li>
+      <li>✅ Two distinct layouts</li>
+      <li>✅ Semantic HTML (button elements)</li>
+      <li>✅ Smooth transitions</li>
+      <li>✅ Accessible keyboard navigation</li>
+    </ul>
+
+    <div class="note">
+      <p><strong>Note:</strong> The component uses semantic tokens from the Cancara Design System. All colors, spacing, typography, and radii automatically adapt to theme changes.</p>
+    </div>
+
+    <h2>Browser Support</h2>
+    <p>Supports all modern browsers with ES6+ JavaScript and CSS custom properties (CSS variables).</p>
+  </div>
+
+  <button class="theme-toggle" onclick="toggleTheme()">Switch to Dark Mode</button>
+
+  <script src="ThreeTabsFixed.vanilla.js"></script>
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      const button = document.querySelector('.theme-toggle');
+      
+      html.setAttribute('data-theme', newTheme);
+      button.textContent = newTheme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode';
+    }
+
+    // Listen for tab changes
+    document.querySelectorAll('.tabs-3-fixed').forEach(component => {
+      component.addEventListener('tab-changed', (e) => {
+        console.log('Tab changed to index:', e.detail.tabIndex);
+      });
+    });
+  </script>
+</body>
+</html>

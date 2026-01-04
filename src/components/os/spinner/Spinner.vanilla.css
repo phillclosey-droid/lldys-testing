@@ -1,0 +1,80 @@
+/* Spinner (with Icon Overlay) Vanilla CSS - SELF-CONTAINED - TOKEN LED */
+
+/* ===================== BASE STRUCTURE ===================== */
+
+.spinner-with-icon {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 64px;
+  height: 64px;
+  background-color: transparent;
+}
+
+/* The native spinner sits behind */
+.spinner-with-icon .native-spinner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* The icon overlay sits on top, centered */
+.spinner-icon-overlay {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3px;
+}
+
+.spinner-icon-overlay img {
+  width: 18px;
+  height: 18px;
+}
+
+/* ===================== SIZE VARIANTS ===================== */
+
+/* Small: 32px spinner with 12px icon */
+.spinner-with-icon.size-small {
+  width: 32px;
+  height: 32px;
+}
+
+.spinner-with-icon.size-small .spinner-icon-overlay img {
+  width: 12px;
+  height: 12px;
+}
+
+/* Default: 64px spinner with 18px icon */
+.spinner-with-icon.size-default {
+  width: 64px;
+  height: 64px;
+}
+
+.spinner-with-icon.size-default .spinner-icon-overlay img {
+  width: 18px;
+  height: 18px;
+}
+
+/* ===================== BACKGROUND VARIANTS ===================== */
+
+/* On Colour False - transparent background */
+.spinner-with-icon.bg-light {
+  background-color: transparent;
+}
+
+/* On Colour True - colored background */
+.spinner-with-icon.bg-colored {
+  background-color: var(--bg-action-default);
+}
+
+/* ===================== DARK MODE ===================== */
+
+/* Invert icon overlay to white in dark mode (spinner SVGs load from dark folder with natural colors) */
+[data-theme="dark"] .spinner-icon-overlay img {
+  filter: invert(1);
+}

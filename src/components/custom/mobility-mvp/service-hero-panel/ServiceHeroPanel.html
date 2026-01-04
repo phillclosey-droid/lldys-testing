@@ -1,0 +1,170 @@
+<!-- 
+  ServiceHeroPanel HTML Component - SELF-CONTAINED - TOKEN LED
+  
+  A service reminder panel with pictogram, card details, and expandable accordion.
+  
+  Structure:
+  - Pictogram (overlapping top of card)
+  - Card with rounded corners containing:
+    - Row: Registration plate with pips separator and style indicators
+    - Service type (subdued text)
+    - Date with notification tag (days remaining)
+    - Notification hint
+    - Accordion with cost breakdown
+    - Secondary CTA button
+  
+  Dependencies:
+  - Design tokens (cancara-tokens.css)
+  - Pictogram.vanilla.css + Pictogram.vanilla.js
+  - NotificationTag.vanilla.css
+  - NotificationHint.vanilla.css + NotificationHint.vanilla.js
+  - Accordion.vanilla.css + Accordion.vanilla.js
+  - ActionButton.vanilla.css + ActionButton.vanilla.js
+  - Divider.vanilla.css
+  - ServiceHeroPanel.vanilla.css (SELF-CONTAINED)
+  
+  Usage:
+  1. Import all required CSS files
+  2. Import all required JS files
+  3. Copy HTML structure
+  4. Customize content (text, dates, costs)
+-->
+
+<div class="service-hero-panel">
+    <!-- Pictogram (overlaps card) -->
+    <div class="service-hero-panel-pictogram">
+        <div class="pictogram pict-default">
+            <img data-pictogram="Car_Lloyds_-_V2" alt="">
+        </div>
+    </div>
+    
+    <!-- Main Card -->
+    <div class="service-hero-panel-card">
+        <!-- Registration Row -->
+        <div class="service-hero-panel-reg-row">
+            <span class="service-hero-panel-reg-label">Registration</span>
+            <span class="service-hero-panel-pips">••••</span>
+            <span class="service-hero-panel-reg-number">AB12 CDE</span>
+        </div>
+        
+        <!-- Service Type -->
+        <div class="service-hero-panel-service-type">Service</div>
+        
+        <!-- Date Row with Tag -->
+        <div class="service-hero-panel-date-row">
+            <div class="service-hero-panel-date">01 Dec 25</div>
+            <div class="notification-tag tag-info">
+                <div class="notification-tag-text">30 days</div>
+            </div>
+        </div>
+        
+        <!-- Notification Hint -->
+        <div class="service-hero-panel-hint">
+            <div class="notification-hint type-default">
+                <div class="notification-hint-content">
+                    <div class="notification-hint-icon-container">
+                        <div class="notification-hint-icon">
+                            <img src="../../../../../assets/icons/date-and-time/clock.svg" alt="">
+                        </div>
+                    </div>
+                    <div class="notification-hint-text">Your service is due in 30 days. Book now to avoid any delays.</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Accordion -->
+        <div class="service-hero-panel-accordion">
+            <div class="accordion accordion-full accordion-single">
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="accordion-label">
+                            <div class="accordion-label-text">View cost breakdown</div>
+                        </div>
+                        <div class="accordion-icon">
+                            <div class="accordion-icon-plus">
+                                <img data-icon-plus alt="">
+                            </div>
+                            <div class="accordion-icon-minus">
+                                <img data-icon-minus alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-divider"></div>
+                    <div class="accordion-panel">
+                        <div class="accordion-panel-content">
+                            <!-- Cost Breakdown Container -->
+                            <div class="service-hero-panel-cost-container">
+                                <!-- Row 1 -->
+                                <div class="service-hero-panel-cost-row">
+                                    <span class="service-hero-panel-cost-label">Service cost</span>
+                                    <span class="service-hero-panel-cost-value">£150.00</span>
+                                </div>
+                                
+                                <!-- Divider -->
+                                <div class="divider width-fullwidth type-dash">
+                                    <div class="divider-line"></div>
+                                </div>
+                                
+                                <!-- Row 2 -->
+                                <div class="service-hero-panel-cost-row">
+                                    <span class="service-hero-panel-cost-label">Parts</span>
+                                    <span class="service-hero-panel-cost-value">£45.00</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Secondary Button -->
+                            <div class="service-hero-panel-button">
+                                <button class="action-button btn-secondary">
+                                    <div class="action-button-inner">
+                                        <span class="action-button-text">Book service</span>
+                                        <div class="action-button-icon">
+                                            <img data-icon="chevron-right" data-icon-category="arrows" alt="">
+                                        </div>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--
+  COMPLETE USAGE EXAMPLE:
+  
+  <head>
+      <!-- Design Tokens (ALWAYS REQUIRED) -->
+      <link rel="stylesheet" href="../../../../css/cancara-tokens.css">
+      
+      <!-- Component Dependencies -->
+      <link rel="stylesheet" href="../../../content/icon/pictogram/Pictogram.vanilla.css">
+      <link rel="stylesheet" href="../../../notification/notification-tag/NotificationTag.vanilla.css">
+      <link rel="stylesheet" href="../../../notification/notification-hint/NotificationHint.vanilla.css">
+      <link rel="stylesheet" href="../../../content/accordion/Accordion.vanilla.css">
+      <link rel="stylesheet" href="../../../action/button/action-button/ActionButton.vanilla.css">
+      <link rel="stylesheet" href="../../../content/divider/Divider.vanilla.css">
+      
+      <!-- ServiceHeroPanel Component -->
+      <link rel="stylesheet" href="ServiceHeroPanel.vanilla.css">
+  </head>
+  <body>
+      <!-- Component HTML here -->
+      
+      <!-- Component JavaScript -->
+      <script src="../../../content/icon/pictogram/Pictogram.vanilla.js"></script>
+      <script src="../../../notification/notification-hint/NotificationHint.vanilla.js"></script>
+      <script src="../../../content/accordion/Accordion.vanilla.js"></script>
+      <script src="../../../action/button/action-button/ActionButton.vanilla.js"></script>
+  </body>
+  
+  CUSTOMIZATION:
+  - Change data-pictogram value for different icons
+  - Update registration number text
+  - Modify service type text
+  - Update date and tag text
+  - Change notification hint message
+  - Update cost breakdown rows
+  - Modify button text and action
+-->

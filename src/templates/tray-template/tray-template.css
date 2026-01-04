@@ -1,0 +1,227 @@
+/* Tray Template CSS - SELF-CONTAINED - TOKEN LED */
+
+/* ========== PAGE CENTERING ========== */
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+/* ========== TEMPLATE LAYOUT ========== */
+.tray-template {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 430px;
+  height: 100vh;
+  max-height: 932px;
+  background: var(--bg-page-default);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ========== OVERLAY ========== */
+.tray-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--bg-overlay-default);
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.tray-template.visible .tray-overlay {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ========== TRAY CONTAINER ========== */
+.tray-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: row;
+  padding-top: 98px;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.tray-template.visible .tray-container {
+  transform: translateY(0);
+}
+
+/* ========== TRAY ========== */
+.tray {
+  border-radius: var(--radius-medium) var(--radius-medium) 0 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-panel-default);
+  width: 100%;
+  max-height: calc(100vh - 98px);
+  overflow: hidden;
+}
+
+/* ========== TRAY CONTENT ========== */
+.tray-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* ========== HANDLEBAR ========== */
+.tray-handlebar {
+  height: 14px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.tray-grabber {
+  border-radius: 2.5px;
+  height: 5px;
+  width: 36px;
+  background-color: var(--color-black);
+}
+
+/* ========== HEADER ========== */
+.tray-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0 var(--spacing-08);
+  min-height: 44px;
+  background: var(--bg-panel-default);
+  flex-shrink: 0;
+}
+
+.tray-header-leading {
+  display: flex;
+  align-items: flex-start;
+}
+
+.tray-header-title-wrapper {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.tray-header-title {
+  font-family: var(--type-style-3-family);
+  font-size: var(--type-style-3-size);
+  font-weight: var(--type-style-3-weight);
+  line-height: var(--type-style-3-line-height);
+  letter-spacing: var(--type-style-3-letter-spacing);
+  color: var(--text-default);
+  text-align: center;
+}
+
+.tray-header-trailing {
+  display: flex;
+  align-items: flex-start;
+  margin-left: auto;
+}
+
+.tray-header .hit-target {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.tray-header .icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px;
+  width: 24px;
+  height: 24px;
+}
+
+.tray-header .icon-wrapper img {
+  width: 18px;
+  height: 18px;
+}
+
+/* ========== CONTENT AREA ========== */
+.tray-content-area {
+  flex: 1;
+  padding: var(--spacing-16);
+  overflow-y: auto;
+}
+
+.tray-content-area p {
+  font-size: 16px;
+  color: var(--text-subdued);
+}
+
+/* ========== THEME TOGGLE (DEMO ONLY) ========== */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 3000;
+}
+
+.toggle-button {
+  background: var(--bg-action-default);
+  color: var(--text-action-inverse);
+  border: none;
+  border-radius: var(--radius-default);
+  padding: 12px 24px;
+  font-family: var(--font-family-body);
+  font-size: 14px;
+  font-weight: var(--font-weight-bold);
+  cursor: pointer;
+}
+
+/* ========== DEMO CONTENT STYLES ========== */
+.content-slot {
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+}
+
+.content-slot p {
+  margin-bottom: 20px;
+  color: var(--text-subdued);
+  font-size: 16px;
+}
+
+.demo-button {
+  background: var(--bg-action-default);
+  color: var(--text-action-inverse);
+  border: none;
+  border-radius: var(--radius-default);
+  padding: 16px 32px;
+  font-family: var(--font-family-body);
+  font-size: 17px;
+  font-weight: var(--font-weight-regular);
+  cursor: pointer;
+}
+
+/* ========== DARK MODE ICON FILTERS ========== */
+/* Light mode: black icons */
+.tray-header .icon-wrapper img {
+  filter: brightness(0) saturate(100%);
+}
+
+/* Dark mode: white icons */
+[data-theme="dark"] .tray-header .icon-wrapper img {
+  filter: brightness(0) saturate(100%) invert(1);
+}

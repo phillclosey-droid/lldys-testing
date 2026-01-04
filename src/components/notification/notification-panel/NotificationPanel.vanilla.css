@@ -1,0 +1,239 @@
+/* Notification Panel Vanilla CSS - SELF-CONTAINED - TOKEN LED */
+
+/* ========== NOTIFICATION PANEL CONTAINER ========== */
+.notification-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 var(--spacing-16);
+  position: relative;
+}
+
+/* ========== ARROW (OPTIONAL) ========== */
+.notification-panel-arrow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0 var(--spacing-16);
+  height: 12px;
+}
+
+/* Arrow at top (before content) */
+.notification-panel.arrow-top {
+  flex-direction: column;
+}
+
+/* Arrow at bottom (after content) */
+.notification-panel.arrow-bottom {
+  flex-direction: column-reverse;
+}
+
+/* ========== MAIN CONTENT CONTAINER ========== */
+.notification-panel-content {
+  border-radius: var(--radius-default);
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: var(--spacing-12) var(--spacing-16);
+  gap: var(--spacing-12);
+  width: 100%;
+  max-width: 343px;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+  border-width: var(--border-width-01);
+  border-style: solid;
+}
+
+/* ========== TYPE: PRIMARY + SENTIMENT COLORS ========== */
+/* Primary Critical */
+.notification-panel.type-primary.sentiment-critical .notification-panel-content {
+  background-color: var(--bg-sentiment-critical);
+  border-color: var(--color-red-critical);
+}
+
+.notification-panel.type-primary.sentiment-critical .notification-panel-content:active {
+  background-color: var(--color-sentiment-critical-light);
+}
+
+/* Primary Warning */
+.notification-panel.type-primary.sentiment-warning .notification-panel-content {
+  background-color: var(--bg-sentiment-warning);
+  border-color: var(--color-orange-warning);
+}
+
+.notification-panel.type-primary.sentiment-warning .notification-panel-content:active {
+  background-color: var(--color-sentiment-warning-light);
+}
+
+/* Primary Success */
+.notification-panel.type-primary.sentiment-success .notification-panel-content {
+  background-color: var(--bg-sentiment-success);
+  border-color: var(--color-green-success);
+}
+
+.notification-panel.type-primary.sentiment-success .notification-panel-content:active {
+  background-color: var(--color-sentiment-success-light);
+}
+
+/* Primary Info */
+.notification-panel.type-primary.sentiment-info .notification-panel-content {
+  background-color: var(--bg-sentiment-info);
+  border-color: var(--color-blue-info);
+}
+
+.notification-panel.type-primary.sentiment-info .notification-panel-content:active {
+  background-color: var(--color-sentiment-info-light);
+}
+
+/* ========== TYPE: SECONDARY + SENTIMENT COLORS ========== */
+/* Secondary Critical */
+.notification-panel.type-secondary.sentiment-critical .notification-panel-content {
+  background-color: var(--bg-sentiment-critical);
+  border-color: var(--color-red-critical);
+}
+
+.notification-panel.type-secondary.sentiment-critical .notification-panel-content:active {
+  background-color: var(--color-sentiment-critical-light);
+}
+
+/* Secondary Warning */
+.notification-panel.type-secondary.sentiment-warning .notification-panel-content {
+  background-color: var(--bg-sentiment-warning);
+  border-color: var(--color-orange-warning);
+}
+
+.notification-panel.type-secondary.sentiment-warning .notification-panel-content:active {
+  background-color: var(--color-sentiment-warning-light);
+}
+
+/* Secondary Success */
+.notification-panel.type-secondary.sentiment-success .notification-panel-content {
+  background-color: var(--bg-sentiment-success);
+  border-color: var(--color-green-success);
+}
+
+.notification-panel.type-secondary.sentiment-success .notification-panel-content:active {
+  background-color: var(--color-sentiment-success-light);
+}
+
+/* Secondary Info */
+.notification-panel.type-secondary.sentiment-info .notification-panel-content {
+  background-color: var(--bg-sentiment-info);
+  border-color: var(--color-blue-info);
+}
+
+.notification-panel.type-secondary.sentiment-info .notification-panel-content:active {
+  background-color: var(--color-sentiment-info-light);
+}
+
+/* ========== SENTIMENT ICON ========== */
+.notification-panel-icon-container {
+  display: flex;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+
+.notification-panel-icon {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.notification-panel-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Sentiment icon colors */
+.notification-panel.sentiment-critical .notification-panel-icon {
+  color: var(--icon-sentiment-critical);
+}
+
+.notification-panel.sentiment-warning .notification-panel-icon {
+  color: var(--icon-sentiment-warning);
+}
+
+.notification-panel.sentiment-success .notification-panel-icon {
+  color: var(--icon-sentiment-success);
+}
+
+.notification-panel.sentiment-info .notification-panel-icon {
+  color: var(--icon-sentiment-info);
+}
+
+/* ========== TEXT SECTION ========== */
+.notification-panel-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+}
+
+.notification-panel-title {
+  font-family: var(--type-style-6-family);
+  font-size: var(--type-style-6-size);
+  font-weight: var(--type-style-6-weight);
+  line-height: var(--type-style-6-line-height);
+  letter-spacing: var(--type-style-6-letter-spacing);
+  color: var(--text-default);
+}
+
+.notification-panel-message {
+  font-family: var(--font-family-body);
+  font-size: 14px;
+  font-weight: var(--font-weight-regular);
+  line-height: 20px;
+  color: var(--text-default);
+  margin-top: 4px;
+}
+
+.notification-panel-link {
+  font-family: var(--font-family-body);
+  font-size: 14px;
+  font-weight: var(--font-weight-regular);
+  line-height: 20px;
+  color: var(--text-default);
+  text-decoration: underline;
+  cursor: pointer;
+  margin-top: var(--spacing-08);
+}
+
+/* ========== ACTION ICON (CHEVRON) ========== */
+.notification-panel-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  align-self: center;
+}
+
+.notification-panel-action-icon {
+  width: 12px;
+  height: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.notification-panel-action-icon img {
+  width: 12px;
+  height: 12px;
+  object-fit: contain;
+  filter: brightness(0) saturate(100%);
+  opacity: 1;
+}
+
+[data-theme="light"] .notification-panel-action-icon img {
+  filter: brightness(0) saturate(100%);
+}
+
+[data-theme="dark"] .notification-panel-action-icon img {
+  filter: brightness(0) saturate(100%) invert(1);
+}

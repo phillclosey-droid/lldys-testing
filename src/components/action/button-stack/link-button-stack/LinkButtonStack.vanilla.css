@@ -1,0 +1,111 @@
+/* LinkButtonStack Vanilla CSS - SELF-CONTAINED - TOKEN LED */
+
+/* Base container */
+.link-button-stack {
+  border-radius: 0 0 var(--radius-default) var(--radius-default);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  background: var(--bg-panel-default);
+  overflow: hidden; /* Ensure children respect border-radius */
+}
+
+/* ========== NESTED: DIVIDER (Self-contained) ========== */
+.link-button-stack .divider {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  margin: 0;
+}
+
+.link-button-stack .divider-line {
+  height: var(--divider-height);
+  width: 100%;
+  background-color: var(--divider-bg);
+  border: none;
+}
+
+/* ========== NESTED: LINK BUTTON (Self-contained) ========== */
+.link-button-stack .link-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0 var(--spacing-16);
+  background-color: var(--bg-panel-default);
+  cursor: pointer;
+  transition: background-color 0.2s;
+  border: none;
+  font-family: inherit;
+  min-height: 48px;
+  flex: 1;
+  text-decoration: none;
+  color: var(--text-default);
+  width: 100%;
+}
+
+.link-button-stack .link-button-text {
+  text-align: center;
+  font-size: var(--type-style-6-size);
+  font-family: var(--type-style-6-family);
+  line-height: var(--type-style-6-line-height);
+  font-weight: var(--type-style-6-weight);
+  color: var(--text-default);
+  width: 100%;
+}
+
+/* Link button states */
+.link-button-stack .link-button:hover,
+.link-button-stack .link-button.pressed {
+  background-color: var(--bg-panel-pressed);
+}
+
+.link-button-stack .link-button:disabled,
+.link-button-stack .link-button.disabled {
+  background-color: var(--bg-panel-secondary);
+  cursor: not-allowed;
+}
+
+.link-button-stack .link-button:disabled .link-button-text,
+.link-button-stack .link-button.disabled .link-button-text {
+  color: var(--text-subdued);
+}
+
+/* ========== HORIZONTAL STACK ========== */
+.link-button-stack.direction-horizontal .button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+/* Separator between horizontal buttons */
+.link-button-stack.direction-horizontal .link-button-separator {
+  height: 48px;
+  width: var(--divider-height);
+  background-color: var(--divider-bg);
+}
+
+/* ========== VERTICAL STACK ========== */
+.link-button-stack.direction-vertical .button-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+}
+
+/* Divider between vertical buttons */
+.link-button-stack.direction-vertical .link-button + .divider {
+  margin: 0;
+}
+
+/* ========== DARK MODE ========== */
+[data-theme="dark"] .link-button-stack {
+  /* Token system handles color changes automatically */
+}

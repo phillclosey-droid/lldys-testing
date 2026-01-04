@@ -1,0 +1,146 @@
+const _SpinnerSet02: React.VFC = () => {
+  return (
+    <_SpinnerSet02>
+      <State=01>
+        <MainLoaderShape />
+        <Icon>
+          <Wrapper(Required)>
+            <Union(Required)>
+              <img src="" />
+            </Union(Required)>
+          </Wrapper(Required)>
+        </Icon>
+      </State=01>
+      <State=02>
+        <MainLoaderShape />
+        <Icon>
+          <Wrapper(Required)>
+            <Union(Required)>
+              <img src="" />
+            </Union(Required)>
+          </Wrapper(Required)>
+        </Icon>
+      </State=02>
+      <State=03>
+        <MainLoaderShape />
+        <Icon>
+          <Wrapper(Required)>
+            <Union(Required)>
+              <img src="" />
+            </Union(Required)>
+          </Wrapper(Required)>
+        </Icon>
+      </State=03>
+      <State=04>
+        <MainLoaderShape />
+        <Icon>
+          <Wrapper(Required)>
+            <Union(Required)>
+              <img src="" />
+            </Union(Required)>
+          </Wrapper(Required)>
+        </Icon>
+      </State=04>
+    </_SpinnerSet02>
+  )
+}
+
+const State=01 = styled.div`
+  height: 64px;
+  width: 64px;
+`
+const MainLoaderShape = styled.div`
+  height: 64px;
+  width: 64px;
+`
+const Icon = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 3px;
+`
+const Wrapper(Required) = styled.div`
+  height: 18px;
+  width: 18px;
+  background-color: #ffffff;
+`
+const img1 = styled.div`
+  height: 18px;
+  width: 18px;
+`
+const State=02 = styled.div`
+  height: 64px;
+  width: 64px;
+`
+const MainLoaderShape = styled.div`
+  transform: rotate(-91deg);
+  height: 64px;
+  width: 64px;
+`
+const Icon = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 3px;
+`
+const Wrapper(Required) = styled.div`
+  height: 18px;
+  width: 18px;
+  background-color: #ffffff;
+`
+const img2 = styled.div`
+  height: 18px;
+  width: 18px;
+`
+const State=03 = styled.div`
+  height: 64px;
+  width: 64px;
+`
+const MainLoaderShape = styled.div`
+  transform: rotate(-180deg);
+  height: 64px;
+  width: 64px;
+`
+const Icon = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 3px;
+`
+const Wrapper(Required) = styled.div`
+  height: 18px;
+  width: 18px;
+  background-color: #ffffff;
+`
+const img3 = styled.div`
+  height: 18px;
+  width: 18px;
+`
+const State=04 = styled.div`
+  height: 64px;
+  width: 64px;
+`
+const MainLoaderShape = styled.div`
+  transform: rotate(90deg);
+  height: 64px;
+  width: 64px;
+`
+const Icon = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 3px;
+`
+const Wrapper(Required) = styled.div`
+  height: 18px;
+  width: 18px;
+  background-color: #ffffff;
+`
+const img4 = styled.div`
+  height: 18px;
+  width: 18px;
+`

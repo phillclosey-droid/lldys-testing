@@ -1,0 +1,245 @@
+/* List Item Data Playback Vanilla CSS - SELF-CONTAINED - TOKEN LED */
+
+/* ===================== BASE STRUCTURE ===================== */
+
+/* Main Container */
+.list-item-data-playback {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  box-sizing: border-box;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* ===================== WIDTH VARIANTS ===================== */
+
+/* Compact - has horizontal padding */
+.list-item-data-playback.width-compact {
+  padding: 0px 16px;
+}
+
+/* FullWidth - no horizontal padding */
+.list-item-data-playback.width-fullwidth {
+  padding: 0;
+}
+
+/* ===================== POSITION VARIANTS (Border Radius) ===================== */
+
+/* Top Position - rounded top corners */
+.list-item-data-playback.position-top {
+  border-radius: 12px 12px 0px 0px;
+}
+
+.list-item-data-playback.position-top .list-item-data-content {
+  border-radius: 12px 12px 0px 0px;
+}
+
+/* Middle Position - no rounded corners */
+.list-item-data-playback.position-middle {
+  border-radius: 0;
+}
+
+.list-item-data-playback.position-middle .list-item-data-content {
+  border-radius: 0;
+}
+
+/* Bottom Position - rounded bottom corners */
+.list-item-data-playback.position-bottom {
+  border-radius: 0px 0px 12px 12px;
+}
+
+.list-item-data-playback.position-bottom .list-item-data-content {
+  border-radius: 0px 0px 12px 12px;
+}
+
+/* Single Position - all corners rounded (standalone) */
+.list-item-data-playback.position-single {
+  border-radius: 12px;
+}
+
+.list-item-data-playback.position-single .list-item-data-content {
+  border-radius: 12px;
+}
+
+/* ===================== HEADING (Optional) ===================== */
+
+.list-item-data-heading {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0px 0px 16px 0px;
+  margin: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Hide heading for middle, bottom positions when not needed */
+.list-item-data-playback.position-middle .list-item-data-heading,
+.list-item-data-playback.position-bottom .list-item-data-heading {
+  display: none;
+}
+
+.list-item-data-heading-text {
+  text-align: left;
+  vertical-align: middle;
+  font-size: 15px;
+  font-family: var(--font-family-body);
+  line-height: 20px;
+  color: var(--text-default);
+  font-weight: 400;
+}
+
+/* ===================== CONTENT ROW (HStack) ===================== */
+
+.list-item-data-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 16px;
+  gap: 12px;
+  background-color: var(--bg-panel-default);
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+/* ===================== DATA CONTAINER (VStack for multiple datasets) ===================== */
+
+.list-item-data-vstack {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+/* ===================== DATASET (Title/Data pair) ===================== */
+
+.list-item-dataset {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4px;
+  width: 100%;
+}
+
+.list-item-data-title {
+  text-align: left;
+  vertical-align: middle;
+  font-size: 14px;
+  font-family: var(--font-family-body);
+  line-height: 20px;
+  color: var(--text-subdued);
+  font-weight: 400;
+}
+
+.list-item-data-value {
+  text-align: left;
+  vertical-align: middle;
+  font-size: 15px;
+  font-family: var(--font-family-body);
+  line-height: 20px;
+  color: var(--text-default);
+  font-weight: 400;
+}
+
+/* ===================== ACTION ICON (Chevron) ===================== */
+
+.list-item-data-action-icon {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+}
+
+.list-item-data-action-icon img {
+  width: 12px;
+  height: 12px;
+  /* Light mode - icon is black by default from SVG */
+}
+
+/* ===================== DIVIDER ===================== */
+
+/* Remove ALL spacing from divider */
+.list-item-data-playback .divider {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.list-item-data-playback .divider-line {
+  margin: 0;
+  width: 100%;
+}
+
+/* Width handling */
+.list-item-data-playback.width-compact .divider {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.list-item-data-playback.width-fullwidth .divider {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* ===================== STATE VARIANTS ===================== */
+
+/* Default State */
+.list-item-data-playback.state-default {
+  /* Default styling already applied */
+}
+
+/* Pressed State - changes background */
+.list-item-data-playback.state-pressed .list-item-data-content,
+.list-item-data-playback:active .list-item-data-content {
+  background-color: var(--bg-panel-pressed);
+}
+
+/* ===================== DARK MODE ===================== */
+
+[data-theme="dark"] .list-item-data-playback {
+  background-color: transparent;
+}
+
+[data-theme="dark"] .list-item-data-content {
+  background-color: var(--bg-panel-default);
+}
+
+[data-theme="dark"] .list-item-data-playback.state-pressed .list-item-data-content,
+[data-theme="dark"] .list-item-data-playback:active .list-item-data-content {
+  background-color: var(--bg-panel-pressed);
+}
+
+[data-theme="dark"] .list-item-data-heading-text {
+  color: var(--text-default);
+}
+
+[data-theme="dark"] .list-item-data-title {
+  color: var(--text-subdued);
+}
+
+[data-theme="dark"] .list-item-data-value {
+  color: var(--text-default);
+}
+
+/* Invert the black icon to white in dark mode */
+[data-theme="dark"] .list-item-data-action-icon img {
+  filter: invert(1);
+}

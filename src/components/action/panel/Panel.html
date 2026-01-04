@@ -1,0 +1,106 @@
+<!-- 
+  Panel HTML Component - TOKEN LED - SELF-CONTAINED
+  
+  Three variants: text-only, with icon (24px), with pictogram (40px).
+  Auto-initializes with Panel.vanilla.js
+  
+  Dependencies:
+  - Design tokens (cancara-tokens.css)
+  - Panel.vanilla.css (SELF-CONTAINED - includes pictogram styles)
+  - Panel.vanilla.js (auto-initializes icons)
+  
+  Usage:
+  1. Import CSS and JS
+  2. Copy HTML structure for desired variant
+  3. Set data attributes for assets
+  4. Assets auto-populate on page load
+-->
+
+<!-- Variant 1: Text Only -->
+<div class="panel-wrapper">
+    <div class="panel">
+        <div class="panel-vstack">
+            <div class="panel-heading">View All Accounts</div>
+            <div class="panel-description">Complete financial overview</div>
+        </div>
+        <div class="panel-chevron">
+            <img data-chevron alt="">
+        </div>
+    </div>
+</div>
+
+<!-- Variant 2: With Icon (24px) -->
+<div class="panel-wrapper">
+    <div class="panel">
+        <div class="panel-icon">
+            <img data-icon="current-account" data-icon-category="finance" alt="">
+        </div>
+        <div class="panel-vstack">
+            <div class="panel-heading">Current Account</div>
+            <div class="panel-description">£2,547.89 available</div>
+        </div>
+        <div class="panel-chevron">
+            <img data-chevron alt="">
+        </div>
+    </div>
+</div>
+
+<!-- Variant 3: With Pictogram (40px circle) -->
+<div class="panel-wrapper">
+    <div class="panel">
+        <!-- Pictogram (Nested - Self-contained in CSS) -->
+        <div class="pictogram pict-default">
+            <img data-pictogram="Piggy_Bank_Lloyds_-_V2" alt="">
+        </div>
+        <div class="panel-vstack">
+            <div class="panel-heading">Savings Account</div>
+            <div class="panel-description">£12,450.00 saved</div>
+        </div>
+        <div class="panel-chevron">
+            <img data-chevron alt="">
+        </div>
+    </div>
+</div>
+
+<!-- Variant 3 Examples: Different Pictogram Colors -->
+<div class="panel-wrapper">
+    <div class="panel">
+        <div class="pictogram pict-primary">
+            <img data-pictogram="Cards_Lloyds_-_V2" alt="">
+        </div>
+        <div class="panel-vstack">
+            <div class="panel-heading">Credit Cards</div>
+            <div class="panel-description">Manage your cards</div>
+        </div>
+        <div class="panel-chevron">
+            <img data-chevron alt="">
+        </div>
+    </div>
+</div>
+
+<!-- 
+  DATA ATTRIBUTES:
+  - data-icon: Icon filename (e.g., "current-account")
+  - data-icon-category: Icon folder (e.g., "finance", "navigation", "people")
+  - data-pictogram: Pictogram filename without .svg (e.g., "Piggy_Bank_Lloyds_-_V2")
+  - data-chevron: Always auto-populates with chevron-right
+  
+  PICTOGRAM VARIANTS:
+  - pict-default: Mint green
+  - pict-primary: Green
+  - pict-secondary-alt-01: Purple
+  - pict-secondary-alt-02: Pink
+  - pict-secondary-alt-04: Orange
+  
+  COMPLETE USAGE:
+  
+  <head>
+      <link rel="stylesheet" href="path/to/cancara-tokens.css">
+      <link rel="stylesheet" href="path/to/Panel.vanilla.css">
+  </head>
+  <body>
+      <!-- HTML structure above -->
+      
+      <script src="path/to/Panel.vanilla.js"></script>
+  </body>
+-->

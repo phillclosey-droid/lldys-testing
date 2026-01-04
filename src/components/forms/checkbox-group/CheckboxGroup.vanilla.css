@@ -1,0 +1,64 @@
+/* Checkbox Group Vanilla CSS - SELF-CONTAINED - TOKEN LED */
+
+/* ========== CHECKBOX GROUP CONTAINER ========== */
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 var(--spacing-16);
+  gap: var(--spacing-08);
+}
+
+/* ========== GROUP LABEL ========== */
+.checkbox-group-label {
+  font-family: var(--type-style-6-family);
+  font-size: var(--type-style-6-size);
+  font-weight: var(--type-style-6-weight);
+  line-height: var(--type-style-6-line-height);
+  letter-spacing: var(--type-style-6-letter-spacing);
+  color: var(--text-default);
+}
+
+/* ========== CHECKBOX ITEM ========== */
+.checkbox-item {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--spacing-12);
+  width: 100%;
+}
+
+/* ========== CHECKBOX CONTAINER ========== */
+.checkbox-item-checkbox {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-top: var(--spacing-08);
+  flex-shrink: 0;
+}
+
+/* ========== ITEM TEXT CONTAINER ========== */
+.checkbox-item-text {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding-top: var(--spacing-12);
+  flex: 1;
+}
+
+.checkbox-item-label {
+  font-family: var(--type-style-5-family);
+  font-size: var(--type-style-5-size);
+  font-weight: var(--type-style-5-weight);
+  line-height: var(--type-style-5-line-height);
+  letter-spacing: var(--type-style-5-letter-spacing);
+  color: var(--text-default);
+  cursor: pointer;
+}
+
+/* ========== DISABLED STATE ========== */
+.checkbox-item.is-disabled .checkbox-item-label {
+  cursor: not-allowed;
+  opacity: 0.6;
+}

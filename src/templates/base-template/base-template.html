@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Base Template - Page Layout</title>
+    
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="../../css/cancara-tokens.css">
+    
+    <!-- Component Styles -->
+    <link rel="stylesheet" href="../../components/navigation/status-bar/StatusBar.vanilla.css">
+    <link rel="stylesheet" href="../../components/notification/notification-badge/NotificationBadge.vanilla.css">
+    <link rel="stylesheet" href="../../components/navigation/header/custom-header/CustomHeader.vanilla.css">
+    <link rel="stylesheet" href="../../components/navigation/bottom-nav/BottomNav.vanilla.css">
+    
+    <!-- Template Styles -->
+    <link rel="stylesheet" href="base-template.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family-body);
+            background: var(--color-gray-800);
+            color: var(--text-default);
+            transition: background-color 0.3s, color 0.3s;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <!-- Dark Mode Toggle -->
+    <div class="theme-toggle">
+        <button class="toggle-button" onclick="toggleTheme()">
+            <span id="theme-text">Switch to Dark Mode</span>
+        </button>
+    </div>
+
+    <!-- Base Template -->
+    <div class="base-template">
+        <!-- Header - Fixed at top (iOS AOV Retail) -->
+        <div class="header-wrapper">
+            <!-- CustomHeader Component (Nested) -->
+            <div class="custom-header">
+                <!-- Status Bar (Nested Component) -->
+                <div class="status-bar status-bar-ios">
+                    <div class="status-bar-time">9:41</div>
+                    <div class="status-bar-levels">
+                        <div class="cellular-signal">
+                            <div class="signal-bar signal-bar-1"></div>
+                            <div class="signal-bar signal-bar-2"></div>
+                            <div class="signal-bar signal-bar-3"></div>
+                            <div class="signal-bar signal-bar-4"></div>
+                            <div class="signal-bar signal-bar-5"></div>
+                        </div>
+                        <div class="wifi-indicator">
+                            <div class="wifi-dot"></div>
+                            <div class="wifi-arc wifi-arc-1"></div>
+                            <div class="wifi-arc wifi-arc-2"></div>
+                            <div class="wifi-arc wifi-arc-3"></div>
+                        </div>
+                        <div class="status-bar-battery">
+                            <div class="battery-border"></div>
+                            <div class="battery-capacity"></div>
+                            <div class="battery-tip"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Header Bar -->
+                <div class="header-bar">
+                    <!-- Leading Section -->
+                    <div class="header-leading">
+                        <div class="hit-target">
+                            <div class="icon-wrapper icon-18">
+                                <img id="burger-menu-icon" src="" alt="Menu">
+                            </div>
+                            <!-- Notification Badge (Nested Component) -->
+                            <div class="notification-badge">
+                                <div class="notification-badge-text">12</div>
+                            </div>
+                        </div>
+                        <div class="header-gap"></div>
+                        <div class="empty-space"></div>
+                    </div>
+
+                    <!-- Title -->
+                    <div class="header-title-wrapper">
+                        <div class="header-title">Title</div>
+                    </div>
+
+                    <!-- Trailing Section -->
+                    <div class="header-trailing">
+                        <div class="hit-target">
+                            <div class="icon-wrapper icon-18">
+                                <img id="search-icon" src="" alt="Search">
+                            </div>
+                        </div>
+                        <div class="hit-target">
+                            <div class="icon-wrapper icon-18">
+                                <img id="person-icon" src="" alt="Profile">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Area - Scrollable - DROP YOUR CONTENT HERE -->
+        <div class="content-wrapper">
+            <div class="content-container">
+                <!-- Example Content Cards -->
+                <div class="content-card">
+                    <h2>Content Section 1</h2>
+                    <p>This is where your page content goes. The content area is scrollable while the header and bottom nav remain fixed.</p>
+                </div>
+
+                <div class="content-card">
+                    <h2>Content Section 2</h2>
+                    <p>Add panels, cards, lists, forms, or any other components here. This section will scroll independently.</p>
+                </div>
+
+                <div class="content-card">
+                    <h2>Content Section 3</h2>
+                    <p>The template uses iOS AOV Retail header with notification badge "12" on burger menu. Bottom nav uses proper tab icons with active states.</p>
+                </div>
+
+                <div class="content-card">
+                    <h2>Content Section 4</h2>
+                    <p>Content has proper padding at the bottom so it doesn't touch the bottom nav. Click tabs to see active state switching.</p>
+                </div>
+
+                <div class="content-card">
+                    <h2>Content Section 5</h2>
+                    <p>All components are properly nested with correct CSS imports. Token-based styling throughout. Icon paths managed via JavaScript.</p>
+                </div>
+
+                <div class="content-card">
+                    <h2>Content Section 6</h2>
+                    <p>To use this template in a journey page, update the ASSETS_BASE and COMPONENTS_BASE paths at the top of the script.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Nav - Fixed at bottom -->
+        <div class="bottom-nav-wrapper">
+            <!-- BottomNav Component (Nested) -->
+            <div class="bottom-nav" id="bottom-nav">
+                <div class="bottom-nav-active-border">
+                    <div class="active-border-segment active"></div>
+                    <div class="active-border-segment"></div>
+                    <div class="active-border-segment"></div>
+                    <div class="active-border-segment"></div>
+                    <div class="active-border-segment"></div>
+                </div>
+                
+                <div class="bottom-nav-tabs">
+                    <button class="bottom-nav-tab active" onclick="setActiveTab(0)">
+                        <div class="bottom-nav-icon">
+                            <img id="tab-icon-0-inactive" src="" alt="" class="icon-inactive">
+                            <img id="tab-icon-0-active" src="" alt="" class="icon-active">
+                        </div>
+                        <span class="bottom-nav-label">Home</span>
+                    </button>
+                    
+                    <button class="bottom-nav-tab" onclick="setActiveTab(1)">
+                        <div class="bottom-nav-icon">
+                            <img id="tab-icon-1-inactive" src="" alt="" class="icon-inactive">
+                            <img id="tab-icon-1-active" src="" alt="" class="icon-active">
+                        </div>
+                        <span class="bottom-nav-label">Apply</span>
+                    </button>
+                    
+                    <button class="bottom-nav-tab" onclick="setActiveTab(2)">
+                        <div class="bottom-nav-icon">
+                            <img id="tab-icon-2-inactive" src="" alt="" class="icon-inactive">
+                            <img id="tab-icon-2-active" src="" alt="" class="icon-active">
+                        </div>
+                        <span class="bottom-nav-label">Payments</span>
+                    </button>
+                    
+                    <button class="bottom-nav-tab" onclick="setActiveTab(3)">
+                        <div class="bottom-nav-icon">
+                            <img id="tab-icon-3-inactive" src="" alt="" class="icon-inactive">
+                            <img id="tab-icon-3-active" src="" alt="" class="icon-active">
+                        </div>
+                        <span class="bottom-nav-label">Search</span>
+                    </button>
+                    
+                    <button class="bottom-nav-tab" onclick="setActiveTab(4)">
+                        <div class="bottom-nav-icon">
+                            <img id="tab-icon-4-inactive" src="" alt="" class="icon-inactive">
+                            <img id="tab-icon-4-active" src="" alt="" class="icon-active">
+                        </div>
+                        <span class="bottom-nav-label">Cards</span>
+                    </button>
+                </div>
+                
+                <!-- iOS Home Indicator -->
+                <div class="bottom-nav-home-indicator">
+                    <div class="home-indicator-handle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /*
+         * PATH CONFIGURATION
+         * Update these paths when copying to journey pages or other locations
+         * 
+         * From /src/templates/base-template/:
+         * - ASSETS_BASE: '../../../assets' (3 levels up to root)
+         * 
+         * From /journeys/[journey-name]/:
+         * - ASSETS_BASE: '../../assets' (2 levels up to root)
+         */
+        const ASSETS_BASE = '../../../assets';
+        
+        // Icon path helpers
+        const ICONS = {
+            // Header icons
+            burgerMenu: `${ASSETS_BASE}/icons/navigation/burger-menu.svg`,
+            search: `${ASSETS_BASE}/icons/navigation/search.svg`,
+            person: `${ASSETS_BASE}/icons/people/person.svg`,
+            
+            // Tab icons (inactive/normal state)
+            tab1: `${ASSETS_BASE}/icons/tabs/tab-1-icon.svg`,
+            tab2: `${ASSETS_BASE}/icons/tabs/tab-2-icon.svg`,
+            tab3: `${ASSETS_BASE}/icons/tabs/tab-3-icon.svg`,
+            tab4: `${ASSETS_BASE}/icons/tabs/tab-4-icon.svg`,
+            tab5: `${ASSETS_BASE}/icons/tabs/tab-5-icon.svg`,
+            
+            // Tab icons (active state)
+            tab1Active: `${ASSETS_BASE}/icons/tabs/tab-1-icon-active.svg`,
+            tab2Active: `${ASSETS_BASE}/icons/tabs/tab-2-icon-active.svg`,
+            tab3Active: `${ASSETS_BASE}/icons/tabs/tab-3-icon-active.svg`,
+            tab4Active: `${ASSETS_BASE}/icons/tabs/tab-4-icon-active.svg`,
+            tab5Active: `${ASSETS_BASE}/icons/tabs/tab-5-icon-active.svg`,
+        };
+
+        // Initialize all icon paths
+        function initializeIcons() {
+            // Header icons
+            document.getElementById('burger-menu-icon').src = ICONS.burgerMenu;
+            document.getElementById('search-icon').src = ICONS.search;
+            document.getElementById('person-icon').src = ICONS.person;
+            
+            // Bottom nav tab icons - inactive states
+            document.getElementById('tab-icon-0-inactive').src = ICONS.tab1;
+            document.getElementById('tab-icon-1-inactive').src = ICONS.tab2;
+            document.getElementById('tab-icon-2-inactive').src = ICONS.tab3;
+            document.getElementById('tab-icon-3-inactive').src = ICONS.tab4;
+            document.getElementById('tab-icon-4-inactive').src = ICONS.tab5;
+            
+            // Bottom nav tab icons - active states
+            document.getElementById('tab-icon-0-active').src = ICONS.tab1Active;
+            document.getElementById('tab-icon-1-active').src = ICONS.tab2Active;
+            document.getElementById('tab-icon-2-active').src = ICONS.tab3Active;
+            document.getElementById('tab-icon-3-active').src = ICONS.tab4Active;
+            document.getElementById('tab-icon-4-active').src = ICONS.tab5Active;
+        }
+
+        // Detect system dark mode preference and apply automatically
+        function detectSystemTheme() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-text').textContent = 'Switch to Light Mode';
+            } else {
+                document.body.setAttribute('data-theme', 'light');
+                document.getElementById('theme-text').textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        // Listen for system theme changes
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', detectSystemTheme);
+        }
+
+        // Set active tab
+        function setActiveTab(tabIndex) {
+            const nav = document.getElementById('bottom-nav');
+            const tabs = nav.querySelectorAll('.bottom-nav-tab');
+            const segments = nav.querySelectorAll('.active-border-segment');
+
+            // Remove active class from all
+            tabs.forEach(tab => tab.classList.remove('active'));
+            segments.forEach(segment => segment.classList.remove('active'));
+
+            // Add active class to selected
+            tabs[tabIndex].classList.add('active');
+            segments[tabIndex].classList.add('active');
+        }
+
+        // Toggle theme
+        function toggleTheme() {
+            const body = document.body;
+            const themeText = document.getElementById('theme-text');
+            const currentTheme = body.getAttribute('data-theme');
+            
+            if (currentTheme === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                themeText.textContent = 'Switch to Light Mode';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeText.textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        // Initialize on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            detectSystemTheme(); // Auto-detect system theme
+            initializeIcons();    // Load all icon paths
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,288 @@
+<!-- 
+  Accordion HTML Component - SELF-CONTAINED - TOKEN LED
+  
+  An expandable/collapsible accordion component for organizing content.
+  
+  Features:
+  - Optional heading for grouped accordions
+  - Open/closed states
+  - Click to expand/collapse
+  - Smooth transitions
+  - Plus/minus icons (or chevron alternative)
+  - Border radius on top, middle, and bottom items
+  - Two width variants: compact, full
+  - Two usage variants: group (with heading), single (no heading)
+  
+  Dependencies:
+  - Design tokens (cancara-tokens.css)
+  - Accordion.vanilla.css (SELF-CONTAINED)
+  - Accordion.vanilla.js (handles open/close interaction)
+  
+  Usage:
+  1. Import CSS and JS
+  2. Copy HTML structure
+  3. Add .is-open class to items that should start open
+-->
+
+<!-- GROUP VARIANT: With heading (Compact width) - PLUS/MINUS ICONS -->
+<div class="accordion accordion-compact accordion-group">
+  <!-- Optional Heading -->
+  <h2 class="accordion-heading">Frequently Asked Questions</h2>
+
+  <!-- Accordion Item 1 (Closed) -->
+  <div class="accordion-item">
+    <div class="accordion-header">
+      <div class="accordion-label">
+        <div class="accordion-label-text">What is an ISA?</div>
+      </div>
+      <div class="accordion-icon">
+        <div class="accordion-icon-plus">
+          <img data-icon-plus alt="">
+        </div>
+        <div class="accordion-icon-minus">
+          <img data-icon-minus alt="">
+        </div>
+      </div>
+    </div>
+    <div class="accordion-divider"></div>
+    <div class="accordion-panel">
+      <div class="accordion-panel-content">
+        <p class="accordion-panel-text">An Individual Savings Account (ISA) is a tax-efficient way to save or invest your money. You can put money into an ISA each tax year and any interest or investment returns are tax-free.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Accordion Item 2 (Open) -->
+  <div class="accordion-item is-open">
+    <div class="accordion-header">
+      <div class="accordion-label">
+        <div class="accordion-label-text">How do I open a savings account?</div>
+      </div>
+      <div class="accordion-icon">
+        <div class="accordion-icon-plus">
+          <img data-icon-plus alt="">
+        </div>
+        <div class="accordion-icon-minus">
+          <img data-icon-minus alt="">
+        </div>
+      </div>
+    </div>
+    <div class="accordion-divider"></div>
+    <div class="accordion-panel">
+      <div class="accordion-panel-content">
+        <p class="accordion-panel-text">You can open a savings account online in just a few minutes. You'll need your personal details, proof of identity, and proof of address. Once approved, you can start saving immediately.</p>
+      </div>
+    </div>
+    <div class="accordion-divider"></div>
+  </div>
+
+  <!-- Accordion Item 3 (Closed with subtext) -->
+  <div class="accordion-item">
+    <div class="accordion-header">
+      <div class="accordion-label">
+        <div class="accordion-label-text">What is the interest rate?</div>
+        <div class="accordion-label-subtext">Updated monthly</div>
+      </div>
+      <div class="accordion-icon">
+        <div class="accordion-icon-plus">
+          <img data-icon-plus alt="">
+        </div>
+        <div class="accordion-icon-minus">
+          <img data-icon-minus alt="">
+        </div>
+      </div>
+    </div>
+    <div class="accordion-divider"></div>
+    <div class="accordion-panel">
+      <div class="accordion-panel-content">
+        <p class="accordion-panel-text">Our interest rates vary depending on the type of account and balance. Check our website for the latest rates, which are updated monthly and clearly displayed for each product.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SINGLE VARIANT: No heading (Full width) -->
+<div class="accordion accordion-full accordion-single">
+  <!-- Accordion Item 1 -->
+  <div class="accordion-item">
+    <div class="accordion-header">
+      <div class="accordion-label">
+        <div class="accordion-label-text">Personal Information</div>
+      </div>
+      <div class="accordion-icon">
+        <div class="accordion-icon-plus">
+          <img data-icon-plus alt="">
+        </div>
+        <div class="accordion-icon-minus">
+          <img data-icon-minus alt="">
+        </div>
+      </div>
+    </div>
+    <div class="accordion-divider"></div>
+    <div class="accordion-panel">
+      <div class="accordion-panel-content">
+        <p class="accordion-panel-text">Update your name, address, phone number, and email preferences.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Accordion Item 2 -->
+  <div class="accordion-item">
+    <div class="accordion-header">
+      <div class="accordion-label">
+        <div class="accordion-label-text">Security Settings</div>
+      </div>
+      <div class="accordion-icon">
+        <div class="accordion-icon-plus">
+          <img data-icon-plus alt="">
+        </div>
+        <div class="accordion-icon-minus">
+          <img data-icon-minus alt="">
+        </div>
+      </div>
+    </div>
+    <div class="accordion-divider"></div>
+    <div class="accordion-panel">
+      <div class="accordion-panel-content">
+        <p class="accordion-panel-text">Manage your password, security questions, and two-factor authentication settings.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Accordion Item 3 -->
+  <div class="accordion-item">
+    <div class="accordion-header">
+      <div class="accordion-label">
+        <div class="accordion-label-text">Notifications</div>
+      </div>
+      <div class="accordion-icon">
+        <div class="accordion-icon-plus">
+          <img data-icon-plus alt="">
+        </div>
+        <div class="accordion-icon-minus">
+          <img data-icon-minus alt="">
+        </div>
+      </div>
+    </div>
+    <div class="accordion-divider"></div>
+    <div class="accordion-panel">
+      <div class="accordion-panel-content">
+        <p class="accordion-panel-text">Choose how and when you receive notifications about your account activity.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WITH CUSTOM CONTENT SLOT -->
+<div class="accordion accordion-compact accordion-group">
+  <h2 class="accordion-heading">Account Details</h2>
+
+  <div class="accordion-item is-open">
+    <div class="accordion-header">
+      <div class="accordion-label">
+        <div class="accordion-label-text">Transaction History</div>
+      </div>
+      <div class="accordion-icon">
+        <div class="accordion-icon-plus">
+          <img data-icon-plus alt="">
+        </div>
+        <div class="accordion-icon-minus">
+          <img data-icon-minus alt="">
+        </div>
+      </div>
+    </div>
+    <div class="accordion-divider"></div>
+    <div class="accordion-panel">
+      <div class="accordion-panel-content">
+        <!-- Custom content slot - add any HTML here -->
+        <p class="accordion-panel-text">Last 5 transactions:</p>
+        <ul style="margin: 8px 0; padding-left: 20px; color: var(--text-default);">
+          <li>Grocery Store - £45.32</li>
+          <li>Coffee Shop - £3.50</li>
+          <li>Online Purchase - £89.99</li>
+          <li>Fuel Station - £52.00</li>
+          <li>Restaurant - £67.50</li>
+        </ul>
+      </div>
+    </div>
+    <div class="accordion-divider"></div>
+  </div>
+</div>
+
+<!--
+  STRUCTURE:
+  
+  accordion
+  ├── accordion-heading (optional - for grouped accordions)
+  ├── accordion-item (repeatable)
+  │   ├── accordion-header (clickable)
+  │   │   ├── accordion-label
+  │   │   │   ├── accordion-label-text
+  │   │   │   └── accordion-label-subtext (optional)
+  │   │   └── accordion-icon
+  │   │       ├── accordion-icon-plus (shown when closed)
+  │   │       └── accordion-icon-minus (shown when open)
+  │   ├── accordion-divider
+  │   ├── accordion-panel (hidden when closed)
+  │   │   └── accordion-panel-content
+  │   │       └── accordion-panel-text or custom content
+  │   └── accordion-divider (bottom, shown when open)
+  
+  VARIANTS:
+  
+  Width:
+  - accordion-compact: Max 375px width
+  - accordion-full: 100% width
+  
+  Usage:
+  - accordion-group: With heading
+  - accordion-single: No heading
+  
+  State:
+  - Add .is-open class to accordion-item to start expanded
+  - JavaScript handles toggling .is-open class on click
+  
+  Icons:
+  - Plus/Minus icons (default): Use accordion-icon-plus and accordion-icon-minus
+  - Chevron alternative: Use accordion-icon-chevron with data-chevron-down
+  
+  DATA ATTRIBUTES:
+  - data-icon-plus: Auto-populates plus icon
+  - data-icon-minus: Auto-populates minus icon
+  
+  COMPLETE USAGE:
+  
+  <head>
+      <link rel="stylesheet" href="../../../css/cancara-tokens.css">
+      <link rel="stylesheet" href="Accordion.vanilla.css">
+  </head>
+  <body>
+      <div class="accordion accordion-compact accordion-group">
+          <h2 class="accordion-heading">FAQs</h2>
+          
+          <div class="accordion-item">
+              <div class="accordion-header">
+                  <div class="accordion-label">
+                      <div class="accordion-label-text">Question?</div>
+                  </div>
+                  <div class="accordion-icon">
+                      <div class="accordion-icon-plus">
+                          <img data-icon-plus alt="">
+                      </div>
+                      <div class="accordion-icon-minus">
+                          <img data-icon-minus alt="">
+                      </div>
+                  </div>
+              </div>
+              <div class="accordion-divider"></div>
+              <div class="accordion-panel">
+                  <div class="accordion-panel-content">
+                      <p class="accordion-panel-text">Answer here.</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+      
+      <script src="Accordion.vanilla.js"></script>
+  </body>
+-->

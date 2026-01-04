@@ -1,0 +1,170 @@
+/* Phone Number Vanilla CSS - SELF-CONTAINED - TOKEN LED */
+
+/* ========== PHONE NUMBER CONTAINER ========== */
+.phone-number {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 var(--spacing-16);
+  gap: var(--spacing-08);
+}
+
+/* ========== LABEL ========== */
+.phone-number-label {
+  font-family: var(--type-style-6-family);
+  font-size: var(--type-style-6-size);
+  font-weight: var(--type-style-6-weight);
+  line-height: var(--type-style-6-line-height);
+  letter-spacing: var(--type-style-6-letter-spacing);
+  color: var(--text-default);
+}
+
+/* ========== INPUTS ROW ========== */
+.phone-number-inputs {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-08);
+  width: 100%;
+}
+
+/* ========== COUNTRY PICKER (NESTED) ========== */
+/* Remove padding from nested country picker */
+.phone-number .country-picker {
+  padding: 0;
+}
+
+/* ========== PHONE INPUT ========== */
+.phone-number-phone {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-08);
+}
+
+.phone-number-phone-input {
+  border-radius: var(--input-corner-radius);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: var(--spacing-16);
+  gap: var(--spacing-08);
+  background-color: var(--bg-input-default);
+  border: var(--input-border-width-default) solid var(--border-default);
+  transition: border 0.2s;
+  box-sizing: border-box;
+  cursor: text;
+}
+
+.phone-number-phone-field {
+  font-family: var(--type-style-6-family);
+  font-size: var(--type-style-6-size);
+  font-weight: var(--type-style-6-weight);
+  line-height: var(--type-style-6-line-height);
+  color: var(--text-default);
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 100%;
+  padding: 0;
+}
+
+.phone-number-phone-field::placeholder {
+  color: var(--text-input-placeholder);
+}
+
+.phone-number-phone-field:focus {
+  outline: none;
+}
+
+.phone-number-phone-input:focus-within {
+  border-width: var(--input-border-width-active);
+  border-color: var(--text-default);
+}
+
+/* ========== EXTENSION INPUT ========== */
+.phone-number-extension {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-08);
+}
+
+.phone-number-extension-input {
+  border-radius: var(--input-corner-radius);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: var(--spacing-16);
+  gap: var(--spacing-08);
+  background-color: var(--bg-input-default);
+  border: var(--input-border-width-default) solid var(--border-default);
+  transition: border 0.2s;
+  box-sizing: border-box;
+  width: 88px;
+  cursor: text;
+}
+
+.phone-number-extension-field {
+  font-family: var(--type-style-6-family);
+  font-size: var(--type-style-6-size);
+  font-weight: var(--type-style-6-weight);
+  line-height: var(--type-style-6-line-height);
+  color: var(--text-default);
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 100%;
+  padding: 0;
+  text-align: left;
+}
+
+.phone-number-extension-field::placeholder {
+  color: var(--text-input-placeholder);
+}
+
+.phone-number-extension-field:focus {
+  outline: none;
+}
+
+.phone-number-extension-input:focus-within {
+  border-width: var(--input-border-width-active);
+  border-color: var(--text-default);
+}
+
+/* ========== STATE: DISABLED ========== */
+.phone-number.is-disabled .phone-number-phone-input,
+.phone-number.is-disabled .phone-number-extension-input {
+  background-color: var(--bg-input-disabled);
+  border-color: var(--border-default);
+  cursor: not-allowed;
+}
+
+.phone-number.is-disabled .phone-number-phone-field,
+.phone-number.is-disabled .phone-number-extension-field {
+  color: var(--text-input-disabled);
+  cursor: not-allowed;
+}
+
+/* ========== STATE: ERROR ========== */
+.phone-number.has-error .phone-number-phone-input,
+.phone-number.has-error .phone-number-extension-input {
+  border-color: var(--color-red-critical);
+}
+
+.phone-number.has-error .phone-number-phone-input:focus-within,
+.phone-number.has-error .phone-number-extension-input:focus-within {
+  border-color: var(--color-red-critical);
+}
+
+/* Apply error state to nested country picker */
+.phone-number.has-error .country-picker {
+  /* This triggers the error state in the nested CountryPicker component */
+}
+
+.phone-number.has-error .country-picker .country-picker-input {
+  border-color: var(--color-red-critical);
+}
+
+.phone-number.has-error .country-picker .country-picker-input.is-active {
+  border-color: var(--color-red-critical);
+}

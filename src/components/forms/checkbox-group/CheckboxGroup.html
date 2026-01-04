@@ -1,0 +1,184 @@
+# Checkbox Group Component
+
+A checkbox group component that displays multiple checkbox options with a shared label. This component nests the Checkbox component for consistent styling and behavior.
+
+## Files
+
+- `CheckboxGroup.vanilla.css` - Self-contained CSS with token-led styling
+- `CheckboxGroup.vanilla.js` - Interactive functionality for checkbox groups
+- `CheckboxGroup-demo.html` - Demo page showing all variants
+
+## Dependencies
+
+This component requires the nested Checkbox component:
+- `../checkbox/Checkbox.vanilla.css`
+- `../checkbox/Checkbox.vanilla.js`
+
+## Component Structure
+
+```html
+<div class="checkbox-group">
+    <div class="checkbox-group-label">Label</div>
+    
+    <div class="checkbox-item">
+        <div class="checkbox-item-checkbox">
+            <div class="checkbox-wrapper">
+                <input type="checkbox" class="checkbox-input" id="cb-1">
+                <label for="cb-1" class="checkbox">
+                    <div class="checkbox-icon">
+                        <div class="checkbox-icon-wrapper">
+                            <img data-icon="checkmark" alt="">
+                        </div>
+                    </div>
+                </label>
+            </div>
+        </div>
+        <div class="checkbox-item-text">
+            <label for="cb-1" class="checkbox-item-label">Item</label>
+        </div>
+    </div>
+    
+    <!-- Additional checkbox items... -->
+</div>
+```
+
+## CSS Classes
+
+### Group Container
+- `.checkbox-group` - Main container for the checkbox group
+
+### Group Label
+- `.checkbox-group-label` - Group label (type-style-6, 15px)
+
+### Checkbox Item
+- `.checkbox-item` - Container for each checkbox + label pair
+- `.checkbox-item.is-disabled` - Disabled state for the item
+- `.checkbox-item-checkbox` - Checkbox container with top padding
+- `.checkbox-item-text` - Text label container with top padding
+- `.checkbox-item-label` - Label text (type-style-4, 17px)
+
+### Nested Checkbox
+- Uses all classes from the Checkbox component
+- `.checkbox-wrapper` - Checkbox wrapper
+- `.checkbox-input` - Hidden input
+- `.checkbox` - Visual checkbox (32px × 32px)
+- `.checkbox-icon` - Checkmark icon container
+- `.checkbox-icon-wrapper` - Icon wrapper (18px × 18px)
+
+## JavaScript Events
+
+The component dispatches a custom `checkbox-group-change` event when any checkbox changes:
+
+```javascript
+element.addEventListener('checkbox-group-change', function(e) {
+    console.log(e.detail.checkboxId); // ID of the checkbox
+    console.log(e.detail.checked); // Boolean checked state
+    console.log(e.detail.value); // Value or ID of checkbox
+});
+```
+
+## Design Tokens Used
+
+### Typography
+- `--type-style-6-family` - Group label font (GT Ultra)
+- `--type-style-6-size` - Group label size (15px)
+- `--type-style-6-weight` - Group label weight
+- `--type-style-6-line-height` - Group label line height (20px)
+- `--type-style-4-family` - Item label font (GT Ultra)
+- `--type-style-4-size` - Item label size (17px)
+- `--type-style-4-weight` - Item label weight (700)
+- `--type-style-4-line-height` - Item label line height (22px)
+
+### Colors
+- `--text-default` - Label text color
+- `--bg-panel-default` - Checkbox background (white)
+- `--color-gray-700` - Checkbox border (#323233)
+- `--color-black` - Checked border
+- `--color-gray-100` - Disabled background (#F1F1F1)
+- `--color-gray-300` - Disabled border (#C9C9C9)
+
+### Spacing
+- `--spacing-08` - Gap between items and checkbox padding (8px)
+- `--spacing-12` - Gap between checkbox and text, text padding (12px)
+- `--spacing-16` - Horizontal padding (16px)
+
+### Borders
+- `--radius-small` - Checkbox border radius (8px)
+- `--input-checkbox-border-width` - Checkbox border width (1px)
+
+## Dimensions
+
+- **Checkbox**: 32px × 32px
+- **Checkmark icon**: 18px × 18px
+- **Gap between checkbox and text**: 12px
+- **Gap between items**: 8px
+- **Checkbox padding top**: 8px
+- **Text padding top**: 12px
+
+## Icon Requirements
+
+The component uses a checkmark icon from the assets folder:
+- `checkmark.svg` - Shown when checkbox is checked
+
+The icon is 18px × 18px and automatically inverts in dark mode.
+
+## Behavior
+
+- Label clicks toggle the associated checkbox
+- Disabled checkboxes cannot be clicked
+- Checkmarks appear/disappear with smooth transitions
+- Custom events dispatched on checkbox state changes
+- Proper label/input associations for accessibility
+
+## Usage Examples
+
+### Basic Group with 3 Items
+```html
+<div class="checkbox-group">
+    <div class="checkbox-group-label">Select options</div>
+    
+    <div class="checkbox-item">
+        <!-- Checkbox component structure -->
+    </div>
+    <div class="checkbox-item">
+        <!-- Checkbox component structure -->
+    </div>
+    <div class="checkbox-item">
+        <!-- Checkbox component structure -->
+    </div>
+</div>
+```
+
+### Disabled Group
+```html
+<div class="checkbox-group">
+    <div class="checkbox-group-label">Disabled options</div>
+    
+    <div class="checkbox-item is-disabled">
+        <div class="checkbox-item-checkbox">
+            <div class="checkbox-wrapper">
+                <input type="checkbox" class="checkbox-input" id="cb-1" disabled>
+                <!-- Rest of checkbox structure -->
+            </div>
+        </div>
+        <div class="checkbox-item-text">
+            <label for="cb-1" class="checkbox-item-label">Item</label>
+        </div>
+    </div>
+</div>
+```
+
+## Dark Mode Support
+
+All colors and icons automatically adapt to dark mode through the nested Checkbox component:
+- Checkbox borders adjust for visibility
+- Checkmark icons invert colors
+- Background colors maintain proper contrast
+- Label text follows theme text colors
+
+## Accessibility
+
+- Proper label/input associations with `for` and `id` attributes
+- Keyboard navigation supported through native checkbox behavior
+- Disabled states properly indicated
+- Focus states visible on checkboxes

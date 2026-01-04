@@ -1,0 +1,129 @@
+/* Pagination Vanilla CSS - SELF-CONTAINED - TOKEN LED */
+
+/* ========== PAGINATION CONTAINER ========== */
+.pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-16);
+}
+
+/* With arrows layout */
+.pagination-arrows {
+  padding: var(--spacing-16) var(--spacing-24);
+}
+
+/* With buttons layout */
+.pagination-buttons {
+  padding: 0 var(--spacing-24);
+}
+
+/* ========== PAGINATION DOTS ========== */
+.pagination-dots {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-08);
+}
+
+.pagination-dot {
+  border-radius: var(--radius-circle);
+  background-color: var(--text-subdued);
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+/* Inactive dot (normal) */
+.pagination-dot.is-inactive {
+  height: 6px;
+  width: 6px;
+}
+
+/* Active dot (elongated) */
+.pagination-dot.is-active {
+  height: 6px;
+  width: 24px;
+  background-color: var(--text-default);
+}
+
+/* Far dot (smaller, for 5+ pages) */
+.pagination-dot.is-far {
+  height: 4px;
+  width: 4px;
+}
+
+/* ========== NAVIGATION ARROWS ========== */
+.pagination-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacing-12) var(--spacing-24);
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  transition: opacity 0.2s;
+}
+
+.pagination-nav:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.pagination-nav:not(:disabled):hover {
+  opacity: 0.7;
+}
+
+.pagination-nav-icon {
+  width: 12px;
+  height: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination-nav-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Dark mode icon inversion */
+[data-theme="dark"] .pagination-nav-icon img {
+  filter: invert(1);
+}
+
+/* ========== NAVIGATION BUTTONS (TEXT) ========== */
+.pagination-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0 var(--spacing-16);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: var(--radius-small);
+  transition: opacity 0.2s;
+}
+
+.pagination-button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.pagination-button:not(:disabled):hover {
+  opacity: 0.7;
+}
+
+.pagination-button-text {
+  font-family: var(--type-style-6-family);
+  font-size: var(--type-style-6-size);
+  font-weight: var(--type-style-6-weight);
+  line-height: var(--type-style-6-line-height);
+  color: var(--text-default);
+  text-decoration: underline;
+  padding: 0 var(--spacing-08);
+}

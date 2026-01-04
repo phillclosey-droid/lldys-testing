@@ -1,0 +1,116 @@
+/* Checkbox - SELF-CONTAINED - TOKEN LED */
+
+/* Base checkbox wrapper */
+.checkbox-wrapper {
+  display: inline-flex;
+  position: relative;
+}
+
+/* Hit target area - 44x44px for better touch/click area */
+.checkbox-wrapper.with-hit-target {
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Actual checkbox input - hidden */
+.checkbox-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Visual checkbox */
+.checkbox {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-small);
+  background-color: var(--bg-panel-default);
+  border: var(--input-checkbox-border-width) solid var(--color-gray-700);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+/* Checked state */
+.checkbox-input:checked + .checkbox {
+  border-color: var(--color-black);
+}
+
+/* Disabled state */
+.checkbox-input:disabled + .checkbox {
+  background-color: var(--color-gray-100);
+  border-color: var(--color-gray-300);
+  cursor: not-allowed;
+}
+
+/* Icon container */
+.checkbox-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+/* Show icon when checked */
+.checkbox-input:checked + .checkbox .checkbox-icon {
+  opacity: 1;
+}
+
+/* Icon wrapper */
+.checkbox-icon-wrapper {
+  width: 18px;
+  height: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-panel-default);
+}
+
+.checkbox-icon-wrapper img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+/* Hover state */
+.checkbox-input:not(:disabled):hover + .checkbox {
+  border-color: var(--color-black);
+}
+
+/* Active/pressed state */
+.checkbox-input:not(:disabled):active + .checkbox {
+  transform: scale(0.95);
+}
+
+/* ========== DARK MODE ========== */
+[data-theme="dark"] .checkbox {
+  background-color: var(--bg-panel-default);
+  border-color: var(--color-gray-700);
+}
+
+[data-theme="dark"] .checkbox-input:checked + .checkbox {
+  border-color: var(--color-gray-200);
+}
+
+[data-theme="dark"] .checkbox-input:disabled + .checkbox {
+  background-color: var(--color-gray-800);
+  border-color: var(--color-gray-600);
+}
+
+[data-theme="dark"] .checkbox-icon-wrapper {
+  background-color: var(--bg-panel-default);
+}
+
+/* Make tick green in dark mode */
+[data-theme="dark"] .checkbox-icon-wrapper img {
+  filter: brightness(0) saturate(100%) invert(64%) sepia(98%) saturate(2595%) hue-rotate(96deg) brightness(99%) contrast(95%);
+}

@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tile Component Test</title>
+    
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="../../../../css/cancara-tokens.css">
+    
+    <!-- Tile Component Styles -->
+    <link rel="stylesheet" href="Tile.vanilla.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family-body);
+            background: var(--bg-page-default);
+            color: var(--text-default);
+            transition: background-color 0.3s, color 0.3s;
+            padding: 40px;
+            min-height: 100vh;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .toggle-button {
+            background: var(--bg-action-default);
+            color: var(--text-action-inverse);
+            border: none;
+            border-radius: var(--radius-default);
+            padding: 12px 24px;
+            font-family: var(--font-family-body);
+            font-size: 14px;
+            font-weight: var(--font-weight-bold);
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .toggle-button:hover {
+            background: var(--bg-action-pressed);
+        }
+
+        h1 {
+            margin-bottom: 40px;
+            font-size: 32px;
+        }
+
+        .section {
+            margin-bottom: 60px;
+        }
+
+        .section h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .section h3 {
+            margin-bottom: 16px;
+            font-size: 18px;
+            color: var(--text-subdued);
+        }
+
+        .section p {
+            margin-bottom: 20px;
+            color: var(--text-subdued);
+        }
+
+        /* Layout wrappers */
+        .layout-single {
+            display: flex;
+            flex-direction: column;
+            padding: 0px var(--spacing-16);
+            margin-bottom: var(--spacing-32);
+        }
+
+        .layout-double {
+            display: flex;
+            flex-direction: row;
+            padding: 0px var(--spacing-16);
+            gap: var(--spacing-16);
+            margin-bottom: var(--spacing-32);
+        }
+
+        .layout-double .tile {
+            flex: 1;
+        }
+
+        .variant-grid {
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <div class="theme-toggle">
+        <button class="toggle-button" onclick="toggleTheme()">
+            <span id="theme-text">Switch to Dark Mode</span>
+        </button>
+    </div>
+
+    <h1>Tile Component - All Variants</h1>
+
+    <!-- SINGLE LAYOUT -->
+    <div class="section">
+        <h2>Single Layout</h2>
+        <p>Full-width tiles (one per row)</p>
+
+        <div class="variant-grid">
+            <h3>Preset: Link Only</h3>
+            <div class="layout-single">
+                <div class="tile tile-horizontal">
+                    <div class="pictogram pict-default">
+                        <img data-pictogram="Piggy_Bank_Lloyds_-_V2" alt="">
+                    </div>
+                    <div class="tile-vstack">
+                        <div class="tile-text-link">Open Account</div>
+                    </div>
+                    <div class="tile-icon tile-icon-12">
+                        <img data-chevron alt="">
+                    </div>
+                </div>
+            </div>
+
+            <h3>Preset: Link + Description</h3>
+            <div class="layout-single">
+                <div class="tile tile-horizontal">
+                    <div class="pictogram pict-primary">
+                        <img data-pictogram="Cards_Lloyds_-_V2" alt="">
+                    </div>
+                    <div class="tile-vstack">
+                        <div class="tile-text-description">Manage your cards</div>
+                        <div class="tile-text-link">View Cards</div>
+                    </div>
+                    <div class="tile-icon tile-icon-12">
+                        <img data-chevron alt="">
+                    </div>
+                </div>
+            </div>
+
+            <h3>Preset: Heading + Description</h3>
+            <div class="layout-single">
+                <div class="tile tile-horizontal">
+                    <div class="tile-vstack">
+                        <div class="tile-hstack">
+                            <div class="tile-icon tile-icon-18">
+                                <img data-icon="person" data-icon-category="people" alt="">
+                            </div>
+                            <div class="tile-text-heading">Security Settings</div>
+                        </div>
+                        <div class="tile-text-subtext">Manage your account security</div>
+                    </div>
+                    <div class="tile-icon tile-icon-12">
+                        <img data-chevron alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DOUBLE LAYOUT -->
+    <div class="section">
+        <h2>Double Layout</h2>
+        <p>Two tiles side-by-side (50% width each)</p>
+
+        <div class="variant-grid">
+            <h3>Preset: Link Only (Vertical Tiles - Centered)</h3>
+            <div class="layout-double">
+                <div class="tile tile-vertical">
+                    <div class="pictogram pict-default">
+                        <img data-pictogram="Piggy_Bank_Lloyds_-_V2" alt="">
+                    </div>
+                    <div class="tile-text-link">Savings</div>
+                </div>
+                <div class="tile tile-vertical">
+                    <div class="pictogram pict-primary">
+                        <img data-pictogram="Investments_Lloyds_-_V2" alt="">
+                    </div>
+                    <div class="tile-text-link">Investments</div>
+                </div>
+            </div>
+
+            <h3>Preset: Link + Description (Vertical Tiles - Left-aligned)</h3>
+            <div class="layout-double">
+                <div class="tile tile-vertical tile-has-vstack">
+                    <div class="pictogram pict-secondary-alt-04">
+                        <img data-pictogram="Home_Lloyds_-_V2" alt="">
+                    </div>
+                    <div class="tile-vstack">
+                        <div class="tile-text-description">Buy your home</div>
+                        <div class="tile-text-link">Mortgages</div>
+                    </div>
+                </div>
+                <div class="tile tile-vertical tile-has-vstack">
+                    <div class="pictogram pict-secondary-alt-02">
+                        <img data-pictogram="Car_Lloyds_-_V2" alt="">
+                    </div>
+                    <div class="tile-vstack">
+                        <div class="tile-text-description">Finance your vehicle</div>
+                        <div class="tile-text-link">Car Loans</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Preset: Heading + Description (Horizontal Tiles)</h3>
+            <div class="layout-double">
+                <div class="tile tile-horizontal">
+                    <div class="tile-vstack">
+                        <div class="tile-hstack">
+                            <div class="tile-icon tile-icon-18">
+                                <img data-icon="person" data-icon-category="people" alt="">
+                            </div>
+                            <div class="tile-text-heading">Privacy</div>
+                        </div>
+                        <div class="tile-text-subtext">Control your data</div>
+                    </div>
+                </div>
+                <div class="tile tile-horizontal">
+                    <div class="tile-vstack">
+                        <div class="tile-hstack">
+                            <div class="tile-icon tile-icon-18">
+                                <img data-icon="search" data-icon-category="navigation" alt="">
+                            </div>
+                            <div class="tile-text-heading">Alerts</div>
+                        </div>
+                        <div class="tile-text-subtext">Manage notifications</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MORE SINGLE EXAMPLES -->
+    <div class="section">
+        <h2>More Single Layout Examples</h2>
+
+        <div class="variant-grid">
+            <h3>Different Pictogram Colors</h3>
+            <div class="layout-single">
+                <div class="tile tile-horizontal">
+                    <div class="pictogram pict-primary-alt-01">
+                        <img data-pictogram="Piggy_Bank_Lloyds_-_V2" alt="">
+                    </div>
+                    <div class="tile-vstack">
+                        <div class="tile-text-link">Primary Alt 01 (Dark Green)</div>
+                    </div>
+                    <div class="tile-icon tile-icon-12">
+                        <img data-chevron alt="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="layout-single">
+                <div class="tile tile-horizontal">
+                    <div class="pictogram pict-secondary-alt-01">
+                        <img data-pictogram="Heart_Lloyds_-_V2" alt="">
+                    </div>
+                    <div class="tile-vstack">
+                        <div class="tile-text-link">Secondary Alt 01 (Purple)</div>
+                    </div>
+                    <div class="tile-icon tile-icon-12">
+                        <img data-chevron alt="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="layout-single">
+                <div class="tile tile-horizontal">
+                    <div class="pictogram pict-secondary-alt-03">
+                        <img data-pictogram="Compass_Lloyds_-_V2" alt="">
+                    </div>
+                    <div class="tile-vstack">
+                        <div class="tile-text-link">Secondary Alt 03 (Cyan)</div>
+                    </div>
+                    <div class="tile-icon tile-icon-12">
+                        <img data-chevron alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TRIPLE LAYOUT EXAMPLE -->
+    <div class="section">
+        <h2>Triple Layout (Custom Grid)</h2>
+        <p>Three tiles side-by-side using custom grid</p>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; padding: 0 16px; margin-bottom: 32px;">
+            <div class="tile tile-vertical">
+                <div class="pictogram pict-default">
+                    <img data-pictogram="Piggy_Bank_Lloyds_-_V2" alt="">
+                </div>
+                <div class="tile-text-link">Savings</div>
+            </div>
+            <div class="tile tile-vertical">
+                <div class="pictogram pict-primary">
+                    <img data-pictogram="Cards_Lloyds_-_V2" alt="">
+                </div>
+                <div class="tile-text-link">Cards</div>
+            </div>
+            <div class="tile tile-vertical">
+                <div class="pictogram pict-secondary-alt-04">
+                    <img data-pictogram="Calendar_Lloyds_-_V2" alt="">
+                </div>
+                <div class="tile-text-link">Payments</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- INTERACTIVE STATES -->
+    <div class="section">
+        <h2>Interactive States</h2>
+        <p>Hover over tiles to see hover state, click to see active/pressed state</p>
+
+        <div class="layout-single">
+            <div class="tile tile-horizontal">
+                <div class="pictogram pict-primary">
+                    <img data-pictogram="Chat_Lloyds_-_V2" alt="">
+                </div>
+                <div class="tile-vstack">
+                    <div class="tile-text-link">Try clicking me!</div>
+                </div>
+                <div class="tile-icon tile-icon-12">
+                    <img data-chevron alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Component Features</h2>
+        <ul style="padding-left: 20px; line-height: 2;">
+            <li>✅ Two tile orientations: horizontal, vertical</li>
+            <li>✅ Two layout patterns: single (full-width), double (50% each)</li>
+            <li>✅ Three presets: link-only, link-description, heading-description</li>
+            <li>✅ Self-contained (includes Pictogram styles)</li>
+            <li>✅ Token-based styling</li>
+            <li>✅ Auto-initializes images via JavaScript</li>
+            <li>✅ Dark mode support</li>
+            <li>✅ Hover and active states</li>
+            <li>✅ Multiple icon sizes: 12px, 18px, 24px</li>
+            <li>✅ Multiple pictogram color variants</li>
+            <li>✅ Flexible - supports custom grid layouts (triple, quad, etc.)</li>
+        </ul>
+    </div>
+
+    <script src="Tile.vanilla.js"></script>
+
+    <script>
+        function detectSystemTheme() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-text').textContent = 'Switch to Light Mode';
+            } else {
+                document.body.setAttribute('data-theme', 'light');
+                document.getElementById('theme-text').textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', detectSystemTheme);
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const themeText = document.getElementById('theme-text');
+            const currentTheme = body.getAttribute('data-theme');
+            
+            if (currentTheme === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                themeText.textContent = 'Switch to Light Mode';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeText.textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', function() {
+            detectSystemTheme();
+        });
+    </script>
+</body>
+</html>

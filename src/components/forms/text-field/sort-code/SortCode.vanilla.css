@@ -1,0 +1,121 @@
+/* Sort Code Vanilla CSS - SELF-CONTAINED - TOKEN LED */
+
+/* ========== SORT CODE CONTAINER ========== */
+.sort-code {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-08);
+}
+
+/* ========== LABEL ========== */
+.sort-code-label {
+  font-family: var(--type-style-6-family);
+  font-size: var(--type-style-6-size);
+  font-weight: var(--type-style-6-weight);
+  line-height: var(--type-style-6-line-height);
+  letter-spacing: var(--type-style-6-letter-spacing);
+  color: var(--text-default);
+}
+
+/* ========== INPUTS ROW ========== */
+.sort-code-inputs {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-08);
+}
+
+/* ========== INDIVIDUAL INPUT CONTAINER ========== */
+.sort-code-input-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.sort-code-input-box {
+  border-radius: var(--input-corner-radius);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacing-16);
+  gap: var(--spacing-08);
+  background-color: var(--bg-input-default);
+  border: var(--input-border-width-default) solid var(--border-default);
+  transition: border 0.2s;
+  box-sizing: border-box;
+  width: 88px;
+  min-height: 56px;
+  cursor: text;
+}
+
+.sort-code-input-field {
+  font-family: var(--type-style-6-family);
+  font-size: var(--type-style-6-size);
+  font-weight: var(--type-style-6-weight);
+  line-height: var(--type-style-6-line-height);
+  color: var(--text-default);
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 100%;
+  padding: 0;
+  text-align: center;
+}
+
+.sort-code-input-field::placeholder {
+  color: var(--text-input-placeholder);
+}
+
+.sort-code-input-box:focus-within {
+  border-width: var(--input-border-width-active);
+  border-color: var(--text-default);
+}
+
+/* ========== SEPARATOR ========== */
+.sort-code-separator {
+  height: 2px;
+  width: 8px;
+  background-color: var(--text-default);
+  flex-shrink: 0;
+}
+
+/* ========== HINT MESSAGE (BANK NAME) ========== */
+.sort-code-hint {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacing-08) 0;
+  border-radius: 0 0 var(--input-corner-radius) var(--input-corner-radius);
+}
+
+.sort-code-hint-text {
+  font-family: var(--font-family-body);
+  font-size: 14px;
+  font-weight: var(--font-weight-regular);
+  line-height: 20px;
+  color: var(--text-default);
+}
+
+/* ========== STATE: ERROR ========== */
+.sort-code.has-error .sort-code-input-box {
+  border-color: var(--color-red-critical);
+}
+
+.sort-code.has-error .sort-code-input-box:focus-within {
+  border-color: var(--color-red-critical);
+}
+
+/* ========== STATE: DISABLED ========== */
+.sort-code.is-disabled .sort-code-input-box {
+  background-color: var(--bg-input-disabled);
+  border-color: var(--border-default);
+  cursor: not-allowed;
+}
+
+.sort-code.is-disabled .sort-code-input-field {
+  color: var(--text-input-disabled);
+  cursor: not-allowed;
+}

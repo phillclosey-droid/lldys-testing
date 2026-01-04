@@ -1,0 +1,441 @@
+/* ActionButton Vanilla CSS - SELF-CONTAINED - TOKEN LED */
+
+/* Button Container */
+.action-button {
+  border-radius: var(--btn-action-corner-radius);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+  border: none;
+  font-family: inherit;
+  position: relative;
+  background: transparent;
+  width: 100%;
+}
+
+.action-button:disabled {
+  cursor: not-allowed;
+}
+
+/* Button Inner Container */
+.action-button-inner {
+  border-radius: var(--btn-action-corner-radius);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacing-12) var(--spacing-48);
+  width: 100%;
+  position: relative;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+/* Button Text - Centered */
+.action-button-text {
+  text-align: center;
+  vertical-align: top;
+  font-family: var(--type-style-5-family);
+  font-size: var(--type-style-5-size);
+  font-weight: var(--type-style-5-weight);
+  line-height: var(--type-style-5-line-height);
+  transition: color 0.2s;
+  flex: 1;
+}
+
+/* Icon Container - Absolute positioned far right */
+.action-button-icon {
+  height: var(--spacing-24);
+  width: var(--spacing-24);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacing-04);
+  flex-shrink: 0;
+  position: absolute;
+  right: var(--spacing-16);
+}
+
+.action-button-icon img {
+  height: var(--spacing-16);
+  width: var(--spacing-16);
+  object-fit: contain;
+}
+
+/* Hide icons on disabled buttons */
+.action-button:disabled .action-button-icon,
+.action-button.disabled .action-button-icon {
+  display: none;
+}
+
+/* ========== TYPE: PRIMARY ========== */
+.action-button.btn-primary .action-button-inner {
+  background-color: var(--bg-action-default);
+}
+
+.action-button.btn-primary .action-button-text {
+  color: var(--text-action-inverse);
+}
+
+.action-button.btn-primary .action-button-icon img {
+  filter: brightness(0) invert(1);
+}
+
+/* Pressed */
+.action-button.btn-primary:active .action-button-inner,
+.action-button.btn-primary.pressed .action-button-inner {
+  background-color: var(--bg-action-pressed);
+}
+
+.action-button.btn-primary:active .action-button-text,
+.action-button.btn-primary.pressed .action-button-text {
+  color: var(--text-action-inverse);
+}
+
+/* Disabled */
+.action-button.btn-primary:disabled .action-button-inner,
+.action-button.btn-primary.disabled .action-button-inner {
+  background-color: var(--bg-action-disabled);
+}
+
+.action-button.btn-primary:disabled .action-button-text,
+.action-button.btn-primary.disabled .action-button-text {
+  color: var(--btn-action-text-disabled);
+}
+
+/* Dark mode icon adjustments */
+[data-theme="dark"] .action-button.btn-primary .action-button-icon img {
+  filter: none;
+}
+
+/* ========== TYPE: PRIMARY + BRAND ACCENT ========== */
+.action-button.btn-primary.btn-brand-accent .action-button-inner {
+  background-color: var(--btn-brand-accent-primary-bg-default);
+}
+
+.action-button.btn-primary.btn-brand-accent .action-button-text {
+  color: var(--btn-brand-accent-primary-text-default);
+}
+
+.action-button.btn-primary.btn-brand-accent .action-button-icon img {
+  filter: none;
+}
+
+/* Pressed */
+.action-button.btn-primary.btn-brand-accent:active .action-button-inner,
+.action-button.btn-primary.btn-brand-accent.pressed .action-button-inner {
+  background-color: var(--btn-brand-accent-primary-bg-pressed);
+}
+
+.action-button.btn-primary.btn-brand-accent:active .action-button-text,
+.action-button.btn-primary.btn-brand-accent.pressed .action-button-text {
+  color: var(--btn-brand-accent-primary-text-pressed);
+}
+
+/* Disabled */
+.action-button.btn-primary.btn-brand-accent:disabled .action-button-inner,
+.action-button.btn-primary.btn-brand-accent.disabled .action-button-inner {
+  background-color: var(--bg-action-disabled);
+}
+
+.action-button.btn-primary.btn-brand-accent:disabled .action-button-text,
+.action-button.btn-primary.btn-brand-accent.disabled .action-button-text {
+  color: var(--btn-action-text-disabled);
+}
+
+/* ========== TYPE: PRIMARY + ON COLOR BG ========== */
+/* Primary on-color: black text on white bg (both light and dark mode) */
+.action-button.btn-primary.btn-on-color .action-button-inner {
+  background-color: var(--bg-action-on-color-default);
+}
+
+.action-button.btn-primary.btn-on-color .action-button-text {
+  color: var(--color-black);
+}
+
+.action-button.btn-primary.btn-on-color .action-button-icon img {
+  filter: none;
+}
+
+/* Pressed state */
+.action-button.btn-primary.btn-on-color:active .action-button-inner,
+.action-button.btn-primary.btn-on-color.pressed .action-button-inner {
+  background-color: var(--bg-action-on-color-pressed);
+}
+
+/* Light mode pressed: white text on gray */
+.action-button.btn-primary.btn-on-color:active .action-button-text,
+.action-button.btn-primary.btn-on-color.pressed .action-button-text {
+  color: var(--color-white);
+}
+
+.action-button.btn-primary.btn-on-color:active .action-button-icon img,
+.action-button.btn-primary.btn-on-color.pressed .action-button-icon img {
+  filter: brightness(0) invert(1);
+}
+
+/* Dark mode pressed: black text on green */
+[data-theme="dark"] .action-button.btn-primary.btn-on-color:active .action-button-text,
+[data-theme="dark"] .action-button.btn-primary.btn-on-color.pressed .action-button-text {
+  color: var(--color-black);
+}
+
+[data-theme="dark"] .action-button.btn-primary.btn-on-color:active .action-button-icon img,
+[data-theme="dark"] .action-button.btn-primary.btn-on-color.pressed .action-button-icon img {
+  filter: none;
+}
+
+/* Disabled */
+.action-button.btn-primary.btn-on-color:disabled .action-button-inner,
+.action-button.btn-primary.btn-on-color.disabled .action-button-inner {
+  background-color: var(--bg-action-on-color-disabled);
+}
+
+.action-button.btn-primary.btn-on-color:disabled .action-button-text,
+.action-button.btn-primary.btn-on-color.disabled .action-button-text {
+  color: var(--btn-action-text-disabled);
+}
+
+/* ========== TYPE: SECONDARY ========== */
+.action-button.btn-secondary .action-button-inner {
+  background-color: var(--bg-action-transparent);
+  border: var(--btn-action-border-width) solid var(--text-default);
+}
+
+.action-button.btn-secondary .action-button-text {
+  color: var(--text-default);
+}
+
+.action-button.btn-secondary .action-button-icon img {
+  filter: none;
+}
+
+/* Pressed */
+.action-button.btn-secondary:active .action-button-inner,
+.action-button.btn-secondary.pressed .action-button-inner {
+  background-color: var(--bg-action-pressed);
+  border-color: var(--bg-action-pressed);
+}
+
+.action-button.btn-secondary:active .action-button-text,
+.action-button.btn-secondary.pressed .action-button-text {
+  color: var(--text-action-inverse);
+}
+
+.action-button.btn-secondary:active .action-button-icon img,
+.action-button.btn-secondary.pressed .action-button-icon img {
+  filter: brightness(0) invert(1);
+}
+
+/* Disabled */
+.action-button.btn-secondary:disabled .action-button-inner,
+.action-button.btn-secondary.disabled .action-button-inner {
+  background-color: var(--bg-action-disabled);
+  border-color: var(--bg-action-disabled);
+}
+
+.action-button.btn-secondary:disabled .action-button-text,
+.action-button.btn-secondary.disabled .action-button-text {
+  color: var(--btn-action-text-disabled);
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .action-button.btn-secondary .action-button-icon img {
+  filter: brightness(0) invert(1);
+}
+
+[data-theme="dark"] .action-button.btn-secondary:active .action-button-icon img,
+[data-theme="dark"] .action-button.btn-secondary.pressed .action-button-icon img {
+  filter: none;
+}
+
+/* ========== TYPE: SECONDARY + ON COLOR BG ========== */
+/* Secondary on-color: BLACK text/border in light mode, WHITE in dark mode */
+.action-button.btn-secondary.btn-on-color .action-button-inner {
+  background-color: var(--bg-action-on-color-transparent);
+  border: var(--btn-action-border-width) solid var(--color-black);
+}
+
+.action-button.btn-secondary.btn-on-color .action-button-text {
+  color: var(--color-black);
+}
+
+.action-button.btn-secondary.btn-on-color .action-button-icon img {
+  filter: none;
+}
+
+/* Dark mode: white text and border */
+[data-theme="dark"] .action-button.btn-secondary.btn-on-color .action-button-inner {
+  border-color: var(--color-white);
+}
+
+[data-theme="dark"] .action-button.btn-secondary.btn-on-color .action-button-text {
+  color: var(--color-white);
+}
+
+[data-theme="dark"] .action-button.btn-secondary.btn-on-color .action-button-icon img {
+  filter: brightness(0) invert(1);
+}
+
+/* Pressed state */
+.action-button.btn-secondary.btn-on-color:active .action-button-inner,
+.action-button.btn-secondary.btn-on-color.pressed .action-button-inner {
+  background-color: var(--bg-action-on-color-pressed);
+  border-color: var(--bg-action-on-color-pressed);
+}
+
+/* Light mode pressed: white text on gray */
+.action-button.btn-secondary.btn-on-color:active .action-button-text,
+.action-button.btn-secondary.btn-on-color.pressed .action-button-text {
+  color: var(--color-white);
+}
+
+.action-button.btn-secondary.btn-on-color:active .action-button-icon img,
+.action-button.btn-secondary.btn-on-color.pressed .action-button-icon img {
+  filter: brightness(0) invert(1);
+}
+
+/* Dark mode pressed: black text on green */
+[data-theme="dark"] .action-button.btn-secondary.btn-on-color:active .action-button-text,
+[data-theme="dark"] .action-button.btn-secondary.btn-on-color.pressed .action-button-text {
+  color: var(--color-black);
+}
+
+[data-theme="dark"] .action-button.btn-secondary.btn-on-color:active .action-button-icon img,
+[data-theme="dark"] .action-button.btn-secondary.btn-on-color.pressed .action-button-icon img {
+  filter: none;
+}
+
+/* Disabled */
+.action-button.btn-secondary.btn-on-color:disabled .action-button-inner,
+.action-button.btn-secondary.btn-on-color.disabled .action-button-inner {
+  background-color: var(--bg-action-on-color-disabled);
+  border-color: var(--bg-action-on-color-disabled);
+}
+
+.action-button.btn-secondary.btn-on-color:disabled .action-button-text,
+.action-button.btn-secondary.btn-on-color.disabled .action-button-text {
+  color: var(--btn-action-text-disabled);
+}
+
+/* ========== TYPE: TERTIARY ========== */
+.action-button.btn-tertiary .action-button-inner {
+  background-color: var(--bg-action-transparent);
+}
+
+.action-button.btn-tertiary .action-button-text {
+  color: var(--text-default);
+  text-decoration: underline;
+}
+
+.action-button.btn-tertiary .action-button-icon img {
+  filter: none;
+}
+
+/* Pressed */
+.action-button.btn-tertiary:active .action-button-inner,
+.action-button.btn-tertiary.pressed .action-button-inner {
+  background-color: var(--bg-action-pressed);
+}
+
+.action-button.btn-tertiary:active .action-button-text,
+.action-button.btn-tertiary.pressed .action-button-text {
+  color: var(--text-action-inverse);
+  text-decoration: none;
+}
+
+.action-button.btn-tertiary:active .action-button-icon img,
+.action-button.btn-tertiary.pressed .action-button-icon img {
+  filter: brightness(0) invert(1);
+}
+
+/* Disabled */
+.action-button.btn-tertiary:disabled .action-button-inner,
+.action-button.btn-tertiary.disabled .action-button-inner {
+  background-color: var(--bg-action-disabled);
+}
+
+.action-button.btn-tertiary:disabled .action-button-text,
+.action-button.btn-tertiary.disabled .action-button-text {
+  color: var(--btn-action-text-disabled);
+  text-decoration: none;
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .action-button.btn-tertiary .action-button-icon img {
+  filter: brightness(0) invert(1);
+}
+
+[data-theme="dark"] .action-button.btn-tertiary:active .action-button-icon img,
+[data-theme="dark"] .action-button.btn-tertiary.pressed .action-button-icon img {
+  filter: none;
+}
+
+/* ========== TYPE: TERTIARY + ON COLOR BG ========== */
+/* Tertiary on-color: BLACK text in light mode, WHITE in dark mode */
+.action-button.btn-tertiary.btn-on-color .action-button-inner {
+  background-color: var(--bg-action-on-color-transparent);
+}
+
+.action-button.btn-tertiary.btn-on-color .action-button-text {
+  color: var(--color-black);
+  text-decoration: underline;
+}
+
+.action-button.btn-tertiary.btn-on-color .action-button-icon img {
+  filter: none;
+}
+
+/* Dark mode: white text */
+[data-theme="dark"] .action-button.btn-tertiary.btn-on-color .action-button-text {
+  color: var(--color-white);
+}
+
+[data-theme="dark"] .action-button.btn-tertiary.btn-on-color .action-button-icon img {
+  filter: brightness(0) invert(1);
+}
+
+/* Pressed state */
+.action-button.btn-tertiary.btn-on-color:active .action-button-inner,
+.action-button.btn-tertiary.btn-on-color.pressed .action-button-inner {
+  background-color: var(--bg-action-on-color-pressed);
+}
+
+/* Light mode pressed: white text on gray */
+.action-button.btn-tertiary.btn-on-color:active .action-button-text,
+.action-button.btn-tertiary.btn-on-color.pressed .action-button-text {
+  color: var(--color-white);
+  text-decoration: none;
+}
+
+.action-button.btn-tertiary.btn-on-color:active .action-button-icon img,
+.action-button.btn-tertiary.btn-on-color.pressed .action-button-icon img {
+  filter: brightness(0) invert(1);
+}
+
+/* Dark mode pressed: black text on green */
+[data-theme="dark"] .action-button.btn-tertiary.btn-on-color:active .action-button-text,
+[data-theme="dark"] .action-button.btn-tertiary.btn-on-color.pressed .action-button-text {
+  color: var(--color-black);
+}
+
+[data-theme="dark"] .action-button.btn-tertiary.btn-on-color:active .action-button-icon img,
+[data-theme="dark"] .action-button.btn-tertiary.btn-on-color.pressed .action-button-icon img {
+  filter: none;
+}
+
+/* Disabled */
+.action-button.btn-tertiary.btn-on-color:disabled .action-button-inner,
+.action-button.btn-tertiary.btn-on-color.disabled .action-button-inner {
+  background-color: var(--bg-action-on-color-disabled);
+}
+
+.action-button.btn-tertiary.btn-on-color:disabled .action-button-text,
+.action-button.btn-tertiary.btn-on-color.disabled .action-button-text {
+  color: var(--btn-action-text-disabled);
+  text-decoration: none;
+}

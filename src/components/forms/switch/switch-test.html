@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Switch Component Test</title>
+    
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="../../../css/cancara-tokens.css">
+    
+    <!-- Switch Component Styles -->
+    <link rel="stylesheet" href="Switch.vanilla.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family-body);
+            background: var(--bg-page-default);
+            color: var(--text-default);
+            transition: background-color 0.3s, color 0.3s;
+            padding: 40px;
+            min-height: 100vh;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .toggle-button {
+            background: var(--bg-action-default);
+            color: var(--text-action-inverse);
+            border: none;
+            border-radius: var(--radius-default);
+            padding: 12px 24px;
+            font-family: var(--font-family-body);
+            font-size: 14px;
+            font-weight: var(--font-weight-bold);
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .toggle-button:hover {
+            background: var(--bg-action-pressed);
+        }
+
+        h1 {
+            margin-bottom: 40px;
+            font-size: 32px;
+        }
+
+        .section {
+            margin-bottom: 60px;
+        }
+
+        .section h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .section h3 {
+            margin-bottom: 16px;
+            font-size: 18px;
+            color: var(--text-subdued);
+        }
+
+        .section p {
+            margin-bottom: 20px;
+            color: var(--text-subdued);
+        }
+
+        .switch-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <div class="theme-toggle">
+        <button class="toggle-button" onclick="toggleTheme()">
+            <span id="theme-text">Switch to Dark Mode</span>
+        </button>
+    </div>
+
+    <h1>Switch Component - All Variants</h1>
+
+    <!-- BASIC SWITCHES -->
+    <div class="section">
+        <h2>Basic States</h2>
+        <p>Track: 51×31px | Handle: 27×27px</p>
+
+        <h3>Default</h3>
+        <div class="switch-grid">
+            <label class="switch-container">
+                <input type="checkbox" class="switch-input">
+                <div class="switch">
+                    <div class="switch-track">
+                        <div class="switch-handle"></div>
+                    </div>
+                </div>
+                <span class="switch-label">Off</span>
+            </label>
+
+            <label class="switch-container">
+                <input type="checkbox" class="switch-input" checked>
+                <div class="switch">
+                    <div class="switch-track">
+                        <div class="switch-handle"></div>
+                    </div>
+                </div>
+                <span class="switch-label">On</span>
+            </label>
+        </div>
+
+        <h3>Disabled</h3>
+        <div class="switch-grid">
+            <label class="switch-container">
+                <input type="checkbox" class="switch-input" disabled>
+                <div class="switch">
+                    <div class="switch-track">
+                        <div class="switch-handle"></div>
+                    </div>
+                </div>
+                <span class="switch-label">Disabled Off</span>
+            </label>
+
+            <label class="switch-container">
+                <input type="checkbox" class="switch-input" checked disabled>
+                <div class="switch">
+                    <div class="switch-track">
+                        <div class="switch-handle"></div>
+                    </div>
+                </div>
+                <span class="switch-label">Disabled On</span>
+            </label>
+        </div>
+    </div>
+
+    <!-- WITH LABELS -->
+    <div class="section">
+        <h2>With Labels</h2>
+
+        <div class="switch-grid">
+            <label class="switch-container">
+                <input type="checkbox" class="switch-input">
+                <div class="switch">
+                    <div class="switch-track">
+                        <div class="switch-handle"></div>
+                    </div>
+                </div>
+                <span class="switch-label">Enable notifications</span>
+            </label>
+
+            <label class="switch-container">
+                <input type="checkbox" class="switch-input" checked>
+                <div class="switch">
+                    <div class="switch-track">
+                        <div class="switch-handle"></div>
+                    </div>
+                </div>
+                <span class="switch-label">Auto-save enabled</span>
+            </label>
+
+            <label class="switch-container">
+                <input type="checkbox" class="switch-input">
+                <div class="switch">
+                    <div class="switch-track">
+                        <div class="switch-handle"></div>
+                    </div>
+                </div>
+                <span class="switch-label">Dark mode</span>
+            </label>
+        </div>
+    </div>
+
+    <!-- COMPONENT FEATURES -->
+    <div class="section">
+        <h2>Component Features</h2>
+        <ul style="padding-left: 20px; line-height: 2;">
+            <li>✅ Two states: Off, On</li>
+            <li>✅ Disabled state support</li>
+            <li>✅ Optional labels</li>
+            <li>✅ Self-contained (token-led from cancara-tokens.css)</li>
+            <li>✅ Figma dimensions: 51×31px track, 27×27px handle</li>
+            <li>✅ Dark mode support</li>
+            <li>✅ Smooth animations</li>
+            <li>✅ Accessible (checkbox semantics, keyboard support)</li>
+            <li>✅ No shadows, pure token colors</li>
+        </ul>
+    </div>
+
+    <script src="Switch.vanilla.js"></script>
+
+    <script>
+        function detectSystemTheme() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-text').textContent = 'Switch to Light Mode';
+            } else {
+                document.body.setAttribute('data-theme', 'light');
+                document.getElementById('theme-text').textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', detectSystemTheme);
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const themeText = document.getElementById('theme-text');
+            const currentTheme = body.getAttribute('data-theme');
+            
+            if (currentTheme === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                themeText.textContent = 'Switch to Light Mode';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeText.textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', function() {
+            detectSystemTheme();
+        });
+    </script>
+</body>
+</html>

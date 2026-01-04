@@ -1,0 +1,43 @@
+/* List Data Playback Group Vanilla CSS - SELF-CONTAINED - TOKEN LED */
+
+/* ===================== BASE STRUCTURE ===================== */
+
+.list-data-playback-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ===================== WIDTH VARIANTS ===================== */
+
+/* Compact - has horizontal padding on container */
+.list-data-playback-group.width-compact {
+  padding: 0;
+  width: 100%;
+}
+
+/* FullWidth - no horizontal padding */
+.list-data-playback-group.width-fullwidth {
+  padding: 0;
+  width: 100%;
+}
+
+/* ===================== NESTED COMPONENT SPACING ===================== */
+
+/* Remove any spacing between nested list items */
+.list-data-playback-group .list-item-data-playback {
+  margin: 0;
+  width: 100%;
+}
+
+/* ===================== DARK MODE ===================== */
+
+[data-theme="dark"] .list-data-playback-group {
+  background-color: transparent;
+}

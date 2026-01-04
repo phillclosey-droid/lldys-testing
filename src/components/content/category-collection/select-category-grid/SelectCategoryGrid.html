@@ -1,0 +1,159 @@
+<!-- 
+  Select Category Grid Component - SELF-CONTAINED - TOKEN LED
+  
+  A grid container for displaying multiple select-category-item components in rows.
+  
+  Features:
+  - Three variants: 3 items, 2 items, 1 item per row
+  - Maintains grid alignment with invisible placeholders
+  - 16px horizontal padding per row
+  - Uses nested select-category-item components
+  - Token-driven spacing and layout
+  
+  Dependencies:
+  - Design tokens (cancara-tokens.css)
+  - SelectCategoryItem.vanilla.css (nested component)
+  - SelectCategoryItem.vanilla.js (nested component)
+  - SelectCategoryGrid.vanilla.css (SELF-CONTAINED)
+  
+  Usage:
+  1. Import all CSS files
+  2. Import SelectCategoryItem.vanilla.js
+  3. Copy HTML structure
+  4. Use placeholders to maintain grid alignment
+  5. Customize category items with data-icon attributes
+-->
+
+<!-- VARIANT 1: ROW WITH 3 ITEMS -->
+<div class="select-category-grid">
+  <div class="category-row category-row-3">
+    <label class="select-category-item">
+      <input type="radio" name="category" value="savings" class="select-category-input">
+      <div class="select-category-button">
+        <div class="select-category-icon">
+          <img data-icon="piggy-bank" data-icon-category="finance" alt="">
+        </div>
+      </div>
+      <span class="select-category-label">Savings</span>
+    </label>
+
+    <label class="select-category-item">
+      <input type="radio" name="category" value="investment" class="select-category-input">
+      <div class="select-category-button">
+        <div class="select-category-icon">
+          <img data-icon="investment" data-icon-category="finance" alt="">
+        </div>
+      </div>
+      <span class="select-category-label">Investment</span>
+    </label>
+
+    <label class="select-category-item">
+      <input type="radio" name="category" value="bills" class="select-category-input">
+      <div class="select-category-button">
+        <div class="select-category-icon">
+          <img data-icon="bill" data-icon-category="finance" alt="">
+        </div>
+      </div>
+      <span class="select-category-label">Bills</span>
+    </label>
+  </div>
+</div>
+
+<!-- VARIANT 2: ROW WITH 2 ITEMS (+ 1 placeholder) -->
+<div class="select-category-grid">
+  <div class="category-row category-row-2">
+    <label class="select-category-item">
+      <input type="radio" name="category2" value="cash" class="select-category-input">
+      <div class="select-category-button">
+        <div class="select-category-icon">
+          <img data-icon="cash" data-icon-category="finance" alt="">
+        </div>
+      </div>
+      <span class="select-category-label">Cash</span>
+    </label>
+
+    <label class="select-category-item">
+      <input type="radio" name="category2" value="travel" class="select-category-input">
+      <div class="select-category-button">
+        <div class="select-category-icon">
+          <img data-icon="plane" data-icon-category="travel" alt="">
+        </div>
+      </div>
+      <span class="select-category-label">Travel</span>
+    </label>
+
+    <!-- Placeholder to maintain grid alignment -->
+    <div class="category-row-placeholder"></div>
+  </div>
+</div>
+
+<!-- VARIANT 3: ROW WITH 1 ITEM (+ 2 placeholders) -->
+<div class="select-category-grid">
+  <div class="category-row category-row-1">
+    <label class="select-category-item">
+      <input type="radio" name="category3" value="home" class="select-category-input">
+      <div class="select-category-button">
+        <div class="select-category-icon">
+          <img data-icon="home" data-icon-category="navigation" alt="">
+        </div>
+      </div>
+      <span class="select-category-label">Home</span>
+    </label>
+
+    <!-- Placeholders to maintain grid alignment -->
+    <div class="category-row-placeholder"></div>
+    <div class="category-row-placeholder"></div>
+  </div>
+</div>
+
+<!--
+  STRUCTURE:
+  
+  select-category-grid (container)
+  └── category-row (with variant class)
+      ├── select-category-item (nested component)
+      └── category-row-placeholder (invisible spacer - as needed)
+  
+  VARIANTS:
+  - category-row-3: 3 items, no placeholders
+  - category-row-2: 2 items + 1 placeholder
+  - category-row-1: 1 item + 2 placeholders
+  
+  COMPLETE USAGE:
+  
+  <head>
+      <link rel="stylesheet" href="../../../../css/cancara-tokens.css">
+      <link rel="stylesheet" href="../select-category-item/SelectCategoryItem.vanilla.css">
+      <link rel="stylesheet" href="SelectCategoryGrid.vanilla.css">
+  </head>
+  <body>
+      <!-- 3 items -->
+      <div class="select-category-grid">
+          <div class="category-row category-row-3">
+              <label class="select-category-item">...</label>
+              <label class="select-category-item">...</label>
+              <label class="select-category-item">...</label>
+          </div>
+      </div>
+      
+      <!-- 2 items + placeholder -->
+      <div class="select-category-grid">
+          <div class="category-row category-row-2">
+              <label class="select-category-item">...</label>
+              <label class="select-category-item">...</label>
+              <div class="category-row-placeholder"></div>
+          </div>
+      </div>
+      
+      <!-- 1 item + 2 placeholders -->
+      <div class="select-category-grid">
+          <div class="category-row category-row-1">
+              <label class="select-category-item">...</label>
+              <div class="category-row-placeholder"></div>
+              <div class="category-row-placeholder"></div>
+          </div>
+      </div>
+      
+      <script src="../select-category-item/SelectCategoryItem.vanilla.js"></script>
+  </body>
+-->

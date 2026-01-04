@@ -1,0 +1,67 @@
+# Notification Hint Component
+
+Informational hint with icon and text. Simple notification for displaying helpful information to users.
+
+## Files
+
+- `NotificationHint.vanilla.css` - Token-led styling
+- `NotificationHint.vanilla.js` - Interactive functionality
+- `NotificationHint-demo.html` - Demo with 4 variants
+
+## Component Structure
+
+```html
+<div class="notification-hint type-default">
+    <div class="notification-hint-content">
+        <div class="notification-hint-icon-container">
+            <div class="notification-hint-icon">
+                <svg><!-- Info icon (18px) --></svg>
+            </div>
+        </div>
+        <div class="notification-hint-text">Hint message text</div>
+    </div>
+</div>
+```
+
+## CSS Classes
+
+### Types
+- `.type-default` - White background (`--bg-panel-default`)
+- `.type-secondary` - Gray background (`--bg-panel-secondary`)
+
+## Features
+
+- **Two types**: Default (white) and Secondary (gray)
+- **Info icon**: 18px blue info icon
+- **Flexible text**: Adapts to content length
+- **Token-led**: All colors use semantic tokens
+- **Auto dark mode**: Backgrounds and text adapt automatically
+
+## Events
+
+```javascript
+element.addEventListener('notification-hint-click', function() {
+    console.log('Hint clicked');
+});
+```
+
+## Design Tokens
+
+- Backgrounds: `--bg-panel-default`, `--bg-panel-secondary`
+- Icon: `--icon-sentiment-info` (blue)
+- Text: `--text-default`
+- Typography: `--font-family-body`, 14px, line-height 20px
+- Spacing: `--spacing-12`, `--spacing-16`
+- Border radius: `--radius-default` (12px)
+
+## Dimensions
+
+- Info icon: 18px × 18px
+- Icon padding: 3px
+- Content padding: 12px
+- Gap: 12px between icon and text
+- Max width: 343px
+
+## Token-Led
+
+All colors and styles use semantic tokens, automatically adapt to dark mode.

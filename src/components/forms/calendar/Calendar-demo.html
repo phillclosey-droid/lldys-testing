@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar - Demo</title>
+    
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="../../../css/cancara-tokens.css">
+    
+    <!-- Nested Component CSS -->
+    <link rel="stylesheet" href="../../action/button-stack/link-button-stack/LinkButtonStack.vanilla.css">
+    
+    <!-- Component CSS -->
+    <link rel="stylesheet" href="Calendar.vanilla.css">
+    
+    <style>
+        body {
+            font-family: var(--font-family-body);
+            background-color: var(--bg-page-default);
+            color: var(--text-default);
+            padding: var(--spacing-32);
+            margin: 0;
+        }
+        
+        .demo-section {
+            margin-bottom: var(--spacing-48);
+            padding: var(--spacing-24) 0;
+        }
+        
+        .demo-title {
+            font-family: var(--type-style-2-family);
+            font-size: var(--type-style-2-size);
+            font-weight: var(--type-style-2-weight);
+            line-height: var(--type-style-2-line-height);
+            margin: 0 0 var(--spacing-24) 0;
+            color: var(--text-default);
+        }
+        
+        .demo-description {
+            font-family: var(--type-style-6-family);
+            font-size: var(--type-style-6-size);
+            line-height: var(--type-style-6-line-height);
+            color: var(--text-subdued);
+            margin: 0 0 var(--spacing-24) 0;
+        }
+        
+        .theme-toggle {
+            position: fixed;
+            top: var(--spacing-24);
+            right: var(--spacing-24);
+            padding: var(--spacing-12) var(--spacing-24);
+            background-color: var(--bg-action-default);
+            color: var(--text-action-inverse);
+            border: none;
+            border-radius: var(--radius-default);
+            font-family: var(--font-family-body);
+            cursor: pointer;
+            z-index: 1000;
+        }
+        
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(343px, 1fr));
+            gap: var(--spacing-32);
+            margin-top: var(--spacing-24);
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()">Toggle Dark Mode</button>
+    
+    <h1 class="demo-title" style="margin-bottom: var(--spacing-48);">Calendar Component</h1>
+    
+    <!-- Demo 1: Native Preset -->
+    <div class="demo-section">
+        <h2 class="demo-title">Native Preset (iOS-style)</h2>
+        <p class="demo-description">iOS-style calendar with title header, small navigation arrows, and link-button-stack for actions.</p>
+        
+        <div class="calendar calendar-native" id="calendar-native">
+          <!-- Title -->
+          <div class="calendar-title">
+            <span class="calendar-title-text">Payment date</span>
+          </div>
+          
+          <!-- Month/Year Header -->
+          <div class="calendar-header">
+            <div class="calendar-month-year">
+              <span class="calendar-month-text">June 2024</span>
+              <svg class="calendar-dropdown-icon" width="7" height="12" viewBox="0 0 7 12" fill="none">
+                <path d="M1 1L6 6L1 11" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <div class="calendar-nav-arrows">
+              <button class="calendar-nav-btn calendar-nav-prev" aria-label="Previous month">
+                <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+                  <path d="M9 1L1 9L9 17" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+              </button>
+              <button class="calendar-nav-btn calendar-nav-next" aria-label="Next month">
+                <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+                  <path d="M1 1L9 9L1 17" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+          
+          <!-- Day Names -->
+          <div class="calendar-day-names">
+            <div class="calendar-day-name">MON</div>
+            <div class="calendar-day-name">TUE</div>
+            <div class="calendar-day-name">WED</div>
+            <div class="calendar-day-name">THU</div>
+            <div class="calendar-day-name">FRI</div>
+            <div class="calendar-day-name">SAT</div>
+            <div class="calendar-day-name">SUN</div>
+          </div>
+          
+          <!-- Calendar Grid -->
+          <div class="calendar-grid">
+            <!-- Week 1 -->
+            <div class="calendar-week">
+              <button class="calendar-date calendar-date-empty"></button>
+              <button class="calendar-date calendar-date-empty"></button>
+              <button class="calendar-date calendar-date-empty"></button>
+              <button class="calendar-date calendar-date-empty"></button>
+              <button class="calendar-date calendar-date-disabled">1</button>
+              <button class="calendar-date calendar-date-disabled">2</button>
+              <button class="calendar-date calendar-date-disabled">3</button>
+            </div>
+            <!-- Week 2 -->
+            <div class="calendar-week">
+              <button class="calendar-date calendar-date-disabled">4</button>
+              <button class="calendar-date">5</button>
+              <button class="calendar-date calendar-date-today">6</button>
+              <button class="calendar-date">7</button>
+              <button class="calendar-date">8</button>
+              <button class="calendar-date">9</button>
+              <button class="calendar-date">10</button>
+            </div>
+            <!-- Week 3 -->
+            <div class="calendar-week">
+              <button class="calendar-date">11</button>
+              <button class="calendar-date">12</button>
+              <button class="calendar-date">13</button>
+              <button class="calendar-date">14</button>
+              <button class="calendar-date">15</button>
+              <button class="calendar-date">16</button>
+              <button class="calendar-date">17</button>
+            </div>
+            <!-- Week 4 -->
+            <div class="calendar-week">
+              <button class="calendar-date">18</button>
+              <button class="calendar-date">19</button>
+              <button class="calendar-date">20</button>
+              <button class="calendar-date">21</button>
+              <button class="calendar-date">22</button>
+              <button class="calendar-date calendar-date-selected">23</button>
+              <button class="calendar-date">24</button>
+            </div>
+            <!-- Week 5 -->
+            <div class="calendar-week">
+              <button class="calendar-date">25</button>
+              <button class="calendar-date">26</button>
+              <button class="calendar-date">27</button>
+              <button class="calendar-date">28</button>
+              <button class="calendar-date">29</button>
+              <button class="calendar-date">30</button>
+              <button class="calendar-date calendar-date-empty"></button>
+            </div>
+          </div>
+          
+          <!-- Separator -->
+          <div class="calendar-separator"></div>
+          
+          <!-- Link Button Stack (Nested Component) -->
+          <div class="link-button-stack direction-horizontal">
+            <div class="divider">
+              <div class="divider-line"></div>
+            </div>
+            <div class="button-container">
+              <button class="link-button">
+                <span class="link-button-text">Cancel</span>
+              </button>
+              <div class="link-button-separator"></div>
+              <button class="link-button">
+                <span class="link-button-text">OK</span>
+              </button>
+            </div>
+          </div>
+        </div>
+    </div>
+    
+    <!-- Demo 2: Custom Preset -->
+    <div class="demo-section">
+        <h2 class="demo-title">Custom Preset (with Instructions)</h2>
+        <p class="demo-description">Custom calendar with optional instruction header, large month stepper buttons, and cancel link.</p>
+        
+        <div class="calendar calendar-custom" id="calendar-custom">
+          <!-- Optional Instruction Header -->
+          <div class="calendar-instructions">
+            <span class="calendar-instructions-text">Instructions</span>
+          </div>
+          
+          <!-- Month Stepper Header -->
+          <div class="calendar-stepper-header">
+            <button class="calendar-month-stepper calendar-stepper-prev" aria-label="Previous month">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M11 4L7 9L11 14" stroke="currentColor" stroke-width="2"/>
+              </svg>
+            </button>
+            
+            <div class="calendar-month-display">
+              <span class="calendar-month-text">June 2024</span>
+              <svg class="calendar-dropdown-icon" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <path d="M3 5L6 8L9 5" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+            
+            <button class="calendar-month-stepper calendar-stepper-next" aria-label="Next month">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M7 4L11 9L7 14" stroke="currentColor" stroke-width="2"/>
+              </svg>
+            </button>
+          </div>
+          
+          <!-- Day Names -->
+          <div class="calendar-day-names">
+            <div class="calendar-day-name">SUN</div>
+            <div class="calendar-day-name">MON</div>
+            <div class="calendar-day-name">TUE</div>
+            <div class="calendar-day-name">WED</div>
+            <div class="calendar-day-name">THU</div>
+            <div class="calendar-day-name">FRI</div>
+            <div class="calendar-day-name">SAT</div>
+          </div>
+          
+          <!-- Calendar Grid -->
+          <div class="calendar-grid">
+            <!-- Week 1 -->
+            <div class="calendar-week">
+              <button class="calendar-date calendar-date-empty"></button>
+              <button class="calendar-date calendar-date-empty"></button>
+              <button class="calendar-date calendar-date-empty"></button>
+              <button class="calendar-date calendar-date-disabled">1</button>
+              <button class="calendar-date calendar-date-disabled">2</button>
+              <button class="calendar-date">3</button>
+              <button class="calendar-date">4</button>
+            </div>
+            <!-- Week 2 -->
+            <div class="calendar-week">
+              <button class="calendar-date calendar-date-today">5</button>
+              <button class="calendar-date">6</button>
+              <button class="calendar-date">7</button>
+              <button class="calendar-date">8</button>
+              <button class="calendar-date">9</button>
+              <button class="calendar-date">10</button>
+              <button class="calendar-date">11</button>
+            </div>
+            <!-- Week 3 -->
+            <div class="calendar-week">
+              <button class="calendar-date">12</button>
+              <button class="calendar-date">13</button>
+              <button class="calendar-date">14</button>
+              <button class="calendar-date">15</button>
+              <button class="calendar-date">16</button>
+              <button class="calendar-date">17</button>
+              <button class="calendar-date">18</button>
+            </div>
+            <!-- Week 4 -->
+            <div class="calendar-week">
+              <button class="calendar-date">19</button>
+              <button class="calendar-date">20</button>
+              <button class="calendar-date">21</button>
+              <button class="calendar-date">22</button>
+              <button class="calendar-date calendar-date-selected">23</button>
+              <button class="calendar-date">24</button>
+              <button class="calendar-date">25</button>
+            </div>
+            <!-- Week 5 -->
+            <div class="calendar-week">
+              <button class="calendar-date">26</button>
+              <button class="calendar-date">27</button>
+              <button class="calendar-date">28</button>
+              <button class="calendar-date">29</button>
+              <button class="calendar-date">30</button>
+              <button class="calendar-date calendar-date-empty"></button>
+              <button class="calendar-date calendar-date-empty"></button>
+            </div>
+          </div>
+          
+          <!-- Cancel Link -->
+          <button class="calendar-cancel-link">Cancel</button>
+        </div>
+    </div>
+    
+    <!-- Component JavaScript -->
+    <script src="Calendar.vanilla.js"></script>
+    
+    <!-- Demo JavaScript -->
+    <script>
+        // Detect system theme preference on load
+        function detectSystemTheme() {
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+        }
+        
+        // Theme toggle
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+        }
+        
+        // Set theme on page load
+        detectSystemTheme();
+        
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+        });
+        
+        // Listen for calendar events - Native
+        const nativeCalendar = document.getElementById('calendar-native');
+        if (nativeCalendar) {
+            nativeCalendar.addEventListener('dateselected', (e) => {
+                console.log('Native - Date selected:', e.detail.date);
+            });
+            
+            nativeCalendar.addEventListener('monthchange', (e) => {
+                console.log('Native - Month change:', e.detail.direction);
+            });
+            
+            nativeCalendar.addEventListener('cancel', () => {
+                console.log('Native - Calendar cancelled');
+            });
+            
+            nativeCalendar.addEventListener('confirm', (e) => {
+                console.log('Native - Calendar confirmed with date:', e.detail.selectedDate);
+            });
+        }
+        
+        // Listen for calendar events - Custom
+        const customCalendar = document.getElementById('calendar-custom');
+        if (customCalendar) {
+            customCalendar.addEventListener('dateselected', (e) => {
+                console.log('Custom - Date selected:', e.detail.date);
+            });
+            
+            customCalendar.addEventListener('monthchange', (e) => {
+                console.log('Custom - Month change:', e.detail.direction);
+            });
+            
+            customCalendar.addEventListener('cancel', () => {
+                console.log('Custom - Calendar cancelled');
+            });
+        }
+    </script>
+</body>
+</html>

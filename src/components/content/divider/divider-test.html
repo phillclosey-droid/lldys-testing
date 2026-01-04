@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divider Component Test</title>
+    
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="../../../css/cancara-tokens.css">
+    
+    <!-- Divider Component Styles -->
+    <link rel="stylesheet" href="Divider.vanilla.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family-body);
+            background: var(--bg-page-default);
+            color: var(--text-default);
+            transition: background-color 0.3s, color 0.3s;
+            padding: var(--spacing-48);
+            min-height: 100vh;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: var(--spacing-24);
+            right: var(--spacing-24);
+            z-index: 1000;
+        }
+
+        .toggle-button {
+            background: var(--bg-action-default);
+            color: var(--text-action-inverse);
+            border: none;
+            border-radius: var(--radius-default);
+            padding: var(--spacing-12) var(--spacing-24);
+            font-family: var(--font-family-body);
+            font-size: var(--type-style-8-size);
+            font-weight: var(--font-weight-bold);
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .toggle-button:hover {
+            background: var(--bg-action-pressed);
+        }
+
+        h1 {
+            margin-bottom: var(--spacing-48);
+            font-size: var(--type-style-1-size);
+            font-weight: var(--type-style-1-weight);
+            line-height: var(--type-style-1-line-height);
+        }
+
+        .section {
+            margin-bottom: var(--spacing-48);
+        }
+
+        .section h2 {
+            margin-bottom: var(--spacing-24);
+            font-size: var(--type-style-2-size);
+            font-weight: var(--type-style-2-weight);
+            line-height: var(--type-style-2-line-height);
+        }
+
+        .section h3 {
+            margin-bottom: var(--spacing-16);
+            margin-top: var(--spacing-32);
+            font-size: var(--type-style-3-size);
+            font-weight: var(--type-style-3-weight);
+        }
+
+        .section p {
+            margin-bottom: var(--spacing-24);
+            color: var(--text-subdued);
+            font-size: var(--type-style-6-size);
+            line-height: var(--type-style-6-line-height);
+        }
+
+        /* Demo containers to show divider widths */
+        .demo-container {
+            background: var(--bg-panel-default);
+            border-radius: var(--radius-default);
+            padding: var(--spacing-24);
+            margin-bottom: var(--spacing-24);
+        }
+
+        .demo-content {
+            font-size: var(--type-style-5-size);
+            line-height: var(--type-style-5-line-height);
+            color: var(--text-default);
+        }
+
+        .label {
+            font-size: var(--type-style-9-size);
+            color: var(--text-subdued);
+            margin-bottom: var(--spacing-08);
+            font-weight: var(--font-weight-bold);
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <div class="theme-toggle">
+        <button class="toggle-button" onclick="toggleTheme()">
+            <span id="theme-text">Switch to Dark Mode</span>
+        </button>
+    </div>
+
+    <h1>Divider Component - All Variants</h1>
+
+    <!-- DEFAULT WIDTH + DEFAULT TYPE -->
+    <div class="section">
+        <h2>Width: Default + Type: Default (Solid)</h2>
+        <p>Divider with horizontal padding (16px), solid line</p>
+
+        <div class="demo-container">
+            <div class="demo-content">Content above divider</div>
+            
+            <div class="divider width-default type-default">
+                <div class="divider-line"></div>
+            </div>
+            
+            <div class="demo-content">Content below divider</div>
+        </div>
+    </div>
+
+    <!-- FULLWIDTH + DEFAULT TYPE -->
+    <div class="section">
+        <h2>Width: Fullwidth + Type: Default (Solid)</h2>
+        <p>Divider extends to container edges, solid line</p>
+
+        <div class="demo-container">
+            <div class="demo-content">Content above divider</div>
+            
+            <div class="divider width-fullwidth type-default">
+                <div class="divider-line"></div>
+            </div>
+            
+            <div class="demo-content">Content below divider</div>
+        </div>
+    </div>
+
+    <!-- DEFAULT WIDTH + DASH TYPE -->
+    <div class="section">
+        <h2>Width: Default + Type: Dash</h2>
+        <p>Divider with horizontal padding (16px), dashed line</p>
+
+        <div class="demo-container">
+            <div class="demo-content">Content above divider</div>
+            
+            <div class="divider width-default type-dash">
+                <div class="divider-line"></div>
+            </div>
+            
+            <div class="demo-content">Content below divider</div>
+        </div>
+    </div>
+
+    <!-- FULLWIDTH + DASH TYPE -->
+    <div class="section">
+        <h2>Width: Fullwidth + Type: Dash</h2>
+        <p>Divider extends to container edges, dashed line</p>
+
+        <div class="demo-container">
+            <div class="demo-content">Content above divider</div>
+            
+            <div class="divider width-fullwidth type-dash">
+                <div class="divider-line"></div>
+            </div>
+            
+            <div class="demo-content">Content below divider</div>
+        </div>
+    </div>
+
+    <!-- MULTIPLE SECTIONS EXAMPLE -->
+    <div class="section">
+        <h2>Real-World Usage Example</h2>
+        <p>Multiple content sections separated by dividers</p>
+
+        <div class="demo-container">
+            <h3 style="margin-top: 0;">Section 1: Account Summary</h3>
+            <div class="demo-content">Current Balance: £1,234.56</div>
+            
+            <div class="divider width-default type-default">
+                <div class="divider-line"></div>
+            </div>
+            
+            <h3>Section 2: Recent Transactions</h3>
+            <div class="demo-content">Transaction 1: -£45.00</div>
+            <div class="demo-content">Transaction 2: +£200.00</div>
+            
+            <div class="divider width-default type-dash">
+                <div class="divider-line"></div>
+            </div>
+            
+            <h3>Section 3: Upcoming Payments</h3>
+            <div class="demo-content">Payment 1: -£150.00 (Due: 20 Dec)</div>
+        </div>
+    </div>
+
+    <!-- COMPONENT FEATURES -->
+    <div class="section">
+        <h2>Component Features</h2>
+        <ul style="padding-left: var(--spacing-24); line-height: 2;">
+            <li>✅ Self-contained (token-led from cancara-tokens.css)</li>
+            <li>✅ Two width variants: Default (with padding) and Fullwidth</li>
+            <li>✅ Two type variants: Default (solid) and Dash (dashed)</li>
+            <li>✅ Fully responsive (100% width within container)</li>
+            <li>✅ Dark mode support</li>
+            <li>✅ Uses design tokens: --divider-bg, --divider-height, --divider-margin</li>
+            <li>✅ Accessible (semantic structure)</li>
+            <li>✅ No hardcoded widths (unlike original 343px/375px)</li>
+        </ul>
+    </div>
+
+    <script>
+        function detectSystemTheme() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-text').textContent = 'Switch to Light Mode';
+            } else {
+                document.body.setAttribute('data-theme', 'light');
+                document.getElementById('theme-text').textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', detectSystemTheme);
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const themeText = document.getElementById('theme-text');
+            const currentTheme = body.getAttribute('data-theme');
+            
+            if (currentTheme === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                themeText.textContent = 'Switch to Light Mode';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeText.textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', function() {
+            detectSystemTheme();
+        });
+    </script>
+</body>
+</html>

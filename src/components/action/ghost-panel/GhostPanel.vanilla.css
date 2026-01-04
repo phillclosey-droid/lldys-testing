@@ -1,0 +1,149 @@
+/* GhostPanel Vanilla CSS - TOKEN LED - SELF-CONTAINED */
+
+/* Wrapper */
+.ghost-panel-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 0px var(--spacing-16);
+  margin-bottom: var(--spacing-16);
+  width: 100%;
+}
+
+/* Ghost Panel Container */
+.ghost-panel {
+  border-radius: var(--radius-default);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: var(--spacing-16);
+  gap: var(--spacing-16);
+  background-color: var(--bg-panel-default);
+  cursor: pointer;
+  transition: background-color 0.2s;
+  width: 100%;
+}
+
+.ghost-panel:active {
+  background-color: var(--bg-panel-pressed);
+}
+
+/* Illustration Container - 64px square (matches Illustration component) */
+.ghost-panel-illustration {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-default);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacing-08);
+  flex-shrink: 0;
+}
+
+.ghost-panel-illustration img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+/* Illustration Color Variants */
+.ghost-panel-illustration.ill-default {
+  background-color: var(--color-white);
+}
+
+.ghost-panel-illustration.ill-default-alt-01 {
+  background-color: var(--color-white);
+}
+
+.ghost-panel-illustration.ill-default-alt-02 {
+  background-color: var(--color-gray-100);
+}
+
+.ghost-panel-illustration.ill-primary {
+  background-color: var(--color-green-promo-primary);
+}
+
+.ghost-panel-illustration.ill-primary-alt-01 {
+  background-color: var(--color-green-promo-primary-dark);
+}
+
+.ghost-panel-illustration.ill-primary-alt-02 {
+  background-color: var(--color-green-promo-primary-darker);
+}
+
+.ghost-panel-illustration.ill-primary-alt-03 {
+  background-color: var(--color-green-light);
+}
+
+.ghost-panel-illustration.ill-secondary-alt-01 {
+  background-color: var(--color-purple-promo);
+}
+
+.ghost-panel-illustration.ill-secondary-alt-02 {
+  background-color: var(--color-pink-promo);
+}
+
+.ghost-panel-illustration.ill-secondary-alt-03 {
+  background-color: var(--color-cyan-promo);
+}
+
+.ghost-panel-illustration.ill-secondary-alt-04 {
+  background-color: var(--color-orange-promo);
+}
+
+/* VStack - text container */
+.ghost-panel-vstack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-04);
+  flex: 1;
+}
+
+/* Text - Heading */
+.ghost-panel-heading {
+  font-family: var(--font-family-body);
+  font-size: 17px;
+  line-height: 22px;
+  color: var(--text-default);
+  font-weight: var(--font-weight-regular);
+}
+
+/* Text - Description */
+.ghost-panel-description {
+  font-family: var(--font-family-body);
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--text-subdued);
+  font-weight: var(--font-weight-regular);
+}
+
+/* Icon Button Container - green circle with icon */
+.ghost-panel-icon-button {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-circle);
+  background-color: var(--color-green-bright);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.ghost-panel-icon-button-icon {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ghost-panel-icon-button-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Accessibility */
+.ghost-panel:focus {
+  outline: 2px solid var(--color-green-bright);
+  outline-offset: 2px;
+}

@@ -1,0 +1,248 @@
+# Global Search Component
+
+A comprehensive search input component with search icon, voice search capability, and dynamic states. Features include placeholder text, cursor animation, and close button.
+
+## Files
+
+- `GlobalSearch.vanilla.css` - Self-contained CSS with token-led styling
+- `GlobalSearch.vanilla.js` - Interactive functionality
+- `GlobalSearch-demo.html` - Demo page showing all states
+
+## Component Structure
+
+```html
+<div class="global-search">
+    <div class="global-search-input">
+        <div class="global-search-icon">
+            <div class="global-search-icon-wrapper">
+                <img src="../../../../../assets/icons/navigation/search.svg" alt="Search">
+            </div>
+        </div>
+        <div class="global-search-text-wrapper">
+            <input type="text" class="global-search-input-field" placeholder="What can we help you with?">
+        </div>
+        <div class="global-search-voice">
+            <img src="../../../../../assets/icons/navigation/microphone.svg" alt="Voice search">
+        </div>
+        <div class="global-search-close">
+            <img src="../../../../../assets/icons/navigation/close.svg" alt="Clear search">
+        </div>
+    </div>
+</div>
+```
+
+## CSS Classes
+
+### Main Container
+- `.global-search` - Main container
+- `.global-search-input` - Input container with border
+
+### State Modifiers
+- `.global-search-input.is-active` - Active/focused state (2px black border)
+- `.global-search-input.has-text` - Has text entered (shows close button)
+- `.global-search-input.is-submitted` - After Enter pressed
+
+### Icons
+- `.global-search-icon` - Search icon container (18px × 18px)
+- `.global-search-voice` - Voice/microphone icon (24px × 24px)
+- `.global-search-close` - Close/clear icon (24px × 24px, hidden by default)
+
+### Input
+- `.global-search-text-wrapper` - Text input wrapper
+- `.global-search-input-field` - Actual input field
+- `.global-search-cursor` - Animated cursor (visible when active)
+
+## JavaScript Events
+
+The component dispatches custom events:
+
+```javascript
+// Focus
+element.addEventListener('global-search-focus', function(e) {
+    console.log('Search focused');
+});
+
+// Input changes
+element.addEventListener('global-search-input', function(e) {
+    console.log('Value:', e.detail.value);
+});
+
+// Submit (Enter key)
+element.addEventListener('global-search-submit', function(e) {
+    console.log('Submitted:', e.detail.value);
+});
+
+// Clear button clicked
+element.addEventListener('global-search-clear', function(e) {
+    console.log('Search cleared');
+});
+
+// Voice button clicked
+element.addEventListener('global-search-voice', function(e) {
+    console.log('Voice search requested');
+});
+```
+
+## Design Tokens Used
+
+### Typography
+- `--type-style-6-family` - Input text font (GT Ultra)
+- `--type-style-6-size` - Input text size (15px)
+- `--type-style-6-weight` - Font weight
+- `--type-style-6-line-height` - Line height (20px)
+
+### Colors
+- `--text-default` - Input text color
+- `--text-placeholder` - Placeholder color (gray-500)
+- `--bg-input-default` - Input background (white)
+- `--border-default` - Border color (gray-300 light, gray-600 dark)
+- `--color-black` - Active border, cursor (light mode)
+- `--color-white` - Active border, cursor (dark mode)
+
+### Spacing
+- `--spacing-08` - Gap between elements (8px)
+- `--spacing-16` - Container padding, input padding (16px)
+
+### Borders
+- `--input-corner-radius` - Input border radius (12px)
+- `--input-border-width-default` - Default border (1px)
+- `--input-border-width-active` - Active border (2px)
+
+## Dimensions
+
+- **Input padding**: 16px
+- **Border radius**: 12px
+- **Search icon**: 18px × 18px (with 3px padding)
+- **Voice icon**: 24px × 24px
+- **Close icon**: 24px × 24px
+- **Cursor**: 2px wide × 21px high
+- **Gap between elements**: 8px
+
+## States
+
+### Default
+- White background
+- 1px border using `--border-default`
+- Placeholder text visible (gray)
+- Search icon (left)
+- Voice icon (right)
+- Close icon hidden
+
+### Active/Focused
+- 2px black border (white in dark mode)
+- Cursor visible and blinking
+- Triggered by clicking or focusing input
+
+### Edit (Has Text)
+- Active state
+- User has typed text
+- Close button appears
+- Voice icon hidden
+- Cursor visible
+
+### Submitted
+- Back to default border (1px)
+- Text remains
+- Cursor hidden
+- Voice icon visible
+- Triggered by pressing Enter
+
+## Behavior
+
+- **Click input**: Focuses input, shows active state
+- **Type text**: Shows close button, hides voice icon
+- **Press Enter**: Submits search, hides cursor
+- **Click close**: Clears text, refocuses input
+- **Click voice**: Dispatches voice event
+- **Click outside**: Maintains state if has text
+
+## Icons
+
+### Search Icon
+- **Location:** `assets/icons/navigation/search.svg`
+- **Size:** 18px × 18px
+- **Position:** Left side with 3px padding
+
+### Voice Icon
+- **Location:** `assets/icons/navigation/microphone.svg`
+- **Size:** 24px × 24px
+- **Position:** Right side
+- **Visibility:** Hidden when text entered
+
+### Close Icon
+- **Location:** `assets/icons/navigation/close.svg`
+- **Size:** 24px × 24px
+- **Position:** Right side
+- **Visibility:** Shows when text entered
+
+## Cursor Animation
+
+The cursor blinks using CSS animation:
+- Blink interval: 1 second
+- Visible: 0-50% of cycle
+- Hidden: 51-100% of cycle
+
+## Usage Examples
+
+### Basic Search
+```html
+<div class="global-search">
+    <div class="global-search-input">
+        <div class="global-search-icon">
+            <div class="global-search-icon-wrapper">
+                <img src="../../../../../assets/icons/navigation/search.svg" alt="Search">
+            </div>
+        </div>
+        <div class="global-search-text-wrapper">
+            <input type="text" class="global-search-input-field" placeholder="What can we help you with?">
+        </div>
+        <div class="global-search-voice">
+            <img src="../../../../../assets/icons/navigation/microphone.svg" alt="Voice search">
+        </div>
+        <div class="global-search-close">
+            <img src="../../../../../assets/icons/navigation/close.svg" alt="Clear search">
+        </div>
+    </div>
+</div>
+```
+
+### With Event Listeners
+```javascript
+const search = document.querySelector('.global-search');
+
+search.addEventListener('global-search-submit', function(e) {
+    console.log('Searching for:', e.detail.value);
+    // Perform search...
+});
+
+search.addEventListener('global-search-voice', function(e) {
+    console.log('Starting voice search...');
+    // Activate voice recognition...
+});
+```
+
+## Dark Mode Support
+
+All colors and icons automatically adapt to dark mode:
+- Text changes to gray-200
+- Borders use dark mode values
+- Active border becomes white
+- Cursor becomes white
+- Icons invert colors
+
+## Accessibility
+
+- Native input field for keyboard access
+- Proper alt text for all icons
+- Clear visual states
+- Focus management
+- Enter key to submit
+- Cursor visible when focused
+
+## Notes
+
+- This is a UI component - actual search functionality must be implemented
+- Voice search requires additional Web Speech API implementation
+- Component is fully keyboard accessible
+- Placeholder text can be customized
+- Component width is 100% of container

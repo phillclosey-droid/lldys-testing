@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Category Grid - Demo</title>
+    
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="../../../../css/cancara-tokens.css">
+    
+    <!-- Component CSS -->
+    <link rel="stylesheet" href="../select-category-item/SelectCategoryItem.vanilla.css">
+    <link rel="stylesheet" href="SelectCategoryGrid.vanilla.css">
+    
+    <style>
+        body {
+            font-family: var(--font-family-body);
+            background-color: var(--bg-page-default);
+            color: var(--text-default);
+            padding: var(--spacing-32);
+            margin: 0;
+        }
+        
+        .demo-section {
+            margin-bottom: var(--spacing-48);
+            padding: var(--spacing-24);
+            background-color: var(--bg-panel-default);
+            border-radius: var(--radius-default);
+        }
+        
+        .demo-title {
+            font-family: var(--type-style-2-family);
+            font-size: var(--type-style-2-size);
+            font-weight: var(--type-style-2-weight);
+            line-height: var(--type-style-2-line-height);
+            margin: 0 0 var(--spacing-24) 0;
+            color: var(--text-default);
+        }
+        
+        .demo-description {
+            font-family: var(--type-style-6-family);
+            font-size: var(--type-style-6-size);
+            line-height: var(--type-style-6-line-height);
+            color: var(--text-subdued);
+            margin: 0 0 var(--spacing-24) 0;
+        }
+        
+        .theme-toggle {
+            position: fixed;
+            top: var(--spacing-24);
+            right: var(--spacing-24);
+            padding: var(--spacing-12) var(--spacing-24);
+            background-color: var(--bg-action-default);
+            color: var(--text-action-inverse);
+            border: none;
+            border-radius: var(--radius-default);
+            font-family: var(--font-family-body);
+            cursor: pointer;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()">Toggle Dark Mode</button>
+    
+    <h1 class="demo-title" style="margin-bottom: var(--spacing-48);">Select Category Grid Component</h1>
+    
+    <!-- Demo 1: Variant with 3 Items -->
+    <div class="demo-section">
+        <h2 class="demo-title">Variant 1: Row with 3 Items</h2>
+        <p class="demo-description">A row containing 3 category items with space-between alignment.</p>
+        
+        <div class="select-category-grid">
+          <div class="category-row category-row-3">
+            <label class="select-category-item">
+              <input type="radio" name="variant1" value="savings" class="select-category-input">
+              <div class="select-category-button">
+                <div class="select-category-icon">
+                  <img data-icon="piggy-bank" data-icon-category="finance" alt="">
+                </div>
+              </div>
+              <span class="select-category-label">Savings</span>
+            </label>
+
+            <label class="select-category-item">
+              <input type="radio" name="variant1" value="investment" class="select-category-input">
+              <div class="select-category-button">
+                <div class="select-category-icon">
+                  <img data-icon="investment" data-icon-category="finance" alt="">
+                </div>
+              </div>
+              <span class="select-category-label">Investment</span>
+            </label>
+
+            <label class="select-category-item">
+              <input type="radio" name="variant1" value="bills" class="select-category-input" checked>
+              <div class="select-category-button">
+                <div class="select-category-icon">
+                  <img data-icon="bill" data-icon-category="finance" alt="">
+                </div>
+              </div>
+              <span class="select-category-label">Bills</span>
+            </label>
+          </div>
+        </div>
+    </div>
+    
+    <!-- Demo 2: Variant with 2 Items -->
+    <div class="demo-section">
+        <h2 class="demo-title">Variant 2: Row with 2 Items</h2>
+        <p class="demo-description">A row containing 2 category items. Note the 3rd position has an invisible placeholder to maintain grid alignment.</p>
+        
+        <div class="select-category-grid">
+          <div class="category-row category-row-2">
+            <label class="select-category-item">
+              <input type="radio" name="variant2" value="cash" class="select-category-input">
+              <div class="select-category-button">
+                <div class="select-category-icon">
+                  <img data-icon="cash" data-icon-category="finance" alt="">
+                </div>
+              </div>
+              <span class="select-category-label">Cash</span>
+            </label>
+
+            <label class="select-category-item">
+              <input type="radio" name="variant2" value="travel" class="select-category-input" checked>
+              <div class="select-category-button">
+                <div class="select-category-icon">
+                  <img data-icon="plane" data-icon-category="travel" alt="">
+                </div>
+              </div>
+              <span class="select-category-label">Travel</span>
+            </label>
+
+            <!-- Placeholder to maintain grid alignment -->
+            <div class="category-row-placeholder"></div>
+          </div>
+        </div>
+    </div>
+    
+    <!-- Demo 3: Variant with 1 Item -->
+    <div class="demo-section">
+        <h2 class="demo-title">Variant 3: Row with 1 Item</h2>
+        <p class="demo-description">A row containing 1 category item. Note positions 2 and 3 have invisible placeholders to maintain grid alignment.</p>
+        
+        <div class="select-category-grid">
+          <div class="category-row category-row-1">
+            <label class="select-category-item">
+              <input type="radio" name="variant3" value="home" class="select-category-input" checked>
+              <div class="select-category-button">
+                <div class="select-category-icon">
+                  <img data-icon="home" data-icon-category="navigation" alt="">
+                </div>
+              </div>
+              <span class="select-category-label">Home</span>
+            </label>
+
+            <!-- Placeholders to maintain grid alignment -->
+            <div class="category-row-placeholder"></div>
+            <div class="category-row-placeholder"></div>
+          </div>
+        </div>
+    </div>
+    
+    <!-- Demo 4: Combined Multi-Row Grid - Shows Alignment -->
+    <div class="demo-section">
+        <h2 class="demo-title">Combined: Multi-Row Grid (Alignment Test)</h2>
+        <p class="demo-description">All variants stacked together. Notice how items maintain vertical alignment across rows due to the placeholder system.</p>
+        
+        <div class="select-category-grid">
+          <!-- Row 1: 3 items -->
+          <div class="category-row category-row-3">
+            <label class="select-category-item">
+              <input type="radio" name="combined" value="savings" class="select-category-input">
+              <div class="select-category-button">
+                <div class="select-category-icon">
+                  <img data-icon="piggy-bank" data-icon-category="finance" alt="">
+                </div>
+              </div>
+              <span class="select-category-label">Savings</span>
+            </label>
+
+            <label class="select-category-item">
+              <input type="radio" name="combined" value="investment" class="select-category-input">
+              <div class="select-category-button">
+                <div class="select-category-icon">
+                  <img data-icon="investment" data-icon-category="finance" alt="">
+                </div>
+              </div>
+              <span class="select-category-label">Investment</span>
+            </label>
+
+            <label class="select-category-item">
+              <input type="radio" name="combined" value="bills" class="select-category-input">
+              <div class="select-category-button">
+                <div class="select-category-icon">
+                  <img data-icon="bill" data-icon-category="finance" alt="">
+                </div>
+              </div>
+              <span class="select-category-label">Bills</span>
+            </label>
+          </div>
+
+          <!-- Row 2: 2 items + placeholder -->
+          <div class="category-row category-row-2">
+            <label class="select-category-item">
+              <input type="radio" name="combined" value="cash" class="select-category-input">
+              <div class="select-category-button">
+                <div class="select-category-icon">
+                  <img data-icon="cash" data-icon-category="finance" alt="">
+                </div>
+              </div>
+              <span class="select-category-label">Cash</span>
+            </label>
+
+            <label class="select-category-item">
+              <input type="radio" name="combined" value="travel" class="select-category-input">
+              <div class="select-category-button">
+                <div class="select-category-icon">
+                  <img data-icon="plane" data-icon-category="travel" alt="">
+                </div>
+              </div>
+              <span class="select-category-label">Travel</span>
+            </label>
+
+            <!-- Placeholder to maintain grid alignment -->
+            <div class="category-row-placeholder"></div>
+          </div>
+
+          <!-- Row 3: 1 item + 2 placeholders -->
+          <div class="category-row category-row-1">
+            <label class="select-category-item">
+              <input type="radio" name="combined" value="home" class="select-category-input" checked>
+              <div class="select-category-button">
+                <div class="select-category-icon">
+                  <img data-icon="home" data-icon-category="navigation" alt="">
+                </div>
+              </div>
+              <span class="select-category-label">Home</span>
+            </label>
+
+            <!-- Placeholders to maintain grid alignment -->
+            <div class="category-row-placeholder"></div>
+            <div class="category-row-placeholder"></div>
+          </div>
+        </div>
+    </div>
+    
+    <!-- Component JavaScript -->
+    <script src="../select-category-item/SelectCategoryItem.vanilla.js"></script>
+    
+    <!-- Demo JavaScript -->
+    <script>
+        // Detect system theme preference on load
+        function detectSystemTheme() {
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+        }
+        
+        // Theme toggle
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+        }
+        
+        // Set theme on page load
+        detectSystemTheme();
+        
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+        });
+    </script>
+</body>
+</html>

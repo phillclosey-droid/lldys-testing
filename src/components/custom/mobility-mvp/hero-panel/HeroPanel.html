@@ -1,0 +1,157 @@
+<!-- 
+  HeroPanel HTML Component - TOKEN LED - SELF-CONTAINED
+  
+  Comprehensive car profile hero panel with vehicle details, progress tracking,
+  service dashboard items, and action panels.
+  
+  Dependencies:
+  - Design tokens (cancara-tokens.css)
+  - HeroPanel.vanilla.css (SELF-CONTAINED)
+  - HeroPanel.vanilla.js (auto-initializes assets)
+  - Pictogram component (nested, not recreated)
+  - GhostPanel component (nested, not recreated)
+  
+  Features:
+  - Vehicle information with pictogram
+  - Car image placement with gradient overlay
+  - Progress bar with completion tracking
+  - Service dashboard panels (Tax, MOT, Insurance, Servicing)
+  - Ghost panel integration for quick actions
+  
+  Usage:
+  1. Import CSS and JS
+  2. Copy HTML structure
+  3. Customize data attributes and content
+  4. Assets auto-populate on page load
+-->
+
+<div class="hero-panel-container">
+  
+  <!-- Top Row: Vehicle Information -->
+  <div class="hero-panel-top-row">
+    <div class="hero-panel-vehicle-info">
+      <!-- Nested Pictogram Component -->
+      <div class="pictogram pict-default">
+        <img data-pictogram="Car_Lloyds_-_V2" alt="Car icon">
+      </div>
+      <div class="hero-panel-vehicle-text">
+        <div class="hero-panel-vehicle-model">Renault Rafale</div>
+        <div class="hero-panel-vehicle-reg">VX73 TZB</div>
+      </div>
+    </div>
+    <div class="hero-panel-edit-link">
+      <img class="hero-panel-edit-icon" data-icon="edit" data-icon-folder="edit" alt="Edit icon">
+      <span class="hero-panel-edit-text">Edit</span>
+    </div>
+  </div>
+  
+  <!-- Car Placement with Gradient -->
+  <div class="hero-panel-car-placement">
+    <div class="hero-panel-car-gradient"></div>
+    <!-- Car image will be placed here - currently empty as specified -->
+    <div class="hero-panel-car-image" data-car-image="">
+      <!-- Car image placeholder - can be populated later -->
+    </div>
+  </div>
+  
+  <!-- Progress Section -->
+  <div class="hero-panel-progress-section">
+    <div class="hero-panel-progress-text">Your car profile is 50% complete</div>
+    <div class="hero-panel-progress-bar">
+      <div class="hero-panel-progress-fill" style="width: 50%;"></div>
+    </div>
+    <div class="hero-panel-progress-subtext">2 of 4 tasks completed</div>
+  </div>
+  
+  <!-- Dashboard Grid -->
+  <div class="hero-panel-dashboard-grid">
+    
+    <!-- Row 1: Service Panels -->
+    <div class="hero-panel-dashboard-row">
+      
+      <!-- Tax Service Panel -->
+      <div class="hero-panel-service-panel">
+        <div class="hero-panel-service-circle">
+          <img data-icon="subscription" data-icon-folder="miscellaneous" alt="Subscription icon">
+        </div>
+        <div class="hero-panel-service-text">
+          <div class="hero-panel-service-title">Tax</div>
+          <div class="hero-panel-service-date">06 Aug 25</div>
+        </div>
+      </div>
+      
+      <!-- MOT Service Panel -->
+      <div class="hero-panel-service-panel">
+      <div class="hero-panel-service-circle">
+      <img data-icon="id" data-icon-folder="security" alt="ID icon">
+      </div>
+      <div class="hero-panel-service-text">
+      <div class="hero-panel-service-title">MOT</div>
+      <div class="hero-panel-service-date">11 Dec 25</div>
+      </div>
+      </div>
+      
+    </div>
+    
+    <!-- Row 2: Ghost Panels -->
+    <div class="hero-panel-dashboard-row">
+      
+      <!-- Insurance Ghost Panel -->
+      <div class="hero-panel-ghost-compact">
+        <div class="hero-panel-ghost-text">
+          <div class="hero-panel-ghost-title">Insurance</div>
+          <div class="hero-panel-ghost-subtitle">Get reminder</div>
+        </div>
+        <div class="hero-panel-ghost-button">
+          <div class="hero-panel-ghost-button-icon">
+            <img data-action-icon="plus" data-icon-folder="action" alt="Plus icon">
+          </div>
+        </div>
+      </div>
+      
+      <!-- Servicing Ghost Panel -->
+      <div class="hero-panel-ghost-compact">
+        <div class="hero-panel-ghost-text">
+          <div class="hero-panel-ghost-title">Servicing</div>
+          <div class="hero-panel-ghost-subtitle">Keep track</div>
+        </div>
+        <div class="hero-panel-ghost-button">
+          <div class="hero-panel-ghost-button-icon">
+            <img data-action-icon="plus" data-icon-folder="action" alt="Plus icon">
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    
+  </div>
+  
+</div>
+
+<!--
+  DATA ATTRIBUTES:
+  - data-pictogram: Pictogram/icon filename without .svg extension
+  - data-icon-folder: Folder name within assets/icons/ (e.g., "travel", "edit")
+  - data-icon: Icon filename without .svg extension
+  - data-action-icon: Action icon filename (typically "plus")
+  - data-car-image: URL to car image (optional, can be populated dynamically)
+  
+  CUSTOMIZATION:
+  - Progress fill: Adjust inline style width percentage on .hero-panel-progress-fill
+  - Service dates: Update text content
+  - Service icons: Change data-icon and data-icon-folder attributes
+  
+  COMPLETE USAGE:
+  
+  <head>
+      <link rel="stylesheet" href="path/to/cancara-tokens.css">
+      <link rel="stylesheet" href="path/to/Pictogram.vanilla.css">
+      <link rel="stylesheet" href="path/to/HeroPanel.vanilla.css">
+  </head>
+  <body>
+      <!-- HTML structure above -->
+      
+      <script src="path/to/Pictogram.vanilla.js"></script>
+      <script src="path/to/HeroPanel.vanilla.js"></script>
+  </body>
+-->

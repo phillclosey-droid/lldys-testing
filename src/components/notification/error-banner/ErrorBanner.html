@@ -1,0 +1,62 @@
+# Error Banner Component
+
+Critical error notification banner with icon, message, and dismissal. Full-width red background.
+
+## Files
+
+- `ErrorBanner.vanilla.css` - Token-led styling
+- `ErrorBanner.vanilla.js` - Interactive functionality
+- `ErrorBanner-demo.html` - Demo with 3 variants
+
+## Component Structure
+
+```html
+<div class="error-banner">
+    <div class="error-banner-content">
+        <div class="error-banner-icon">
+            <svg><!-- Critical icon (18px white) --></svg>
+        </div>
+        <div class="error-banner-text">Error message</div>
+    </div>
+    <div class="error-banner-close-container">
+        <button class="error-banner-close">
+            <svg><!-- Close icon (12px white) --></svg>
+        </button>
+    </div>
+</div>
+```
+
+## Features
+
+- **Red background**: `--color-red-critical` (#DB0F30)
+- **White text and icons**: `--text-sentiment-critical-inverse`
+- **Critical icon**: 18px, white fill with red exclamation mark
+- **Close button**: 12px white X icon
+- **Auto-dismiss**: Removes from DOM on close
+
+## Events
+
+```javascript
+element.addEventListener('error-banner-close', function() {
+    // Banner dismissed
+});
+```
+
+## Design Tokens
+
+- Background: `--color-red-critical`
+- Text: `--text-sentiment-critical-inverse` (white)
+- Icons: White with red stroke
+- Typography: `--type-style-6-*` (15px, GT Ultra)
+- Spacing: `--spacing-08`, `--spacing-12`, `--spacing-16`, `--spacing-24`
+
+## Dimensions
+
+- Critical icon: 18px × 18px
+- Close icon: 12px × 12px
+- Padding: 12px vertical, 16px left
+- Gap: 8px (icon to text), 24px (before close button)
+
+## Token-Led
+
+All colors use semantic tokens. Red background stays consistent across light/dark modes.

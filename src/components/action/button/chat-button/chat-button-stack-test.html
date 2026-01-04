@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatButtonStack Component Test</title>
+    
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="../../../../css/cancara-tokens.css">
+    
+    <!-- ActionButton Component Styles (self-contained dependency) -->
+    <link rel="stylesheet" href="../action-button/ActionButton.vanilla.css">
+    
+    <!-- IconButton Component Styles (self-contained dependency) -->
+    <link rel="stylesheet" href="../icon-button/IconButton.vanilla.css">
+    
+    <!-- ChatButtonStack Component Styles -->
+    <link rel="stylesheet" href="ChatButtonStack.vanilla.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family-body);
+            background: var(--bg-page-default);
+            color: var(--text-default);
+            transition: background-color 0.3s, color 0.3s;
+            padding: var(--spacing-48);
+            min-height: 100vh;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: var(--spacing-24);
+            right: var(--spacing-24);
+            z-index: 1000;
+        }
+
+        .toggle-button {
+            background: var(--bg-action-default);
+            color: var(--text-action-inverse);
+            border: none;
+            border-radius: var(--radius-default);
+            padding: var(--spacing-12) var(--spacing-24);
+            font-family: var(--font-family-body);
+            font-size: var(--type-style-8-size);
+            font-weight: var(--font-weight-bold);
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .toggle-button:hover {
+            background: var(--bg-action-pressed);
+        }
+
+        h1 {
+            margin-bottom: var(--spacing-48);
+            font-size: var(--type-style-1-size);
+            font-weight: var(--type-style-1-weight);
+            line-height: var(--type-style-1-line-height);
+        }
+
+        .section {
+            margin-bottom: var(--spacing-48);
+            max-width: 600px;
+        }
+
+        .section h2 {
+            margin-bottom: var(--spacing-24);
+            font-size: var(--type-style-2-size);
+            font-weight: var(--type-style-2-weight);
+            line-height: var(--type-style-2-line-height);
+        }
+
+        .section h3 {
+            margin-bottom: var(--spacing-16);
+            margin-top: var(--spacing-32);
+            font-size: var(--type-style-3-size);
+            font-weight: var(--type-style-3-weight);
+        }
+
+        .section p {
+            margin-bottom: var(--spacing-24);
+            color: var(--text-subdued);
+            font-size: var(--type-style-6-size);
+            line-height: var(--type-style-6-line-height);
+        }
+
+        .demo-wrapper {
+            padding: 0;
+            margin-bottom: var(--spacing-24);
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <div class="theme-toggle">
+        <button class="toggle-button" onclick="toggleTheme()">
+            <span id="theme-text">Switch to Dark Mode</span>
+        </button>
+    </div>
+
+    <h1>ChatButtonStack Component</h1>
+
+    <!-- DEFAULT VARIANT -->
+    <div class="section">
+        <h2>Default Variant</h2>
+        <p>ActionButton (Message us 24/7) + IconButton (close/dismiss icon) side by side</p>
+
+        <div class="demo-wrapper">
+            <div class="chat-button-stack">
+                <!-- Action Button -->
+                <button class="action-button btn-primary">
+                    <div class="action-button-inner">
+                        <span class="action-button-text">Message us 24/7</span>
+                        <div class="action-button-icon">
+                            <img data-icon="arrow-right" data-icon-category="arrows" alt="">
+                        </div>
+                    </div>
+                </button>
+
+                <!-- Icon Button (close/dismiss) -->
+                <button class="icon-button size-default btn-tertiary">
+                    <div class="icon-button-icon">
+                        <img data-icon="close" data-icon-category="navigation" alt="Close">
+                    </div>
+                </button>
+            </div>
+        </div>
+
+        <h3>Alternative Icons</h3>
+        <div class="demo-wrapper">
+            <div class="chat-button-stack">
+                <button class="action-button btn-primary">
+                    <div class="action-button-inner">
+                        <span class="action-button-text">Chat with us</span>
+                        <div class="action-button-icon">
+                            <img data-icon="arrow-right" data-icon-category="arrows" alt="">
+                        </div>
+                    </div>
+                </button>
+
+                <button class="icon-button size-default btn-secondary">
+                    <div class="icon-button-icon">
+                        <img data-icon="close" data-icon-category="navigation" alt="Close">
+                    </div>
+                </button>
+            </div>
+        </div>
+
+        <h3>Brand Accent ActionButton</h3>
+        <div class="demo-wrapper">
+            <div class="chat-button-stack">
+                <button class="action-button btn-primary btn-brand-accent">
+                    <div class="action-button-inner">
+                        <span class="action-button-text">Start chatting now</span>
+                        <div class="action-button-icon">
+                            <img data-icon="arrow-right" data-icon-category="arrows" alt="">
+                        </div>
+                    </div>
+                </button>
+
+                <button class="icon-button size-default btn-tertiary">
+                    <div class="icon-button-icon">
+                        <img data-icon="close" data-icon-category="navigation" alt="Close">
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SMALL ICON BUTTON VARIANT -->
+    <div class="section">
+        <h2>With Small Icon Button</h2>
+        <p>Using size-small icon button for a more compact layout</p>
+
+        <div class="demo-wrapper">
+            <div class="chat-button-stack">
+                <button class="action-button btn-primary">
+                    <div class="action-button-inner">
+                        <span class="action-button-text">Message us 24/7</span>
+                        <div class="action-button-icon">
+                            <img data-icon="arrow-right" data-icon-category="arrows" alt="">
+                        </div>
+                    </div>
+                </button>
+
+                <button class="icon-button size-small btn-tertiary">
+                    <div class="icon-button-icon">
+                        <img data-icon="close" data-icon-category="navigation" alt="Close">
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- DIFFERENT MESSAGES -->
+    <div class="section">
+        <h2>Different Message Variations</h2>
+
+        <h3>Support Message</h3>
+        <div class="demo-wrapper">
+            <div class="chat-button-stack">
+                <button class="action-button btn-primary">
+                    <div class="action-button-inner">
+                        <span class="action-button-text">Need help? Chat now</span>
+                        <div class="action-button-icon">
+                            <img data-icon="arrow-right" data-icon-category="arrows" alt="">
+                        </div>
+                    </div>
+                </button>
+
+                <button class="icon-button size-default btn-tertiary">
+                    <div class="icon-button-icon">
+                        <img data-icon="close" data-icon-category="navigation" alt="Close">
+                    </div>
+                </button>
+            </div>
+        </div>
+
+        <h3>Quick Chat</h3>
+        <div class="demo-wrapper">
+            <div class="chat-button-stack">
+                <button class="action-button btn-primary">
+                    <div class="action-button-inner">
+                        <span class="action-button-text">Questions? We're here</span>
+                        <div class="action-button-icon">
+                            <img data-icon="arrow-right" data-icon-category="arrows" alt="">
+                        </div>
+                    </div>
+                </button>
+
+                <button class="icon-button size-default btn-tertiary">
+                    <div class="icon-button-icon">
+                        <img data-icon="close" data-icon-category="navigation" alt="Close">
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- COMPONENT FEATURES -->
+    <div class="section">
+        <h2>Component Features</h2>
+        <ul style="padding-left: var(--spacing-24); line-height: 2;">
+            <li>✅ Self-contained layout component</li>
+            <li>✅ Combines ActionButton + IconButton</li>
+            <li>✅ Horizontal layout with 16px gap</li>
+            <li>✅ Token-led spacing and sizing</li>
+            <li>✅ Dark mode support (via nested components)</li>
+            <li>✅ Fully responsive</li>
+            <li>✅ Accessible button semantics</li>
+            <li>✅ Icons auto-load via JavaScript</li>
+        </ul>
+    </div>
+
+    <!-- Load component JavaScript -->
+    <script src="../action-button/ActionButton.vanilla.js"></script>
+    <script src="../icon-button/IconButton.vanilla.js"></script>
+
+    <script>
+        function detectSystemTheme() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-text').textContent = 'Switch to Light Mode';
+            } else {
+                document.body.setAttribute('data-theme', 'light');
+                document.getElementById('theme-text').textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', detectSystemTheme);
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const themeText = document.getElementById('theme-text');
+            const currentTheme = body.getAttribute('data-theme');
+            
+            if (currentTheme === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                themeText.textContent = 'Switch to Light Mode';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeText.textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', function() {
+            detectSystemTheme();
+        });
+    </script>
+</body>
+</html>

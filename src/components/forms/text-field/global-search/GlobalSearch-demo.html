@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Search Component - Demo</title>
+    
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="../../../../css/cancara-tokens.css">
+    
+    <!-- Global Search Component (SELF-CONTAINED) -->
+    <link rel="stylesheet" href="GlobalSearch.vanilla.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family-body);
+            background: var(--bg-page-default);
+            color: var(--text-default);
+            transition: background-color 0.3s, color 0.3s;
+            padding: 40px;
+            min-height: 100vh;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .toggle-button {
+            background: var(--bg-action-default);
+            color: var(--text-action-inverse);
+            border: none;
+            border-radius: var(--radius-default);
+            padding: 12px 24px;
+            font-family: var(--font-family-body);
+            font-size: 14px;
+            font-weight: var(--font-weight-bold);
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .toggle-button:hover {
+            background: var(--bg-action-pressed);
+        }
+
+        h1 {
+            margin-bottom: 40px;
+            font-size: 32px;
+        }
+        
+        .demo-section {
+            margin-bottom: 40px;
+        }
+        
+        .demo-section-title {
+            margin-bottom: 12px;
+            font-size: 20px;
+        }
+
+        .demo-section p {
+            margin-bottom: 16px;
+            color: var(--text-subdued);
+            font-size: 14px;
+        }
+
+        .demo-container {
+            background: var(--bg-panel-default);
+            padding: 32px;
+            border-radius: var(--radius-default);
+            min-width: 600px;
+        }
+
+        .event-log {
+            margin-top: 16px;
+            padding: 12px;
+            background: var(--bg-section-default);
+            border-radius: var(--radius-default);
+            font-size: 12px;
+            font-family: monospace;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .event-log-entry {
+            padding: 4px 0;
+            border-bottom: 1px solid var(--border-default);
+        }
+
+        .event-log-entry:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <div class="theme-toggle">
+        <button class="toggle-button" onclick="toggleTheme()">
+            <span id="theme-text">Switch to Dark Mode</span>
+        </button>
+    </div>
+
+    <h1>Global Search Component - All States</h1>
+    
+    <!-- DEFAULT STATE -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">Default State</h2>
+        <p>Search icon, placeholder text, voice icon</p>
+        
+        <div class="demo-container">
+            <div class="global-search">
+                <div class="global-search-input">
+                    <div class="global-search-icon">
+                        <div class="global-search-icon-wrapper">
+                            <img src="../../../../../assets/icons/navigation/search.svg" alt="Search">
+                        </div>
+                    </div>
+                    <div class="global-search-text-wrapper">
+                        <input type="text" class="global-search-input-field" placeholder="What can we help you with?">
+                    </div>
+                    <div class="global-search-voice">
+                        <img src="../../../../../assets/icons/navigation/microphone.svg" alt="Voice search">
+                    </div>
+                    <div class="global-search-close">
+                        <img src="../../../../../assets/icons/navigation/close.svg" alt="Clear search">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ACTIVE STATE -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">Active/Focused State</h2>
+        <p>2px black border, cursor visible</p>
+        
+        <div class="demo-container">
+            <div class="global-search">
+                <div class="global-search-input is-active">
+                    <div class="global-search-icon">
+                        <div class="global-search-icon-wrapper">
+                            <img src="../../../../../assets/icons/navigation/search.svg" alt="Search">
+                        </div>
+                    </div>
+                    <div class="global-search-text-wrapper">
+                        <input type="text" class="global-search-input-field" placeholder="What can we help you with?">
+                    </div>
+                    <div class="global-search-voice">
+                        <img src="../../../../../assets/icons/navigation/microphone.svg" alt="Voice search">
+                    </div>
+                    <div class="global-search-close">
+                        <img src="../../../../../assets/icons/navigation/close.svg" alt="Clear search">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- EDIT STATE -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">Edit State (With Text)</h2>
+        <p>User has typed text, close button appears, voice icon hidden</p>
+        
+        <div class="demo-container">
+            <div class="global-search">
+                <div class="global-search-input is-active has-text">
+                    <div class="global-search-icon">
+                        <div class="global-search-icon-wrapper">
+                            <img src="../../../../../assets/icons/navigation/search.svg" alt="Search">
+                        </div>
+                    </div>
+                    <div class="global-search-text-wrapper">
+                        <input type="text" class="global-search-input-field" value="Data input">
+                    </div>
+                    <div class="global-search-voice">
+                        <img src="../../../../../assets/icons/navigation/microphone.svg" alt="Voice search">
+                    </div>
+                    <div class="global-search-close">
+                        <img src="../../../../../assets/icons/navigation/close.svg" alt="Clear search">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SUBMITTED STATE -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">Submitted State</h2>
+        <p>After pressing Enter, cursor hidden, back to default border</p>
+        
+        <div class="demo-container">
+            <div class="global-search">
+                <div class="global-search-input is-submitted">
+                    <div class="global-search-icon">
+                        <div class="global-search-icon-wrapper">
+                            <img src="../../../../../assets/icons/navigation/search.svg" alt="Search">
+                        </div>
+                    </div>
+                    <div class="global-search-text-wrapper">
+                        <input type="text" class="global-search-input-field" value="Data input">
+                    </div>
+                    <div class="global-search-voice">
+                        <img src="../../../../../assets/icons/navigation/microphone.svg" alt="Voice search">
+                    </div>
+                    <div class="global-search-close">
+                        <img src="../../../../../assets/icons/navigation/close.svg" alt="Clear search">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- INTERACTIVE DEMO -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">Interactive Demo</h2>
+        <p>Fully functional search - try typing, pressing Enter, clicking voice or close</p>
+        
+        <div class="demo-container">
+            <div class="global-search">
+                <div class="global-search-input">
+                    <div class="global-search-icon">
+                        <div class="global-search-icon-wrapper">
+                            <img src="../../../../../assets/icons/navigation/search.svg" alt="Search">
+                        </div>
+                    </div>
+                    <div class="global-search-text-wrapper">
+                        <input type="text" class="global-search-input-field" placeholder="What can we help you with?">
+                    </div>
+                    <div class="global-search-voice">
+                        <img src="../../../../../assets/icons/navigation/microphone.svg" alt="Voice search">
+                    </div>
+                    <div class="global-search-close">
+                        <img src="../../../../../assets/icons/navigation/close.svg" alt="Clear search">
+                    </div>
+                </div>
+            </div>
+
+            <div class="event-log" id="eventLog">
+                <div><strong>Event Log:</strong></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="GlobalSearch.vanilla.js"></script>
+
+    <script>
+        // Event logging for demo
+        const eventLog = document.getElementById('eventLog');
+        const logEvent = (message) => {
+            const entry = document.createElement('div');
+            entry.className = 'event-log-entry';
+            entry.textContent = `${new Date().toLocaleTimeString()}: ${message}`;
+            eventLog.appendChild(entry);
+            eventLog.scrollTop = eventLog.scrollHeight;
+        };
+
+        // Listen for all global search events
+        document.querySelectorAll('.global-search').forEach(search => {
+            search.addEventListener('global-search-focus', function(e) {
+                logEvent('Search focused');
+            });
+
+            search.addEventListener('global-search-input', function(e) {
+                logEvent(`Input changed: "${e.detail.value}"`);
+            });
+
+            search.addEventListener('global-search-submit', function(e) {
+                logEvent(`Search submitted: "${e.detail.value}"`);
+            });
+
+            search.addEventListener('global-search-clear', function(e) {
+                logEvent('Search cleared');
+            });
+
+            search.addEventListener('global-search-voice', function(e) {
+                logEvent('Voice search clicked');
+            });
+        });
+
+        function detectSystemTheme() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-text').textContent = 'Switch to Light Mode';
+            } else {
+                document.body.setAttribute('data-theme', 'light');
+                document.getElementById('theme-text').textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', detectSystemTheme);
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const themeText = document.getElementById('theme-text');
+            const currentTheme = body.getAttribute('data-theme');
+            
+            if (currentTheme === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                themeText.textContent = 'Switch to Light Mode';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeText.textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', function() {
+            detectSystemTheme();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+# Pagination Component
+
+A pagination indicator component with dots showing current page position and navigation controls (arrows or text buttons).
+
+## Files
+
+- `Pagination.vanilla.css` - Self-contained CSS with token-led styling
+- `Pagination.vanilla.js` - Interactive functionality for navigation
+- `Pagination-demo.html` - Demo page showing all layouts
+
+## Component Structure
+
+### With Arrow Navigation
+```html
+<div class="pagination pagination-arrows">
+    <button class="pagination-nav" data-action="prev">
+        <div class="pagination-nav-icon">
+            <img data-icon="chevron-left" alt="Previous">
+        </div>
+    </button>
+    
+    <div class="pagination-dots">
+        <div class="pagination-dot is-active"></div>
+        <div class="pagination-dot is-inactive"></div>
+        <div class="pagination-dot is-inactive"></div>
+    </div>
+    
+    <button class="pagination-nav" data-action="next">
+        <div class="pagination-nav-icon">
+            <img data-icon="chevron-right" alt="Next">
+        </div>
+    </button>
+</div>
+```
+
+### With Text Button Navigation
+```html
+<div class="pagination pagination-buttons">
+    <button class="pagination-button" data-action="prev">
+        <span class="pagination-button-text">Back</span>
+    </button>
+    
+    <div class="pagination-dots">
+        <div class="pagination-dot is-active"></div>
+        <div class="pagination-dot is-inactive"></div>
+        <div class="pagination-dot is-inactive"></div>
+    </div>
+    
+    <button class="pagination-button" data-action="next">
+        <span class="pagination-button-text">Next</span>
+    </button>
+</div>
+```
+
+## CSS Classes
+
+### Container
+- `.pagination` - Base pagination container
+- `.pagination-arrows` - Arrow navigation layout (with padding)
+- `.pagination-buttons` - Text button navigation layout
+
+### Dots
+- `.pagination-dots` - Container for dot indicators
+- `.pagination-dot` - Individual dot element
+- `.pagination-dot.is-active` - Active page (24px × 6px, elongated)
+- `.pagination-dot.is-inactive` - Inactive adjacent page (6px × 6px, normal)
+- `.pagination-dot.is-far` - Far page (4px × 4px, smaller) - used for 5+ pages
+
+### Navigation
+- `.pagination-nav` - Arrow navigation button
+- `.pagination-nav-icon` - Icon container (12px × 12px)
+- `.pagination-button` - Text navigation button
+- `.pagination-button-text` - Text label (underlined)
+
+## JavaScript Events
+
+The component dispatches a custom `pagination-change` event when pages change:
+
+```javascript
+element.addEventListener('pagination-change', function(e) {
+    console.log(e.detail.page); // Current page number
+    console.log(e.detail.totalPages); // Total number of pages
+});
+```
+
+## Design Tokens Used
+
+### Typography
+- `--type-style-6-family` - Font family (GT Ultra)
+- `--type-style-6-size` - Font size (15px)
+- `--type-style-6-weight` - Font weight
+- `--type-style-6-line-height` - Line height (20px)
+
+### Colors
+- `--text-default` - Active dot color (black)
+- `--text-subdued` - Inactive dot color (gray-500 #767676)
+
+### Spacing
+- `--spacing-08` - Gap between dots (8px)
+- `--spacing-12` - Nav button padding (12px)
+- `--spacing-16` - Gap between elements (16px)
+- `--spacing-24` - Container horizontal padding (24px)
+
+### Borders
+- `--radius-circle` - Dot border radius (9999px, fully round)
+- `--radius-small` - Button border radius (8px)
+
+## Dot Sizes
+
+- **Active**: 24px width × 6px height (elongated)
+- **Inactive**: 6px × 6px (normal circle)
+- **Far**: 4px × 4px (smaller circle, for 5+ pages)
+
+## Icon Requirements
+
+The component uses chevron icons from the assets folder:
+- `chevron-left.svg` - Previous navigation
+- `chevron-right.svg` - Next navigation
+
+Icons are 12px × 12px and automatically invert in dark mode.
+
+## Behavior
+
+- Dots update automatically when prev/next buttons are clicked
+- First/last page positions disable the corresponding prev/next button
+- Far dots (4px) appear when total pages ≥ 5 and distance from current > 1
+- Smooth transitions for dot size changes
+- Custom events dispatched on page change
+
+## Usage Examples
+
+### Basic 3-Page Pagination with Arrows
+```html
+<div class="pagination pagination-arrows">
+    <button class="pagination-nav" data-action="prev">
+        <div class="pagination-nav-icon">
+            <img data-icon="chevron-left" alt="Previous">
+        </div>
+    </button>
+    
+    <div class="pagination-dots">
+        <div class="pagination-dot is-active"></div>
+        <div class="pagination-dot is-inactive"></div>
+        <div class="pagination-dot is-inactive"></div>
+    </div>
+    
+    <button class="pagination-nav" data-action="next">
+        <div class="pagination-nav-icon">
+            <img data-icon="chevron-right" alt="Next">
+        </div>
+    </button>
+</div>
+```
+
+### 5-Page Pagination with Text Buttons and Far Dots
+```html
+<div class="pagination pagination-buttons">
+    <button class="pagination-button" data-action="prev">
+        <span class="pagination-button-text">Back</span>
+    </button>
+    
+    <div class="pagination-dots">
+        <div class="pagination-dot is-far"></div>
+        <div class="pagination-dot is-inactive"></div>
+        <div class="pagination-dot is-active"></div>
+        <div class="pagination-dot is-inactive"></div>
+        <div class="pagination-dot is-far"></div>
+    </div>
+    
+    <button class="pagination-button" data-action="next">
+        <span class="pagination-button-text">Next</span>
+    </button>
+</div>
+```
+
+## Dark Mode Support
+
+All colors and icons automatically adapt to dark mode:
+- Dots maintain proper contrast
+- Icons invert colors for visibility
+- Text buttons remain readable

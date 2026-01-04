@@ -1,0 +1,172 @@
+/* Panel Vanilla CSS - TOKEN LED - SELF-CONTAINED */
+
+/* Panel Wrapper - padding container */
+.panel-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 0px var(--spacing-16);
+  margin-bottom: var(--spacing-12);
+  width: 100%;
+}
+
+/* Panel - main container */
+.panel {
+  border-radius: var(--radius-default);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: var(--spacing-16);
+  gap: var(--spacing-16);
+  background-color: var(--bg-panel-default);
+  border: var(--border-width-01) solid transparent;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  width: 100%;
+}
+
+.panel:active {
+  background-color: var(--bg-panel-pressed);
+}
+
+/* ========== PICTOGRAM (Nested - Self-contained) ========== */
+.panel .pictogram {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-circle);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.panel .pictogram img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+/* Pictogram Variant Colors */
+.panel .pict-default {
+  background-color: var(--color-green-mint);
+}
+
+.panel .pict-default-alt-01 {
+  background-color: var(--color-transparent);
+  border: var(--border-width-02) dashed var(--border-default);
+}
+
+.panel .pict-default-alt-02 {
+  background-color: var(--color-gray-100);
+}
+
+.panel .pict-primary {
+  background-color: var(--color-green-promo-primary);
+}
+
+.panel .pict-primary-alt-01 {
+  background-color: var(--color-green-promo-primary-dark);
+}
+
+.panel .pict-primary-alt-02 {
+  background-color: var(--color-green-promo-primary-darker);
+}
+
+.panel .pict-primary-alt-03 {
+  background-color: var(--color-green-light);
+}
+
+.panel .pict-secondary-alt-01 {
+  background-color: var(--color-purple-promo);
+}
+
+.panel .pict-secondary-alt-02 {
+  background-color: var(--color-pink-promo);
+}
+
+.panel .pict-secondary-alt-03 {
+  background-color: var(--color-cyan-promo);
+}
+
+.panel .pict-secondary-alt-04 {
+  background-color: var(--color-orange-promo);
+}
+
+/* ========== LEFT ICON (24px) ========== */
+.panel-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.panel-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Theme support - invert icons in dark mode */
+[data-theme="dark"] .panel-icon img {
+  filter: invert(1);
+}
+
+/* ========== TEXT CONTAINER ========== */
+.panel-vstack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-04);
+  flex: 1;
+  min-width: 0;
+}
+
+.panel-heading {
+  font-family: var(--font-family-body);
+  font-size: 17px;
+  line-height: 22px;
+  color: var(--text-default);
+  font-weight: var(--font-weight-regular);
+}
+
+.panel-description {
+  font-family: var(--font-family-body);
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--text-subdued);
+  font-weight: var(--font-weight-regular);
+}
+
+/* ========== RIGHT CHEVRON ICON (18px) ========== */
+.panel-chevron {
+  width: 18px;
+  height: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.panel-chevron img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Theme support - invert chevron in dark mode */
+[data-theme="dark"] .panel-chevron img {
+  filter: invert(1);
+}
+
+/* ========== ACCESSIBILITY ========== */
+.panel:focus {
+  outline: 2px solid var(--color-green-bright);
+  outline-offset: 2px;
+}
+
+/* Disabled state */
+.panel.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}

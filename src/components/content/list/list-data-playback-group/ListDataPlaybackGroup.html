@@ -1,0 +1,161 @@
+<!-- 
+  List Data Playback Group HTML Component - TOKEN LED - SELF-CONTAINED
+  
+  Container for stacked list-item-data-playback components.
+  Creates a grouped list with proper positioning (top, middle, bottom).
+  
+  Dependencies:
+  - Design tokens (cancara-tokens.css)
+  - ListItemDataPlayback component (nested)
+  - Divider component (nested via ListItemDataPlayback)
+  - ListDataPlaybackGroup.vanilla.css (SELF-CONTAINED)
+  - ListItemDataPlayback.vanilla.js (for chevron icons)
+  
+  Usage:
+  1. Import all nested component CSS
+  2. Import ListDataPlaybackGroup.vanilla.css
+  3. Copy HTML structure
+  4. Nest list-item-data-playback components inside
+-->
+
+<!-- Example 1: Compact Width with 5 items (DataSet 01) -->
+<div class="list-data-playback-group width-compact">
+    <!-- Item 1: Top position with heading -->
+    <div class="list-item-data-playback dataset-01 width-compact position-top state-default">
+        <div class="list-item-data-heading">
+            <span class="list-item-data-heading-text">ACCOUNT DETAILS</span>
+        </div>
+        <div class="list-item-data-content">
+            <div class="list-item-dataset">
+                <span class="list-item-data-title">Account Number</span>
+                <span class="list-item-data-value">1234 5678 9012</span>
+            </div>
+            <div class="list-item-data-action-icon">
+                <img data-action-icon="chevron-right" alt="">
+            </div>
+        </div>
+        <div class="divider width-default"><div class="divider-line"></div></div>
+    </div>
+    
+    <!-- Items 2-4: Middle positions -->
+    <div class="list-item-data-playback dataset-01 width-compact position-middle state-default">
+        <div class="list-item-data-content">
+            <div class="list-item-dataset">
+                <span class="list-item-data-title">Sort Code</span>
+                <span class="list-item-data-value">12-34-56</span>
+            </div>
+            <div class="list-item-data-action-icon">
+                <img data-action-icon="chevron-right" alt="">
+            </div>
+        </div>
+        <div class="divider width-default"><div class="divider-line"></div></div>
+    </div>
+    
+    <div class="list-item-data-playback dataset-01 width-compact position-middle state-default">
+        <div class="list-item-data-content">
+            <div class="list-item-dataset">
+                <span class="list-item-data-title">Account Type</span>
+                <span class="list-item-data-value">Current Account</span>
+            </div>
+            <div class="list-item-data-action-icon">
+                <img data-action-icon="chevron-right" alt="">
+            </div>
+        </div>
+        <div class="divider width-default"><div class="divider-line"></div></div>
+    </div>
+    
+    <div class="list-item-data-playback dataset-01 width-compact position-middle state-default">
+        <div class="list-item-data-content">
+            <div class="list-item-dataset">
+                <span class="list-item-data-title">Currency</span>
+                <span class="list-item-data-value">GBP</span>
+            </div>
+            <div class="list-item-data-action-icon">
+                <img data-action-icon="chevron-right" alt="">
+            </div>
+        </div>
+        <div class="divider width-default"><div class="divider-line"></div></div>
+    </div>
+    
+    <!-- Item 5: Bottom position (no divider) -->
+    <div class="list-item-data-playback dataset-01 width-compact position-bottom state-default">
+        <div class="list-item-data-content">
+            <div class="list-item-dataset">
+                <span class="list-item-data-title">Balance</span>
+                <span class="list-item-data-value">£2,450.00</span>
+            </div>
+            <div class="list-item-data-action-icon">
+                <img data-action-icon="chevron-right" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example 2: FullWidth with DataSet 02 items -->
+<div class="list-data-playback-group width-fullwidth">
+    <div class="list-item-data-playback dataset-02 width-fullwidth position-top state-default">
+        <div class="list-item-data-heading">
+            <span class="list-item-data-heading-text">PAYMENT DETAILS</span>
+        </div>
+        <div class="list-item-data-content">
+            <div class="list-item-data-vstack">
+                <div class="list-item-dataset">
+                    <span class="list-item-data-title">Recipient</span>
+                    <span class="list-item-data-value">John Smith</span>
+                </div>
+                <div class="list-item-dataset">
+                    <span class="list-item-data-title">Amount</span>
+                    <span class="list-item-data-value">£150.00</span>
+                </div>
+            </div>
+            <div class="list-item-data-action-icon">
+                <img data-action-icon="chevron-right" alt="">
+            </div>
+        </div>
+        <div class="divider width-fullwidth"><div class="divider-line"></div></div>
+    </div>
+    
+    <div class="list-item-data-playback dataset-02 width-fullwidth position-bottom state-default">
+        <div class="list-item-data-content">
+            <div class="list-item-data-vstack">
+                <div class="list-item-dataset">
+                    <span class="list-item-data-title">Reference</span>
+                    <span class="list-item-data-value">PAYMENT-2024-001</span>
+                </div>
+                <div class="list-item-dataset">
+                    <span class="list-item-data-title">Status</span>
+                    <span class="list-item-data-value">Completed</span>
+                </div>
+            </div>
+            <div class="list-item-data-action-icon">
+                <img data-action-icon="chevron-right" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--
+  WIDTH VARIANTS:
+  - width-compact: Has horizontal padding (16px)
+  - width-fullwidth: No horizontal padding, extends to edges
+  
+  NESTED COMPONENTS:
+  All list-item-data-playback components should use:
+  - position-top: For the first item
+  - position-middle: For middle items
+  - position-bottom: For the last item
+  
+  COMPLETE USAGE:
+  
+  <head>
+      <link rel="stylesheet" href="path/to/cancara-tokens.css">
+      <link rel="stylesheet" href="path/to/Divider.vanilla.css">
+      <link rel="stylesheet" href="path/to/ListItemDataPlayback.vanilla.css">
+      <link rel="stylesheet" href="path/to/ListDataPlaybackGroup.vanilla.css">
+  </head>
+  <body>
+      <!-- HTML structure above -->
+      
+      <script src="path/to/ListItemDataPlayback.vanilla.js"></script>
+  </body>
+-->

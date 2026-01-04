@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Item Data Playback - Demo</title>
+    
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="../../../../css/cancara-tokens.css">
+    
+    <!-- Nested Component CSS -->
+    <link rel="stylesheet" href="../../divider/Divider.vanilla.css">
+    
+    <!-- Component CSS -->
+    <link rel="stylesheet" href="ListItemDataPlayback.vanilla.css">
+    
+    <style>
+        body {
+            font-family: var(--font-family-body);
+            background-color: var(--bg-page-default);
+            color: var(--text-default);
+            padding: var(--spacing-48);
+            margin: 0;
+        }
+        
+        .demo-section {
+            margin-bottom: var(--spacing-48);
+        }
+        
+        .demo-title {
+            font-size: var(--type-style-2-size);
+            font-weight: var(--type-style-2-weight);
+            line-height: var(--type-style-2-line-height);
+            margin: 0 0 var(--spacing-16) 0;
+            color: var(--text-default);
+        }
+        
+        .demo-description {
+            font-size: var(--type-style-6-size);
+            line-height: var(--type-style-6-line-height);
+            color: var(--text-subdued);
+            margin: 0 0 var(--spacing-24) 0;
+        }
+        
+        .theme-toggle {
+            position: fixed;
+            top: var(--spacing-24);
+            right: var(--spacing-24);
+            padding: var(--spacing-12) var(--spacing-24);
+            background-color: var(--bg-action-default);
+            color: var(--text-action-inverse);
+            border: none;
+            border-radius: var(--radius-default);
+            font-family: var(--font-family-body);
+            cursor: pointer;
+            z-index: 1000;
+        }
+        
+        .demo-container {
+            max-width: 600px;
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()">Toggle Dark Mode</button>
+    
+    <h1 class="demo-title" style="font-size: 29px; margin-bottom: var(--spacing-48);">List Item Data Playback Component</h1>
+    
+    <p style="margin-bottom: var(--spacing-24); color: var(--text-subdued);">Clickable list items that display data with pressed state.</p>
+    
+    <!-- Demo 1: DataSet 01 - Stacked (Top, Middle, Bottom) -->
+    <div class="demo-section">
+        <h2 class="demo-title">DataSet 01 - Single Data Pair</h2>
+        <p class="demo-description">Stacked items with one title/value pair each</p>
+        
+        <div class="demo-container">
+            <div class="list-item-data-playback dataset-01 width-compact position-top state-default">
+                <div class="list-item-data-heading">
+                    <span class="list-item-data-heading-text">ACCOUNT DETAILS</span>
+                </div>
+                <div class="list-item-data-content">
+                    <div class="list-item-dataset">
+                        <span class="list-item-data-title">Account Number</span>
+                        <span class="list-item-data-value">1234 5678 9012</span>
+                    </div>
+                    <div class="list-item-data-action-icon">
+                        <img data-action-icon="chevron-right" alt="">
+                    </div>
+                </div>
+                <div class="divider width-default"><div class="divider-line"></div></div>
+            </div><div class="list-item-data-playback dataset-01 width-compact position-middle state-default">
+                <div class="list-item-data-content">
+                    <div class="list-item-dataset">
+                        <span class="list-item-data-title">Sort Code</span>
+                        <span class="list-item-data-value">12-34-56</span>
+                    </div>
+                    <div class="list-item-data-action-icon">
+                        <img data-action-icon="chevron-right" alt="">
+                    </div>
+                </div>
+                <div class="divider width-default"><div class="divider-line"></div></div>
+            </div><div class="list-item-data-playback dataset-01 width-compact position-bottom state-default">
+                <div class="list-item-data-content">
+                    <div class="list-item-dataset">
+                        <span class="list-item-data-title">Account Type</span>
+                        <span class="list-item-data-value">Current Account</span>
+                    </div>
+                    <div class="list-item-data-action-icon">
+                        <img data-action-icon="chevron-right" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Demo 2: DataSet 02 - Stacked -->
+    <div class="demo-section">
+        <h2 class="demo-title">DataSet 02 - Two Data Pairs</h2>
+        <p class="demo-description">Each item displays two title/value pairs</p>
+        
+        <div class="demo-container">
+            <div class="list-item-data-playback dataset-02 width-compact position-top state-default">
+                <div class="list-item-data-heading">
+                    <span class="list-item-data-heading-text">PAYMENT INFORMATION</span>
+                </div>
+                <div class="list-item-data-content">
+                    <div class="list-item-data-vstack">
+                        <div class="list-item-dataset">
+                            <span class="list-item-data-title">Recipient</span>
+                            <span class="list-item-data-value">John Smith</span>
+                        </div>
+                        <div class="list-item-dataset">
+                            <span class="list-item-data-title">Amount</span>
+                            <span class="list-item-data-value">£150.00</span>
+                        </div>
+                    </div>
+                    <div class="list-item-data-action-icon">
+                        <img data-action-icon="chevron-right" alt="">
+                    </div>
+                </div>
+                <div class="divider width-default"><div class="divider-line"></div></div>
+            </div><div class="list-item-data-playback dataset-02 width-compact position-bottom state-default">
+                <div class="list-item-data-content">
+                    <div class="list-item-data-vstack">
+                        <div class="list-item-dataset">
+                            <span class="list-item-data-title">Reference</span>
+                            <span class="list-item-data-value">PAYMENT-2024-001</span>
+                        </div>
+                        <div class="list-item-dataset">
+                            <span class="list-item-data-title">Status</span>
+                            <span class="list-item-data-value">Completed</span>
+                        </div>
+                    </div>
+                    <div class="list-item-data-action-icon">
+                        <img data-action-icon="chevron-right" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Demo 3: DataSet 03 - Stacked -->
+    <div class="demo-section">
+        <h2 class="demo-title">DataSet 03 - Three Data Pairs</h2>
+        <p class="demo-description">Each item displays three title/value pairs</p>
+        
+        <div class="demo-container">
+            <div class="list-item-data-playback dataset-03 width-compact position-top state-default">
+                <div class="list-item-data-heading">
+                    <span class="list-item-data-heading-text">TRANSACTION DETAILS</span>
+                </div>
+                <div class="list-item-data-content">
+                    <div class="list-item-data-vstack">
+                        <div class="list-item-dataset">
+                            <span class="list-item-data-title">Date</span>
+                            <span class="list-item-data-value">22 Dec 2024</span>
+                        </div>
+                        <div class="list-item-dataset">
+                            <span class="list-item-data-title">Description</span>
+                            <span class="list-item-data-value">Online Purchase</span>
+                        </div>
+                        <div class="list-item-dataset">
+                            <span class="list-item-data-title">Merchant</span>
+                            <span class="list-item-data-value">Amazon UK</span>
+                        </div>
+                    </div>
+                    <div class="list-item-data-action-icon">
+                        <img data-action-icon="chevron-right" alt="">
+                    </div>
+                </div>
+                <div class="divider width-default"><div class="divider-line"></div></div>
+            </div><div class="list-item-data-playback dataset-03 width-compact position-bottom state-default">
+                <div class="list-item-data-content">
+                    <div class="list-item-data-vstack">
+                        <div class="list-item-dataset">
+                            <span class="list-item-data-title">Amount</span>
+                            <span class="list-item-data-value">£45.99</span>
+                        </div>
+                        <div class="list-item-dataset">
+                            <span class="list-item-data-title">Fee</span>
+                            <span class="list-item-data-value">£0.00</span>
+                        </div>
+                        <div class="list-item-dataset">
+                            <span class="list-item-data-title">Total</span>
+                            <span class="list-item-data-value">£45.99</span>
+                        </div>
+                    </div>
+                    <div class="list-item-data-action-icon">
+                        <img data-action-icon="chevron-right" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Demo 4: Pressed State -->
+    <div class="demo-section">
+        <h2 class="demo-title">Pressed State</h2>
+        <p class="demo-description">Shows the pressed/active appearance</p>
+        
+        <div class="demo-container">
+            <div class="list-item-data-playback dataset-02 width-compact position-single state-pressed">
+                <div class="list-item-data-heading">
+                    <span class="list-item-data-heading-text">BALANCE (PRESSED)</span>
+                </div>
+                <div class="list-item-data-content">
+                    <div class="list-item-data-vstack">
+                        <div class="list-item-dataset">
+                            <span class="list-item-data-title">Available Balance</span>
+                            <span class="list-item-data-value">£2,450.00</span>
+                        </div>
+                        <div class="list-item-dataset">
+                            <span class="list-item-data-title">Pending</span>
+                            <span class="list-item-data-value">£50.00</span>
+                        </div>
+                    </div>
+                    <div class="list-item-data-action-icon">
+                        <img data-action-icon="chevron-right" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Component JavaScript -->
+    <script src="ListItemDataPlayback.vanilla.js"></script>
+    
+    <!-- Demo JavaScript -->
+    <script>
+        function detectSystemTheme() {
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+        }
+        
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+        }
+        
+        detectSystemTheme();
+        
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+        });
+    </script>
+</body>
+</html>

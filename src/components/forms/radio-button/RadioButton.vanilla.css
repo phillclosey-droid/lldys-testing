@@ -1,0 +1,88 @@
+/* RadioButton Vanilla CSS - SELF-CONTAINED - TOKEN LED */
+
+/* Base Radio Button Container */
+.radio-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.radio-button:disabled,
+.radio-button.disabled {
+  cursor: not-allowed;
+}
+
+/* Radio Circle */
+.radio-button-circle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-circle, 9999px);
+  background-color: var(--bg-input-default, #FFFFFF);
+  border: var(--input-radiobutton-border-width, 1px) solid var(--border-default, #323233);
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+/* Radio Inner Dot */
+.radio-button-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: var(--radius-circle, 9999px);
+  background-color: var(--input-radiobutton-dot, #000000);
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+/* ========== STATE: SELECTED ========== */
+.radio-button.selected .radio-button-circle {
+  border-color: var(--color-black, #000000);
+}
+
+.radio-button.selected .radio-button-dot {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ========== STATE: DISABLED ========== */
+.radio-button.disabled .radio-button-circle,
+.radio-button:disabled .radio-button-circle {
+  background-color: var(--bg-input-disabled, #F1F1F1);
+  border-color: var(--color-gray-300, #C9C9C9);
+}
+
+.radio-button.disabled .radio-button-dot,
+.radio-button:disabled .radio-button-dot {
+  background-color: var(--color-gray-300, #C9C9C9);
+}
+
+/* ========== HIT TARGET AREA ========== */
+/* When hit target is enabled, add padding for larger touch area */
+.radio-button.hit-target {
+  padding: var(--spacing-08, 8px);
+}
+
+/* ========== DARK MODE ========== */
+[data-theme="dark"] .radio-button-circle {
+  background-color: var(--bg-input-default);
+  border-color: var(--border-default);
+}
+
+[data-theme="dark"] .radio-button.selected .radio-button-circle {
+  border-color: var(--input-radiobutton-dot);
+}
+
+[data-theme="dark"] .radio-button-dot {
+  background-color: var(--input-radiobutton-dot);
+}
+
+[data-theme="dark"] .radio-button.disabled .radio-button-circle,
+[data-theme="dark"] .radio-button:disabled .radio-button-circle {
+  background-color: var(--bg-input-disabled);
+  border-color: var(--border-default);
+}

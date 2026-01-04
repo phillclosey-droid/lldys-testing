@@ -1,0 +1,194 @@
+# Country Picker Component
+
+A country selector component displaying a flag emoji, country code, and dropdown chevron icon. Used for selecting countries/phone codes.
+
+## Files
+
+- `CountryPicker.vanilla.css` - Self-contained CSS with token-led styling
+- `CountryPicker.vanilla.js` - Interactive functionality
+- `CountryPicker-demo.html` - Demo page showing all variants
+
+## Component Structure
+
+```html
+<div class="country-picker">
+    <label class="country-picker-label">Select country</label>
+    <div class="country-picker-input">
+        <div class="country-picker-flag">🇬🇧</div>
+        <div class="country-picker-code">
+            <span class="country-picker-code-text">+44</span>
+        </div>
+        <div class="country-picker-icon">
+            <div class="country-picker-icon-wrapper">
+                <img src="../../../../../assets/icons/arrows/chevron-down.svg" alt="Select country">
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+## CSS Classes
+
+### Main Container
+- `.country-picker` - Main container
+- `.country-picker.is-disabled` - Disabled state
+
+### Label
+- `.country-picker-label` - Label text (type-style-6, 15px)
+
+### Input Container
+- `.country-picker-input` - Input container with border
+- `.country-picker-input.is-active` - Active/focused state (2px black border)
+
+### Flag
+- `.country-picker-flag` - Flag emoji container (24px × 24px)
+
+### Country Code
+- `.country-picker-code` - Code container wrapper
+- `.country-picker-code-text` - Country code text (e.g., "+44")
+
+### Icon
+- `.country-picker-icon` - Icon container with 2px padding
+- `.country-picker-icon-wrapper` - Icon wrapper (12px × 12px)
+
+## JavaScript Events
+
+The component dispatches a custom `country-picker-click` event when clicked:
+
+```javascript
+element.addEventListener('country-picker-click', function(e) {
+    console.log(e.detail.isActive); // true if active state is toggled on
+});
+```
+
+## Design Tokens Used
+
+### Typography
+- `--type-style-6-family` - Label and code font (GT Ultra)
+- `--type-style-6-size` - Label and code size (15px)
+- `--type-style-6-weight` - Font weight
+- `--type-style-6-line-height` - Line height (20px)
+
+### Colors
+- `--text-default` - Label and code text color (changes in dark mode)
+- `--text-input-disabled` - Disabled text color (gray-500)
+- `--bg-input-default` - Input background (white)
+- `--bg-input-disabled` - Disabled background (gray-100)
+- `--border-default` - Border color (gray-300 light, gray-600 dark)
+- `--color-black` - Active border (light mode)
+- `--color-white` - Active border (dark mode)
+
+### Spacing
+- `--spacing-08` - Gap between label and input, code padding (8px)
+- `--spacing-12` - Horizontal input padding (12px)
+- `--spacing-16` - Vertical input padding (16px)
+
+### Borders
+- `--input-corner-radius` - Input border radius (12px)
+- `--input-border-width-default` - Default border (1px)
+- `--input-border-width-active` - Active border (2px)
+
+## Dimensions
+
+- **Input padding**: 16px (top/bottom) × 12px (left/right)
+- **Flag**: 24px × 24px
+- **Icon**: 12px × 12px
+- **Code padding**: 0 8px
+
+## States
+
+### Default
+- White background
+- 1px border using `--border-default`
+- Black text
+- Chevron icon visible
+
+### Active/Focused
+- 2px black border (white in dark mode)
+- Triggered by click
+
+### Disabled
+- Gray-100 background
+- Gray-500 text
+- No chevron icon
+- Not clickable
+
+## Behavior
+
+- Clicking input toggles active state
+- Clicking outside removes active state
+- Disabled inputs cannot be clicked
+- Custom event dispatched on click
+
+## Icon
+
+**Location:** `assets/icons/arrows/chevron-down.svg`
+- **Size:** 12px × 12px
+- **Format:** SVG
+- **Dark mode:** Icon inverts color automatically
+
+## Flag Emojis
+
+The component uses Unicode flag emojis:
+- 🇬🇧 UK - +44
+- 🇺🇸 US - +1
+- 🇫🇷 France - +33
+- 🇩🇪 Germany - +49
+- 🇯🇵 Japan - +81
+
+## Usage Examples
+
+### Basic Country Picker
+```html
+<div class="country-picker">
+    <label class="country-picker-label">Select country</label>
+    <div class="country-picker-input">
+        <div class="country-picker-flag">🇬🇧</div>
+        <div class="country-picker-code">
+            <span class="country-picker-code-text">+44</span>
+        </div>
+        <div class="country-picker-icon">
+            <div class="country-picker-icon-wrapper">
+                <img src="../../../../../assets/icons/arrows/arrow-down.svg" alt="Select country">
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+### Disabled State
+```html
+<div class="country-picker is-disabled">
+    <!-- ... same structure ... -->
+</div>
+```
+
+### Different Country
+```html
+<div class="country-picker-flag">🇺🇸</div>
+<div class="country-picker-code">
+    <span class="country-picker-code-text">+1</span>
+</div>
+```
+
+## Dark Mode Support
+
+All colors automatically adapt to dark mode:
+- Text changes to gray-200
+- Borders use dark mode values
+- Active border becomes white
+- Chevron icon inverts
+
+## Accessibility
+
+- Proper label associations
+- Keyboard accessible (click to toggle)
+- Clear visual states
+- Alt text for icon
+- Disabled states properly indicated
+
+## Notes
+
+- This is a display-only component - actual dropdown functionality would need to be added
+- Flag emojis may render differently across platforms
+- Component is self-contained and can be used standalone

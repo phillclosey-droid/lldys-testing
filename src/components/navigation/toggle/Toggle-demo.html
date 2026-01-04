@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toggle Component - Demo</title>
+    
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="../../../css/cancara-tokens.css">
+    
+    <!-- Toggle Component (SELF-CONTAINED) -->
+    <link rel="stylesheet" href="Toggle.vanilla.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family-body);
+            background: var(--bg-page-default);
+            color: var(--text-default);
+            transition: background-color 0.3s, color 0.3s;
+            padding: 40px;
+            min-height: 100vh;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .toggle-button {
+            background: var(--bg-action-default);
+            color: var(--text-action-inverse);
+            border: none;
+            border-radius: var(--radius-default);
+            padding: 12px 24px;
+            font-family: var(--font-family-body);
+            font-size: 14px;
+            font-weight: var(--font-weight-bold);
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .toggle-button:hover {
+            background: var(--bg-action-pressed);
+        }
+
+        h1 {
+            margin-bottom: 40px;
+            font-size: 32px;
+        }
+        
+        .demo-section {
+            margin-bottom: 40px;
+        }
+        
+        .demo-section-title {
+            margin-bottom: 12px;
+            font-size: 20px;
+        }
+
+        .demo-section p {
+            margin-bottom: 16px;
+            color: var(--text-subdued);
+            font-size: 14px;
+        }
+
+        .demo-container {
+            background: var(--bg-panel-default);
+            padding: 32px;
+            border-radius: var(--radius-default);
+            display: inline-block;
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <div class="theme-toggle">
+        <button class="toggle-button" onclick="toggleTheme()">
+            <span id="theme-text">Switch to Dark Mode</span>
+        </button>
+    </div>
+
+    <h1>Toggle Component - All States</h1>
+    
+    <!-- STATE 1: Default - All Inactive -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">State 1: Default - All Inactive</h2>
+        <p>No option selected initially</p>
+        
+        <div class="demo-container">
+            <div class="toggle">
+                <button class="toggle-tab" data-value="yes">
+                    <span class="toggle-tab-text">Yes</span>
+                </button>
+                <div class="toggle-separator"></div>
+                <button class="toggle-tab" data-value="no">
+                    <span class="toggle-tab-text">No</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- STATE 2: Default - Tab 1 Active (Yes) -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">State 2: Default - Tab 1 Active (Yes)</h2>
+        <p>First option pre-selected</p>
+        
+        <div class="demo-container">
+            <div class="toggle">
+                <button class="toggle-tab is-active" data-value="yes">
+                    <span class="toggle-tab-text">Yes</span>
+                </button>
+                <div class="toggle-separator"></div>
+                <button class="toggle-tab" data-value="no">
+                    <span class="toggle-tab-text">No</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- STATE 3: Default - Tab 2 Active (No) -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">State 3: Default - Tab 2 Active (No)</h2>
+        <p>Second option pre-selected</p>
+        
+        <div class="demo-container">
+            <div class="toggle">
+                <button class="toggle-tab" data-value="yes">
+                    <span class="toggle-tab-text">Yes</span>
+                </button>
+                <div class="toggle-separator"></div>
+                <button class="toggle-tab is-active" data-value="no">
+                    <span class="toggle-tab-text">No</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- STATE 4: Disabled - All Inactive -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">State 4: Disabled - All Inactive</h2>
+        <p>Disabled toggle with no selection</p>
+        
+        <div class="demo-container">
+            <div class="toggle">
+                <button class="toggle-tab" data-value="yes" disabled>
+                    <span class="toggle-tab-text">Yes</span>
+                </button>
+                <div class="toggle-separator"></div>
+                <button class="toggle-tab" data-value="no" disabled>
+                    <span class="toggle-tab-text">No</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- STATE 5: Disabled - Tab 1 Active (Yes) -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">State 5: Disabled - Tab 1 Active (Yes)</h2>
+        <p>Disabled toggle with first option selected</p>
+        
+        <div class="demo-container">
+            <div class="toggle">
+                <button class="toggle-tab is-active" data-value="yes" disabled>
+                    <span class="toggle-tab-text">Yes</span>
+                </button>
+                <div class="toggle-separator"></div>
+                <button class="toggle-tab" data-value="no" disabled>
+                    <span class="toggle-tab-text">No</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- STATE 6: Disabled - Tab 2 Active (No) -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">State 6: Disabled - Tab 2 Active (No)</h2>
+        <p>Disabled toggle with second option selected</p>
+        
+        <div class="demo-container">
+            <div class="toggle">
+                <button class="toggle-tab" data-value="yes" disabled>
+                    <span class="toggle-tab-text">Yes</span>
+                </button>
+                <div class="toggle-separator"></div>
+                <button class="toggle-tab is-active" data-value="no" disabled>
+                    <span class="toggle-tab-text">No</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="Toggle.vanilla.js"></script>
+
+    <script>
+        function detectSystemTheme() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-text').textContent = 'Switch to Light Mode';
+            } else {
+                document.body.setAttribute('data-theme', 'light');
+                document.getElementById('theme-text').textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', detectSystemTheme);
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const themeText = document.getElementById('theme-text');
+            const currentTheme = body.getAttribute('data-theme');
+            
+            if (currentTheme === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                themeText.textContent = 'Switch to Light Mode';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeText.textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', function() {
+            detectSystemTheme();
+        });
+    </script>
+</body>
+</html>

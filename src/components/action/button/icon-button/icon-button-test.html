@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IconButton Component Test</title>
+    
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="../../../../css/cancara-tokens.css">
+    
+    <!-- IconButton Component Styles -->
+    <link rel="stylesheet" href="IconButton.vanilla.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family-body);
+            background: var(--bg-page-default);
+            color: var(--text-default);
+            transition: background-color 0.3s, color 0.3s;
+            padding: var(--spacing-48);
+            min-height: 100vh;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: var(--spacing-24);
+            right: var(--spacing-24);
+            z-index: 1000;
+        }
+
+        .toggle-button {
+            background: var(--bg-action-default);
+            color: var(--text-action-inverse);
+            border: none;
+            border-radius: var(--radius-default);
+            padding: var(--spacing-12) var(--spacing-24);
+            font-family: var(--font-family-body);
+            font-size: var(--type-style-8-size);
+            font-weight: var(--font-weight-bold);
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .toggle-button:hover {
+            background: var(--bg-action-pressed);
+        }
+
+        h1 {
+            margin-bottom: var(--spacing-48);
+            font-size: var(--type-style-1-size);
+            font-weight: var(--type-style-1-weight);
+            line-height: var(--type-style-1-line-height);
+        }
+
+        .section {
+            margin-bottom: var(--spacing-48);
+        }
+
+        .section h2 {
+            margin-bottom: var(--spacing-24);
+            font-size: var(--type-style-2-size);
+            font-weight: var(--type-style-2-weight);
+            line-height: var(--type-style-2-line-height);
+        }
+
+        .section h3 {
+            margin-bottom: var(--spacing-16);
+            margin-top: var(--spacing-32);
+            font-size: var(--type-style-3-size);
+            font-weight: var(--type-style-3-weight);
+            color: var(--text-subdued);
+        }
+
+        .section p {
+            margin-bottom: var(--spacing-24);
+            color: var(--text-subdued);
+            font-size: var(--type-style-6-size);
+            line-height: var(--type-style-6-line-height);
+        }
+
+        .button-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-16);
+            margin-bottom: var(--spacing-24);
+            align-items: center;
+        }
+
+        .button-label {
+            font-size: var(--type-style-9-size);
+            line-height: var(--type-style-9-line-height);
+            color: var(--text-subdued);
+            margin-top: var(--spacing-08);
+            text-align: center;
+        }
+
+        .button-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .color-demo {
+            padding: var(--spacing-48);
+            background: var(--color-green-promo-primary);
+            border-radius: var(--radius-default);
+            margin-top: var(--spacing-16);
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <div class="theme-toggle">
+        <button class="toggle-button" onclick="toggleTheme()">
+            <span id="theme-text">Switch to Dark Mode</span>
+        </button>
+    </div>
+
+    <h1>IconButton Component - All Variants</h1>
+
+    <!-- DEFAULT SIZE -->
+    <div class="section">
+        <h2>Size: Default</h2>
+        <p>Standard icon buttons with padding (should be circular)</p>
+
+        <h3>Type: Primary</h3>
+        <div class="button-grid">
+            <div class="button-wrapper">
+                <button class="icon-button size-default btn-primary">
+                    <div class="icon-button-icon">
+                        <img data-icon="arrow-right" data-icon-category="arrows" alt="Right arrow">
+                    </div>
+                </button>
+                <div class="button-label">Default</div>
+            </div>
+
+            <div class="button-wrapper">
+                <button class="icon-button size-default btn-primary pressed">
+                    <div class="icon-button-icon">
+                        <img data-icon="arrow-left" data-icon-category="arrows" alt="Left arrow">
+                    </div>
+                </button>
+                <div class="button-label">Pressed</div>
+            </div>
+
+            <div class="button-wrapper">
+                <button class="icon-button size-default btn-primary" disabled>
+                    <div class="icon-button-icon">
+                        <img data-icon="arrow-up" data-icon-category="arrows" alt="Up arrow">
+                    </div>
+                </button>
+                <div class="button-label">Disabled</div>
+            </div>
+        </div>
+
+        <h3>Type: Primary + Brand Accent</h3>
+        <div class="button-grid">
+            <div class="button-wrapper">
+                <button class="icon-button size-default btn-primary btn-brand-accent">
+                    <div class="icon-button-icon">
+                        <img data-icon="arrow-right" data-icon-category="arrows" alt="Right arrow">
+                    </div>
+                </button>
+                <div class="button-label">Default</div>
+            </div>
+
+            <div class="button-wrapper">
+                <button class="icon-button size-default btn-primary btn-brand-accent pressed">
+                    <div class="icon-button-icon">
+                        <img data-icon="arrow-left" data-icon-category="arrows" alt="Left arrow">
+                    </div>
+                </button>
+                <div class="button-label">Pressed</div>
+            </div>
+
+            <div class="button-wrapper">
+                <button class="icon-button size-default btn-primary btn-brand-accent" disabled>
+                    <div class="icon-button-icon">
+                        <img data-icon="arrow-up" data-icon-category="arrows" alt="Up arrow">
+                    </div>
+                </button>
+                <div class="button-label">Disabled</div>
+            </div>
+        </div>
+
+        <h3>Type: Secondary</h3>
+        <div class="button-grid">
+            <div class="button-wrapper">
+                <button class="icon-button size-default btn-secondary">
+                    <div class="icon-button-icon">
+                        <img data-icon="chevron-right" data-icon-category="arrows" alt="Chevron right">
+                    </div>
+                </button>
+                <div class="button-label">Default</div>
+            </div>
+
+            <div class="button-wrapper">
+                <button class="icon-button size-default btn-secondary pressed">
+                    <div class="icon-button-icon">
+                        <img data-icon="chevron-left" data-icon-category="arrows" alt="Chevron left">
+                    </div>
+                </button>
+                <div class="button-label">Pressed</div>
+            </div>
+
+            <div class="button-wrapper">
+                <button class="icon-button size-default btn-secondary" disabled>
+                    <div class="icon-button-icon">
+                        <img data-icon="chevron-up" data-icon-category="arrows" alt="Chevron up">
+                    </div>
+                </button>
+                <div class="button-label">Disabled</div>
+            </div>
+        </div>
+
+        <h3>Type: Tertiary</h3>
+        <div class="button-grid">
+            <div class="button-wrapper">
+                <button class="icon-button size-default btn-tertiary">
+                    <div class="icon-button-icon">
+                        <img data-icon="arrow-down" data-icon-category="arrows" alt="Down arrow">
+                    </div>
+                </button>
+                <div class="button-label">Default</div>
+            </div>
+
+            <div class="button-wrapper">
+                <button class="icon-button size-default btn-tertiary pressed">
+                    <div class="icon-button-icon">
+                        <img data-icon="arrow-right" data-icon-category="arrows" alt="Right arrow">
+                    </div>
+                </button>
+                <div class="button-label">Pressed</div>
+            </div>
+
+            <div class="button-wrapper">
+                <button class="icon-button size-default btn-tertiary" disabled>
+                    <div class="icon-button-icon">
+                        <img data-icon="arrow-left" data-icon-category="arrows" alt="Left arrow">
+                    </div>
+                </button>
+                <div class="button-label">Disabled</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SMALL SIZE -->
+    <div class="section">
+        <h2>Size: Small (32px x 32px)</h2>
+        <p>Compact circular icon buttons with fixed dimensions</p>
+
+        <h3>Type: Primary</h3>
+        <div class="button-grid">
+            <div class="button-wrapper">
+                <button class="icon-button size-small btn-primary">
+                    <div class="icon-button-icon">
+                        <img data-icon="arrow-right" data-icon-category="arrows" alt="Right arrow">
+                    </div>
+                </button>
+                <div class="button-label">Default</div>
+            </div>
+
+            <div class="button-wrapper">
+                <button class="icon-button size-small btn-primary pressed">
+                    <div class="icon-button-icon">
+                        <img data-icon="arrow-left" data-icon-category="arrows" alt="Left arrow">
+                    </div>
+                </button>
+                <div class="button-label">Pressed</div>
+            </div>
+
+            <div class="button-wrapper">
+                <button class="icon-button size-small btn-primary" disabled>
+                    <div class="icon-button-icon">
+                        <img data-icon="arrow-up" data-icon-category="arrows" alt="Up arrow">
+                    </div>
+                </button>
+                <div class="button-label">Disabled</div>
+            </div>
+        </div>
+
+        <h3>Type: Primary + Brand Accent</h3>
+        <div class="button-grid">
+            <div class="button-wrapper">
+                <button class="icon-button size-small btn-primary btn-brand-accent">
+                    <div class="icon-button-icon">
+                        <img data-icon="arrow-right" data-icon-category="arrows" alt="Right arrow">
+                    </div>
+                </button>
+                <div class="button-label">Default</div>
+            </div>
+
+            <div class="button-wrapper">
+                <button class="icon-button size-small btn-primary btn-brand-accent pressed">
+                    <div class="icon-button-icon">
+                        <img data-icon="arrow-left" data-icon-category="arrows" alt="Left arrow">
+                    </div>
+                </button>
+                <div class="button-label">Pressed</div>
+            </div>
+
+            <div class="button-wrapper">
+                <button class="icon-button size-small btn-primary btn-brand-accent" disabled>
+                    <div class="icon-button-icon">
+                        <img data-icon="arrow-up" data-icon-category="arrows" alt="Up arrow">
+                    </div>
+                </button>
+                <div class="button-label">Disabled</div>
+            </div>
+        </div>
+
+        <h3>Type: Secondary</h3>
+        <div class="button-grid">
+            <div class="button-wrapper">
+                <button class="icon-button size-small btn-secondary">
+                    <div class="icon-button-icon">
+                        <img data-icon="chevron-right" data-icon-category="arrows" alt="Chevron right">
+                    </div>
+                </button>
+                <div class="button-label">Default</div>
+            </div>
+
+            <div class="button-wrapper">
+                <button class="icon-button size-small btn-secondary pressed">
+                    <div class="icon-button-icon">
+                        <img data-icon="chevron-left" data-icon-category="arrows" alt="Chevron left">
+                    </div>
+                </button>
+                <div class="button-label">Pressed</div>
+            </div>
+
+            <div class="button-wrapper">
+                <button class="icon-button size-small btn-secondary" disabled>
+                    <div class="icon-button-icon">
+                        <img data-icon="chevron-up" data-icon-category="arrows" alt="Chevron up">
+                    </div>
+                </button>
+                <div class="button-label">Disabled</div>
+            </div>
+        </div>
+
+        <h3>Type: Tertiary</h3>
+        <div class="button-grid">
+            <div class="button-wrapper">
+                <button class="icon-button size-small btn-tertiary">
+                    <div class="icon-button-icon">
+                        <img data-icon="arrow-down" data-icon-category="arrows" alt="Down arrow">
+                    </div>
+                </button>
+                <div class="button-label">Default</div>
+            </div>
+
+            <div class="button-wrapper">
+                <button class="icon-button size-small btn-tertiary pressed">
+                    <div class="icon-button-icon">
+                        <img data-icon="arrow-right" data-icon-category="arrows" alt="Right arrow">
+                    </div>
+                </button>
+                <div class="button-label">Pressed</div>
+            </div>
+
+            <div class="button-wrapper">
+                <button class="icon-button size-small btn-tertiary" disabled>
+                    <div class="icon-button-icon">
+                        <img data-icon="arrow-left" data-icon-category="arrows" alt="Left arrow">
+                    </div>
+                </button>
+                <div class="button-label">Disabled</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ON COLOR BACKGROUND -->
+    <div class="section">
+        <h2>On Color Background Variants</h2>
+        <p>For use on colored backgrounds (shown on green)</p>
+
+        <div class="color-demo">
+            <h3 style="color: white; margin-top: 0;">Default Size - On Color</h3>
+            <div class="button-grid">
+                <div class="button-wrapper">
+                    <button class="icon-button size-default btn-primary btn-on-color">
+                        <div class="icon-button-icon">
+                            <img data-icon="arrow-right" data-icon-category="arrows" alt="Right arrow">
+                        </div>
+                    </button>
+                    <div class="button-label" style="color: white;">Primary</div>
+                </div>
+
+                <div class="button-wrapper">
+                    <button class="icon-button size-default btn-secondary btn-on-color">
+                        <div class="icon-button-icon">
+                            <img data-icon="chevron-right" data-icon-category="arrows" alt="Chevron right">
+                        </div>
+                    </button>
+                    <div class="button-label" style="color: white;">Secondary</div>
+                </div>
+
+                <div class="button-wrapper">
+                    <button class="icon-button size-default btn-tertiary btn-on-color">
+                        <div class="icon-button-icon">
+                            <img data-icon="arrow-down" data-icon-category="arrows" alt="Down arrow">
+                        </div>
+                    </button>
+                    <div class="button-label" style="color: white;">Tertiary</div>
+                </div>
+            </div>
+
+            <h3 style="color: white;">Small Size - On Color</h3>
+            <div class="button-grid">
+                <div class="button-wrapper">
+                    <button class="icon-button size-small btn-primary btn-on-color">
+                        <div class="icon-button-icon">
+                            <img data-icon="arrow-right" data-icon-category="arrows" alt="Right arrow">
+                        </div>
+                    </button>
+                    <div class="button-label" style="color: white;">Primary</div>
+                </div>
+
+                <div class="button-wrapper">
+                    <button class="icon-button size-small btn-secondary btn-on-color">
+                        <div class="icon-button-icon">
+                            <img data-icon="chevron-right" data-icon-category="arrows" alt="Chevron right">
+                        </div>
+                    </button>
+                    <div class="button-label" style="color: white;">Secondary</div>
+                </div>
+
+                <div class="button-wrapper">
+                    <button class="icon-button size-small btn-tertiary btn-on-color">
+                        <div class="icon-button-icon">
+                            <img data-icon="arrow-down" data-icon-category="arrows" alt="Down arrow">
+                        </div>
+                    </button>
+                    <div class="button-label" style="color: white;">Tertiary</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- COMPONENT FEATURES -->
+    <div class="section">
+        <h2>Component Features</h2>
+        <ul style="padding-left: var(--spacing-24); line-height: 2;">
+            <li>✅ Two sizes: Default and Small (32px)</li>
+            <li>✅ Three types: Primary, Secondary, Tertiary</li>
+            <li>✅ Three states: Default, Pressed, Disabled</li>
+            <li>✅ Two modifiers: Brand Accent (green), On Color (inverted)</li>
+            <li>✅ Self-contained (token-led from cancara-tokens.css)</li>
+            <li>✅ Circular border radius (9999px)</li>
+            <li>✅ Dark mode support</li>
+            <li>✅ Auto-initialized icon loading via JavaScript</li>
+            <li>✅ Accessible (proper button semantics)</li>
+            <li>✅ Uses arrow SVGs from assets/icons/arrows/</li>
+        </ul>
+    </div>
+
+    <script src="IconButton.vanilla.js"></script>
+
+    <script>
+        function detectSystemTheme() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-text').textContent = 'Switch to Light Mode';
+            } else {
+                document.body.setAttribute('data-theme', 'light');
+                document.getElementById('theme-text').textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', detectSystemTheme);
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const themeText = document.getElementById('theme-text');
+            const currentTheme = body.getAttribute('data-theme');
+            
+            if (currentTheme === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                themeText.textContent = 'Switch to Light Mode';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeText.textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', function() {
+            detectSystemTheme();
+        });
+    </script>
+</body>
+</html>

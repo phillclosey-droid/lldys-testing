@@ -1,0 +1,96 @@
+<!-- 
+  CustomHeader HTML Component - SELF-CONTAINED - TOKEN LED
+  
+  Includes StatusBar and NotificationBadge (nested).
+  Auto-initializes with CustomHeader.vanilla.js
+  
+  Dependencies:
+  - Design tokens (cancara-tokens.css)
+  - CustomHeader.vanilla.css (SELF-CONTAINED)
+  - CustomHeader.vanilla.js (auto-initializes icons)
+  
+  Usage:
+  1. Import CSS and JS
+  2. Copy HTML structure
+  3. Set data-icon attributes for icons
+  4. Icons auto-populate on page load
+-->
+
+<!-- iOS AOV Retail Preset -->
+<div class="custom-header">
+    <!-- Status Bar (Nested - Self-contained in CSS) -->
+    <div class="status-bar status-bar-ios">
+        <div class="status-bar-time">9:41</div>
+        <div class="status-bar-levels">
+            <div class="cellular-signal">
+                <div class="signal-bar signal-bar-1"></div>
+                <div class="signal-bar signal-bar-2"></div>
+                <div class="signal-bar signal-bar-3"></div>
+                <div class="signal-bar signal-bar-4"></div>
+                <div class="signal-bar signal-bar-5"></div>
+            </div>
+            <div class="wifi-indicator">
+                <div class="wifi-dot"></div>
+                <div class="wifi-arc wifi-arc-1"></div>
+                <div class="wifi-arc wifi-arc-2"></div>
+                <div class="wifi-arc wifi-arc-3"></div>
+            </div>
+            <div class="status-bar-battery">
+                <div class="battery-border"></div>
+                <div class="battery-capacity"></div>
+                <div class="battery-tip"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Bar -->
+    <div class="header-bar">
+        <!-- Leading Section -->
+        <div class="header-leading">
+            <div class="hit-target">
+                <div class="icon-wrapper icon-18">
+                    <img data-icon="burger-menu" data-icon-category="navigation" alt="Menu">
+                </div>
+                <!-- Notification Badge (Nested - Self-contained in CSS) -->
+                <div class="notification-badge">
+                    <div class="notification-badge-text">12</div>
+                </div>
+            </div>
+            <div class="header-gap"></div>
+            <div class="empty-space"></div>
+        </div>
+
+        <!-- Title -->
+        <div class="header-title-wrapper">
+            <div class="header-title">Page Title</div>
+        </div>
+
+        <!-- Trailing Section -->
+        <div class="header-trailing">
+            <div class="hit-target">
+                <div class="icon-wrapper icon-18">
+                    <img data-icon="search" data-icon-category="navigation" alt="Search">
+                </div>
+            </div>
+            <div class="hit-target">
+                <div class="icon-wrapper icon-18">
+                    <img data-icon="person" data-icon-category="people" alt="Profile">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 
+  COMPLETE USAGE:
+  
+  <head>
+      <link rel="stylesheet" href="path/to/cancara-tokens.css">
+      <link rel="stylesheet" href="path/to/CustomHeader.vanilla.css">
+  </head>
+  <body>
+      <!-- HTML structure above -->
+      
+      <script src="path/to/CustomHeader.vanilla.js"></script>
+  </body>
+-->

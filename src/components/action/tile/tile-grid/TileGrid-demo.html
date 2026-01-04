@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TileGrid Component - Demo</title>
+    
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="../../../../css/cancara-tokens.css">
+    
+    <!-- TileGrid Component (SELF-CONTAINED) -->
+    <link rel="stylesheet" href="TileGrid.vanilla.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family-body);
+            background: var(--bg-page-default);
+            color: var(--text-default);
+            transition: background-color 0.3s, color 0.3s;
+            padding: 40px;
+            min-height: 100vh;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .toggle-button {
+            background: var(--bg-action-default);
+            color: var(--text-action-inverse);
+            border: none;
+            border-radius: var(--radius-default);
+            padding: 12px 24px;
+            font-family: var(--font-family-body);
+            font-size: 14px;
+            font-weight: var(--font-weight-bold);
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .toggle-button:hover {
+            background: var(--bg-action-pressed);
+        }
+
+        h1 {
+            margin-bottom: 40px;
+            font-size: 32px;
+        }
+        
+        .demo-section {
+            margin-bottom: 60px;
+        }
+        
+        .demo-section-title {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .demo-section p {
+            margin-bottom: 20px;
+            color: var(--text-subdued);
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <div class="theme-toggle">
+        <button class="toggle-button" onclick="toggleTheme()">
+            <span id="theme-text">Switch to Dark Mode</span>
+        </button>
+    </div>
+
+    <h1>TileGrid Component - All Variants</h1>
+    
+    <!-- VARIANT 1: Link Only -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">Variant 1: Link Only</h2>
+        <p>2×2 grid with centered tiles, pictograms, and link text only</p>
+        
+        <div class="tile-grid-link-only">
+            <div class="tile-grid-header">
+                <h2 class="tile-grid-heading">Quick Actions</h2>
+                <a href="#" class="tile-grid-view-all">View All</a>
+            </div>
+
+            <div class="tile-grid-tiles">
+                <!-- Row 1 -->
+                <div class="tile-grid-row">
+                    <div class="tile tile-vertical">
+                        <div class="pictogram pict-default">
+                            <img data-pictogram="Piggy_Bank_Lloyds_-_V2" alt="">
+                        </div>
+                        <div class="tile-text-link">Open savings account</div>
+                    </div>
+
+                    <div class="tile tile-vertical">
+                        <div class="pictogram pict-default">
+                            <img data-pictogram="Cards_Lloyds_-_V2" alt="">
+                        </div>
+                        <div class="tile-text-link">Apply for credit card</div>
+                    </div>
+                </div>
+
+                <!-- Row 2 -->
+                <div class="tile-grid-row">
+                    <div class="tile tile-vertical">
+                        <div class="pictogram pict-default">
+                            <img data-pictogram="Calendar_Lloyds_-_V2" alt="">
+                        </div>
+                        <div class="tile-text-link">Set up direct debit</div>
+                    </div>
+
+                    <div class="tile tile-vertical">
+                        <div class="pictogram pict-default">
+                            <img data-pictogram="Insurance_Soft_Lloyds_-_V2" alt="">
+                            </div>
+                            <div class="tile-text-link">Get insurance</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VARIANT 2: Link + Description -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">Variant 2: Link + Description</h2>
+        <p>2×2 grid with left-aligned tiles, pictograms, description text, and link text</p>
+        
+        <div class="tile-grid-link-description">
+            <div class="tile-grid-header">
+                <h2 class="tile-grid-heading">Popular Services</h2>
+                <a href="#" class="tile-grid-view-all">View All</a>
+            </div>
+
+            <div class="tile-grid-tiles">
+                <!-- Row 1 -->
+                <div class="tile-grid-row">
+                    <div class="tile tile-vertical">
+                        <div class="pictogram pict-default">
+                            <img data-pictogram="Piggy_Bank_Lloyds_-_V2" alt="">
+                        </div>
+                        <div class="tile-vstack">
+                            <div class="tile-text-description">Grow your money</div>
+                            <div class="tile-text-link">Open savings account</div>
+                        </div>
+                    </div>
+
+                    <div class="tile tile-vertical">
+                        <div class="pictogram pict-default">
+                            <img data-pictogram="Cards_Lloyds_-_V2" alt="">
+                        </div>
+                        <div class="tile-vstack">
+                            <div class="tile-text-description">Flexible spending</div>
+                            <div class="tile-text-link">Apply for credit card</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 2 -->
+                <div class="tile-grid-row">
+                    <div class="tile tile-vertical">
+                        <div class="pictogram pict-default">
+                            <img data-pictogram="Calendar_Lloyds_-_V2" alt="">
+                        </div>
+                        <div class="tile-vstack">
+                            <div class="tile-text-description">Never miss a payment</div>
+                            <div class="tile-text-link">Set up direct debit</div>
+                        </div>
+                    </div>
+
+                    <div class="tile tile-vertical">
+                        <div class="pictogram pict-default">
+                            <img data-pictogram="Insurance_Soft_Lloyds_-_V2" alt="">
+                            </div>
+                            <div class="tile-vstack">
+                            <div class="tile-text-description">Protect what matters</div>
+                            <div class="tile-text-link">Get insurance</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VARIANT 1 WITH DIFFERENT PICTOGRAM COLORS -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">Variant 1: Different Pictogram Colors</h2>
+        <p>Link Only with various pictogram color variants</p>
+        
+        <div class="tile-grid-link-only">
+            <div class="tile-grid-header">
+                <h2 class="tile-grid-heading">Financial Products</h2>
+                <a href="#" class="tile-grid-view-all">View All</a>
+            </div>
+
+            <div class="tile-grid-tiles">
+                <!-- Row 1 -->
+                <div class="tile-grid-row">
+                    <div class="tile tile-vertical">
+                        <div class="pictogram pict-primary">
+                            <img data-pictogram="Piggy_Bank_Lloyds_-_V2" alt="">
+                        </div>
+                        <div class="tile-text-link">Savings Account</div>
+                    </div>
+
+                    <div class="tile tile-vertical">
+                        <div class="pictogram pict-primary-alt-01">
+                            <img data-pictogram="Investments_Lloyds_-_V2" alt="">
+                        </div>
+                        <div class="tile-text-link">Investments</div>
+                    </div>
+                </div>
+
+                <!-- Row 2 -->
+                <div class="tile-grid-row">
+                    <div class="tile tile-vertical">
+                        <div class="pictogram pict-secondary-alt-02">
+                            <img data-pictogram="Home_Lloyds_-_V2" alt="">
+                        </div>
+                        <div class="tile-text-link">Mortgages</div>
+                    </div>
+
+                    <div class="tile tile-vertical">
+                        <div class="pictogram pict-secondary-alt-04">
+                            <img data-pictogram="Car_Lloyds_-_V2" alt="">
+                        </div>
+                        <div class="tile-text-link">Car Loans</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h2 class="demo-section-title">Component Features</h2>
+        <ul style="padding-left: 20px; line-height: 2; color: var(--text-default);">
+            <li>✅ Two variants: tile-grid-link-only, tile-grid-link-description</li>
+            <li>✅ 2×2 grid layout (2 rows, 2 tiles per row)</li>
+            <li>✅ Header with heading + "View All" link</li>
+            <li>✅ Embeds existing Tile component</li>
+            <li>✅ Self-contained (includes all Tile styles)</li>
+            <li>✅ Token-based styling</li>
+            <li>✅ Auto-initializes images via Tile.vanilla.js</li>
+            <li>✅ Dark mode support</li>
+            <li>✅ Hover and active states</li>
+            <li>✅ Multiple pictogram color variants</li>
+        </ul>
+    </div>
+
+    <!-- Tile.vanilla.js for auto-image loading -->
+    <script src="../tile/Tile.vanilla.js"></script>
+
+    <script>
+        function detectSystemTheme() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-text').textContent = 'Switch to Light Mode';
+            } else {
+                document.body.setAttribute('data-theme', 'light');
+                document.getElementById('theme-text').textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', detectSystemTheme);
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const themeText = document.getElementById('theme-text');
+            const currentTheme = body.getAttribute('data-theme');
+            
+            if (currentTheme === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                themeText.textContent = 'Switch to Light Mode';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeText.textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', function() {
+            detectSystemTheme();
+        });
+    </script>
+</body>
+</html>

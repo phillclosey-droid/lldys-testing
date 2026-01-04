@@ -1,0 +1,139 @@
+/* Tab-Collection-Scroll Component CSS - SELF-CONTAINED - TOKEN LED */
+
+/* ========== CONTAINER ========== */
+.tab-collection-scroll {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 430px;
+  max-width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ========== DEFAULT LAYOUT (PILL STYLE WITH SCROLL) ========== */
+.tab-collection-scroll.layout-default {
+  min-height: 48px;
+  max-height: 48px;
+}
+
+.tab-collection-scroll.layout-default .tabs-container {
+  display: flex;
+  gap: var(--spacing-12);
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+  width: 100%;
+  padding-left: var(--spacing-16);
+  padding-right: var(--spacing-16);
+}
+
+.tab-collection-scroll.layout-default .tabs-container::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+.tab-collection-scroll.layout-default .tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 134px;
+  padding: var(--spacing-08) var(--spacing-24);
+  background: transparent;
+  border: var(--border-width-01) solid var(--color-black);
+  border-radius: var(--radius-default);
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.tab-collection-scroll.layout-default .tab.active {
+  background: var(--tabs-active-bg);
+  border-color: transparent;
+}
+
+.tab-collection-scroll.layout-default .tab-text {
+  flex: 1;
+  font-family: var(--type-style-8-family);
+  font-size: var(--type-style-8-size);
+  font-weight: var(--type-style-8-weight);
+  line-height: var(--type-style-8-line-height);
+  letter-spacing: var(--type-style-8-letter-spacing);
+  text-align: center;
+  color: var(--text-default);
+}
+
+.tab-collection-scroll.layout-default .tab.active .tab-text {
+  color: var(--tabs-active-text);
+}
+
+/* ========== ALT 01 LAYOUT (UNDERLINE STYLE WITH SCROLL) ========== */
+.tab-collection-scroll.layout-alt-01 {
+}
+
+.tab-collection-scroll.layout-alt-01 .tabs-container {
+  display: flex;
+  width: 100%;
+  position: relative;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-left: var(--spacing-16);
+  padding-right: var(--spacing-16);
+}
+
+.tab-collection-scroll.layout-alt-01 .tabs-container::-webkit-scrollbar {
+  display: none;
+}
+
+.tab-collection-scroll.layout-alt-01 .tab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-16);
+  background: transparent;
+  border: none;
+  border-bottom: var(--border-width-01) solid var(--color-gray-100);
+  cursor: pointer;
+  transition: border-color 0.2s;
+  position: relative;
+  flex-shrink: 0;
+  min-width: 120px;
+}
+
+/* Active tab gets a 2px bottom border */
+.tab-collection-scroll.layout-alt-01 .tab.active {
+  border-bottom: var(--border-width-02) solid var(--color-black);
+}
+
+.tab-collection-scroll.layout-alt-01 .tab-text {
+  font-family: var(--type-style-8-family);
+  font-size: var(--type-style-8-size);
+  font-weight: var(--type-style-8-weight);
+  line-height: var(--type-style-8-line-height);
+  letter-spacing: var(--type-style-8-letter-spacing);
+  text-align: center;
+  color: var(--text-default);
+  white-space: nowrap;
+}
+
+/* ========== DARK MODE OVERRIDES ========== */
+[data-theme="dark"] .tab-collection-scroll.layout-default .tab {
+  border-color: var(--color-gray-600);
+}
+
+[data-theme="dark"] .tab-collection-scroll.layout-alt-01 .tab {
+  border-bottom-color: var(--color-gray-800);
+}
+
+[data-theme="dark"] .tab-collection-scroll.layout-alt-01 .tab.active {
+  border-bottom: var(--border-width-02) solid var(--tabs-indicator);
+}

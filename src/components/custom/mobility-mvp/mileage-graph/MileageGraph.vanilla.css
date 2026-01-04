@@ -1,0 +1,161 @@
+/* Mileage Graph Component - SELF-CONTAINED - TOKEN LED */
+
+/* ========== CONTAINER ========== */
+.mileage-graph {
+  background: var(--bg-panel-default);
+  border-radius: var(--radius-default);
+  padding: var(--spacing-24);
+  padding-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-08);
+}
+
+/* ========== HEADER ========== */
+.mileage-graph-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-08);
+}
+
+.mileage-graph-number {
+  font-family: var(--type-style-2-family);
+  font-size: var(--type-style-2-size);
+  font-weight: var(--type-style-2-weight);
+  line-height: var(--type-style-2-line-height);
+  letter-spacing: var(--type-style-2-letter-spacing);
+  color: var(--text-default);
+}
+
+.mileage-graph-unit {
+  font-family: var(--type-style-5-family);
+  font-size: var(--type-style-5-size);
+  font-weight: var(--type-style-5-weight);
+  line-height: var(--type-style-5-line-height);
+  letter-spacing: var(--type-style-5-letter-spacing);
+  color: var(--text-default);
+}
+
+/* ========== SUBTITLE ========== */
+.mileage-graph-subtitle {
+  font-family: var(--type-style-6-family);
+  font-size: var(--type-style-6-size);
+  font-weight: var(--type-style-6-weight);
+  line-height: var(--type-style-6-line-height);
+  letter-spacing: var(--type-style-6-letter-spacing);
+  color: var(--text-subdued);
+}
+/* ========== CHART CONTAINER ========== */
+.mileage-graph-chart {
+  position: relative;
+  height: 180px; /* Fixed height for precise positioning */
+  margin-top: 20px;
+}
+
+/* ========== GRID SYSTEM ========== */
+.mileage-graph-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 140px; /* Fixed height for grid lines area */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.mileage-graph-grid-line {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-12);
+}
+
+.mileage-graph-grid-label {
+  font-family: var(--type-style-6-family);
+  font-size: var(--type-style-6-size);
+  font-weight: var(--type-style-6-weight);
+  line-height: var(--type-style-6-line-height);
+  letter-spacing: var(--type-style-6-letter-spacing);
+  color: var(--text-default);
+  min-width: 20px;
+  text-align: right;
+}
+
+.mileage-graph-grid-dash {
+  flex: 1;
+  height: 1px;
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--border-default) 0px,
+    var(--border-default) 4px,
+    transparent 4px,
+    transparent 8px
+  );
+}
+
+/* ========== BARS ========== */
+.mileage-graph-bars {
+  position: absolute;
+  bottom: 21px; /* Lowered to 21px */
+  left: 32px; /* Reduced from 44px to match smaller grid label width */
+  right: 0;
+  height: 140px; /* Exactly matches grid height */
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: var(--spacing-24);
+}
+
+.mileage-graph-bar-container {
+  flex: 0 0 32px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.mileage-graph-bar {
+  width: 32px;
+  background: var(--datavis-purple-default);
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin-bottom: var(--spacing-08);
+}
+
+/* First bar uses different color */
+.mileage-graph-bar-container:first-child .mileage-graph-bar {
+  background: var(--datavis-blue-default);
+}
+
+.mileage-graph-bar-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--color-black);
+  border-radius: var(--radius-circle);
+  position: absolute;
+  top: 12px; /* Position center of dot at end of curve (16px radius - 4px to center 8px dot) */
+}
+
+.mileage-graph-bar-label {
+  font-family: var(--type-style-6-family);
+  font-size: var(--type-style-6-size);
+  font-weight: var(--type-style-6-weight);
+  line-height: var(--type-style-6-line-height);
+  letter-spacing: var(--type-style-6-letter-spacing);
+  color: var(--text-default);
+  text-align: center;
+}
+
+/* ========== DARK MODE ========== */
+[data-theme="dark"] .mileage-graph {
+  background: var(--bg-panel-default);
+}
+
+[data-theme="dark"] .mileage-graph-bar-dot {
+  background: var(--color-black);
+}

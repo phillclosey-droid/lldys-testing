@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Action Menu Template - Bottom Sheet</title>
+    
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="../../css/cancara-tokens.css">
+    
+    <!-- Component Styles -->
+    <link rel="stylesheet" href="../../components/action/button/action-button/ActionButton.vanilla.css">
+    
+    <!-- Template Styles -->
+    <link rel="stylesheet" href="action-menu-template.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family-body);
+            background: var(--bg-page-default);
+            color: var(--text-default);
+            transition: background-color 0.3s, color 0.3s;
+            overflow: hidden;
+        }
+
+        /* ========== CONTENT SLOT MARKER (REMOVE IN PRODUCTION) ========== */
+        .content-slot {
+            padding: 40px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .content-slot-box {
+            border: 2px dashed var(--color-gray-400);
+            border-radius: var(--radius-default);
+            padding: 40px;
+            text-align: center;
+            background: var(--bg-section-default);
+        }
+
+        .content-slot h1 {
+            margin-bottom: 20px;
+            font-size: 32px;
+            color: var(--color-gray-500);
+        }
+
+        .content-slot p {
+            margin-bottom: 20px;
+            color: var(--color-gray-500);
+            font-size: 16px;
+        }
+
+        .demo-button {
+            background: var(--bg-action-default);
+            color: var(--text-action-inverse);
+            border: none;
+            border-radius: var(--radius-default);
+            padding: 16px 32px;
+            font-family: var(--font-family-body);
+            font-size: 17px;
+            font-weight: var(--font-weight-regular);
+            cursor: pointer;
+        }
+
+        /* Action menu content slot */
+        .action-menu-content-slot {
+            padding: var(--spacing-16);
+            background-color: var(--bg-panel-default);
+            text-align: center;
+        }
+
+        .action-menu-content-slot p {
+            color: var(--text-subdued);
+            font-size: 14px;
+            margin-bottom: var(--spacing-12);
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <!-- Dark Mode Toggle -->
+    <div class="theme-toggle">
+        <button class="toggle-button" onclick="toggleTheme()">
+            <span id="theme-text">Switch to Dark Mode</span>
+        </button>
+    </div>
+
+    <!-- ========== DROP YOUR CONTENT HERE ========== -->
+    <!-- Replace this entire .content-slot div with your page content -->
+    <div class="content-slot">
+        <div class="content-slot-box">
+            <h1>📍 DROP YOUR PAGE CONTENT HERE</h1>
+            <p>Replace this entire div with your page content (cards, panels, lists, forms, etc.)</p>
+            <p>This is just a placeholder to show where your content goes.</p>
+            <p>Click the button below to test the action menu:</p>
+            <button class="demo-button" onclick="openActionMenu()">Open Action Menu</button>
+        </div>
+    </div>
+    <!-- ========== END CONTENT AREA ========== -->
+
+    <!-- Action Menu Template (Bottom Sheet) -->
+    <div class="action-menu-template" id="actionMenu">
+        <!-- Overlay -->
+        <div class="action-menu-overlay" onclick="closeActionMenu()"></div>
+        
+        <!-- Menu Content -->
+        <div class="action-menu-content">
+            <!-- Transparent Gap (iOS Safe Area) -->
+            <div class="action-menu-gap"></div>
+            
+            <!-- Header -->
+            <div class="action-menu-header">
+                <div class="action-menu-title">Choose Action</div>
+            </div>
+            
+            <!-- ========== DROP ACTION MENU CONTENT HERE ========== -->
+            <!-- Add your cards, text, or any content between header and button -->
+            <div class="action-menu-content-slot">
+                <p>📍 DROP YOUR ACTION MENU CONTENT HERE</p>
+                <p>(Add cards, text, images, forms, or any content before the button)</p>
+            </div>
+            <!-- ========== END ACTION MENU CONTENT SLOT ========== -->
+            
+            <!-- Button Container -->
+            <div class="action-menu-buttons">
+                <!-- ActionButton Component (Self-Contained) -->
+                <button class="action-button btn-primary">
+                    <div class="action-button-inner">
+                        <span class="action-button-text">Continue</span>
+                        <div class="action-button-icon">
+                            <img data-icon="chevron-right" data-icon-category="arrows" alt="">
+                        </div>
+                    </div>
+                </button>
+            </div>
+            
+            <!-- Home Indicator -->
+            <div class="action-menu-home-indicator">
+                <div class="action-menu-handle"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Component Scripts -->
+    <script src="../../components/action/button/action-button/ActionButton.vanilla.js"></script>
+
+    <script>
+        // Open action menu
+        function openActionMenu() {
+            const menu = document.getElementById('actionMenu');
+            menu.classList.add('visible');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close action menu
+        function closeActionMenu() {
+            const menu = document.getElementById('actionMenu');
+            menu.classList.remove('visible');
+            document.body.style.overflow = '';
+        }
+
+        // Detect system dark mode preference and apply automatically
+        function detectSystemTheme() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-text').textContent = 'Switch to Light Mode';
+            } else {
+                document.body.setAttribute('data-theme', 'light');
+                document.getElementById('theme-text').textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        // Listen for system theme changes
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', detectSystemTheme);
+        }
+
+        // Toggle theme
+        function toggleTheme() {
+            const body = document.body;
+            const themeText = document.getElementById('theme-text');
+            const currentTheme = body.getAttribute('data-theme');
+            
+            if (currentTheme === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                themeText.textContent = 'Switch to Light Mode';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeText.textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        // Close on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeActionMenu();
+            }
+        });
+
+        // Initialize on page load
+        detectSystemTheme();
+    </script>
+</body>
+</html>

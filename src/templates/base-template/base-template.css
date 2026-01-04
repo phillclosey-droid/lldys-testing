@@ -1,0 +1,462 @@
+/* Base Template Styles - TOKEN LED */
+
+/* Base Template - Full Page Layout */
+.base-template {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    max-width: 430px;
+    margin: 0 auto;
+    background-color: var(--bg-page-default);
+    overflow: hidden;
+}
+
+/* Dark Mode Toggle */
+.theme-toggle {
+    position: fixed;
+    top: var(--spacing-24);
+    right: var(--spacing-24);
+    z-index: 1000;
+}
+
+.toggle-button {
+    background: var(--bg-action-default);
+    color: var(--text-action-inverse);
+    border: none;
+    border-radius: var(--radius-default);
+    padding: var(--spacing-12) var(--spacing-24);
+    font-family: var(--font-family-body);
+    font-size: 14px;
+    font-weight: var(--font-weight-bold);
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.toggle-button:hover {
+    background: var(--bg-action-pressed);
+}
+
+/* Header - Fixed at top */
+.header-wrapper {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+}
+
+/* CustomHeader Component Styles */
+.custom-header {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg-panel-secondary);
+    width: 100%;
+}
+
+/* STATUS BAR */
+.status-bar {
+    width: 100%;
+    height: 54px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Status Bar - iOS */
+.status-bar-ios {
+    padding: 0;
+}
+
+.status-bar-time {
+    font-family: SF Pro, -apple-system, sans-serif;
+    font-size: 17px;
+    line-height: 22px;
+    color: var(--text-default);
+    text-align: center;
+    width: 134px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.status-bar-levels {
+    width: 134px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5px;
+    padding-right: var(--spacing-16);
+}
+
+.cellular-signal {
+    display: flex;
+    align-items: flex-end;
+    gap: 1px;
+    height: 12px;
+}
+
+.signal-bar {
+    width: 3px;
+    background-color: var(--text-default);
+    border-radius: 1px;
+}
+
+.signal-bar-1 { height: 4px; }
+.signal-bar-2 { height: 6px; }
+.signal-bar-3 { height: 8px; }
+.signal-bar-4 { height: 10px; }
+.signal-bar-5 { height: 12px; }
+
+.wifi-indicator {
+    width: 16px;
+    height: 12px;
+    position: relative;
+}
+
+.wifi-arc {
+    position: absolute;
+    border: 2px solid var(--text-default);
+    border-radius: 50%;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    border-right-color: transparent;
+}
+
+.wifi-arc-1 {
+    width: 6px;
+    height: 6px;
+    bottom: 0;
+    left: 5px;
+}
+
+.wifi-arc-2 {
+    width: 10px;
+    height: 8px;
+    bottom: 0;
+    left: 3px;
+}
+
+.wifi-arc-3 {
+    width: 14px;
+    height: 10px;
+    bottom: 0;
+    left: 1px;
+}
+
+.wifi-dot {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background-color: var(--text-default);
+    border-radius: 50%;
+    bottom: 0;
+    left: 6.5px;
+}
+
+.status-bar-battery {
+    position: relative;
+    width: 27px;
+    height: 13px;
+}
+
+.battery-border {
+    position: absolute;
+    border-radius: 4.3px;
+    height: 13px;
+    width: 25px;
+    border: 1px solid var(--text-default);
+    opacity: 0.35;
+}
+
+.battery-capacity {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    border-radius: 2.5px;
+    height: 9px;
+    width: 21px;
+    background-color: var(--text-default);
+}
+
+.battery-tip {
+    position: absolute;
+    right: -2px;
+    top: 5px;
+    width: 2px;
+    height: 3px;
+    background-color: var(--text-default);
+    opacity: 0.4;
+    border-radius: 0 1px 1px 0;
+}
+
+/* HEADER BAR - Must use relative positioning for absolute title */
+.header-bar {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0 var(--spacing-08);
+    height: 48px;
+}
+
+.header-leading {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex: 1;
+    z-index: 1;
+}
+
+.header-trailing {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--spacing-08);
+    z-index: 1;
+}
+
+.hit-target {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 48px;
+    min-height: 48px;
+    cursor: pointer;
+}
+
+.icon-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3px;
+}
+
+.icon-18 {
+    width: 18px;
+    height: 18px;
+}
+
+.icon-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* IMPORTANT: Header icons SHOULD invert in dark mode - matching preview */
+[data-theme="dark"] .icon-wrapper img {
+    filter: invert(1);
+}
+
+.header-gap {
+    width: var(--spacing-08);
+    height: 48px;
+}
+
+/* Title MUST be absolutely positioned to center in full width, ignoring leading/trailing */
+.header-title-wrapper {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none; /* Allow clicks to pass through to icons */
+}
+
+.header-title {
+    font-family: var(--font-family-heading);
+    font-size: 19px;
+    line-height: 22px;
+    font-weight: var(--font-weight-medium);
+    color: var(--text-default);
+    text-align: center;
+}
+
+.empty-space {
+    width: 48px;
+    height: 48px;
+}
+
+/* Content Area - Scrollable */
+.content-wrapper {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.content-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.content-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: var(--spacing-16) 0 var(--spacing-48) 0;
+    gap: var(--spacing-16);
+    width: 100%;
+    min-height: 100%;
+}
+
+/* Placeholder content for demo */
+.content-placeholder {
+    padding: var(--spacing-24);
+    text-align: center;
+    color: var(--text-subdued);
+    width: 100%;
+}
+
+.content-card {
+    background: var(--bg-panel-default);
+    border-radius: var(--radius-default);
+    padding: var(--spacing-24);
+    margin: 0 var(--spacing-16);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.content-card h2 {
+    font-family: var(--font-family-heading);
+    font-size: var(--type-style-3-size);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--spacing-12);
+    color: var(--text-default);
+}
+
+.content-card p {
+    font-family: var(--font-family-body);
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-subdued);
+}
+
+/* Bottom Nav - Fixed at bottom */
+.bottom-nav-wrapper {
+    position: sticky;
+    bottom: 0;
+    z-index: 100;
+    width: 100%;
+}
+
+.bottom-nav {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: var(--bg-panel-secondary);
+    width: 100%;
+    box-shadow: 0px -1px 0px 0px rgba(0, 0, 0, 0.06);
+}
+
+.active-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    z-index: 1;
+}
+
+.active-border-segment {
+    height: 4px;
+    flex: 1;
+    min-width: 0;
+    transition: background-color 0.3s ease;
+}
+
+/* TOKEN LED: Correct green from cancara-tokens.css line 96 */
+.active-border-segment.active {
+    background-color: var(--color-green-bright); /* #0BE248 - Primary brand accent green */
+}
+
+.tabs-hstack {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.tab {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: var(--spacing-08) 0;
+    gap: var(--spacing-04);
+    flex: 1;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.tab:hover {
+    opacity: 0.7;
+}
+
+.tab-icon {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 3px;
+}
+
+.tab-icon-wrapper {
+    height: 18px;
+    width: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tab-icon-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Dark mode invert for bottom nav icons - TOKEN LED */
+[data-theme="dark"] .tab-icon-wrapper img {
+    filter: invert(1);
+}
+
+.tab-text {
+    font-family: var(--font-family-heading);
+    font-size: 11px;
+    font-weight: var(--font-weight-regular);
+    line-height: 16px;
+    color: var(--text-default);
+    text-align: center;
+}
+
+.tab.active .tab-text {
+    font-weight: var(--font-weight-bold);
+}
+
+.home-indicator {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: var(--spacing-08) 0;
+    width: 100%;
+}
+
+.home-indicator-handle {
+    border-radius: 100px;
+    height: 5px;
+    width: 139px;
+    background-color: var(--text-default);
+}

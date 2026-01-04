@@ -1,0 +1,270 @@
+# MI Field Component
+
+Memorable Information (MI) field component for secure password/PIN entry. Shows password bullets instead of characters for privacy. Commonly used for banking security where users enter specific characters from their password.
+
+## Files
+
+- `MIField.vanilla.css` - Self-contained CSS with token-led styling
+- `MIField.vanilla.js` - Interactive functionality
+- `MIField-demo.html` - Demo page showing all states
+
+## Component Structure
+
+```html
+<div class="mi-field">
+    <div class="mi-field-group">
+        <label class="mi-field-label">1st</label>
+        <div class="mi-field-input-wrapper">
+            <input type="text" class="mi-field-input" maxlength="1" placeholder=" ">
+            <div class="mi-field-bullet"></div>
+        </div>
+    </div>
+    <div class="mi-field-group">
+        <label class="mi-field-label">3rd</label>
+        <div class="mi-field-input-wrapper">
+            <input type="text" class="mi-field-input" maxlength="1" placeholder=" ">
+            <div class="mi-field-bullet"></div>
+        </div>
+    </div>
+    <div class="mi-field-group">
+        <label class="mi-field-label">5th</label>
+        <div class="mi-field-input-wrapper">
+            <input type="text" class="mi-field-input" maxlength="1" placeholder=" ">
+            <div class="mi-field-bullet"></div>
+        </div>
+    </div>
+</div>
+```
+
+## CSS Classes
+
+### Main Container
+- `.mi-field` - Main container (horizontal flex)
+- `.mi-field.has-error` - Error state (red borders)
+- `.mi-field.is-disabled` - Disabled state (gray background)
+
+### Individual Input Group
+- `.mi-field-group` - Wrapper for label + input (vertical flex)
+- `.mi-field-label` - Character position label (14px, centered)
+
+### Input Components
+- `.mi-field-input-wrapper` - Wrapper for input + bullet
+- `.mi-field-input` - The actual input field (56px × 56px)
+- `.mi-field-input:focus` - Focused state (2px black border)
+- `.mi-field-bullet` - Password bullet (8px circle, hidden by default)
+
+## JavaScript Events
+
+The component dispatches custom events:
+
+```javascript
+// Input change
+element.addEventListener('mi-field-input', function(e) {
+    console.log('Index:', e.detail.index);
+    console.log('Value:', e.detail.value);
+    console.log('All values:', e.detail.allValues);
+});
+
+// All fields completed
+element.addEventListener('mi-field-complete', function(e) {
+    console.log('Values:', e.detail.values); // ['A', 'B', 'C']
+    console.log('Combined:', e.detail.combined); // 'ABC'
+});
+```
+
+## Design Tokens Used
+
+### Typography
+- `--font-family-body` - Input and label font
+- `--font-weight-regular` - Label weight
+- `--font-weight-bold` - Input text weight (though text is hidden)
+
+### Colors
+- `--text-default` - Label text and caret color
+- `--bg-input-default` - Input background (white)
+- `--bg-input-disabled` - Disabled background (gray-100)
+- `--border-default` - Border color (gray-300 light, gray-600 dark)
+- `--color-black` - Active border, bullet (light mode)
+- `--color-white` - Active border, bullet (dark mode)
+- `--color-red-error` - Error border (#db0f30)
+
+### Spacing
+- `--spacing-08` - Gap between label and input (8px)
+- `--spacing-16` - Container padding, gap between fields (16px)
+
+### Borders
+- `--input-border-width-default` - Default border (1px)
+- `--input-border-width-active` - Active border (2px)
+
+## Dimensions
+
+- **Input box**: 56px × 56px
+- **Border radius**: 8px
+- **Password bullet**: 8px circle
+- **Label text**: 14px, 20px line height
+- **Gap between fields**: 16px
+- **Gap between label and input**: 8px
+
+## States
+
+### Default
+- White background
+- 1px border using `--border-default`
+- Empty inputs
+- No password bullets visible
+
+### Active/Focused
+- 2px black border (white in dark mode)
+- Triggered by focusing input
+- Cursor visible (but text is transparent)
+
+### Filled
+- Password bullet appears (8px black circle)
+- Text input is transparent (for security)
+- Bullet positioned center of input
+
+### Error
+- Red border (#db0f30) on all inputs
+- Applied via `.has-error` class on container
+- Border stays red even when focused
+
+### Disabled
+- Gray-100 background
+- Gray borders
+- Inputs not editable
+- No bullets visible
+- Applied via `.is-disabled` class + disabled attribute
+
+## Behavior
+
+### Auto-Advance
+- Type one character → auto-focus next input
+- Maximizes speed of entry
+
+### Backspace Navigation
+- Press backspace on empty field → focus previous input
+- Allows easy correction
+
+### Paste Support
+- Paste multi-character string → distributes across inputs
+- E.g., paste "ABC" → fills all three fields
+
+### Single Character
+- Max length of 1 character per input
+- Enforced via maxlength and JavaScript
+
+### Password Bullets
+- Show 8px circle when input has value
+- Uses `:not(:placeholder-shown)` CSS selector
+- Hidden when input is empty
+
+## Security Features
+
+- Text is transparent (`color: transparent`)
+- Only password bullets visible
+- Caret still visible for UX (`caret-color`)
+- Prevents shoulder surfing
+- No actual password revealed
+
+## Usage Examples
+
+### Basic MI Field
+```html
+<div class="mi-field">
+    <div class="mi-field-group">
+        <label class="mi-field-label">1st</label>
+        <div class="mi-field-input-wrapper">
+            <input type="text" class="mi-field-input" maxlength="1" placeholder=" ">
+            <div class="mi-field-bullet"></div>
+        </div>
+    </div>
+    <div class="mi-field-group">
+        <label class="mi-field-label">3rd</label>
+        <div class="mi-field-input-wrapper">
+            <input type="text" class="mi-field-input" maxlength="1" placeholder=" ">
+            <div class="mi-field-bullet"></div>
+        </div>
+    </div>
+    <div class="mi-field-group">
+        <label class="mi-field-label">5th</label>
+        <div class="mi-field-input-wrapper">
+            <input type="text" class="mi-field-input" maxlength="1" placeholder=" ">
+            <div class="mi-field-bullet"></div>
+        </div>
+    </div>
+</div>
+```
+
+### Error State
+```html
+<div class="mi-field has-error">
+    <!-- ... same structure ... -->
+</div>
+```
+
+### Disabled State
+```html
+<div class="mi-field is-disabled">
+    <div class="mi-field-group">
+        <label class="mi-field-label">1st</label>
+        <div class="mi-field-input-wrapper">
+            <input type="text" class="mi-field-input" maxlength="1" placeholder=" " disabled>
+            <div class="mi-field-bullet"></div>
+        </div>
+    </div>
+    <!-- ... repeat for other fields ... -->
+</div>
+```
+
+### With Event Listeners
+```javascript
+const miField = document.querySelector('.mi-field');
+
+miField.addEventListener('mi-field-complete', function(e) {
+    console.log('User entered:', e.detail.combined);
+    // Validate against server...
+});
+```
+
+## Dark Mode Support
+
+All colors automatically adapt to dark mode:
+- Text changes to gray-200
+- Borders use dark mode values
+- Active border becomes white
+- Password bullets become white
+- Error red stays the same
+
+## Accessibility
+
+- Native input fields for keyboard access
+- Labels associated with inputs
+- Clear visual states
+- Focus management
+- Tab navigation works correctly
+- Maxlength prevents over-entry
+
+## Notes
+
+- Commonly used for banking security (memorable information)
+- Labels like "1st", "3rd", "5th" refer to character positions
+- Text is hidden via `color: transparent` not `type="password"`
+- Password bullets are pure CSS (positioned absolutely)
+- Component is fully keyboard accessible
+- Paste support for better UX
+- Auto-advance improves speed of entry
+
+## Common Use Cases
+
+1. **Banking Login**: "Enter the 1st, 3rd, and 5th characters of your password"
+2. **Security Verification**: Random character positions for additional security
+3. **PIN Entry**: Split PIN across multiple fields for better UX
+4. **Confirmation Codes**: Security codes split by character
+
+## Token-Led Design
+
+All styling uses design tokens from `cancara-tokens.css`:
+- No hardcoded colors
+- Responsive to theme changes
+- Consistent with design system
+- Easy to maintain

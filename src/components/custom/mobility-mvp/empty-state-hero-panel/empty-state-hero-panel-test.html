@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmptyStateHeroPanel Component - Test</title>
+    
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="../../../../css/cancara-tokens.css">
+    
+    <!-- Pictogram Component CSS (Required Dependency) -->
+    <link rel="stylesheet" href="../../../content/icon/pictogram/Pictogram.vanilla.css">
+    
+    <!-- Action Button Component CSS (Required Dependency) -->
+    <link rel="stylesheet" href="../../../action/button/action-button/ActionButton.vanilla.css">
+    
+    <!-- EmptyStateHeroPanel Component CSS -->
+    <link rel="stylesheet" href="EmptyStateHeroPanel.vanilla.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family-body);
+            background: var(--bg-page-default);
+            color: var(--text-default);
+            transition: background-color 0.3s, color 0.3s;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .toggle-button {
+            background: var(--bg-action-default);
+            color: var(--text-action-inverse);
+            border: none;
+            border-radius: var(--radius-default);
+            padding: 12px 24px;
+            font-family: var(--font-family-body);
+            font-size: 14px;
+            font-weight: var(--font-weight-bold);
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .toggle-button:hover {
+            background: var(--bg-action-pressed);
+        }
+        
+        .test-container {
+            max-width: 428px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-family: var(--font-family-heading);
+            color: var(--text-default);
+            margin-bottom: 24px;
+            font-size: 32px;
+        }
+        
+        .component-info {
+            background-color: var(--bg-panel-default);
+            padding: 16px;
+            border-radius: var(--radius-default);
+            margin-top: 32px;
+        }
+        
+        .component-info h2 {
+            font-family: var(--font-family-heading);
+            font-size: 19px;
+            margin-top: 0;
+            margin-bottom: 12px;
+        }
+        
+        .component-info p {
+            font-size: 14px;
+            line-height: 1.5;
+            margin: 8px 0;
+            color: var(--text-subdued);
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <div class="theme-toggle">
+        <button class="toggle-button" onclick="toggleTheme()">
+            <span id="theme-text">Switch to Dark Mode</span>
+        </button>
+    </div>
+
+    <div class="test-container">
+        <h1>Empty State Hero Panel</h1>
+        
+        <!-- EmptyStateHeroPanel Component -->
+        <div class="empty-state-container">
+  
+            <!-- Top Row: User Greeting -->
+            <div class="empty-state-top-row">
+                <div class="empty-state-user-info">
+                    <!-- Pictogram -->
+                    <div class="pictogram pict-default">
+                        <img src="../../../../../assets/pictograms/Person_Lloyds_-_V2.svg" alt="Person icon">
+                    </div>
+                    <div class="empty-state-user-text">
+                        <div class="empty-state-user-name">Alex</div>
+                        <div class="empty-state-user-cta">Connect your car</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Car Placeholder Image -->
+            <div class="empty-state-car-placeholder">
+                <img src="../../../../../assets/images/car-placeholder.png" alt="Connect your car" class="empty-state-car-image">
+            </div>
+            
+            <!-- Description Text -->
+            <div class="empty-state-description">
+                Drive hassle free with MOT, tax, insurance, service reminders and much more.
+            </div>
+            
+            <!-- Benefits Icon Grid -->
+            <div class="empty-state-benefits-grid">
+                
+                <!-- Tax -->
+                <div class="empty-state-benefit-item">
+                    <div class="empty-state-benefit-icon">
+                        <img src="../../../../../assets/icons/date-and-time/timer.svg" alt="Tax">
+                    </div>
+                    <div class="empty-state-benefit-label">Tax</div>
+                </div>
+                
+                <!-- MOT -->
+                <div class="empty-state-benefit-item">
+                    <div class="empty-state-benefit-icon">
+                        <img src="../../../../../assets/icons/security/id.svg" alt="MOT">
+                    </div>
+                    <div class="empty-state-benefit-label">MOT</div>
+                </div>
+                
+                <!-- Insurance -->
+                <div class="empty-state-benefit-item">
+                    <div class="empty-state-benefit-icon">
+                        <img src="../../../../../assets/icons/security/shield.svg" alt="Insurance">
+                    </div>
+                    <div class="empty-state-benefit-label">Insurance</div>
+                </div>
+                
+                <!-- Servicing -->
+                <div class="empty-state-benefit-item">
+                    <div class="empty-state-benefit-icon">
+                        <img src="../../../../../assets/icons/travel/car.svg" alt="Servicing">
+                    </div>
+                    <div class="empty-state-benefit-label">Servicing</div>
+                </div>
+                
+            </div>
+            
+            <!-- Primary Action Button - EXACT COPY from ActionButton component -->
+            <div class="empty-state-action">
+                <button class="action-button btn-primary empty-state-button">
+                    <div class="action-button-inner">
+                        <span class="action-button-text">Connect my car</span>
+                    </div>
+                </button>
+            </div>
+            
+        </div>
+
+        <div class="component-info">
+            <h2>Component Info</h2>
+            <p>This is the EmptyStateHeroPanel component - a hero panel variant for when no vehicle is connected.</p>
+            <p>Switch between light and dark mode using the button above.</p>
+        </div>
+    </div>
+
+    <!-- Pictogram Initialization -->
+    <script src="../../../content/icon/pictogram/Pictogram.vanilla.js"></script>
+    
+    <!-- EmptyStateHeroPanel Component -->
+    <script src="./EmptyStateHeroPanel.vanilla.js"></script>
+    
+    <script>
+        // Theme detection - automatically detect system preference
+        function detectSystemTheme() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                return 'dark';
+            }
+            return 'light';
+        }
+
+        // Theme toggle functionality
+        function toggleTheme() {
+            const body = document.body;
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            const themeText = document.getElementById('theme-text');
+            
+            body.setAttribute('data-theme', newTheme);
+            themeText.textContent = newTheme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode';
+            
+            // Save preference
+            localStorage.setItem('theme', newTheme);
+        }
+
+        // Initialize theme - check saved preference, otherwise use system
+        const savedTheme = localStorage.getItem('theme');
+        const initialTheme = savedTheme || detectSystemTheme();
+        
+        document.body.setAttribute('data-theme', initialTheme);
+        document.getElementById('theme-text').textContent = initialTheme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode';
+        
+        // Listen for system theme changes if no saved preference
+        if (!savedTheme && window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+                if (!localStorage.getItem('theme')) {
+                    const newTheme = e.matches ? 'dark' : 'light';
+                    document.body.setAttribute('data-theme', newTheme);
+                    document.getElementById('theme-text').textContent = newTheme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

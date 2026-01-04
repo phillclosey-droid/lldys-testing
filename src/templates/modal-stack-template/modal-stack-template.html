@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Modal Stack Template - Stacked Modals</title>
+    
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="../../css/cancara-tokens.css">
+    
+    <!-- Component Styles (NESTED DEPENDENCIES) -->
+    <link rel="stylesheet" href="../../components/navigation/status-bar/StatusBar.vanilla.css">
+    <link rel="stylesheet" href="../../components/navigation/header/modal-stack-header/ModalStackHeader.vanilla.css">
+    
+    <!-- Template Styles -->
+    <link rel="stylesheet" href="modal-stack-template.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family-body);
+            background: var(--bg-page-default);
+            color: var(--text-default);
+            transition: background-color 0.3s, color 0.3s;
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <!-- Dark Mode Toggle -->
+    <div class="theme-toggle">
+        <button class="toggle-button" onclick="toggleTheme()">
+            <span id="theme-text">Switch to Dark Mode</span>
+        </button>
+    </div>
+
+    <!-- Modal Stack Template -->
+    <div class="modal-stack-template">
+        
+        <!-- ModalStackHeader Component (Self-Contained) -->
+        <div class="modal-stack-header layout-default has-leading-icon">
+            <!-- 1. Status Bar (nested component) -->
+            <div class="status-bar status-bar-ios">
+                <div class="status-bar-time">9:41</div>
+                <div class="status-bar-levels">
+                    <div class="cellular-signal">
+                        <div class="signal-bar signal-bar-1"></div>
+                        <div class="signal-bar signal-bar-2"></div>
+                        <div class="signal-bar signal-bar-3"></div>
+                        <div class="signal-bar signal-bar-4"></div>
+                        <div class="signal-bar signal-bar-5"></div>
+                    </div>
+                    <div class="wifi-indicator">
+                        <div class="wifi-dot"></div>
+                        <div class="wifi-arc wifi-arc-1"></div>
+                        <div class="wifi-arc wifi-arc-2"></div>
+                        <div class="wifi-arc wifi-arc-3"></div>
+                    </div>
+                    <div class="status-bar-battery">
+                        <div class="battery-border"></div>
+                        <div class="battery-capacity"></div>
+                        <div class="battery-tip"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Card Top - Grey shape behind -->
+            <div class="modal-stack-header-card-top"></div>
+
+            <!-- 3. Front - White shape -->
+            <div class="modal-stack-header-front"></div>
+
+            <!-- 4. Title Strip - White bar with title and icons -->
+            <div class="modal-stack-header-bar">
+                <!-- Leading Icon (Back Button) -->
+                <div class="modal-stack-header-leading">
+                    <div class="hit-target">
+                        <div class="icon-wrapper">
+                            <img id="back-icon" src="" alt="Back">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Title -->
+                <div class="modal-stack-header-title-wrapper">
+                    <div class="modal-stack-header-title">Title</div>
+                </div>
+
+                <!-- Trailing Icon (Close Button) -->
+                <div class="modal-stack-header-trailing">
+                    <div class="hit-target">
+                        <div class="icon-wrapper">
+                            <img id="close-icon" src="" alt="Close">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== DROP YOUR CONTENT HERE ========== -->
+        <div class="modal-stack-content">
+            <p>Content here</p>
+        </div>
+        <!-- ========== END CONTENT AREA ========== -->
+    </div>
+
+    <!-- Component Scripts -->
+    <script src="../../components/navigation/header/modal-stack-header/ModalStackHeader.vanilla.js"></script>
+
+    <script>
+        /*
+         * PATH CONFIGURATION
+         * Update these paths when copying to journey pages or other locations
+         * 
+         * From /src/templates/modal-stack-template/:
+         * - ASSETS_BASE: '../../../assets' (3 levels up to root)
+         * 
+         * From /journeys/[journey-name]/:
+         * - ASSETS_BASE: '../../assets' (2 levels up to root)
+         */
+        const ASSETS_BASE = '../../../assets';
+        
+        // Icon path helpers
+        const ICONS = {
+            back: `${ASSETS_BASE}/icons/arrows/chevron-left.svg`,
+            close: `${ASSETS_BASE}/icons/navigation/close.svg`,
+        };
+
+        // Initialize all icon paths
+        function initializeIcons() {
+            document.getElementById('back-icon').src = ICONS.back;
+            document.getElementById('close-icon').src = ICONS.close;
+        }
+
+        // Detect system dark mode preference and apply automatically
+        function detectSystemTheme() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-text').textContent = 'Switch to Light Mode';
+            } else {
+                document.body.setAttribute('data-theme', 'light');
+                document.getElementById('theme-text').textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        // Listen for system theme changes
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', detectSystemTheme);
+        }
+
+        // Toggle theme
+        function toggleTheme() {
+            const body = document.body;
+            const themeText = document.getElementById('theme-text');
+            const currentTheme = body.getAttribute('data-theme');
+            
+            if (currentTheme === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                themeText.textContent = 'Switch to Light Mode';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeText.textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        // Initialize on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            detectSystemTheme();
+            initializeIcons();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Country Picker Component - Demo</title>
+    
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="../../../../css/cancara-tokens.css">
+    
+    <!-- Country Picker Component (SELF-CONTAINED) -->
+    <link rel="stylesheet" href="CountryPicker.vanilla.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family-body);
+            background: var(--bg-page-default);
+            color: var(--text-default);
+            transition: background-color 0.3s, color 0.3s;
+            padding: 40px;
+            min-height: 100vh;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .toggle-button {
+            background: var(--bg-action-default);
+            color: var(--text-action-inverse);
+            border: none;
+            border-radius: var(--radius-default);
+            padding: 12px 24px;
+            font-family: var(--font-family-body);
+            font-size: 14px;
+            font-weight: var(--font-weight-bold);
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .toggle-button:hover {
+            background: var(--bg-action-pressed);
+        }
+
+        h1 {
+            margin-bottom: 40px;
+            font-size: 32px;
+        }
+        
+        .demo-section {
+            margin-bottom: 40px;
+        }
+        
+        .demo-section-title {
+            margin-bottom: 12px;
+            font-size: 20px;
+        }
+
+        .demo-section p {
+            margin-bottom: 16px;
+            color: var(--text-subdued);
+            font-size: 14px;
+        }
+
+        .demo-container {
+            background: var(--bg-panel-default);
+            padding: 32px;
+            border-radius: var(--radius-default);
+            display: inline-block;
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <div class="theme-toggle">
+        <button class="toggle-button" onclick="toggleTheme()">
+            <span id="theme-text">Switch to Dark Mode</span>
+        </button>
+    </div>
+
+    <h1>Country Picker Component - All Variants</h1>
+    
+    <!-- DEFAULT STATE -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">Default State</h2>
+        <p>Standard country picker with flag emoji, country code, and chevron</p>
+        
+        <div class="demo-container">
+            <div class="country-picker">
+                <label class="country-picker-label">Select country</label>
+                <div class="country-picker-input">
+                    <div class="country-picker-flag">🇬🇧</div>
+                    <div class="country-picker-code">
+                        <span class="country-picker-code-text">+44</span>
+                    </div>
+                    <div class="country-picker-icon">
+                        <div class="country-picker-icon-wrapper">
+                            <img src="../../../../../assets/icons/arrows/chevron-down.svg" alt="Select country">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ACTIVE STATE -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">Active/Focused State</h2>
+        <p>Shows 2px black border when active</p>
+        
+        <div class="demo-container">
+            <div class="country-picker">
+                <label class="country-picker-label">Select country</label>
+                <div class="country-picker-input is-active">
+                    <div class="country-picker-flag">🇬🇧</div>
+                    <div class="country-picker-code">
+                        <span class="country-picker-code-text">+44</span>
+                    </div>
+                    <div class="country-picker-icon">
+                        <div class="country-picker-icon-wrapper">
+                            <img src="../../../../../assets/icons/arrows/arrow-down.svg" alt="Select country">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DISABLED STATE -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">Disabled State</h2>
+        <p>Gray background, disabled text color, no chevron icon</p>
+        
+        <div class="demo-container">
+            <div class="country-picker is-disabled">
+                <label class="country-picker-label">Select country</label>
+                <div class="country-picker-input">
+                    <div class="country-picker-flag">🇬🇧</div>
+                    <div class="country-picker-code">
+                        <span class="country-picker-code-text">+44</span>
+                    </div>
+                    <div class="country-picker-icon">
+                        <div class="country-picker-icon-wrapper">
+                            <img src="../../../../../assets/icons/arrows/arrow-down.svg" alt="Select country">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- INTERACTIVE DEMO -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">Interactive Demo</h2>
+        <p>Click to toggle active state</p>
+        
+        <div class="demo-container">
+            <div class="country-picker">
+                <label class="country-picker-label">Select country</label>
+                <div class="country-picker-input">
+                    <div class="country-picker-flag">🇺🇸</div>
+                    <div class="country-picker-code">
+                        <span class="country-picker-code-text">+1</span>
+                    </div>
+                    <div class="country-picker-icon">
+                        <div class="country-picker-icon-wrapper">
+                            <img src="../../../../../assets/icons/arrows/arrow-down.svg" alt="Select country">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MORE COUNTRY EXAMPLES -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">Different Countries</h2>
+        <p>Various country examples</p>
+        
+        <div class="demo-container" style="display: flex; flex-direction: column; gap: 16px;">
+            <div class="country-picker">
+                <label class="country-picker-label">France</label>
+                <div class="country-picker-input">
+                    <div class="country-picker-flag">🇫🇷</div>
+                    <div class="country-picker-code">
+                        <span class="country-picker-code-text">+33</span>
+                    </div>
+                    <div class="country-picker-icon">
+                        <div class="country-picker-icon-wrapper">
+                            <img src="../../../../../assets/icons/arrows/arrow-down.svg" alt="Select country">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="country-picker">
+                <label class="country-picker-label">Germany</label>
+                <div class="country-picker-input">
+                    <div class="country-picker-flag">🇩🇪</div>
+                    <div class="country-picker-code">
+                        <span class="country-picker-code-text">+49</span>
+                    </div>
+                    <div class="country-picker-icon">
+                        <div class="country-picker-icon-wrapper">
+                            <img src="../../../../../assets/icons/arrows/arrow-down.svg" alt="Select country">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="country-picker">
+                <label class="country-picker-label">Japan</label>
+                <div class="country-picker-input">
+                    <div class="country-picker-flag">🇯🇵</div>
+                    <div class="country-picker-code">
+                        <span class="country-picker-code-text">+81</span>
+                    </div>
+                    <div class="country-picker-icon">
+                        <div class="country-picker-icon-wrapper">
+                            <img src="../../../../../assets/icons/arrows/arrow-down.svg" alt="Select country">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="CountryPicker.vanilla.js"></script>
+
+    <script>
+        // Listen for country picker clicks
+        document.querySelectorAll('.country-picker').forEach(picker => {
+            picker.addEventListener('country-picker-click', function(e) {
+                console.log(`Country picker clicked:`, e.detail);
+            });
+        });
+
+        function detectSystemTheme() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-text').textContent = 'Switch to Light Mode';
+            } else {
+                document.body.setAttribute('data-theme', 'light');
+                document.getElementById('theme-text').textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', detectSystemTheme);
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const themeText = document.getElementById('theme-text');
+            const currentTheme = body.getAttribute('data-theme');
+            
+            if (currentTheme === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                themeText.textContent = 'Switch to Light Mode';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeText.textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', function() {
+            detectSystemTheme();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bottom Nav Component Test</title>
+    
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="../../../css/cancara-tokens.css">
+    
+    <!-- Bottom Nav Component Styles -->
+    <link rel="stylesheet" href="BottomNav.vanilla.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family-body);
+            background: var(--bg-page-default);
+            color: var(--text-default);
+            transition: background-color 0.3s, color 0.3s;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .toggle-button {
+            background: var(--bg-action-default);
+            color: var(--text-action-inverse);
+            border: none;
+            border-radius: var(--radius-default);
+            padding: 12px 24px;
+            font-family: var(--font-family-body);
+            font-size: 14px;
+            font-weight: var(--font-weight-bold);
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .toggle-button:hover {
+            background: var(--bg-action-pressed);
+        }
+
+        h1 {
+            margin-bottom: 40px;
+            font-size: 32px;
+            text-align: center;
+        }
+
+        .section {
+            margin-bottom: 60px;
+        }
+
+        .section h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .section p {
+            margin-bottom: 20px;
+            color: var(--text-subdued);
+            line-height: 1.6;
+        }
+
+        .nav-demo {
+            max-width: 390px;
+            margin: 0 auto 20px;
+            background: var(--bg-panel-primary);
+            border-radius: var(--radius-large);
+            overflow: hidden;
+        }
+
+        .nav-label {
+            text-align: center;
+            font-size: 14px;
+            color: var(--text-subdued);
+            margin-bottom: 40px;
+        }
+
+        .device-frame {
+            max-width: 390px;
+            margin: 0 auto 40px;
+            background: var(--bg-page-default);
+            border: 2px solid var(--border-default);
+            border-radius: 20px;
+            overflow: hidden;
+            padding-bottom: 0;
+        }
+
+        .device-content {
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--bg-panel-secondary) 0%, var(--bg-page-default) 100%);
+        }
+
+        .device-content p {
+            font-size: 18px;
+            font-weight: var(--font-weight-bold);
+            color: var(--text-subdued);
+        }
+
+        .grid-demos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .demo-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .code-block {
+            background: var(--bg-panel-secondary);
+            padding: 20px;
+            border-radius: var(--radius-default);
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+
+        .code-block code {
+            font-family: monospace;
+            font-size: 13px;
+            color: var(--text-default);
+            line-height: 1.6;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+        }
+
+        .feature-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--color-green-bright);
+            font-weight: bold;
+        }
+
+        .interactive-demo {
+            background: var(--bg-panel-secondary);
+            padding: 20px;
+            border-radius: var(--radius-large);
+            margin-bottom: 20px;
+        }
+
+        .interactive-demo h3 {
+            margin-bottom: 16px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <div class="theme-toggle">
+        <button class="toggle-button" onclick="toggleTheme()">
+            <span id="theme-text">Switch to Dark Mode</span>
+        </button>
+    </div>
+
+    <h1>Bottom Nav Component Test</h1>
+
+    <div class="section">
+        <h2>Component Overview</h2>
+        <p>Mobile bottom navigation bar with 5 tabs, active state indicator, and iOS home indicator. Fully token-based styling with light and dark theme support.</p>
+        
+        <ul class="feature-list">
+            <li>5 navigation tabs with icons and labels</li>
+            <li>Active state with green top border indicator</li>
+            <li>Icons swap between normal and active states</li>
+            <li>iOS home indicator at bottom</li>
+            <li>Fully responsive width</li>
+            <li>Token-based styling for colors, spacing, typography</li>
+            <li>Light and dark theme support</li>
+            <li>Interactive - click tabs to switch active state</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Interactive Demo</h2>
+        <p>Click on any tab to see the active state change.</p>
+        
+        <div class="interactive-demo">
+            <h3>Try it out:</h3>
+            <div class="nav-demo">
+                <div class="bottom-nav" id="interactive-nav">
+                    <div class="bottom-nav-active-border">
+                        <div class="active-border-segment" data-segment="0"></div>
+                        <div class="active-border-segment" data-segment="1"></div>
+                        <div class="active-border-segment" data-segment="2"></div>
+                        <div class="active-border-segment" data-segment="3"></div>
+                        <div class="active-border-segment" data-segment="4"></div>
+                    </div>
+                    
+                    <div class="bottom-nav-tabs">
+                        <button class="bottom-nav-tab" data-tab="0">
+                            <div class="bottom-nav-icon">
+                                <img src="../../../../assets/icons/tabs/tab-1-icon.svg" alt="" class="icon-inactive">
+                                <img src="../../../../assets/icons/tabs/tab-1-icon-active.svg" alt="" class="icon-active">
+                            </div>
+                            <span class="bottom-nav-label">Home</span>
+                        </button>
+                        
+                        <button class="bottom-nav-tab" data-tab="1">
+                            <div class="bottom-nav-icon">
+                                <img src="../../../../assets/icons/tabs/tab-2-icon.svg" alt="" class="icon-inactive">
+                                <img src="../../../../assets/icons/tabs/tab-2-icon-active.svg" alt="" class="icon-active">
+                            </div>
+                            <span class="bottom-nav-label">Apply</span>
+                        </button>
+                        
+                        <button class="bottom-nav-tab" data-tab="2">
+                            <div class="bottom-nav-icon">
+                                <img src="../../../../assets/icons/tabs/tab-3-icon.svg" alt="" class="icon-inactive">
+                                <img src="../../../../assets/icons/tabs/tab-3-icon-active.svg" alt="" class="icon-active">
+                            </div>
+                            <span class="bottom-nav-label">Payments</span>
+                        </button>
+                        
+                        <button class="bottom-nav-tab" data-tab="3">
+                            <div class="bottom-nav-icon">
+                                <img src="../../../../assets/icons/tabs/tab-4-icon.svg" alt="" class="icon-inactive">
+                                <img src="../../../../assets/icons/tabs/tab-4-icon-active.svg" alt="" class="icon-active">
+                            </div>
+                            <span class="bottom-nav-label">Search</span>
+                        </button>
+                        
+                        <button class="bottom-nav-tab" data-tab="4">
+                            <div class="bottom-nav-icon">
+                                <img src="../../../../assets/icons/tabs/tab-5-icon.svg" alt="" class="icon-inactive">
+                                <img src="../../../../assets/icons/tabs/tab-5-icon-active.svg" alt="" class="icon-active">
+                            </div>
+                            <span class="bottom-nav-label">Cards</span>
+                        </button>
+                    </div>
+                    
+                    <div class="bottom-nav-home-indicator">
+                        <div class="home-indicator-handle"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>No Active State</h2>
+        <p>Default state with no tab selected.</p>
+        
+        <div class="nav-demo">
+            <div class="bottom-nav">
+                <div class="bottom-nav-tabs">
+                    <button class="bottom-nav-tab">
+                        <div class="bottom-nav-icon">
+                            <img src="../../../../assets/icons/tabs/tab-1-icon.svg" alt="" class="icon-inactive">
+                            <img src="../../../../assets/icons/tabs/tab-1-icon-active.svg" alt="" class="icon-active">
+                        </div>
+                        <span class="bottom-nav-label">Home</span>
+                    </button>
+                    
+                    <button class="bottom-nav-tab">
+                        <div class="bottom-nav-icon">
+                            <img src="../../../../assets/icons/tabs/tab-2-icon.svg" alt="" class="icon-inactive">
+                            <img src="../../../../assets/icons/tabs/tab-2-icon-active.svg" alt="" class="icon-active">
+                        </div>
+                        <span class="bottom-nav-label">Apply</span>
+                    </button>
+                    
+                    <button class="bottom-nav-tab">
+                        <div class="bottom-nav-icon">
+                            <img src="../../../../assets/icons/tabs/tab-3-icon.svg" alt="" class="icon-inactive">
+                            <img src="../../../../assets/icons/tabs/tab-3-icon-active.svg" alt="" class="icon-active">
+                        </div>
+                        <span class="bottom-nav-label">Payments</span>
+                    </button>
+                    
+                    <button class="bottom-nav-tab">
+                        <div class="bottom-nav-icon">
+                            <img src="../../../../assets/icons/tabs/tab-4-icon.svg" alt="" class="icon-inactive">
+                            <img src="../../../../assets/icons/tabs/tab-4-icon-active.svg" alt="" class="icon-active">
+                        </div>
+                        <span class="bottom-nav-label">Search</span>
+                    </button>
+                    
+                    <button class="bottom-nav-tab">
+                        <div class="bottom-nav-icon">
+                            <img src="../../../../assets/icons/tabs/tab-5-icon.svg" alt="" class="icon-inactive">
+                            <img src="../../../../assets/icons/tabs/tab-5-icon-active.svg" alt="" class="icon-active">
+                        </div>
+                        <span class="bottom-nav-label">Cards</span>
+                    </button>
+                </div>
+                
+                <div class="bottom-nav-home-indicator">
+                    <div class="home-indicator-handle"></div>
+                </div>
+            </div>
+        </div>
+        <div class="nav-label">No Active Tab</div>
+    </div>
+
+    <div class="section">
+        <h2>Active States - All Tabs</h2>
+        <p>Examples of each tab in its active state with green indicator.</p>
+        
+        <div class="grid-demos">
+            <!-- Home Active -->
+            <div class="demo-item">
+                <div class="nav-demo">
+                    <div class="bottom-nav">
+                        <div class="bottom-nav-active-border">
+                            <div class="active-border-segment active"></div>
+                            <div class="active-border-segment"></div>
+                            <div class="active-border-segment"></div>
+                            <div class="active-border-segment"></div>
+                            <div class="active-border-segment"></div>
+                        </div>
+                        
+                        <div class="bottom-nav-tabs">
+                            <button class="bottom-nav-tab active">
+                                <div class="bottom-nav-icon">
+                                    <img src="../../../../assets/icons/tabs/tab-1-icon.svg" alt="" class="icon-inactive">
+                                    <img src="../../../../assets/icons/tabs/tab-1-icon-active.svg" alt="" class="icon-active">
+                                </div>
+                                <span class="bottom-nav-label">Home</span>
+                            </button>
+                            
+                            <button class="bottom-nav-tab">
+                                <div class="bottom-nav-icon">
+                                    <img src="../../../../assets/icons/tabs/tab-2-icon.svg" alt="" class="icon-inactive">
+                                    <img src="../../../../assets/icons/tabs/tab-2-icon-active.svg" alt="" class="icon-active">
+                                </div>
+                                <span class="bottom-nav-label">Apply</span>
+                            </button>
+                            
+                            <button class="bottom-nav-tab">
+                                <div class="bottom-nav-icon">
+                                    <img src="../../../../assets/icons/tabs/tab-3-icon.svg" alt="" class="icon-inactive">
+                                    <img src="../../../../assets/icons/tabs/tab-3-icon-active.svg" alt="" class="icon-active">
+                                </div>
+                                <span class="bottom-nav-label">Payments</span>
+                            </button>
+                            
+                            <button class="bottom-nav-tab">
+                                <div class="bottom-nav-icon">
+                                    <img src="../../../../assets/icons/tabs/tab-4-icon.svg" alt="" class="icon-inactive">
+                                    <img src="../../../../assets/icons/tabs/tab-4-icon-active.svg" alt="" class="icon-active">
+                                </div>
+                                <span class="bottom-nav-label">Search</span>
+                            </button>
+                            
+                            <button class="bottom-nav-tab">
+                                <div class="bottom-nav-icon">
+                                    <img src="../../../../assets/icons/tabs/tab-5-icon.svg" alt="" class="icon-inactive">
+                                    <img src="../../../../assets/icons/tabs/tab-5-icon-active.svg" alt="" class="icon-active">
+                                </div>
+                                <span class="bottom-nav-label">Cards</span>
+                            </button>
+                        </div>
+                        
+                        <div class="bottom-nav-home-indicator">
+                            <div class="home-indicator-handle"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-label">Home Active</div>
+            </div>
+
+            <!-- Payments Active -->
+            <div class="demo-item">
+                <div class="nav-demo">
+                    <div class="bottom-nav">
+                        <div class="bottom-nav-active-border">
+                            <div class="active-border-segment"></div>
+                            <div class="active-border-segment"></div>
+                            <div class="active-border-segment active"></div>
+                            <div class="active-border-segment"></div>
+                            <div class="active-border-segment"></div>
+                        </div>
+                        
+                        <div class="bottom-nav-tabs">
+                            <button class="bottom-nav-tab">
+                                <div class="bottom-nav-icon">
+                                    <img src="../../../../assets/icons/tabs/tab-1-icon.svg" alt="" class="icon-inactive">
+                                    <img src="../../../../assets/icons/tabs/tab-1-icon-active.svg" alt="" class="icon-active">
+                                </div>
+                                <span class="bottom-nav-label">Home</span>
+                            </button>
+                            
+                            <button class="bottom-nav-tab">
+                                <div class="bottom-nav-icon">
+                                    <img src="../../../../assets/icons/tabs/tab-2-icon.svg" alt="" class="icon-inactive">
+                                    <img src="../../../../assets/icons/tabs/tab-2-icon-active.svg" alt="" class="icon-active">
+                                </div>
+                                <span class="bottom-nav-label">Apply</span>
+                            </button>
+                            
+                            <button class="bottom-nav-tab active">
+                                <div class="bottom-nav-icon">
+                                    <img src="../../../../assets/icons/tabs/tab-3-icon.svg" alt="" class="icon-inactive">
+                                    <img src="../../../../assets/icons/tabs/tab-3-icon-active.svg" alt="" class="icon-active">
+                                </div>
+                                <span class="bottom-nav-label">Payments</span>
+                            </button>
+                            
+                            <button class="bottom-nav-tab">
+                                <div class="bottom-nav-icon">
+                                    <img src="../../../../assets/icons/tabs/tab-4-icon.svg" alt="" class="icon-inactive">
+                                    <img src="../../../../assets/icons/tabs/tab-4-icon-active.svg" alt="" class="icon-active">
+                                </div>
+                                <span class="bottom-nav-label">Search</span>
+                            </button>
+                            
+                            <button class="bottom-nav-tab">
+                                <div class="bottom-nav-icon">
+                                    <img src="../../../../assets/icons/tabs/tab-5-icon.svg" alt="" class="icon-inactive">
+                                    <img src="../../../../assets/icons/tabs/tab-5-icon-active.svg" alt="" class="icon-active">
+                                </div>
+                                <span class="bottom-nav-label">Cards</span>
+                            </button>
+                        </div>
+                        
+                        <div class="bottom-nav-home-indicator">
+                            <div class="home-indicator-handle"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-label">Payments Active</div>
+            </div>
+
+            <!-- Search Active -->
+            <div class="demo-item">
+                <div class="nav-demo">
+                    <div class="bottom-nav">
+                        <div class="bottom-nav-active-border">
+                            <div class="active-border-segment"></div>
+                            <div class="active-border-segment"></div>
+                            <div class="active-border-segment"></div>
+                            <div class="active-border-segment active"></div>
+                            <div class="active-border-segment"></div>
+                        </div>
+                        
+                        <div class="bottom-nav-tabs">
+                            <button class="bottom-nav-tab">
+                                <div class="bottom-nav-icon">
+                                    <img src="../../../../assets/icons/tabs/tab-1-icon.svg" alt="" class="icon-inactive">
+                                    <img src="../../../../assets/icons/tabs/tab-1-icon-active.svg" alt="" class="icon-active">
+                                </div>
+                                <span class="bottom-nav-label">Home</span>
+                            </button>
+                            
+                            <button class="bottom-nav-tab">
+                                <div class="bottom-nav-icon">
+                                    <img src="../../../../assets/icons/tabs/tab-2-icon.svg" alt="" class="icon-inactive">
+                                    <img src="../../../../assets/icons/tabs/tab-2-icon-active.svg" alt="" class="icon-active">
+                                </div>
+                                <span class="bottom-nav-label">Apply</span>
+                            </button>
+                            
+                            <button class="bottom-nav-tab">
+                                <div class="bottom-nav-icon">
+                                    <img src="../../../../assets/icons/tabs/tab-3-icon.svg" alt="" class="icon-inactive">
+                                    <img src="../../../../assets/icons/tabs/tab-3-icon-active.svg" alt="" class="icon-active">
+                                </div>
+                                <span class="bottom-nav-label">Payments</span>
+                            </button>
+                            
+                            <button class="bottom-nav-tab active">
+                                <div class="bottom-nav-icon">
+                                    <img src="../../../../assets/icons/tabs/tab-4-icon.svg" alt="" class="icon-inactive">
+                                    <img src="../../../../assets/icons/tabs/tab-4-icon-active.svg" alt="" class="icon-active">
+                                </div>
+                                <span class="bottom-nav-label">Search</span>
+                            </button>
+                            
+                            <button class="bottom-nav-tab">
+                                <div class="bottom-nav-icon">
+                                    <img src="../../../../assets/icons/tabs/tab-5-icon.svg" alt="" class="icon-inactive">
+                                    <img src="../../../../assets/icons/tabs/tab-5-icon-active.svg" alt="" class="icon-active">
+                                </div>
+                                <span class="bottom-nav-label">Cards</span>
+                            </button>
+                        </div>
+                        
+                        <div class="bottom-nav-home-indicator">
+                            <div class="home-indicator-handle"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-label">Search Active</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>In Context - Device Frame</h2>
+        <p>Bottom navigation as it would appear in a mobile app interface.</p>
+        
+        <div class="device-frame">
+            <div class="device-content">
+                <p>App Content Area</p>
+            </div>
+            
+            <div class="bottom-nav">
+                <div class="bottom-nav-active-border">
+                    <div class="active-border-segment active"></div>
+                    <div class="active-border-segment"></div>
+                    <div class="active-border-segment"></div>
+                    <div class="active-border-segment"></div>
+                    <div class="active-border-segment"></div>
+                </div>
+                
+                <div class="bottom-nav-tabs">
+                    <button class="bottom-nav-tab active">
+                        <div class="bottom-nav-icon">
+                            <img src="../../../../assets/icons/tabs/tab-1-icon.svg" alt="" class="icon-inactive">
+                            <img src="../../../../assets/icons/tabs/tab-1-icon-active.svg" alt="" class="icon-active">
+                        </div>
+                        <span class="bottom-nav-label">Home</span>
+                    </button>
+                    
+                    <button class="bottom-nav-tab">
+                        <div class="bottom-nav-icon">
+                            <img src="../../../../assets/icons/tabs/tab-2-icon.svg" alt="" class="icon-inactive">
+                            <img src="../../../../assets/icons/tabs/tab-2-icon-active.svg" alt="" class="icon-active">
+                        </div>
+                        <span class="bottom-nav-label">Apply</span>
+                    </button>
+                    
+                    <button class="bottom-nav-tab">
+                        <div class="bottom-nav-icon">
+                            <img src="../../../../assets/icons/tabs/tab-3-icon.svg" alt="" class="icon-inactive">
+                            <img src="../../../../assets/icons/tabs/tab-3-icon-active.svg" alt="" class="icon-active">
+                        </div>
+                        <span class="bottom-nav-label">Payments</span>
+                    </button>
+                    
+                    <button class="bottom-nav-tab">
+                        <div class="bottom-nav-icon">
+                            <img src="../../../../assets/icons/tabs/tab-4-icon.svg" alt="" class="icon-inactive">
+                            <img src="../../../../assets/icons/tabs/tab-4-icon-active.svg" alt="" class="icon-active">
+                        </div>
+                        <span class="bottom-nav-label">Search</span>
+                    </button>
+                    
+                    <button class="bottom-nav-tab">
+                        <div class="bottom-nav-icon">
+                            <img src="../../../../assets/icons/tabs/tab-5-icon.svg" alt="" class="icon-inactive">
+                            <img src="../../../../assets/icons/tabs/tab-5-icon-active.svg" alt="" class="icon-active">
+                        </div>
+                        <span class="bottom-nav-label">Cards</span>
+                    </button>
+                </div>
+                
+                <div class="bottom-nav-home-indicator">
+                    <div class="home-indicator-handle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Usage Example</h2>
+        <div class="code-block">
+            <code>&lt;!-- Include design tokens first --&gt;<br>
+&lt;link rel="stylesheet" href="../../../css/cancara-tokens.css"&gt;<br>
+<br>
+&lt;!-- Include component styles --&gt;<br>
+&lt;link rel="stylesheet" href="BottomNav.vanilla.css"&gt;<br>
+<br>
+&lt;!-- Bottom Nav with Home active --&gt;<br>
+&lt;div class="bottom-nav"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="bottom-nav-active-border"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="active-border-segment active"&gt;&lt;/div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="active-border-segment"&gt;&lt;/div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="active-border-segment"&gt;&lt;/div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="active-border-segment"&gt;&lt;/div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="active-border-segment"&gt;&lt;/div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="bottom-nav-tabs"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button class="bottom-nav-tab active"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="bottom-nav-icon"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;img src="path/to/tab-icon.svg" class="icon-inactive"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;img src="path/to/tab-icon-active.svg" class="icon-active"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span class="bottom-nav-label"&gt;Home&lt;/span&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/button&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!-- More tabs --&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="bottom-nav-home-indicator"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="home-indicator-handle"&gt;&lt;/div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+&lt;/div&gt;</code>
+        </div>
+    </div>
+
+    <script>
+        // Interactive navigation functionality
+        function initBottomNav() {
+            const nav = document.getElementById('interactive-nav');
+            if (!nav) return;
+
+            const tabs = nav.querySelectorAll('.bottom-nav-tab');
+            const segments = nav.querySelectorAll('.active-border-segment');
+
+            tabs.forEach((tab, index) => {
+                tab.addEventListener('click', () => {
+                    // Remove active class from all tabs and segments
+                    tabs.forEach(t => t.classList.remove('active'));
+                    segments.forEach(s => s.classList.remove('active'));
+
+                    // Add active class to clicked tab and corresponding segment
+                    tab.classList.add('active');
+                    segments[index].classList.add('active');
+                });
+            });
+        }
+
+        function detectSystemTheme() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-text').textContent = 'Switch to Light Mode';
+            } else {
+                document.body.setAttribute('data-theme', 'light');
+                document.getElementById('theme-text').textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', detectSystemTheme);
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const themeText = document.getElementById('theme-text');
+            const currentTheme = body.getAttribute('data-theme');
+            
+            if (currentTheme === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                themeText.textContent = 'Switch to Light Mode';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeText.textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', function() {
+            detectSystemTheme();
+            initBottomNav();
+        });
+    </script>
+</body>
+</html>

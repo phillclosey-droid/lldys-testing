@@ -1,0 +1,871 @@
+const ListDataPlaybackGroup: React.VFC = () => {
+  return (
+    <ListDataPlaybackGroup>
+      <Width=Compact>
+        <DataPlaybackItem01>
+          <Container>
+            <Text>Heading</Text>
+          </Container>
+          <HStack>
+            <DataSet01>
+              <Text>Title</Text>
+              <Text>Data</Text>
+            </DataSet01>
+            <Item01Icon>
+              <Wrapper(Required)>
+                <Union(Required)>
+                  <img src="" />
+                </Union(Required)>
+              </Wrapper(Required)>
+            </Item01Icon>
+          </HStack>
+          <Divider>
+            <Border />
+          </Divider>
+        </DataPlaybackItem01>
+        <DataPlaybackItem02>
+          <HStack>
+            <DataSet01>
+              <Text>Title</Text>
+              <Text>Data</Text>
+            </DataSet01>
+            <Item02Icon>
+              <Wrapper(Required)>
+                <Union(Required)>
+                  <img src="" />
+                </Union(Required)>
+              </Wrapper(Required)>
+            </Item02Icon>
+          </HStack>
+          <Divider>
+            <Border />
+          </Divider>
+        </DataPlaybackItem02>
+        <DataPlaybackItem03>
+          <HStack>
+            <DataSet01>
+              <Text>Title</Text>
+              <Text>Data</Text>
+            </DataSet01>
+            <Item03Icon>
+              <Wrapper(Required)>
+                <Union(Required)>
+                  <img src="" />
+                </Union(Required)>
+              </Wrapper(Required)>
+            </Item03Icon>
+          </HStack>
+          <Divider>
+            <Border />
+          </Divider>
+        </DataPlaybackItem03>
+        <DataPlaybackItem04>
+          <HStack>
+            <DataSet01>
+              <Text>Title</Text>
+              <Text>Data</Text>
+            </DataSet01>
+            <Item04Icon>
+              <Wrapper(Required)>
+                <Union(Required)>
+                  <img src="" />
+                </Union(Required)>
+              </Wrapper(Required)>
+            </Item04Icon>
+          </HStack>
+          <Divider>
+            <Border />
+          </Divider>
+        </DataPlaybackItem04>
+        <DataPlaybackItem05>
+          <HStack>
+            <DataSet01>
+              <Text>Title</Text>
+              <Text>Data</Text>
+            </DataSet01>
+            <Item05Icon>
+              <Wrapper(Required)>
+                <Union(Required)>
+                  <img src="" />
+                </Union(Required)>
+              </Wrapper(Required)>
+            </Item05Icon>
+          </HStack>
+        </DataPlaybackItem05>
+      </Width=Compact>
+      <Width=FullWidth>
+        <DataPlaybackItem01>
+          <Container>
+            <Text>Heading</Text>
+          </Container>
+          <HStack>
+            <DataSet01>
+              <Text>Title</Text>
+              <Text>Data</Text>
+            </DataSet01>
+            <Item01Icon>
+              <Wrapper(Required)>
+                <Union(Required)>
+                  <img src="" />
+                </Union(Required)>
+              </Wrapper(Required)>
+            </Item01Icon>
+          </HStack>
+          <Divider>
+            <Border />
+          </Divider>
+        </DataPlaybackItem01>
+        <DataPlaybackItem02>
+          <HStack>
+            <DataSet01>
+              <Text>Title</Text>
+              <Text>Data</Text>
+            </DataSet01>
+            <Item02Icon>
+              <Wrapper(Required)>
+                <Union(Required)>
+                  <img src="" />
+                </Union(Required)>
+              </Wrapper(Required)>
+            </Item02Icon>
+          </HStack>
+          <Divider>
+            <Border />
+          </Divider>
+        </DataPlaybackItem02>
+        <DataPlaybackItem03>
+          <HStack>
+            <DataSet01>
+              <Text>Title</Text>
+              <Text>Data</Text>
+            </DataSet01>
+            <Item03Icon>
+              <Wrapper(Required)>
+                <Union(Required)>
+                  <img src="" />
+                </Union(Required)>
+              </Wrapper(Required)>
+            </Item03Icon>
+          </HStack>
+          <Divider>
+            <Border />
+          </Divider>
+        </DataPlaybackItem03>
+        <DataPlaybackItem04>
+          <HStack>
+            <DataSet01>
+              <Text>Title</Text>
+              <Text>Data</Text>
+            </DataSet01>
+            <Item04Icon>
+              <Wrapper(Required)>
+                <Union(Required)>
+                  <img src="" />
+                </Union(Required)>
+              </Wrapper(Required)>
+            </Item04Icon>
+          </HStack>
+          <Divider>
+            <Border />
+          </Divider>
+        </DataPlaybackItem04>
+        <DataPlaybackItem05>
+          <HStack>
+            <DataSet01>
+              <Text>Title</Text>
+              <Text>Data</Text>
+            </DataSet01>
+            <Item05Icon>
+              <Wrapper(Required)>
+                <Union(Required)>
+                  <img src="" />
+                </Union(Required)>
+              </Wrapper(Required)>
+            </Item05Icon>
+          </HStack>
+        </DataPlaybackItem05>
+      </Width=FullWidth>
+    </ListDataPlaybackGroup>
+  )
+}
+
+const Width=Compact = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+`
+const DataPlaybackItem01 = styled.div`
+  border-radius: 12px 12px 0px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0px 16px;
+`
+const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0px 0px 16px 0px;
+`
+const text1 = styled.div`
+  text-align: left;
+  vertical-align: middle;
+  font-size: 15px;
+  font-family: GT Ultra;
+  line-height: 20px;
+  color: #000000;
+`
+const HStack = styled.div`
+  border-radius: 12px 12px 0px 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 16px;
+  gap: 12px;
+  background-color: #ffffff;
+`
+const DataSet01 = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4px;
+`
+const text2 = styled.div`
+  text-align: left;
+  vertical-align: middle;
+  font-size: 14px;
+  font-family: GT Ultra;
+  line-height: 20px;
+  color: #767676;
+`
+const text3 = styled.div`
+  text-align: left;
+  vertical-align: middle;
+  font-size: 15px;
+  font-family: GT Ultra;
+  line-height: 20px;
+  color: #000000;
+`
+const Item01Icon = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
+`
+const Wrapper(Required) = styled.div`
+  height: 12px;
+  width: 12px;
+  background-color: #ffffff;
+`
+const img4 = styled.div`
+  height: 12px;
+  width: 12px;
+`
+const Divider = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+`
+const Border = styled.div`
+  height: 1px;
+  width: 343px;
+  border: 1px solid #f1f1f1;
+`
+const DataPlaybackItem02 = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0px 16px;
+`
+const HStack = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 16px;
+  gap: 12px;
+  background-color: #ffffff;
+`
+const DataSet01 = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4px;
+`
+const text5 = styled.div`
+  text-align: left;
+  vertical-align: middle;
+  font-size: 14px;
+  font-family: GT Ultra;
+  line-height: 20px;
+  color: #767676;
+`
+const text6 = styled.div`
+  text-align: left;
+  vertical-align: middle;
+  font-size: 15px;
+  font-family: GT Ultra;
+  line-height: 20px;
+  color: #000000;
+`
+const Item02Icon = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
+`
+const Wrapper(Required) = styled.div`
+  height: 12px;
+  width: 12px;
+  background-color: #ffffff;
+`
+const img7 = styled.div`
+  height: 12px;
+  width: 12px;
+`
+const Divider = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+`
+const Border = styled.div`
+  height: 1px;
+  width: 343px;
+  border: 1px solid #f1f1f1;
+`
+const DataPlaybackItem03 = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0px 16px;
+`
+const HStack = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 16px;
+  gap: 12px;
+  background-color: #ffffff;
+`
+const DataSet01 = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4px;
+`
+const text8 = styled.div`
+  text-align: left;
+  vertical-align: middle;
+  font-size: 14px;
+  font-family: GT Ultra;
+  line-height: 20px;
+  color: #767676;
+`
+const text9 = styled.div`
+  text-align: left;
+  vertical-align: middle;
+  font-size: 15px;
+  font-family: GT Ultra;
+  line-height: 20px;
+  color: #000000;
+`
+const Item03Icon = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
+`
+const Wrapper(Required) = styled.div`
+  height: 12px;
+  width: 12px;
+  background-color: #ffffff;
+`
+const img10 = styled.div`
+  height: 12px;
+  width: 12px;
+`
+const Divider = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+`
+const Border = styled.div`
+  height: 1px;
+  width: 343px;
+  border: 1px solid #f1f1f1;
+`
+const DataPlaybackItem04 = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0px 16px;
+`
+const HStack = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 16px;
+  gap: 12px;
+  background-color: #ffffff;
+`
+const DataSet01 = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4px;
+`
+const text11 = styled.div`
+  text-align: left;
+  vertical-align: middle;
+  font-size: 14px;
+  font-family: GT Ultra;
+  line-height: 20px;
+  color: #767676;
+`
+const text12 = styled.div`
+  text-align: left;
+  vertical-align: middle;
+  font-size: 15px;
+  font-family: GT Ultra;
+  line-height: 20px;
+  color: #000000;
+`
+const Item04Icon = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
+`
+const Wrapper(Required) = styled.div`
+  height: 12px;
+  width: 12px;
+  background-color: #ffffff;
+`
+const img13 = styled.div`
+  height: 12px;
+  width: 12px;
+`
+const Divider = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+`
+const Border = styled.div`
+  height: 1px;
+  width: 343px;
+  border: 1px solid #f1f1f1;
+`
+const DataPlaybackItem05 = styled.div`
+  border-radius: 0px 0px 12px 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0px 16px;
+`
+const HStack = styled.div`
+  border-radius: 0px 0px 12px 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 16px;
+  gap: 12px;
+  background-color: #ffffff;
+`
+const DataSet01 = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4px;
+`
+const text14 = styled.div`
+  text-align: left;
+  vertical-align: middle;
+  font-size: 14px;
+  font-family: GT Ultra;
+  line-height: 20px;
+  color: #767676;
+`
+const text15 = styled.div`
+  text-align: left;
+  vertical-align: middle;
+  font-size: 15px;
+  font-family: GT Ultra;
+  line-height: 20px;
+  color: #000000;
+`
+const Item05Icon = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
+`
+const Wrapper(Required) = styled.div`
+  height: 12px;
+  width: 12px;
+  background-color: #ffffff;
+`
+const img16 = styled.div`
+  height: 12px;
+  width: 12px;
+`
+const Width=FullWidth = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+`
+const DataPlaybackItem01 = styled.div`
+  border-radius: 12px 12px 0px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+`
+const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0px 16px 16px 16px;
+`
+const text17 = styled.div`
+  text-align: left;
+  vertical-align: middle;
+  font-size: 15px;
+  font-family: GT Ultra;
+  line-height: 20px;
+  color: #000000;
+`
+const HStack = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 16px;
+  gap: 12px;
+  background-color: #ffffff;
+`
+const DataSet01 = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4px;
+`
+const text18 = styled.div`
+  text-align: left;
+  vertical-align: middle;
+  font-size: 14px;
+  font-family: GT Ultra;
+  line-height: 20px;
+  color: #767676;
+`
+const text19 = styled.div`
+  text-align: left;
+  vertical-align: middle;
+  font-size: 15px;
+  font-family: GT Ultra;
+  line-height: 20px;
+  color: #000000;
+`
+const Item01Icon = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
+`
+const Wrapper(Required) = styled.div`
+  height: 12px;
+  width: 12px;
+  background-color: #ffffff;
+`
+const img20 = styled.div`
+  height: 12px;
+  width: 12px;
+`
+const Divider = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+`
+const Border = styled.div`
+  height: 1px;
+  width: 375px;
+  border: 1px solid #f1f1f1;
+`
+const DataPlaybackItem02 = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+`
+const HStack = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 16px;
+  gap: 12px;
+  background-color: #ffffff;
+`
+const DataSet01 = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4px;
+`
+const text21 = styled.div`
+  text-align: left;
+  vertical-align: middle;
+  font-size: 14px;
+  font-family: GT Ultra;
+  line-height: 20px;
+  color: #767676;
+`
+const text22 = styled.div`
+  text-align: left;
+  vertical-align: middle;
+  font-size: 15px;
+  font-family: GT Ultra;
+  line-height: 20px;
+  color: #000000;
+`
+const Item02Icon = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
+`
+const Wrapper(Required) = styled.div`
+  height: 12px;
+  width: 12px;
+  background-color: #ffffff;
+`
+const img23 = styled.div`
+  height: 12px;
+  width: 12px;
+`
+const Divider = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+`
+const Border = styled.div`
+  height: 1px;
+  width: 375px;
+  border: 1px solid #f1f1f1;
+`
+const DataPlaybackItem03 = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+`
+const HStack = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 16px;
+  gap: 12px;
+  background-color: #ffffff;
+`
+const DataSet01 = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4px;
+`
+const text24 = styled.div`
+  text-align: left;
+  vertical-align: middle;
+  font-size: 14px;
+  font-family: GT Ultra;
+  line-height: 20px;
+  color: #767676;
+`
+const text25 = styled.div`
+  text-align: left;
+  vertical-align: middle;
+  font-size: 15px;
+  font-family: GT Ultra;
+  line-height: 20px;
+  color: #000000;
+`
+const Item03Icon = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
+`
+const Wrapper(Required) = styled.div`
+  height: 12px;
+  width: 12px;
+  background-color: #ffffff;
+`
+const img26 = styled.div`
+  height: 12px;
+  width: 12px;
+`
+const Divider = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+`
+const Border = styled.div`
+  height: 1px;
+  width: 375px;
+  border: 1px solid #f1f1f1;
+`
+const DataPlaybackItem04 = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+`
+const HStack = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 16px;
+  gap: 12px;
+  background-color: #ffffff;
+`
+const DataSet01 = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4px;
+`
+const text27 = styled.div`
+  text-align: left;
+  vertical-align: middle;
+  font-size: 14px;
+  font-family: GT Ultra;
+  line-height: 20px;
+  color: #767676;
+`
+const text28 = styled.div`
+  text-align: left;
+  vertical-align: middle;
+  font-size: 15px;
+  font-family: GT Ultra;
+  line-height: 20px;
+  color: #000000;
+`
+const Item04Icon = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
+`
+const Wrapper(Required) = styled.div`
+  height: 12px;
+  width: 12px;
+  background-color: #ffffff;
+`
+const img29 = styled.div`
+  height: 12px;
+  width: 12px;
+`
+const Divider = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+`
+const Border = styled.div`
+  height: 1px;
+  width: 375px;
+  border: 1px solid #f1f1f1;
+`
+const DataPlaybackItem05 = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+`
+const HStack = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 16px;
+  gap: 12px;
+  background-color: #ffffff;
+`
+const DataSet01 = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4px;
+`
+const text30 = styled.div`
+  text-align: left;
+  vertical-align: middle;
+  font-size: 14px;
+  font-family: GT Ultra;
+  line-height: 20px;
+  color: #767676;
+`
+const text31 = styled.div`
+  text-align: left;
+  vertical-align: middle;
+  font-size: 15px;
+  font-family: GT Ultra;
+  line-height: 20px;
+  color: #000000;
+`
+const Item05Icon = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
+`
+const Wrapper(Required) = styled.div`
+  height: 12px;
+  width: 12px;
+  background-color: #ffffff;
+`
+const img32 = styled.div`
+  height: 12px;
+  width: 12px;
+`

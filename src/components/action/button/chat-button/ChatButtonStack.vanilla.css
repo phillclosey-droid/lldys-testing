@@ -1,0 +1,14 @@
+/* ChatButtonStack Vanilla CSS - SELF-CONTAINED - TOKEN LED */
+
+/* Base container - horizontal stack */
+.chat-button-stack {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 var(--spacing-16);
+  gap: var(--spacing-16);
+  width: 100%;
+}
+
+/* No additional nested styles needed - uses ActionButton and IconButton as-is */

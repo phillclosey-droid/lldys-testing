@@ -1,0 +1,226 @@
+const TrayTemplate: React.VFC = () => {
+  return (
+    <TrayTemplate>
+      <Container>
+        <Tray>
+          <ContentGoesInsideHere>
+            <Handlebar>
+              <Grabber />
+            </Handlebar>
+            <Header>
+              <Text>Title</Text>
+              <Leading>
+                <Hittargetarea>
+                  <Leadingicon>
+                    <Wrapper(Required)>
+                      <Union(Required)>
+                        <img src="" />
+                      </Union(Required)>
+                    </Wrapper(Required)>
+                  </Leadingicon>
+                </Hittargetarea>
+              </Leading>
+              <Wrapper />
+              <Trailing>
+                <Hittargetarea>
+                  <Trailingicon>
+                    <Wrapper(Required)>
+                      <Union(Required)>
+                        <img src="" />
+                      </Union(Required)>
+                    </Wrapper(Required)>
+                  </Trailingicon>
+                </Hittargetarea>
+              </Trailing>
+            </Header>
+            <_Swapmeout>
+              <Text>Content slot</Text>
+              <Text>No need to detach. Create the content you want to swap as an in-page component and swap it from the instance menu.</Text>
+            </_Swapmeout>
+          </ContentGoesInsideHere>
+        </Tray>
+      </Container>
+      <Overlay />
+      <_Swapmeout>
+        <Text>Content slot</Text>
+        <Text>No need to detach. Create the content you want to swap as an in-page component and swap it from the instance menu.</Text>
+      </_Swapmeout>
+    </TrayTemplate>
+  )
+}
+
+const TrayTemplate = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  background-color: #f1f1f1;
+`
+const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 98px 0px 0px 0px;
+`
+const Tray = styled.div`
+  border-radius: 16px 16px 0px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 16px;
+  background-color: #ffffff;
+`
+const ContentGoesInsideHere = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+`
+const Handlebar = styled.div`
+  height: 14px;
+  width: 375px;
+`
+const Grabber = styled.div`
+  border-radius: 2.5px;
+  height: 5px;
+  width: 36px;
+  background-color: #000000;
+`
+const Header = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 8px;
+  background-color: #ffffff;
+`
+const text1 = styled.div`
+  text-align: center;
+  vertical-align: middle;
+  font-size: 19px;
+  font-family: GT Ultra Median;
+  line-height: 22px;
+  color: #000000;
+`
+const Leading = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+`
+const Hittargetarea = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`
+const Leadingicon = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 3px;
+`
+const Wrapper(Required) = styled.div`
+  height: 18px;
+  width: 18px;
+  background-color: #ffffff;
+`
+const img2 = styled.div`
+  height: 18px;
+  width: 18px;
+`
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`
+const Trailing = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 8px;
+`
+const Hittargetarea = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`
+const Trailingicon = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 3px;
+`
+const Wrapper(Required) = styled.div`
+  height: 18px;
+  width: 18px;
+  background-color: #ffffff;
+`
+const img3 = styled.div`
+  height: 18px;
+  width: 18px;
+`
+const _Swapmeout = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  gap: 6px;
+  background-color: #f1f1f1;
+  border: 1px solid #adadad;
+`
+const text4 = styled.div`
+  text-align: center;
+  vertical-align: top;
+  font-size: 23px;
+  font-family: GT Ultra Median;
+  line-height: 26px;
+  color: #767676;
+`
+const text5 = styled.div`
+  text-align: center;
+  vertical-align: top;
+  font-size: 15px;
+  font-family: GT Ultra;
+  line-height: 20px;
+  color: #767676;
+`
+const Overlay = styled.div`
+  height: 840px;
+  width: 375px;
+  background-color: rgba(0, 0, 0, 0.6499999761581421);
+`
+const _Swapmeout = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  gap: 6px;
+  background-color: #f1f1f1;
+  border: 1px solid #adadad;
+`
+const text6 = styled.div`
+  text-align: center;
+  vertical-align: top;
+  font-size: 23px;
+  font-family: GT Ultra Median;
+  line-height: 26px;
+  color: #767676;
+`
+const text7 = styled.div`
+  text-align: center;
+  vertical-align: top;
+  font-size: 15px;
+  font-family: GT Ultra;
+  line-height: 20px;
+  color: #767676;
+`

@@ -1,0 +1,149 @@
+/* ServiceAlert Vanilla CSS - SELF-CONTAINED - TOKEN LED */
+
+/* ========== SERVICE ALERT CONTAINER ========== */
+.service-alert {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  width: 100%;
+  margin-bottom: var(--spacing-24);
+}
+
+/* ========== CONTENT BOX (with border) ========== */
+.service-alert-content {
+  border-radius: var(--radius-default);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-16);
+  padding: var(--spacing-16);
+  width: 100%;
+  background-color: var(--bg-sentiment-warning);
+  border: 1px solid var(--color-orange-warning);
+  position: relative;
+}
+
+/* Dark mode - use page background */
+[data-theme="dark"] .service-alert-content {
+  background-color: var(--bg-page-default);
+  border-color: var(--color-orange-warning);
+}
+
+/* ========== TOP ROW: Clock + Text + X ========== */
+.service-alert-top {
+  display: flex;
+  flex-direction: row;
+  gap: var(--spacing-12);
+  width: 100%;
+}
+
+/* ========== CLOCK ICON ========== */
+.service-alert-icon-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.service-alert-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.service-alert-icon img {
+  width: 24px !important;
+  height: 24px !important;
+  max-width: 24px !important;
+  max-height: 24px !important;
+  display: block;
+  object-fit: contain;
+  flex-shrink: 0;
+  filter: invert(64%) sepia(85%) saturate(1844%) hue-rotate(359deg) brightness(102%) contrast(101%);
+}
+
+[data-theme="dark"] .service-alert-icon img {
+  filter: invert(64%) sepia(85%) saturate(1844%) hue-rotate(359deg) brightness(102%) contrast(101%);
+}
+
+/* ========== MAIN CONTENT (Title + Text) ========== */
+.service-alert-main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-08);
+  flex: 1;
+  padding-right: 44px; /* Space for X button */
+}
+
+/* ========== TITLE ========== */
+.service-alert-title {
+  font-family: var(--font-family-body);
+  font-size: var(--type-style-5-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--type-style-5-line-height);
+  color: var(--text-default);
+}
+
+/* ========== TEXT ========== */
+.service-alert-text {
+  font-family: var(--font-family-body);
+  font-size: 14px;
+  font-weight: var(--font-weight-regular);
+  line-height: 20px;
+  color: var(--text-default);
+}
+
+/* ========== CLOSE BUTTON (X) ========== */
+.service-alert-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 44px;
+  height: 44px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+/* NO HOVER EFFECT on X */
+
+.service-alert-close img {
+  width: 18px !important; /* Reduced from 24px to 18px */
+  height: 18px !important;
+  max-width: 18px !important;
+  max-height: 18px !important;
+  min-width: 18px !important;
+  min-height: 18px !important;
+  display: block;
+  object-fit: contain;
+  flex-shrink: 0;
+  filter: brightness(0) saturate(100%);
+}
+
+[data-theme="dark"] .service-alert-close img {
+  filter: brightness(0) saturate(100%) invert(1);
+}
+
+/* ========== BOTTOM ROW: Action Buttons (Full Width of Box) ========== */
+.service-alert-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-16);
+  width: 100%; /* Full width of the bordered box */
+  margin-top: var(--spacing-08);
+}
+
+.service-alert-buttons .action-button {
+  width: 100%;
+}
+
+/* Dark Mode Support */
+/* All colors use semantic tokens that automatically adapt */

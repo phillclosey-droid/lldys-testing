@@ -1,0 +1,191 @@
+<!--
+  Text Field Component - SELF-CONTAINED - TOKEN LED
+  
+  A flexible text input component with multiple states and layouts.
+  
+  States:
+  - Default: Standard input with border
+  - Active: Focused state with thicker border
+  - Error: Red border with error icon and message
+  - Disabled: Grayed out, non-interactive
+  
+  Layouts:
+  - Default: Label above input
+  - Inline: Label inline with input (label:)
+  
+  Data Formats:
+  - None: Empty input
+  - Placeholder: Shows placeholder text
+  - Edit: Contains data with clear button
+  
+  Dependencies:
+  - cancara-tokens.css
+  - TextField.vanilla.css
+  - TextField.vanilla.js (optional - for interactive behaviors)
+  - Icons: critical-filled.svg, close.svg
+-->
+
+<!-- DEFAULT LAYOUT - EMPTY -->
+<div class="text-field-container">
+  <label class="text-field-label" for="field-1">Label</label>
+  <div class="text-field-wrapper">
+    <input 
+      type="text" 
+      id="field-1" 
+      class="text-field-input"
+    />
+  </div>
+</div>
+
+<!-- DEFAULT LAYOUT - WITH PLACEHOLDER -->
+<div class="text-field-container">
+  <label class="text-field-label" for="field-2">Label</label>
+  <div class="text-field-wrapper">
+    <input 
+      type="text" 
+      id="field-2" 
+      class="text-field-input"
+      placeholder="Placeholder text"
+    />
+  </div>
+</div>
+
+<!-- DEFAULT LAYOUT - WITH DATA -->
+<div class="text-field-container">
+  <label class="text-field-label" for="field-3">Label</label>
+  <div class="text-field-wrapper">
+    <input 
+      type="text" 
+      id="field-3" 
+      class="text-field-input"
+      value="Data input"
+    />
+    <button type="button" class="text-field-clear" aria-label="Clear input">
+      <img src="../../../../../assets/icons/navigation/close.svg" alt="" />
+    </button>
+  </div>
+</div>
+
+<!-- DEFAULT LAYOUT - ERROR STATE -->
+<div class="text-field-container text-field-error">
+  <label class="text-field-label" for="field-4">Label</label>
+  <div class="text-field-wrapper">
+    <input 
+      type="text" 
+      id="field-4" 
+      class="text-field-input"
+      aria-invalid="true"
+      aria-describedby="error-4"
+    />
+    <span class="text-field-icon text-field-icon-error" aria-hidden="true">
+      <img src="../../../../../assets/icons/sentiment-system/critical-filled.svg" alt="" />
+    </span>
+  </div>
+  <div class="text-field-hint" id="error-4">
+    Duis quis tempus dolor. Vivamus non pretium tortor, cursus pharetra turpis.
+  </div>
+</div>
+
+<!-- DEFAULT LAYOUT - DISABLED STATE -->
+<div class="text-field-container">
+  <label class="text-field-label" for="field-5">Label</label>
+  <div class="text-field-wrapper">
+    <input 
+      type="text" 
+      id="field-5" 
+      class="text-field-input"
+      disabled
+    />
+  </div>
+</div>
+
+<!-- DEFAULT LAYOUT - WITH HINT MESSAGE -->
+<div class="text-field-container">
+  <label class="text-field-label" for="field-6">Label</label>
+  <div class="text-field-wrapper">
+    <input 
+      type="text" 
+      id="field-6" 
+      class="text-field-input"
+      placeholder="Placeholder text"
+      aria-describedby="hint-6"
+    />
+  </div>
+  <div class="text-field-hint" id="hint-6">
+    Duis quis tempus dolor. Vivamus non pretium tortor, cursus pharetra turpis.
+  </div>
+</div>
+
+<!-- INLINE LAYOUT - EMPTY -->
+<div class="text-field-container text-field-inline">
+  <div class="text-field-wrapper">
+    <label class="text-field-label-inline" for="field-7">Label:</label>
+    <input 
+      type="text" 
+      id="field-7" 
+      class="text-field-input"
+    />
+  </div>
+</div>
+
+<!-- INLINE LAYOUT - WITH PLACEHOLDER -->
+<div class="text-field-container text-field-inline">
+  <div class="text-field-wrapper">
+    <label class="text-field-label-inline" for="field-8">Label:</label>
+    <input 
+      type="text" 
+      id="field-8" 
+      class="text-field-input"
+      placeholder="Placeholder text"
+    />
+  </div>
+</div>
+
+<!-- INLINE LAYOUT - WITH DATA -->
+<div class="text-field-container text-field-inline">
+  <div class="text-field-wrapper">
+    <label class="text-field-label-inline" for="field-9">Label:</label>
+    <input 
+      type="text" 
+      id="field-9" 
+      class="text-field-input"
+      value="Data input"
+    />
+    <button type="button" class="text-field-clear" aria-label="Clear input">
+      <img src="../../../../assets/icons/navigation/close.svg" alt="" />
+    </button>
+  </div>
+</div>
+
+<!-- INLINE LAYOUT - ERROR STATE -->
+<div class="text-field-container text-field-inline text-field-error">
+  <div class="text-field-wrapper">
+    <label class="text-field-label-inline" for="field-10">Label:</label>
+    <input 
+      type="text" 
+      id="field-10" 
+      class="text-field-input"
+      aria-invalid="true"
+      aria-describedby="error-10"
+    />
+    <span class="text-field-icon text-field-icon-error" aria-hidden="true">
+      <img src="../../../../assets/icons/sentiment-system/critical-filled.svg" alt="" />
+    </span>
+  </div>
+  <div class="text-field-hint" id="error-10">
+    Duis quis tempus dolor. Vivamus non pretium tortor, cursus pharetra turpis.
+  </div>
+</div>
+
+<!-- INLINE LAYOUT - DISABLED STATE -->
+<div class="text-field-container text-field-inline">
+  <div class="text-field-wrapper">
+    <label class="text-field-label-inline" for="field-11">Label:</label>
+    <input 
+      type="text" 
+      id="field-11" 
+      class="text-field-input"
+      disabled
+    />
+  </div>
+</div>

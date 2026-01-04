@@ -1,0 +1,227 @@
+/* ModalStackHeader - SELF-CONTAINED - TOKEN LED */
+/* Modal/overlay header with layered card design */
+
+/* Base Modal Stack Header - Black background container */
+.modal-stack-header {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--spacing-none);
+  background: var(--color-black);
+  position: relative;
+}
+
+/* Override StatusBar text/icon colors to white for black background */
+.modal-stack-header .status-bar-time {
+  color: var(--color-white);
+}
+
+.modal-stack-header .signal-bar {
+  background-color: var(--color-white);
+}
+
+.modal-stack-header .wifi-arc {
+  border-color: var(--color-white);
+}
+
+.modal-stack-header .wifi-dot {
+  background-color: var(--color-white);
+}
+
+.modal-stack-header .battery-border {
+  border-color: var(--color-white);
+}
+
+.modal-stack-header .battery-capacity {
+  background-color: var(--color-white);
+}
+
+.modal-stack-header .battery-tip {
+  background-color: var(--color-white);
+}
+
+/* Card Top - Grey shape with top radius, 24px margins left/right, 10px high */
+.modal-stack-header-card-top {
+  width: calc(100% - 48px); /* 24px margin on each side = 48px total */
+  height: 10px;
+  background: var(--bg-panel-secondary);
+  border-top-left-radius: var(--radius-default);
+  border-top-right-radius: var(--radius-default);
+  margin-left: var(--spacing-24);
+  margin-right: var(--spacing-24);
+}
+
+/* Front - White shape with top radius, full width, 14px high */
+.modal-stack-header-front {
+  width: 100%;
+  height: 14px;
+  background: var(--bg-panel-default);
+  border-top-left-radius: var(--radius-default);
+  border-top-right-radius: var(--radius-default);
+}
+
+/* Title Strip - White bar with title and icons, vertically centered */
+.modal-stack-header-bar {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0 var(--spacing-08);
+  height: 48px;
+  background: var(--bg-panel-default);
+  position: relative;
+  border-bottom: var(--border-width-01) solid var(--border-default);
+}
+
+/* ========== LEADING SECTION ========== */
+.modal-stack-header-leading {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex: 1;
+}
+
+.modal-stack-header-leading .hit-target {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 48px;
+  min-height: 48px;
+  cursor: pointer;
+}
+
+.modal-stack-header-leading .icon-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3px;
+  width: 18px;
+  height: 18px;
+}
+
+.modal-stack-header-leading .icon-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Empty Space Placeholder - for layouts without leading icon */
+.empty-space {
+  width: 48px;
+  height: 48px;
+}
+
+/* ========== TITLE / LOGO WRAPPER ========== */
+.modal-stack-header-title-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+/* ========== TITLE (DEFAULT LAYOUT ONLY) ========== */
+.modal-stack-header-title {
+  font-family: var(--type-style-3-family);
+  font-weight: var(--type-style-3-weight);
+  font-size: var(--type-style-3-size);
+  line-height: var(--type-style-3-line-height);
+  letter-spacing: var(--type-style-3-letter-spacing);
+  color: var(--text-default);
+  text-align: center;
+  width: 100%;
+}
+
+/* ========== LOGO (CO-SERVE LAYOUT ONLY) ========== */
+.modal-stack-header-logo {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-stack-header-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ========== TRAILING SECTION ========== */
+.modal-stack-header-trailing {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-08);
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.modal-stack-header-trailing .hit-target {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 48px;
+  min-height: 48px;
+  cursor: pointer;
+}
+
+.modal-stack-header-trailing .icon-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3px;
+  width: 18px;
+  height: 18px;
+}
+
+.modal-stack-header-trailing .icon-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ========== DARK MODE ========== */
+[data-theme="dark"] .modal-stack-header {
+  background: var(--color-black);
+}
+
+[data-theme="dark"] .modal-stack-header-card-top {
+  background: var(--bg-panel-secondary);
+}
+
+[data-theme="dark"] .modal-stack-header-front {
+  background: var(--bg-panel-default);
+}
+
+[data-theme="dark"] .modal-stack-header-bar {
+  background: var(--bg-panel-default);
+  border-bottom-color: var(--border-default);
+}
+
+[data-theme="dark"] .modal-stack-header-title {
+  color: var(--text-default);
+}
+
+/* Dark mode icon invert filter */
+[data-theme="dark"] .modal-stack-header .icon-wrapper img {
+  filter: invert(1);
+}
+
+/* ========== INTERACTIVE STATES ========== */
+.modal-stack-header .hit-target {
+  transition: opacity 0.2s ease;
+}
+
+.modal-stack-header .hit-target:hover {
+  opacity: 0.7;
+}
+
+.modal-stack-header .hit-target:active {
+  opacity: 0.5;
+}

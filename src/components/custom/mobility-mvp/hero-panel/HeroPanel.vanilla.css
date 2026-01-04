@@ -1,0 +1,416 @@
+/* HeroPanel Vanilla CSS - TOKEN LED - SELF-CONTAINED */
+
+/* Main Container */
+.hero-panel-container {
+  width: 100%;
+  background-color: var(--bg-panel-default);
+  border-radius: var(--radius-default);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* ============ TOP ROW: VEHICLE INFORMATION ============ */
+
+.hero-panel-top-row {
+  width: 100%;
+  padding: var(--spacing-16) var(--spacing-16) 0 var(--spacing-16);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--spacing-12);
+}
+
+/* Vehicle Info - Left Side */
+.hero-panel-vehicle-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-12);
+  flex: 1;
+  min-width: 0;
+}
+
+.hero-panel-vehicle-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-04);
+  min-width: 0;
+}
+
+.hero-panel-vehicle-model {
+  font-family: var(--type-style-6-family);
+  font-size: var(--type-style-6-size);
+  font-weight: var(--type-style-6-weight);
+  line-height: var(--type-style-6-line-height);
+  letter-spacing: var(--type-style-6-letter-spacing);
+  color: var(--text-subdued);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hero-panel-vehicle-reg {
+  font-family: var(--type-style-4-family);
+  font-size: var(--type-style-4-size);
+  font-weight: var(--type-style-4-weight);
+  line-height: var(--type-style-4-line-height);
+  letter-spacing: var(--type-style-4-letter-spacing);
+  color: var(--text-default);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Edit Link - Right Side */
+.hero-panel-edit-link {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-04);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.hero-panel-edit-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+.hero-panel-edit-text {
+  font-family: var(--type-style-6-family);
+  font-size: var(--type-style-6-size);
+  font-weight: var(--type-style-6-weight);
+  line-height: var(--type-style-6-line-height);
+  letter-spacing: var(--type-style-6-letter-spacing);
+  color: var(--text-default);
+}
+
+.hero-panel-edit-link:active {
+  opacity: 0.7;
+}
+
+/* ============ CAR PLACEMENT WITH GRADIENT ============ */
+
+.hero-panel-car-placement {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.hero-panel-car-placement video {
+  width: 100%;
+  height: auto;
+  display: block;
+  position: relative;
+  z-index: 0;
+}
+
+.hero-panel-car-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Note: Using rgba(99, 99, 99, 0.3) for --color-gray-600 at 30% opacity */
+/* --color-gray-600: #636363 which is rgb(99, 99, 99) */
+/* Hard stop at 20% then fades to transparent at top */
+
+.hero-panel-car-image {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 0;
+}
+
+.hero-panel-car-image img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+}
+
+.hero-panel-car-image video {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* ============ PROGRESS SECTION ============ */
+
+.hero-panel-progress-section {
+  width: 100%;
+  padding: 0 var(--spacing-16);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-08);
+  margin-top: 0;
+}
+
+.hero-panel-progress-text {
+  font-family: var(--type-style-3-family);
+  font-size: var(--type-style-3-size);
+  font-weight: var(--type-style-3-weight);
+  line-height: var(--type-style-3-line-height);
+  letter-spacing: var(--type-style-3-letter-spacing);
+  color: var(--text-default);
+}
+
+.hero-panel-progress-bar {
+  width: 100%;
+  height: 20px;
+  background-color: var(--bg-section-default);
+  border-radius: var(--radius-full);
+  padding: 4px;
+  overflow: visible;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.hero-panel-progress-fill {
+  height: 100%;
+  background-color: var(--color-green-success);
+  border-radius: var(--radius-full);
+  width: 12px;
+  transition: none;
+}
+
+.hero-panel-progress-fill.animated {
+  transition: width 1s ease-out;
+}
+
+.hero-panel-progress-subtext {
+  font-family: var(--type-style-13-family);
+  font-size: var(--type-style-13-size);
+  font-weight: var(--type-style-13-weight);
+  line-height: var(--type-style-13-line-height);
+  letter-spacing: var(--type-style-13-letter-spacing);
+  color: var(--text-default);
+}
+
+/* ============ DASHBOARD GRID ============ */
+
+.hero-panel-dashboard-grid {
+  width: 100%;
+  padding: 0 var(--spacing-16) var(--spacing-16) var(--spacing-16);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-08);
+  margin-top: var(--spacing-16);
+}
+
+.hero-panel-dashboard-row {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: var(--spacing-08);
+}
+
+.hero-panel-dashboard-row > * {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ============ SERVICE PANEL ============ */
+
+.hero-panel-service-panel {
+  width: 100%;
+  height: 80px;
+  border-radius: var(--radius-default);
+  border: var(--border-width-01) solid var(--border-default);
+  background-color: var(--bg-section-default);
+  padding: 0 var(--spacing-12);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-12);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.hero-panel-service-panel:active {
+  background-color: var(--bg-panel-pressed);
+}
+
+.hero-panel-service-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-circle);
+  background-color: var(--bg-panel-default);
+  border: var(--border-width-01) solid var(--border-default);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.hero-panel-service-circle img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.hero-panel-service-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-04);
+  flex: 1;
+  min-width: 0;
+}
+
+.hero-panel-service-title {
+  font-family: var(--type-style-6-family);
+  font-size: var(--type-style-6-size);
+  font-weight: var(--type-style-6-weight);
+  line-height: var(--type-style-6-line-height);
+  letter-spacing: var(--type-style-6-letter-spacing);
+  color: var(--text-subdued);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hero-panel-service-date {
+  font-family: var(--type-style-8-family);
+  font-size: var(--type-style-8-size);
+  font-weight: var(--type-style-8-weight);
+  line-height: var(--type-style-8-line-height);
+  letter-spacing: var(--type-style-8-letter-spacing);
+  color: var(--text-default);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ============ GHOST PANEL COMPACT ============ */
+
+.hero-panel-ghost-compact {
+  width: 100%;
+  height: 80px;
+  border-radius: var(--radius-default);
+  background-color: var(--bg-panel-default);
+  border: var(--border-width-02) dashed var(--border-default);
+  padding: 0 var(--spacing-12);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-12);
+  cursor: pointer;
+  transition: background-color 0.2s;
+  box-sizing: border-box;
+}
+
+.hero-panel-ghost-compact:active {
+  background-color: var(--bg-panel-pressed);
+}
+
+.hero-panel-ghost-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-04);
+  flex: 1;
+  min-width: 0;
+}
+
+.hero-panel-ghost-title {
+  font-family: var(--type-style-5-family);
+  font-size: var(--type-style-5-size);
+  font-weight: var(--type-style-5-weight);
+  line-height: var(--type-style-5-line-height);
+  letter-spacing: var(--type-style-5-letter-spacing);
+  color: var(--text-default);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hero-panel-ghost-subtitle {
+  font-family: var(--type-style-8-family);
+  font-size: var(--type-style-8-size);
+  font-weight: var(--type-style-8-weight);
+  line-height: var(--type-style-8-line-height);
+  letter-spacing: var(--type-style-8-letter-spacing);
+  color: var(--text-subdued);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hero-panel-ghost-button {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-circle);
+  background-color: var(--color-green-bright);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.hero-panel-ghost-button-icon {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-panel-ghost-button-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ============ RESPONSIVE ADJUSTMENTS ============ */
+
+@media (max-width: 375px) {
+  .hero-panel-vehicle-model,
+  .hero-panel-vehicle-reg {
+    font-size: 14px;
+  }
+  
+  .hero-panel-service-title,
+  .hero-panel-ghost-title {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-panel-car-placement {
+    max-height: 500px;
+  }
+}
+
+/* ============ DARK MODE OVERRIDES ============ */
+
+[data-theme="dark"] .hero-panel-service-circle img {
+  filter: brightness(0) saturate(100%) invert(67%) sepia(98%) saturate(1844%) hue-rotate(92deg) brightness(104%) contrast(93%);
+}
+
+/* Note: Filter converts icons to rgb(11, 226, 72) which is --color-green-bright */
+
+[data-theme="dark"] .hero-panel-edit-icon {
+  filter: brightness(0) invert(1);
+}
+
+/* ============ ACCESSIBILITY ============ */
+
+.hero-panel-edit-link:focus,
+.hero-panel-service-panel:focus,
+.hero-panel-ghost-compact:focus {
+  outline: 2px solid var(--color-green-bright);
+  outline-offset: 2px;
+}

@@ -1,0 +1,63 @@
+/* Pictogram Vanilla CSS - Standalone version for HTML usage - TOKEN LED */
+
+.pictogram {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-circle);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.pictogram img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+/* Variant Colors - TOKEN LED */
+.pict-default {
+  background-color: var(--color-green-mint);
+}
+
+.pict-default-alt-01 {
+  background-color: var(--color-transparent);
+  border: var(--border-width-02) dashed var(--border-default);
+}
+
+.pict-default-alt-02 {
+  background-color: var(--color-gray-100);
+}
+
+.pict-primary {
+  background-color: var(--color-green-promo-primary);
+}
+
+.pict-primary-alt-01 {
+  background-color: var(--color-green-promo-primary-dark);
+}
+
+.pict-primary-alt-02 {
+  background-color: var(--color-green-promo-primary-darker);
+}
+
+.pict-primary-alt-03 {
+  background-color: var(--color-green-light);
+}
+
+.pict-secondary-alt-01 {
+  background-color: var(--color-purple-promo);
+}
+
+.pict-secondary-alt-02 {
+  background-color: var(--color-pink-promo);
+}
+
+.pict-secondary-alt-03 {
+  background-color: var(--color-cyan-promo);
+}
+
+.pict-secondary-alt-04 {
+  background-color: var(--color-orange-promo);
+}

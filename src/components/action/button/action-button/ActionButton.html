@@ -1,0 +1,157 @@
+<!-- 
+  ActionButton HTML Component - SELF-CONTAINED - TOKEN LED
+  
+  A button component with multiple types, states, and optional icons.
+  
+  Types: primary, secondary, tertiary
+  States: default, pressed, disabled
+  Modifiers: btn-brand-accent, btn-on-color
+  
+  Dependencies:
+  - Design tokens (cancara-tokens.css)
+  - ActionButton.vanilla.css (SELF-CONTAINED)
+  - ActionButton.vanilla.js (auto-initializes icons - optional)
+  
+  Usage:
+  1. Import CSS (and JS if using icons)
+  2. Copy HTML structure
+  3. Choose type class (btn-primary, btn-secondary, btn-tertiary)
+  4. Add modifiers if needed (btn-brand-accent, btn-on-color)
+  5. Add state class if needed (pressed, disabled) or use :disabled attribute
+-->
+
+<!-- TYPE: PRIMARY (default - black background, white text) -->
+<button class="action-button btn-primary">
+    <div class="action-button-inner">
+        <span class="action-button-text">Button</span>
+        <div class="action-button-icon">
+            <img data-icon="chevron-right" data-icon-category="arrows" alt="">
+        </div>
+    </div>
+</button>
+
+<!-- TYPE: PRIMARY + BRAND ACCENT (bright green background, black text) -->
+<button class="action-button btn-primary btn-brand-accent">
+    <div class="action-button-inner">
+        <span class="action-button-text">Button</span>
+        <div class="action-button-icon">
+            <img data-icon="chevron-right" data-icon-category="arrows" alt="">
+        </div>
+    </div>
+</button>
+
+<!-- TYPE: PRIMARY + ON COLOR BG (white background, black text) -->
+<button class="action-button btn-primary btn-on-color">
+    <div class="action-button-inner">
+        <span class="action-button-text">Button</span>
+        <div class="action-button-icon">
+            <img data-icon="chevron-right" data-icon-category="arrows" alt="">
+        </div>
+    </div>
+</button>
+
+<!-- TYPE: SECONDARY (transparent with black border, black text) -->
+<button class="action-button btn-secondary">
+    <div class="action-button-inner">
+        <span class="action-button-text">Button</span>
+        <div class="action-button-icon">
+            <img data-icon="chevron-right" data-icon-category="arrows" alt="">
+        </div>
+    </div>
+</button>
+
+<!-- TYPE: SECONDARY + ON COLOR BG (transparent with white border, white text) -->
+<button class="action-button btn-secondary btn-on-color">
+    <div class="action-button-inner">
+        <span class="action-button-text">Button</span>
+        <div class="action-button-icon">
+            <img data-icon="chevron-right" data-icon-category="arrows" alt="">
+        </div>
+    </div>
+</button>
+
+<!-- TYPE: TERTIARY (transparent, underlined black text) -->
+<button class="action-button btn-tertiary">
+    <div class="action-button-inner">
+        <span class="action-button-text">Button</span>
+        <div class="action-button-icon">
+            <img data-icon="chevron-right" data-icon-category="arrows" alt="">
+        </div>
+    </div>
+</button>
+
+<!-- TYPE: TERTIARY + ON COLOR BG (transparent, underlined white text) -->
+<button class="action-button btn-tertiary btn-on-color">
+    <div class="action-button-inner">
+        <span class="action-button-text">Button</span>
+        <div class="action-button-icon">
+            <img data-icon="chevron-right" data-icon-category="arrows" alt="">
+        </div>
+    </div>
+</button>
+
+<!-- DISABLED STATE (use disabled attribute) -->
+<button class="action-button btn-primary" disabled>
+    <div class="action-button-inner">
+        <span class="action-button-text">Button</span>
+    </div>
+</button>
+
+<!-- BUTTON WITHOUT ICON -->
+<button class="action-button btn-primary">
+    <div class="action-button-inner">
+        <span class="action-button-text">Button</span>
+    </div>
+</button>
+
+<!--
+  VARIANTS:
+  
+  TYPES:
+  - btn-primary: Solid fill (black or green if brand-accent)
+  - btn-secondary: Bordered outline
+  - btn-tertiary: Text only with underline
+  
+  MODIFIERS:
+  - btn-brand-accent: Uses bright green (#0BE248) instead of black
+  - btn-on-color: Uses inverted colors (white/light) for use on colored backgrounds
+  
+  STATES:
+  - default: No class (normal state)
+  - pressed: Add "pressed" class for pressed appearance
+  - disabled: Use disabled attribute or add "disabled" class
+  
+  COMBINATIONS:
+  - btn-primary alone: Black bg, white text
+  - btn-primary + btn-brand-accent: Green bg, black text
+  - btn-primary + btn-on-color: White bg, black text
+  - btn-primary + btn-brand-accent + btn-on-color: Green bg, black text (same as brand-accent alone)
+  - btn-secondary alone: Transparent, black border, black text
+  - btn-secondary + btn-on-color: Transparent, white border, white text
+  - btn-tertiary alone: Transparent, underlined black text
+  - btn-tertiary + btn-on-color: Transparent, underlined white text
+  
+  ICON (optional):
+  - Include action-button-icon div with img inside
+  - Use data-icon and data-icon-category attributes for auto-initialization
+  - Requires ActionButton.vanilla.js for auto-loading
+  
+  COMPLETE USAGE:
+  
+  <head>
+      <link rel="stylesheet" href="path/to/cancara-tokens.css">
+      <link rel="stylesheet" href="path/to/ActionButton.vanilla.css">
+  </head>
+  <body>
+      <button class="action-button btn-primary btn-brand-accent">
+          <div class="action-button-inner">
+              <span class="action-button-text">Get Started</span>
+              <div class="action-button-icon">
+                  <img data-icon="chevron-right" data-icon-category="arrows" alt="">
+              </div>
+          </div>
+      </button>
+      
+      <script src="path/to/ActionButton.vanilla.js"></script>
+  </body>
+-->

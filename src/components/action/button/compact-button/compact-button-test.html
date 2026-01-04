@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CompactButton Component Test</title>
+    
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="../../../../css/cancara-tokens.css">
+    
+    <!-- CompactButton Component Styles -->
+    <link rel="stylesheet" href="CompactButton.vanilla.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family-body);
+            background: var(--bg-page-default);
+            color: var(--text-default);
+            transition: background-color 0.3s, color 0.3s;
+            padding: var(--spacing-48);
+            min-height: 100vh;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: var(--spacing-24);
+            right: var(--spacing-24);
+            z-index: 1000;
+        }
+
+        .toggle-button {
+            background: var(--bg-action-default);
+            color: var(--text-action-inverse);
+            border: none;
+            border-radius: var(--radius-default);
+            padding: var(--spacing-12) var(--spacing-24);
+            font-family: var(--font-family-body);
+            font-size: var(--type-style-8-size);
+            font-weight: var(--font-weight-bold);
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .toggle-button:hover {
+            background: var(--bg-action-pressed);
+        }
+
+        h1 {
+            margin-bottom: var(--spacing-48);
+            font-size: var(--type-style-1-size);
+            font-weight: var(--type-style-1-weight);
+            line-height: var(--type-style-1-line-height);
+        }
+
+        .section {
+            margin-bottom: var(--spacing-64);
+            max-width: 1200px;
+        }
+
+        .section h2 {
+            margin-bottom: var(--spacing-24);
+            font-size: var(--type-style-2-size);
+            font-weight: var(--type-style-2-weight);
+            line-height: var(--type-style-2-line-height);
+        }
+
+        .section h3 {
+            margin-bottom: var(--spacing-16);
+            margin-top: var(--spacing-32);
+            font-size: var(--type-style-4-size);
+            font-weight: var(--type-style-4-weight);
+        }
+
+        .section p {
+            margin-bottom: var(--spacing-24);
+            color: var(--text-subdued);
+            font-size: var(--type-style-6-size);
+            line-height: var(--type-style-6-line-height);
+        }
+
+        .on-color-demo {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: var(--spacing-32);
+            border-radius: var(--radius-default);
+            margin-bottom: var(--spacing-24);
+        }
+
+        .on-color-demo h3 {
+            color: white;
+        }
+
+        .button-row {
+            display: flex;
+            gap: var(--spacing-16);
+            flex-wrap: wrap;
+            align-items: center;
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <div class="theme-toggle">
+        <button class="toggle-button" onclick="toggleTheme()">
+            <span id="theme-text">Switch to Dark Mode</span>
+        </button>
+    </div>
+
+    <h1>CompactButton Component</h1>
+
+    <!-- PRIMARY BUTTONS -->
+    <div class="section">
+        <h2>Primary Buttons</h2>
+        <p>Black background with white text - the default action button style</p>
+
+        <h3>Default Size</h3>
+        <div class="button-row">
+            <button class="compact-button size-default btn-primary">
+                <div class="compact-button-inner">
+                    <div class="compact-button-text-wrapper">
+                        <span class="compact-button-text">No Icon</span>
+                    </div>
+                </div>
+            </button>
+
+            <button class="compact-button size-default btn-primary">
+                <div class="compact-button-inner">
+                    <div class="compact-button-icon-left">
+                        <img data-icon="plus" data-icon-category="action" alt="">
+                    </div>
+                    <div class="compact-button-text-wrapper">
+                        <span class="compact-button-text">Left Icon</span>
+                    </div>
+                </div>
+            </button>
+
+            <button class="compact-button size-default btn-primary">
+                <div class="compact-button-inner">
+                    <div class="compact-button-text-wrapper">
+                        <span class="compact-button-text">Right Icon</span>
+                    </div>
+                    <div class="compact-button-icon-right">
+                        <img data-icon="arrow-right" data-icon-category="arrows" alt="">
+                    </div>
+                </div>
+            </button>
+
+            <button class="compact-button size-default btn-primary pressed">
+                <div class="compact-button-inner">
+                    <div class="compact-button-text-wrapper">
+                        <span class="compact-button-text">Pressed</span>
+                    </div>
+                </div>
+            </button>
+
+            <button class="compact-button size-default btn-primary" disabled>
+                <div class="compact-button-inner">
+                    <div class="compact-button-text-wrapper">
+                        <span class="compact-button-text">Disabled</span>
+                    </div>
+                </div>
+            </button>
+        </div>
+
+        <h3>Small Size</h3>
+        <div class="button-row">
+            <button class="compact-button size-small btn-primary">
+                <div class="compact-button-inner">
+                    <div class="compact-button-text-wrapper">
+                        <span class="compact-button-text">No Icon</span>
+                    </div>
+                </div>
+            </button>
+
+            <button class="compact-button size-small btn-primary">
+                <div class="compact-button-inner">
+                    <div class="compact-button-icon-left">
+                        <img data-icon="plus" data-icon-category="action" alt="">
+                    </div>
+                    <div class="compact-button-text-wrapper">
+                        <span class="compact-button-text">Left Icon</span>
+                    </div>
+                </div>
+            </button>
+
+            <button class="compact-button size-small btn-primary">
+                <div class="compact-button-inner">
+                    <div class="compact-button-text-wrapper">
+                        <span class="compact-button-text">Right Icon</span>
+                    </div>
+                    <div class="compact-button-icon-right">
+                        <img data-icon="arrow-right" data-icon-category="arrows" alt="">
+                    </div>
+                </div>
+            </button>
+
+            <button class="compact-button size-small btn-primary" disabled>
+                <div class="compact-button-inner">
+                    <div class="compact-button-text-wrapper">
+                        <span class="compact-button-text">Disabled</span>
+                    </div>
+                </div>
+            </button>
+        </div>
+    </div>
+
+    <!-- BRAND ACCENT BUTTONS -->
+    <div class="section">
+        <h2>Brand Accent Buttons</h2>
+        <p>Bright green accent color for special attention</p>
+
+        <h3>Default Size</h3>
+        <div class="button-row">
+            <button class="compact-button size-default btn-primary btn-brand-accent">
+                <div class="compact-button-inner">
+                    <div class="compact-button-text-wrapper">
+                        <span class="compact-button-text">No Icon</span>
+                    </div>
+                </div>
+            </button>
+
+            <button class="compact-button size-default btn-primary btn-brand-accent">
+                <div class="compact-button-inner">
+                    <div class="compact-button-icon-left">
+                        <img data-icon="tick" data-icon-category="action" alt="">
+                    </div>
+                    <div class="compact-button-text-wrapper">
+                        <span class="compact-button-text">Left Icon</span>
+                    </div>
+                </div>
+            </button>
+
+            <button class="compact-button size-default btn-primary btn-brand-accent">
+                <div class="compact-button-inner">
+                    <div class="compact-button-text-wrapper">
+                        <span class="compact-button-text">Right Icon</span>
+                    </div>
+                    <div class="compact-button-icon-right">
+                        <img data-icon="arrow-right" data-icon-category="arrows" alt="">
+                    </div>
+                </div>
+            </button>
+
+            <button class="compact-button size-default btn-primary btn-brand-accent pressed">
+                <div class="compact-button-inner">
+                    <div class="compact-button-text-wrapper">
+                        <span class="compact-button-text">Pressed</span>
+                    </div>
+                </div>
+            </button>
+
+            <button class="compact-button size-default btn-primary btn-brand-accent" disabled>
+                <div class="compact-button-inner">
+                    <div class="compact-button-text-wrapper">
+                        <span class="compact-button-text">Disabled</span>
+                    </div>
+                </div>
+            </button>
+        </div>
+
+        <h3>Small Size</h3>
+        <div class="button-row">
+            <button class="compact-button size-small btn-primary btn-brand-accent">
+                <div class="compact-button-inner">
+                    <div class="compact-button-text-wrapper">
+                        <span class="compact-button-text">Special</span>
+                    </div>
+                </div>
+            </button>
+
+            <button class="compact-button size-small btn-primary btn-brand-accent">
+                <div class="compact-button-inner">
+                    <div class="compact-button-icon-left">
+                        <img data-icon="sun" data-icon-category="weather" alt="">
+                    </div>
+                    <div class="compact-button-text-wrapper">
+                        <span class="compact-button-text">Quick Action</span>
+                    </div>
+                </div>
+            </button>
+        </div>
+    </div>
+
+    <!-- SECONDARY BUTTONS -->
+    <div class="section">
+        <h2>Secondary Buttons</h2>
+        <p>Outlined buttons with transparent background</p>
+
+        <h3>Default Size</h3>
+        <div class="button-row">
+            <button class="compact-button size-default btn-secondary">
+                <div class="compact-button-inner">
+                    <div class="compact-button-text-wrapper">
+                        <span class="compact-button-text">No Icon</span>
+                    </div>
+                </div>
+            </button>
+
+            <button class="compact-button size-default btn-secondary">
+                <div class="compact-button-inner">
+                    <div class="compact-button-icon-left">
+                        <img data-icon="filter" data-icon-category="navigation" alt="">
+                    </div>
+                    <div class="compact-button-text-wrapper">
+                        <span class="compact-button-text">Left Icon</span>
+                    </div>
+                </div>
+            </button>
+
+            <button class="compact-button size-default btn-secondary">
+                <div class="compact-button-inner">
+                    <div class="compact-button-text-wrapper">
+                        <span class="compact-button-text">Right Icon</span>
+                    </div>
+                    <div class="compact-button-icon-right">
+                        <img data-icon="chevron-right" data-icon-category="arrows" alt="">
+                    </div>
+                </div>
+            </button>
+
+            <button class="compact-button size-default btn-secondary pressed">
+                <div class="compact-button-inner">
+                    <div class="compact-button-text-wrapper">
+                        <span class="compact-button-text">Pressed</span>
+                    </div>
+                </div>
+            </button>
+
+            <button class="compact-button size-default btn-secondary" disabled>
+                <div class="compact-button-inner">
+                    <div class="compact-button-text-wrapper">
+                        <span class="compact-button-text">Disabled</span>
+                    </div>
+                </div>
+            </button>
+        </div>
+
+        <h3>Small Size</h3>
+        <div class="button-row">
+            <button class="compact-button size-small btn-secondary">
+                <div class="compact-button-inner">
+                    <div class="compact-button-text-wrapper">
+                        <span class="compact-button-text">Cancel</span>
+                    </div>
+                </div>
+            </button>
+
+            <button class="compact-button size-small btn-secondary">
+                <div class="compact-button-inner">
+                    <div class="compact-button-icon-left">
+                        <img data-icon="menu" data-icon-category="navigation" alt="">
+                    </div>
+                    <div class="compact-button-text-wrapper">
+                        <span class="compact-button-text">Settings</span>
+                    </div>
+                </div>
+            </button>
+        </div>
+    </div>
+
+    <!-- TERTIARY BUTTONS -->
+    <div class="section">
+        <h2>Tertiary Buttons</h2>
+        <p>Text-only buttons with underline</p>
+
+        <h3>Default Size</h3>
+        <div class="button-row">
+            <button class="compact-button size-default btn-tertiary">
+                <div class="compact-button-inner">
+                    <div class="compact-button-text-wrapper">
+                        <span class="compact-button-text">No Icon</span>
+                    </div>
+                </div>
+            </button>
+
+            <button class="compact-button size-default btn-tertiary">
+                <div class="compact-button-inner">
+                    <div class="compact-button-icon-left">
+                        <img data-icon="search" data-icon-category="navigation" alt="">
+                    </div>
+                    <div class="compact-button-text-wrapper">
+                        <span class="compact-button-text">Learn More</span>
+                    </div>
+                </div>
+            </button>
+
+            <button class="compact-button size-default btn-tertiary">
+                <div class="compact-button-inner">
+                    <div class="compact-button-text-wrapper">
+                        <span class="compact-button-text">View Details</span>
+                    </div>
+                    <div class="compact-button-icon-right">
+                        <img data-icon="chevron-right" data-icon-category="arrows" alt="">
+                    </div>
+                </div>
+            </button>
+
+            <button class="compact-button size-default btn-tertiary pressed">
+                <div class="compact-button-inner">
+                    <div class="compact-button-text-wrapper">
+                        <span class="compact-button-text">Pressed</span>
+                    </div>
+                </div>
+            </button>
+
+            <button class="compact-button size-default btn-tertiary" disabled>
+                <div class="compact-button-inner">
+                    <div class="compact-button-text-wrapper">
+                        <span class="compact-button-text">Disabled</span>
+                    </div>
+                </div>
+            </button>
+        </div>
+
+        <h3>Small Size</h3>
+        <div class="button-row">
+            <button class="compact-button size-small btn-tertiary">
+                <div class="compact-button-inner">
+                    <div class="compact-button-text-wrapper">
+                        <span class="compact-button-text">Skip</span>
+                    </div>
+                </div>
+            </button>
+
+            <button class="compact-button size-small btn-tertiary">
+                <div class="compact-button-inner">
+                    <div class="compact-button-text-wrapper">
+                        <span class="compact-button-text">Read More</span>
+                    </div>
+                    <div class="compact-button-icon-right">
+                        <img data-icon="arrow-right" data-icon-category="arrows" alt="">
+                    </div>
+                </div>
+            </button>
+        </div>
+    </div>
+
+    <!-- ON COLOR BACKGROUND -->
+    <div class="section">
+        <h2>On Color Background</h2>
+        <p>Special variants designed for use on colorful backgrounds</p>
+
+        <div class="on-color-demo">
+            <h3>Primary On Color</h3>
+            <div class="button-row">
+                <button class="compact-button size-default btn-primary btn-on-color">
+                    <div class="compact-button-inner">
+                        <div class="compact-button-text-wrapper">
+                            <span class="compact-button-text">White Button</span>
+                        </div>
+                    </div>
+                </button>
+
+                <button class="compact-button size-default btn-primary btn-on-color">
+                    <div class="compact-button-inner">
+                        <div class="compact-button-icon-left">
+                            <img data-icon="tick" data-icon-category="action" alt="">
+                        </div>
+                        <div class="compact-button-text-wrapper">
+                            <span class="compact-button-text">With Icon</span>
+                        </div>
+                    </div>
+                </button>
+
+                <button class="compact-button size-small btn-primary btn-on-color">
+                    <div class="compact-button-inner">
+                        <div class="compact-button-text-wrapper">
+                            <span class="compact-button-text">Small</span>
+                        </div>
+                    </div>
+                </button>
+            </div>
+        </div>
+
+        <div class="on-color-demo">
+            <h3>Secondary On Color</h3>
+            <div class="button-row">
+                <button class="compact-button size-default btn-secondary btn-on-color">
+                    <div class="compact-button-inner">
+                        <div class="compact-button-text-wrapper">
+                            <span class="compact-button-text">Outlined</span>
+                        </div>
+                    </div>
+                </button>
+
+                <button class="compact-button size-default btn-secondary btn-on-color">
+                    <div class="compact-button-inner">
+                        <div class="compact-button-icon-left">
+                            <img data-icon="arrow-down" data-icon-category="arrows" alt="">
+                        </div>
+                        <div class="compact-button-text-wrapper">
+                            <span class="compact-button-text">Download</span>
+                        </div>
+                    </div>
+                </button>
+            </div>
+        </div>
+
+        <div class="on-color-demo">
+            <h3>Tertiary On Color</h3>
+            <div class="button-row">
+                <button class="compact-button size-default btn-tertiary btn-on-color">
+                    <div class="compact-button-inner">
+                        <div class="compact-button-text-wrapper">
+                            <span class="compact-button-text">Link Style</span>
+                        </div>
+                    </div>
+                </button>
+
+                <button class="compact-button size-default btn-tertiary btn-on-color">
+                    <div class="compact-button-inner">
+                        <div class="compact-button-text-wrapper">
+                            <span class="compact-button-text">Learn More</span>
+                        </div>
+                        <div class="compact-button-icon-right">
+                            <img data-icon="arrow-right" data-icon-category="arrows" alt="">
+                        </div>
+                    </div>
+                </button>
+            </div>
+        </div>
+
+        <div class="on-color-demo">
+            <h3>Brand Accent On Color</h3>
+            <div class="button-row">
+                <button class="compact-button size-default btn-primary btn-brand-accent btn-on-color">
+                    <div class="compact-button-inner">
+                        <div class="compact-button-text-wrapper">
+                            <span class="compact-button-text">Get Started</span>
+                        </div>
+                    </div>
+                </button>
+
+                <button class="compact-button size-small btn-primary btn-brand-accent btn-on-color">
+                    <div class="compact-button-inner">
+                        <div class="compact-button-icon-left">
+                            <img data-icon="plus" data-icon-category="action" alt="">
+                        </div>
+                        <div class="compact-button-text-wrapper">
+                            <span class="compact-button-text">Quick Start</span>
+                        </div>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- COMPONENT FEATURES -->
+    <div class="section">
+        <h2>Component Features</h2>
+        <ul style="padding-left: var(--spacing-24); line-height: 2;">
+            <li>✅ Self-contained component</li>
+            <li>✅ Two sizes: Default and Small</li>
+            <li>✅ Three button types: Primary, Secondary, Tertiary</li>
+            <li>✅ Three states: Default, Pressed, Disabled</li>
+            <li>✅ Icon positions: None, Left, Right</li>
+            <li>✅ Brand accent variant</li>
+            <li>✅ On-color background variants</li>
+            <li>✅ Token-led design</li>
+            <li>✅ Dark mode support</li>
+            <li>✅ Fully responsive</li>
+            <li>✅ Icons auto-load via JavaScript</li>
+        </ul>
+    </div>
+
+    <!-- Load component JavaScript -->
+    <script src="CompactButton.vanilla.js"></script>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', function() {
+            detectSystemTheme();
+        });
+
+        function detectSystemTheme() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-text').textContent = 'Switch to Light Mode';
+            } else {
+                document.body.setAttribute('data-theme', 'light');
+                document.getElementById('theme-text').textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', detectSystemTheme);
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const themeText = document.getElementById('theme-text');
+            const currentTheme = body.getAttribute('data-theme');
+            
+            if (currentTheme === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                themeText.textContent = 'Switch to Light Mode';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeText.textContent = 'Switch to Dark Mode';
+            }
+        }
+    </script>
+</body>
+</html>

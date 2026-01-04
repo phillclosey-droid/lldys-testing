@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NotificationTag Component Test</title>
+    
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="../../../css/cancara-tokens.css">
+    
+    <!-- NotificationTag Component Styles -->
+    <link rel="stylesheet" href="NotificationTag.vanilla.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family-body);
+            background: var(--bg-page-default);
+            color: var(--text-default);
+            transition: background-color 0.3s, color 0.3s;
+            padding: 40px;
+            min-height: 100vh;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .toggle-button {
+            background: var(--bg-action-default);
+            color: var(--text-action-inverse);
+            border: none;
+            border-radius: var(--radius-default);
+            padding: 12px 24px;
+            font-family: var(--font-family-body);
+            font-size: 14px;
+            font-weight: var(--font-weight-bold);
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .toggle-button:hover {
+            background: var(--bg-action-pressed);
+        }
+
+        h1 {
+            margin-bottom: 40px;
+            font-size: 32px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .section p {
+            margin-bottom: 16px;
+            color: var(--text-subdued);
+        }
+
+        .tag-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .tag-example {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding: 16px;
+            background: var(--bg-panel-default);
+            border-radius: var(--radius-default);
+        }
+
+        .tag-label {
+            font-size: 12px;
+            color: var(--text-subdued);
+            text-transform: uppercase;
+            font-weight: var(--font-weight-bold);
+        }
+
+        .code-block {
+            background: var(--bg-panel-secondary);
+            padding: 20px;
+            border-radius: var(--radius-default);
+            overflow-x: auto;
+            margin-top: 10px;
+        }
+
+        .code-block code {
+            font-family: monospace;
+            font-size: 13px;
+            color: var(--text-default);
+        }
+
+        .usage-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .usage-card {
+            padding: 20px;
+            background: var(--bg-panel-default);
+            border-radius: var(--radius-default);
+        }
+
+        .usage-card h3 {
+            font-size: 16px;
+            margin-bottom: 12px;
+        }
+
+        .usage-card .tag-grid {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <div class="theme-toggle">
+        <button class="toggle-button" onclick="toggleTheme()">
+            <span id="theme-text">Switch to Dark Mode</span>
+        </button>
+    </div>
+
+    <h1>NotificationTag Component Test</h1>
+
+    <div class="section">
+        <h2>All Tag Types</h2>
+        <p>Six types available for different contexts and meanings</p>
+        
+        <div class="tag-grid">
+            <div class="tag-example">
+                <div class="tag-label">NEW</div>
+                <div class="notification-tag tag-new">
+                    <div class="notification-tag-text">New</div>
+                </div>
+                <small>Bright green, black text</small>
+            </div>
+
+            <div class="tag-example">
+                <div class="tag-label">NEUTRAL</div>
+                <div class="notification-tag tag-neutral">
+                    <div class="notification-tag-text">Pending</div>
+                </div>
+                <small>Gray with border</small>
+            </div>
+
+            <div class="tag-example">
+                <div class="tag-label">CRITICAL</div>
+                <div class="notification-tag tag-critical">
+                    <div class="notification-tag-text">Urgent</div>
+                </div>
+                <small>Red with border</small>
+            </div>
+
+            <div class="tag-example">
+                <div class="tag-label">WARNING</div>
+                <div class="notification-tag tag-warning">
+                    <div class="notification-tag-text">Warning</div>
+                </div>
+                <small>Orange with border</small>
+            </div>
+
+            <div class="tag-example">
+                <div class="tag-label">SUCCESS</div>
+                <div class="notification-tag tag-success">
+                    <div class="notification-tag-text">Approved</div>
+                </div>
+                <small>Green with border</small>
+            </div>
+
+            <div class="tag-example">
+                <div class="tag-label">INFO</div>
+                <div class="notification-tag tag-info">
+                    <div class="notification-tag-text">Info</div>
+                </div>
+                <small>Blue with border</small>
+            </div>
+        </div>
+
+        <div class="code-block">
+            <code>&lt;div class="notification-tag tag-new"&gt;<br>
+    &lt;div class="notification-tag-text"&gt;New&lt;/div&gt;<br>
+&lt;/div&gt;</code>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Banking & Finance Context</h2>
+        <div class="usage-examples">
+            <div class="usage-card">
+                <h3>Account Status</h3>
+                <div class="tag-grid">
+                    <div class="notification-tag tag-success">
+                        <div class="notification-tag-text">Verified</div>
+                    </div>
+                    <div class="notification-tag tag-neutral">
+                        <div class="notification-tag-text">Pending</div>
+                    </div>
+                    <div class="notification-tag tag-critical">
+                        <div class="notification-tag-text">Action Required</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="usage-card">
+                <h3>Payment Status</h3>
+                <div class="tag-grid">
+                    <div class="notification-tag tag-success">
+                        <div class="notification-tag-text">Paid</div>
+                    </div>
+                    <div class="notification-tag tag-warning">
+                        <div class="notification-tag-text">Overdue</div>
+                    </div>
+                    <div class="notification-tag tag-neutral">
+                        <div class="notification-tag-text">Processing</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="usage-card">
+                <h3>Features & Updates</h3>
+                <div class="tag-grid">
+                    <div class="notification-tag tag-new">
+                        <div class="notification-tag-text">New Feature</div>
+                    </div>
+                    <div class="notification-tag tag-info">
+                        <div class="notification-tag-text">Updated</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="usage-card">
+                <h3>Transaction Types</h3>
+                <div class="tag-grid">
+                    <div class="notification-tag tag-success">
+                        <div class="notification-tag-text">Credit</div>
+                    </div>
+                    <div class="notification-tag tag-neutral">
+                        <div class="notification-tag-text">Debit</div>
+                    </div>
+                    <div class="notification-tag tag-info">
+                        <div class="notification-tag-text">Transfer</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="usage-card">
+                <h3>Card Status</h3>
+                <div class="tag-grid">
+                    <div class="notification-tag tag-success">
+                        <div class="notification-tag-text">Active</div>
+                    </div>
+                    <div class="notification-tag tag-critical">
+                        <div class="notification-tag-text">Blocked</div>
+                    </div>
+                    <div class="notification-tag tag-warning">
+                        <div class="notification-tag-text">Expiring Soon</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="usage-card">
+                <h3>Security Alerts</h3>
+                <div class="tag-grid">
+                    <div class="notification-tag tag-critical">
+                        <div class="notification-tag-text">Suspicious</div>
+                    </div>
+                    <div class="notification-tag tag-success">
+                        <div class="notification-tag-text">Secure</div>
+                    </div>
+                    <div class="notification-tag tag-info">
+                        <div class="notification-tag-text">Review</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Text Length Examples</h2>
+        <p>Tags automatically adjust width based on content</p>
+        <div class="tag-grid">
+            <div class="notification-tag tag-new">
+                <div class="notification-tag-text">New</div>
+            </div>
+            <div class="notification-tag tag-success">
+                <div class="notification-tag-text">Verified Account</div>
+            </div>
+            <div class="notification-tag tag-info">
+                <div class="notification-tag-text">View More Details</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function detectSystemTheme() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-text').textContent = 'Switch to Light Mode';
+            } else {
+                document.body.setAttribute('data-theme', 'light');
+                document.getElementById('theme-text').textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', detectSystemTheme);
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const themeText = document.getElementById('theme-text');
+            const currentTheme = body.getAttribute('data-theme');
+            
+            if (currentTheme === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                themeText.textContent = 'Switch to Light Mode';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeText.textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', function() {
+            detectSystemTheme();
+        });
+    </script>
+</body>
+</html>

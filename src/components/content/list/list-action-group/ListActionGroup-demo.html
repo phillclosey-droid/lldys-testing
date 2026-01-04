@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Action Group - Demo</title>
+    
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="../../../../css/cancara-tokens.css">
+    
+    <!-- Nested Component CSS -->
+    <link rel="stylesheet" href="../../icon/pictogram/Pictogram.vanilla.css">
+    <link rel="stylesheet" href="../../icon/illustration/Illustration.vanilla.css">
+    <link rel="stylesheet" href="../../divider/Divider.vanilla.css">
+    <link rel="stylesheet" href="../list-item-action/ListItemAction.vanilla.css">
+    
+    <!-- Component CSS -->
+    <link rel="stylesheet" href="ListActionGroup.vanilla.css">
+    
+    <style>
+        body {
+            font-family: var(--font-family-body);
+            background-color: var(--bg-page-default);
+            color: var(--text-default);
+            padding: var(--spacing-48);
+            margin: 0;
+        }
+        
+        .demo-section {
+            margin-bottom: var(--spacing-48);
+        }
+        
+        .demo-title {
+            font-size: var(--type-style-2-size);
+            font-weight: var(--type-style-2-weight);
+            line-height: var(--type-style-2-line-height);
+            margin: 0 0 var(--spacing-16) 0;
+            color: var(--text-default);
+        }
+        
+        .demo-description {
+            font-size: var(--type-style-6-size);
+            line-height: var(--type-style-6-line-height);
+            color: var(--text-subdued);
+            margin: 0 0 var(--spacing-24) 0;
+        }
+        
+        .theme-toggle {
+            position: fixed;
+            top: var(--spacing-24);
+            right: var(--spacing-24);
+            padding: var(--spacing-12) var(--spacing-24);
+            background-color: var(--bg-action-default);
+            color: var(--text-action-inverse);
+            border: none;
+            border-radius: var(--radius-default);
+            font-family: var(--font-family-body);
+            cursor: pointer;
+            z-index: 1000;
+        }
+        
+        .demo-container {
+            max-width: 600px;
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()">Toggle Dark Mode</button>
+    
+    <h1 class="demo-title" style="font-size: 29px; margin-bottom: var(--spacing-48);">List Action Group Component</h1>
+    
+    <!-- Demo 1: Compact Width with No Icons -->
+    <div class="demo-section">
+        <h2 class="demo-title">Compact Width - No Icons</h2>
+        <p class="demo-description">6 items stacked with heading</p>
+        
+        <div class="demo-container">
+            <div class="list-action-group width-compact">
+                <div class="list-item-action asset-none width-compact position-top state-default">
+                    <div class="list-item-heading">
+                        <span class="list-item-heading-text">ACCOUNT SETTINGS</span>
+                    </div>
+                    <div class="list-item-content">
+                        <div class="list-item-text">
+                            <span class="list-item-title">Personal Information</span>
+                        </div>
+                        <div class="list-item-action-icon">
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                <path d="M4.5 3L7.5 6L4.5 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="divider width-default"><div class="divider-line"></div></div>
+                </div><div class="list-item-action asset-none width-compact position-middle state-default">
+                    <div class="list-item-content">
+                        <div class="list-item-text">
+                            <span class="list-item-title">Security</span>
+                        </div>
+                        <div class="list-item-action-icon">
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                <path d="M4.5 3L7.5 6L4.5 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="divider width-default"><div class="divider-line"></div></div>
+                </div><div class="list-item-action asset-none width-compact position-middle state-default">
+                    <div class="list-item-content">
+                        <div class="list-item-text">
+                            <span class="list-item-title">Notifications</span>
+                        </div>
+                        <div class="list-item-action-icon">
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                <path d="M4.5 3L7.5 6L4.5 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="divider width-default"><div class="divider-line"></div></div>
+                </div><div class="list-item-action asset-none width-compact position-middle state-default">
+                    <div class="list-item-content">
+                        <div class="list-item-text">
+                            <span class="list-item-title">Privacy</span>
+                        </div>
+                        <div class="list-item-action-icon">
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                <path d="M4.5 3L7.5 6L4.5 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="divider width-default"><div class="divider-line"></div></div>
+                </div><div class="list-item-action asset-none width-compact position-middle state-default">
+                    <div class="list-item-content">
+                        <div class="list-item-text">
+                            <span class="list-item-title">Language & Region</span>
+                        </div>
+                        <div class="list-item-action-icon">
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                <path d="M4.5 3L7.5 6L4.5 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="divider width-default"><div class="divider-line"></div></div>
+                </div><div class="list-item-action asset-none width-compact position-bottom state-default">
+                    <div class="list-item-content">
+                        <div class="list-item-text">
+                            <span class="list-item-title">Accessibility</span>
+                        </div>
+                        <div class="list-item-action-icon">
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                <path d="M4.5 3L7.5 6L4.5 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Demo 2: FullWidth with Icons -->
+    <div class="demo-section">
+        <h2 class="demo-title">FullWidth - With Icons</h2>
+        <p class="demo-description">Items with 24x24 icons</p>
+        
+        <div class="demo-container">
+            <div class="list-action-group width-fullwidth">
+                <div class="list-item-action asset-icon width-fullwidth position-top state-default">
+                    <div class="list-item-heading">
+                        <span class="list-item-heading-text">QUICK ACTIONS</span>
+                    </div>
+                    <div class="list-item-content">
+                        <div class="list-item-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="list-item-text">
+                            <span class="list-item-title">Profile</span>
+                        </div>
+                        <div class="list-item-action-icon">
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                <path d="M4.5 3L7.5 6L4.5 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="divider width-fullwidth"><div class="divider-line"></div></div>
+                </div><div class="list-item-action asset-icon width-fullwidth position-middle state-default">
+                    <div class="list-item-content">
+                        <div class="list-item-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M12 16V12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M12 8H12.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="list-item-text">
+                            <span class="list-item-title">Help</span>
+                        </div>
+                        <div class="list-item-action-icon">
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                <path d="M4.5 3L7.5 6L4.5 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="divider width-fullwidth"><div class="divider-line"></div></div>
+                </div><div class="list-item-action asset-icon width-fullwidth position-bottom state-default">
+                    <div class="list-item-content">
+                        <div class="list-item-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4m7 14l5-5m0 0l-5-5m5 5H9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="list-item-text">
+                            <span class="list-item-title">Sign Out</span>
+                        </div>
+                        <div class="list-item-action-icon">
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                <path d="M4.5 3L7.5 6L4.5 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Demo 3: With Pictograms -->
+    <div class="demo-section">
+        <h2 class="demo-title">Compact Width - With Pictograms</h2>
+        <p class="demo-description">Items with 40x40 circular pictograms</p>
+        
+        <div class="demo-container">
+            <div class="list-action-group width-compact">
+                <div class="list-item-action asset-pictogram width-compact position-top state-default">
+                    <div class="list-item-heading">
+                        <span class="list-item-heading-text">FEATURES</span>
+                    </div>
+                    <div class="list-item-content">
+                        <div class="pictogram pict-primary">
+                            <img data-pictogram="Piggy_Bank_Lloyds_-_V2" alt="">
+                        </div>
+                        <div class="list-item-text">
+                            <span class="list-item-description">Secure Payments</span>
+                            <span class="list-item-link">Learn more</span>
+                        </div>
+                        <div class="list-item-action-icon">
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                <path d="M4.5 3L7.5 6L4.5 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="divider width-default"><div class="divider-line"></div></div>
+                </div><div class="list-item-action asset-pictogram width-compact position-middle state-default">
+                    <div class="list-item-content">
+                        <div class="pictogram pict-secondary-alt-01">
+                            <img data-pictogram="Cards_Lloyds_-_V2" alt="">
+                        </div>
+                        <div class="list-item-text">
+                            <span class="list-item-description">Quick Transfer</span>
+                            <span class="list-item-link">Try now</span>
+                        </div>
+                        <div class="list-item-action-icon">
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                <path d="M4.5 3L7.5 6L4.5 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="divider width-default"><div class="divider-line"></div></div>
+                </div><div class="list-item-action asset-pictogram width-compact position-bottom state-default">
+                    <div class="list-item-content">
+                        <div class="pictogram pict-secondary-alt-02">
+                            <img data-pictogram="Calendar_Lloyds_-_V2" alt="">
+                        </div>
+                        <div class="list-item-text">
+                            <span class="list-item-description">Scheduled Payments</span>
+                            <span class="list-item-link">Set up</span>
+                        </div>
+                        <div class="list-item-action-icon">
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                <path d="M4.5 3L7.5 6L4.5 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Nested Component JavaScript -->
+    <script src="../../icon/pictogram/Pictogram.vanilla.js"></script>
+    <script src="../../icon/illustration/Illustration.vanilla.js"></script>
+    <script src="../list-item-action/ListItemAction.vanilla.js"></script>
+    
+    <!-- Demo JavaScript -->
+    <script>
+        function detectSystemTheme() {
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+        }
+        
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+        }
+        
+        detectSystemTheme();
+        
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+        });
+        
+        document.addEventListener('listitemclick', (e) => {
+            console.log('List item clicked:', e.detail);
+        });
+    </script>
+</body>
+</html>

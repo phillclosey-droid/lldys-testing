@@ -1,0 +1,160 @@
+/* StatusBar Vanilla CSS - SELF-CONTAINED - TOKEN LED */
+
+.status-bar {
+  width: 100%;
+  height: 54px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ========== iOS Variant ========== */
+.status-bar-ios {
+  padding: 0;
+}
+
+.status-bar-time {
+  font-family: SF Pro, -apple-system, sans-serif;
+  font-size: 17px;
+  line-height: 22px;
+  color: var(--text-default);
+  text-align: center;
+  width: 134px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.status-bar-levels {
+  width: 134px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 5px;
+  padding-right: var(--spacing-16);
+}
+
+/* Cellular Signal */
+.cellular-signal {
+  display: flex;
+  align-items: flex-end;
+  gap: 1px;
+  height: 12px;
+}
+
+.signal-bar {
+  width: 3px;
+  background-color: var(--text-default);
+  border-radius: 1px;
+}
+
+.signal-bar-1 { height: 4px; }
+.signal-bar-2 { height: 6px; }
+.signal-bar-3 { height: 8px; }
+.signal-bar-4 { height: 10px; }
+.signal-bar-5 { height: 12px; }
+
+/* WiFi Indicator */
+.wifi-indicator {
+  width: 16px;
+  height: 12px;
+  position: relative;
+}
+
+.wifi-arc {
+  position: absolute;
+  border: 2px solid var(--text-default);
+  border-radius: 50%;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+  border-right-color: transparent;
+}
+
+.wifi-arc-1 {
+  width: 6px;
+  height: 6px;
+  bottom: 0;
+  left: 5px;
+}
+
+.wifi-arc-2 {
+  width: 10px;
+  height: 8px;
+  bottom: 0;
+  left: 3px;
+}
+
+.wifi-arc-3 {
+  width: 14px;
+  height: 10px;
+  bottom: 0;
+  left: 1px;
+}
+
+.wifi-dot {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background-color: var(--text-default);
+  border-radius: 50%;
+  bottom: 0;
+  left: 6.5px;
+}
+
+/* Battery Indicator */
+.status-bar-battery {
+  position: relative;
+  width: 27px;
+  height: 13px;
+}
+
+.battery-border {
+  position: absolute;
+  border-radius: 4.3px;
+  height: 13px;
+  width: 25px;
+  border: 1px solid var(--text-default);
+  opacity: 0.35;
+}
+
+.battery-capacity {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  border-radius: 2.5px;
+  height: 9px;
+  width: 21px;
+  background-color: var(--text-default);
+}
+
+.battery-tip {
+  position: absolute;
+  right: -2px;
+  top: 5px;
+  width: 2px;
+  height: 3px;
+  background-color: var(--text-default);
+  opacity: 0.4;
+  border-radius: 0 1px 1px 0;
+}
+
+/* ========== Android Variant ========== */
+.status-bar-android {
+  padding: 10px var(--spacing-24);
+  align-items: flex-end;
+}
+
+.status-bar-android .status-bar-time {
+  font-family: Roboto, sans-serif;
+  font-size: 14px;
+  line-height: 20%;
+  letter-spacing: 0.01em;
+  width: auto;
+  justify-content: flex-start;
+}
+
+.android-right-icons {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}

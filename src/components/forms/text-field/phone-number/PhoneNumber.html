@@ -1,0 +1,288 @@
+# Phone Number Component
+
+A comprehensive phone number input component that combines a country picker with phone number and extension fields. Uses the CountryPicker component as a nested component.
+
+## Files
+
+- `PhoneNumber.vanilla.css` - Self-contained CSS with token-led styling
+- `PhoneNumber.vanilla.js` - Interactive functionality
+- `PhoneNumber-demo.html` - Demo page showing all states
+
+## Dependencies
+
+This component requires the **CountryPicker** component:
+- `../country-picker/CountryPicker.vanilla.css`
+- `../country-picker/CountryPicker.vanilla.js`
+
+## Component Structure
+
+```html
+<div class="phone-number">
+    <label class="phone-number-label">Select country</label>
+    <div class="phone-number-inputs">
+        <!-- Nested Country Picker Component -->
+        <div class="country-picker">
+            <div class="country-picker-input">
+                <div class="country-picker-flag">🇬🇧</div>
+                <div class="country-picker-code">
+                    <span class="country-picker-code-text">+44</span>
+                </div>
+                <div class="country-picker-icon">
+                    <div class="country-picker-icon-wrapper">
+                        <img src="path/to/chevron-down.svg" alt="Select country">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Phone Number Input -->
+        <div class="phone-number-phone">
+            <div class="phone-number-phone-input">
+                <input type="tel" class="phone-number-phone-field" placeholder="Phone number">
+            </div>
+        </div>
+        
+        <!-- Extension Input -->
+        <div class="phone-number-extension">
+            <div class="phone-number-extension-input">
+                <input type="text" class="phone-number-extension-field" placeholder="Ext">
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+## CSS Classes
+
+### Main Container
+- `.phone-number` - Main container
+- `.phone-number.has-error` - Error state (red borders on inputs)
+- `.phone-number.is-disabled` - Disabled state
+
+### Label
+- `.phone-number-label` - Top label text
+
+### Inputs Row
+- `.phone-number-inputs` - Container for all three inputs (horizontal flex)
+
+### Country Picker (Nested)
+- See CountryPicker component documentation
+- Nested component has its padding removed via `.phone-number .country-picker { padding: 0; }`
+
+### Phone Input
+- `.phone-number-phone` - Phone input wrapper (flex: 1)
+- `.phone-number-phone-input` - Phone input container
+- `.phone-number-phone-field` - Actual phone input field
+
+### Extension Input
+- `.phone-number-extension` - Extension input wrapper
+- `.phone-number-extension-input` - Extension input container (88px width)
+- `.phone-number-extension-field` - Actual extension input field
+
+## JavaScript Events
+
+The component dispatches custom events:
+
+```javascript
+// Phone number input
+element.addEventListener('phone-number-input', function(e) {
+    console.log('Phone:', e.detail.phoneNumber);
+    console.log('Extension:', e.detail.extension);
+});
+
+// Extension input
+element.addEventListener('phone-number-extension-input', function(e) {
+    console.log('Phone:', e.detail.phoneNumber);
+    console.log('Extension:', e.detail.extension);
+});
+
+// Country picker clicked (bubbled from nested component)
+element.addEventListener('phone-number-country-change', function(e) {
+    console.log('Country picker interaction');
+});
+```
+
+## Design Tokens Used
+
+### Typography
+- `--type-style-6-*` - Label and input text (15px, GT Ultra)
+
+### Colors
+- `--text-default` - Label, input text, active borders
+- `--text-input-placeholder` - Placeholder text
+- `--text-input-disabled` - Disabled text
+- `--bg-input-default` - Input backgrounds (white)
+- `--bg-input-disabled` - Disabled backgrounds (gray-100)
+- `--border-default` - Default borders
+- `--color-red-critical` - Error borders
+
+### Spacing
+- `--spacing-08` - Gap between label and inputs, gap between input fields
+- `--spacing-12` - Country picker horizontal padding
+- `--spacing-16` - Container padding, input padding
+
+### Borders
+- `--input-corner-radius` - Border radius (12px)
+- `--input-border-width-default` - Default border (1px)
+- `--input-border-width-active` - Active border (2px)
+
+## Dimensions
+
+- **Label**: type-style-6 (15px)
+- **Input padding**: 16px
+- **Country picker padding**: 16px (vertical) × 12px (horizontal)
+- **Border radius**: 12px
+- **Extension width**: 88px
+- **Phone input**: flex: 1 (fills remaining space)
+- **Gap between inputs**: 8px
+
+## States
+
+### Default
+- White backgrounds on all inputs
+- 1px borders using `--border-default`
+- Placeholder text visible
+
+### Active/Focused
+- 2px border using `--text-default` on focused input
+- Triggered by focusing any input field
+
+### Error
+- Red borders (`--color-red-critical`) on phone and extension inputs
+- Country picker remains normal
+- Applied via `.has-error` class
+
+### Disabled
+- Gray-100 backgrounds on all inputs
+- Gray text color
+- Country picker icon hidden
+- Applied via `.is-disabled` class + disabled attributes
+
+## Behavior
+
+- **Country Picker**: Nested component, fully interactive
+- **Phone Input**: Standard tel input, auto-focus support
+- **Extension Input**: Text input for extension numbers
+- **Focus Management**: Tab order flows naturally across all fields
+- **Event Bubbling**: Country picker events bubble up as phone-number events
+
+## Nested Component Integration
+
+The PhoneNumber component properly nests the CountryPicker component:
+
+1. **CSS**: CountryPicker CSS is loaded first
+2. **JavaScript**: CountryPicker JS is loaded first
+3. **Padding Override**: Phone number removes CountryPicker's default padding
+4. **Event Re-dispatching**: Country picker events are caught and re-dispatched
+
+## Usage Examples
+
+### Basic Phone Number
+```html
+<div class="phone-number">
+    <label class="phone-number-label">Select country</label>
+    <div class="phone-number-inputs">
+        <div class="country-picker">
+            <!-- CountryPicker markup -->
+        </div>
+        <div class="phone-number-phone">
+            <div class="phone-number-phone-input">
+                <input type="tel" class="phone-number-phone-field" placeholder="Phone number">
+            </div>
+        </div>
+        <div class="phone-number-extension">
+            <div class="phone-number-extension-input">
+                <input type="text" class="phone-number-extension-field" placeholder="Ext">
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+### Error State
+```html
+<div class="phone-number has-error">
+    <!-- ... same structure ... -->
+</div>
+```
+
+### Disabled State
+```html
+<div class="phone-number is-disabled">
+    <label class="phone-number-label">Select country</label>
+    <div class="phone-number-inputs">
+        <div class="country-picker is-disabled">
+            <!-- CountryPicker markup -->
+        </div>
+        <div class="phone-number-phone">
+            <div class="phone-number-phone-input">
+                <input type="tel" class="phone-number-phone-field" disabled>
+            </div>
+        </div>
+        <div class="phone-number-extension">
+            <div class="phone-number-extension-input">
+                <input type="text" class="phone-number-extension-field" disabled>
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+### With Event Listeners
+```javascript
+const phoneNumber = document.querySelector('.phone-number');
+
+phoneNumber.addEventListener('phone-number-input', function(e) {
+    console.log('Phone changed:', e.detail.phoneNumber);
+    console.log('Extension:', e.detail.extension);
+});
+
+phoneNumber.addEventListener('phone-number-extension-input', function(e) {
+    console.log('Extension changed:', e.detail.extension);
+});
+```
+
+## Dark Mode Support
+
+All colors automatically adapt to dark mode using semantic tokens:
+- Text changes to gray-200
+- Backgrounds adapt based on semantic tokens
+- Borders use dark mode values
+- Active borders use `--text-default` (adapts automatically)
+- Error red stays the same
+
+## Accessibility
+
+- Native input fields for keyboard access
+- Label associated with inputs
+- Clear visual states
+- Focus management across all three fields
+- Tab order flows naturally
+- Type="tel" for phone input triggers numeric keyboard on mobile
+
+## Notes
+
+- Component uses CountryPicker as a nested component
+- Phone input flexes to fill available space
+- Extension input has fixed 88px width
+- All three inputs have consistent styling
+- Component is fully keyboard accessible
+- Load order matters: CountryPicker CSS/JS must load first
+
+## Integration Checklist
+
+When using PhoneNumber component:
+1. ✅ Load cancara-tokens.css
+2. ✅ Load CountryPicker.vanilla.css
+3. ✅ Load PhoneNumber.vanilla.css
+4. ✅ Load CountryPicker.vanilla.js
+5. ✅ Load PhoneNumber.vanilla.js
+6. ✅ Ensure chevron-down.svg icon is available
+
+## Token-Led Design
+
+All styling uses design tokens from `cancara-tokens.css`:
+- No hardcoded colors
+- Automatic dark mode support via semantic tokens
+- Consistent with design system
+- Easy to maintain

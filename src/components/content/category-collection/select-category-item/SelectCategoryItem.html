@@ -1,0 +1,157 @@
+<!-- 
+  Select Category Item Component - SELF-CONTAINED - TOKEN LED
+  
+  A selectable category item with icon and label for category selection.
+  
+  Features:
+  - Default and Active states
+  - 48x48 circular button with icon
+  - Label text below icon
+  - Click to toggle selection
+  - Token-driven styling
+  
+  Dependencies:
+  - Design tokens (cancara-tokens.css)
+  - SelectCategoryItem.vanilla.css (SELF-CONTAINED)
+  - SelectCategoryItem.vanilla.js (handles icon loading)
+  
+  Usage:
+  1. Import CSS and JS
+  2. Copy HTML structure
+  3. Add data-icon attribute with icon filename (without .svg)
+  4. Add data-icon-category attribute (e.g., "finance", "lifestyle")
+  5. Use checked attribute for active state
+-->
+
+<!-- DEFAULT STATE -->
+<label class="select-category-item">
+  <input type="radio" name="category" value="savings" class="select-category-input">
+  <div class="select-category-button">
+    <div class="select-category-icon">
+      <img data-icon="piggy-bank" data-icon-category="finance" alt="">
+    </div>
+  </div>
+  <span class="select-category-label">Savings</span>
+</label>
+
+<!-- ACTIVE STATE -->
+<label class="select-category-item">
+  <input type="radio" name="category" value="investment" class="select-category-input" checked>
+  <div class="select-category-button">
+    <div class="select-category-icon">
+      <img data-icon="investment" data-icon-category="finance" alt="">
+    </div>
+  </div>
+  <span class="select-category-label">Investment</span>
+</label>
+
+<!-- IN A GRID LAYOUT -->
+<div class="category-selector">
+  <h3 class="category-selector-heading">Select a category</h3>
+  
+  <div class="category-selector-grid">
+    <label class="select-category-item">
+      <input type="radio" name="goal" value="savings" class="select-category-input">
+      <div class="select-category-button">
+        <div class="select-category-icon">
+          <img data-icon="piggy-bank" data-icon-category="finance" alt="">
+        </div>
+      </div>
+      <span class="select-category-label">Savings</span>
+    </label>
+
+    <label class="select-category-item">
+      <input type="radio" name="goal" value="investments" class="select-category-input" checked>
+      <div class="select-category-button">
+        <div class="select-category-icon">
+          <img data-icon="investment" data-icon-category="finance" alt="">
+        </div>
+      </div>
+      <span class="select-category-label">Investments</span>
+    </label>
+
+    <label class="select-category-item">
+      <input type="radio" name="goal" value="bills" class="select-category-input">
+      <div class="select-category-button">
+        <div class="select-category-icon">
+          <img data-icon="bill" data-icon-category="finance" alt="">
+        </div>
+      </div>
+      <span class="select-category-label">Bills</span>
+    </label>
+
+    <label class="select-category-item">
+      <input type="radio" name="goal" value="cash" class="select-category-input">
+      <div class="select-category-button">
+        <div class="select-category-icon">
+          <img data-icon="cash" data-icon-category="finance" alt="">
+        </div>
+      </div>
+      <span class="select-category-label">Cash</span>
+    </label>
+  </div>
+</div>
+
+<!--
+  STRUCTURE:
+  
+  select-category-item (label)
+  ├── select-category-input (hidden radio button)
+  ├── select-category-button (visual button, 48x48)
+  │   └── select-category-icon (24x24 icon container)
+  │       └── img (SVG icon)
+  └── select-category-label (text below button)
+  
+  Optional container:
+  category-selector
+  ├── category-selector-heading
+  └── category-selector-grid (grid layout)
+      └── select-category-item (repeatable)
+  
+  STATES:
+  - Default: Not selected (white background, gray border)
+  - Active: Input is :checked (bright green background, black border)
+  
+  ATTRIBUTES:
+  - data-icon: Icon filename without .svg (e.g., "piggy-bank")
+  - data-icon-category: Icon folder name (e.g., "finance", "lifestyle", "travel")
+  - name: Groups radio buttons together (only one can be selected)
+  - value: Value submitted with form
+  - checked: Pre-select item (active state)
+  
+  COMPLETE USAGE:
+  
+  <head>
+      <link rel="stylesheet" href="../../../../css/cancara-tokens.css">
+      <link rel="stylesheet" href="SelectCategoryItem.vanilla.css">
+  </head>
+  <body>
+      <div class="category-selector">
+          <h3 class="category-selector-heading">Choose a category</h3>
+          
+          <div class="category-selector-grid">
+              <label class="select-category-item">
+                  <input type="radio" name="cat" value="savings" class="select-category-input">
+                  <div class="select-category-button">
+                      <div class="select-category-icon">
+                          <img data-icon="piggy-bank" data-icon-category="finance" alt="">
+                      </div>
+                  </div>
+                  <span class="select-category-label">Savings</span>
+              </label>
+              
+              <label class="select-category-item">
+                  <input type="radio" name="cat" value="investment" class="select-category-input" checked>
+                  <div class="select-category-button">
+                      <div class="select-category-icon">
+                          <img data-icon="investment" data-icon-category="finance" alt="">
+                      </div>
+                  </div>
+                  <span class="select-category-label">Investment</span>
+              </label>
+          </div>
+      </div>
+      
+      <script src="SelectCategoryItem.vanilla.js"></script>
+  </body>
+-->

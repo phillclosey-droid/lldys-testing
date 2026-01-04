@@ -1,0 +1,216 @@
+/* Calendar Picker Vanilla CSS - SELF-CONTAINED - TOKEN LED */
+
+/* ========== CALENDAR PICKER CONTAINER ========== */
+.calendar-picker {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 var(--spacing-16);
+  gap: var(--spacing-08);
+}
+
+/* Inline layout variant */
+.calendar-picker.layout-inline {
+  gap: 0;
+}
+
+/* ========== LABEL ========== */
+.calendar-picker-label {
+  font-family: var(--type-style-6-family);
+  font-size: var(--type-style-6-size);
+  font-weight: var(--type-style-6-weight);
+  line-height: var(--type-style-6-line-height);
+  letter-spacing: var(--type-style-6-letter-spacing);
+  color: var(--text-default);
+}
+
+/* ========== INPUT WRAPPER ========== */
+.calendar-picker-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  position: relative;
+}
+
+/* Inline layout input wrapper */
+.calendar-picker.layout-inline .calendar-picker-input-wrapper {
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-12);
+}
+
+/* ========== INPUT CONTAINER ========== */
+.calendar-picker-input {
+  border-radius: var(--input-corner-radius);
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-16);
+  gap: var(--spacing-08);
+  background-color: var(--bg-input-default);
+  border: var(--input-border-width-default) solid var(--border-default);
+  cursor: pointer;
+  transition: border 0.2s;
+  width: 100%;
+  min-height: var(--input-min-height);
+  box-sizing: border-box;
+}
+
+/* Inline layout specific - don't include icon */
+.calendar-picker.layout-inline .calendar-picker-input {
+  flex: 1;
+}
+
+/* ========== INPUT CONTENT ========== */
+.calendar-picker-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+}
+
+.calendar-picker-label-inline {
+  font-family: var(--type-style-6-family);
+  font-size: var(--type-style-6-size);
+  font-weight: var(--type-style-6-weight);
+  line-height: var(--type-style-6-line-height);
+  color: var(--text-default);
+  white-space: nowrap;
+}
+
+.calendar-picker-colon {
+  font-family: var(--type-style-6-family);
+  font-size: var(--type-style-6-size);
+  font-weight: var(--type-style-6-weight);
+  line-height: var(--type-style-6-line-height);
+  color: var(--text-default);
+}
+
+.calendar-picker-value {
+  font-family: var(--type-style-6-family);
+  font-size: var(--type-style-6-size);
+  font-weight: var(--type-style-6-weight);
+  line-height: var(--type-style-6-line-height);
+  color: var(--text-default);
+}
+
+/* ========== CALENDAR ICON ========== */
+/* Icon inside input for default layout */
+.calendar-picker-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.calendar-picker-icon img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  display: block;
+}
+
+/* Icon button for inline layout - OUTSIDE the input */
+.calendar-picker-icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.calendar-picker-icon-button .calendar-picker-icon {
+  margin-left: 0;
+}
+
+/* ========== HINT MESSAGE ========== */
+.calendar-picker-hint {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-08) 0;
+  width: 100%;
+}
+
+.calendar-picker-hint-text {
+  font-family: var(--font-family-body);
+  font-size: 14px;
+  font-weight: var(--font-weight-regular);
+  line-height: 20px;
+  color: var(--text-default);
+}
+
+/* Inline layout hint spacing */
+.calendar-picker.layout-inline .calendar-picker-hint-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100%;
+  gap: var(--spacing-08);
+}
+
+.calendar-picker.layout-inline .calendar-picker-hint {
+  flex: 1;
+}
+
+.calendar-picker.layout-inline .calendar-picker-icon-button-spacer {
+  width: 24px;
+  flex-shrink: 0;
+}
+
+/* ========== STATE: ACTIVE (FOCUSED) ========== */
+.calendar-picker-input.is-active {
+  border-width: var(--input-border-width-active);
+  border-color: var(--color-black);
+}
+
+/* ========== STATE: DISABLED ========== */
+.calendar-picker.is-disabled .calendar-picker-input {
+  background-color: var(--bg-input-disabled);
+  border-color: var(--border-default);
+  cursor: not-allowed;
+}
+
+.calendar-picker.is-disabled .calendar-picker-value,
+.calendar-picker.is-disabled .calendar-picker-label-inline,
+.calendar-picker.is-disabled .calendar-picker-colon {
+  color: var(--text-input-disabled);
+}
+
+.calendar-picker.is-disabled .calendar-picker-icon-button {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Hide icon in disabled default layout */
+.calendar-picker.is-disabled:not(.layout-inline) .calendar-picker-icon {
+  display: none;
+}
+
+/* ========== DARK MODE ========== */
+[data-theme="dark"] .calendar-picker-icon img {
+  filter: invert(1);
+}
+
+[data-theme="dark"] .calendar-picker-input.is-active {
+  border-color: var(--color-white);
+}
+
+/* ========== NATIVE DATE INPUT (HIDDEN) ========== */
+.calendar-picker-native-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}

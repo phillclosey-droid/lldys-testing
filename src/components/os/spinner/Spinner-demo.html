@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spinner with Icon Overlay - Demo</title>
+    
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="../../../css/cancara-tokens.css">
+    
+    <!-- Nested Component CSS -->
+    <link rel="stylesheet" href="../native-spinner-configuration/NativeSpinner.vanilla.css">
+    
+    <!-- Component CSS -->
+    <link rel="stylesheet" href="Spinner.vanilla.css">
+    
+    <style>
+        body {
+            font-family: var(--font-family-body);
+            background-color: var(--bg-page-default);
+            color: var(--text-default);
+            padding: var(--spacing-48);
+            margin: 0;
+        }
+        
+        .demo-section {
+            margin-bottom: var(--spacing-48);
+        }
+        
+        .demo-title {
+            font-size: var(--type-style-2-size);
+            font-weight: var(--type-style-2-weight);
+            line-height: var(--type-style-2-line-height);
+            margin: 0 0 var(--spacing-16) 0;
+            color: var(--text-default);
+        }
+        
+        .demo-description {
+            font-size: var(--type-style-6-size);
+            line-height: var(--type-style-6-line-height);
+            color: var(--text-subdued);
+            margin: 0 0 var(--spacing-24) 0;
+        }
+        
+        .theme-toggle {
+            position: fixed;
+            top: var(--spacing-24);
+            right: var(--spacing-24);
+            padding: var(--spacing-12) var(--spacing-24);
+            background-color: var(--bg-action-default);
+            color: var(--text-action-inverse);
+            border: none;
+            border-radius: var(--radius-default);
+            font-family: var(--font-family-body);
+            cursor: pointer;
+            z-index: 1000;
+        }
+        
+        .spinner-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 32px;
+            max-width: 1200px;
+        }
+        
+        .spinner-demo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            padding: 24px;
+            background-color: var(--bg-panel-default);
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        [data-theme="dark"] .spinner-demo {
+            box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+        }
+        
+        .spinner-label {
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-subdued);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()">Toggle Dark Mode</button>
+    
+    <h1 class="demo-title" style="font-size: 29px; margin-bottom: var(--spacing-48);">Spinner with Icon Overlay Component</h1>
+    
+    <!-- Demo 1: Sets 1 & 2 WITHOUT icon overlay (they have built-in padlock) -->
+    <div class="demo-section">
+        <h2 class="demo-title">Sets 1 & 2 - Built-in Padlock Icon</h2>
+        <p class="demo-description">These sets have a padlock icon baked into the SVG</p>
+        
+        <div class="spinner-grid">
+            <div class="spinner-demo">
+                <div class="spinner-with-icon size-default bg-light">
+                    <div class="native-spinner size-xlarge" data-spinner-set="1"></div>
+                    <!-- NO icon overlay - padlock is in the SVG -->
+                </div>
+                <span class="spinner-label">Set 1<br>Built-in Padlock</span>
+            </div>
+            
+            <div class="spinner-demo">
+                <div class="spinner-with-icon size-default bg-light">
+                    <div class="native-spinner size-xlarge" data-spinner-set="2"></div>
+                    <!-- NO icon overlay - padlock is in the SVG -->
+                </div>
+                <span class="spinner-label">Set 2<br>Built-in Padlock</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Demo 2: Set 3 with various icons -->
+    <div class="demo-section">
+        <h2 class="demo-title">Set 3 - Various Icon Options</h2>
+        <p class="demo-description">Transparent background with different action icons</p>
+        
+        <div class="spinner-grid">
+            <div class="spinner-demo">
+                <div class="spinner-with-icon size-default bg-light">
+                    <div class="native-spinner size-xlarge" data-spinner-set="3"></div>
+                    <div class="spinner-icon-overlay">
+                        <img data-spinner-icon="tick" alt="">
+                    </div>
+                </div>
+                <span class="spinner-label">Tick</span>
+            </div>
+            
+            <div class="spinner-demo">
+                <div class="spinner-with-icon size-default bg-light">
+                    <div class="native-spinner size-xlarge" data-spinner-set="3"></div>
+                    <div class="spinner-icon-overlay">
+                        <img data-spinner-icon="plus" alt="">
+                    </div>
+                </div>
+                <span class="spinner-label">Plus</span>
+            </div>
+            
+            <div class="spinner-demo">
+                <div class="spinner-with-icon size-default bg-light">
+                    <div class="native-spinner size-xlarge" data-spinner-set="3"></div>
+                    <div class="spinner-icon-overlay">
+                        <img data-spinner-icon="minus" alt="">
+                    </div>
+                </div>
+                <span class="spinner-label">Minus</span>
+            </div>
+            
+            <div class="spinner-demo">
+                <div class="spinner-with-icon size-default bg-light">
+                    <div class="native-spinner size-xlarge" data-spinner-set="3"></div>
+                    <div class="spinner-icon-overlay">
+                        <img data-spinner-icon="plus-alt-01-filled" alt="">
+                    </div>
+                </div>
+                <span class="spinner-label">Plus Filled</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Demo 3: Set 4 with icon overlays -->
+    <div class="demo-section">
+        <h2 class="demo-title">Set 4 - With Icon Overlays</h2>
+        <p class="demo-description">Transparent background with custom icon overlays</p>
+        
+        <div class="spinner-grid">
+            <div class="spinner-demo">
+                <div class="spinner-with-icon size-default bg-light">
+                    <div class="native-spinner size-xlarge" data-spinner-set="4"></div>
+                    <div class="spinner-icon-overlay">
+                        <img data-spinner-icon="tick" alt="">
+                    </div>
+                </div>
+                <span class="spinner-label">Set 4<br>Tick Icon</span>
+            </div>
+            
+            <div class="spinner-demo">
+                <div class="spinner-with-icon size-default bg-light">
+                    <div class="native-spinner size-xlarge" data-spinner-set="4"></div>
+                    <div class="spinner-icon-overlay">
+                        <img data-spinner-icon="minus" alt="">
+                    </div>
+                </div>
+                <span class="spinner-label">Set 4<br>Minus Icon</span>
+            </div>
+            
+            <div class="spinner-demo">
+                <div class="spinner-with-icon size-default bg-light">
+                    <div class="native-spinner size-xlarge" data-spinner-set="4"></div>
+                    <div class="spinner-icon-overlay">
+                        <img data-spinner-icon="plus" alt="">
+                    </div>
+                </div>
+                <span class="spinner-label">Set 4<br>Plus Icon</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Demo 4: Small size variants (Sets 3 & 4 only) -->
+    <div class="demo-section">
+        <h2 class="demo-title">Small Size (32px) - Sets 3 & 4</h2>
+        <p class="demo-description">Compact spinners with 12px icons</p>
+        
+        <div class="spinner-grid">
+            <div class="spinner-demo">
+                <div class="spinner-with-icon size-small bg-light">
+                    <div class="native-spinner size-large" data-spinner-set="3"></div>
+                    <div class="spinner-icon-overlay">
+                        <img data-spinner-icon="tick" alt="">
+                    </div>
+                </div>
+                <span class="spinner-label">Small Set 3<br>Tick Icon</span>
+            </div>
+            
+            <div class="spinner-demo">
+                <div class="spinner-with-icon size-small bg-light">
+                    <div class="native-spinner size-large" data-spinner-set="4"></div>
+                    <div class="spinner-icon-overlay">
+                        <img data-spinner-icon="plus" alt="">
+                    </div>
+                </div>
+                <span class="spinner-label">Small Set 4<br>Plus Icon</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Nested Component JavaScript -->
+    <script src="../native-spinner-configuration/NativeSpinner.vanilla.js"></script>
+    
+    <!-- Component JavaScript -->
+    <script src="Spinner.vanilla.js"></script>
+    
+    <!-- Demo JavaScript -->
+    <script>
+        function detectSystemTheme() {
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+        }
+        
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+        }
+        
+        detectSystemTheme();
+        
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+        });
+    </script>
+</body>
+</html>

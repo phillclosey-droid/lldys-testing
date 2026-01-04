@@ -1,0 +1,43 @@
+<!-- 
+  NotificationBadge HTML Component
+  
+  Props:
+  - count: number (default: 12)
+  - type: 'default' | 'offers' (default: 'default')
+  
+  Dependencies:
+  - NotificationBadge.vanilla.css
+  - Design tokens
+  
+  Example Usage:
+-->
+
+<div class="notification-badge">
+    <div class="notification-badge-text">12</div>
+</div>
+
+<!-- 
+  COMPLETE USAGE IN HTML PAGE:
+  
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <!-- 1. Design Tokens (REQUIRED) -->
+      <link rel="stylesheet" href="path/to/cancara-tokens.css">
+      
+      <!-- 2. NotificationBadge CSS -->
+      <link rel="stylesheet" href="path/to/NotificationBadge.vanilla.css">
+  </head>
+  <body data-theme="light">
+      <!-- Default badge (red) -->
+      <div class="notification-badge">
+          <div class="notification-badge-text">12</div>
+      </div>
+      
+      <!-- Offers badge (green) -->
+      <div class="notification-badge notification-badge-offers">
+          <div class="notification-badge-text">3</div>
+      </div>
+  </body>
+  </html>
+-->

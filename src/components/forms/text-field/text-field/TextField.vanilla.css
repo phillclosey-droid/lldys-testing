@@ -1,0 +1,242 @@
+/* TextField Vanilla CSS - SELF-CONTAINED - TOKEN LED */
+
+/* ========== CONTAINER ========== */
+.text-field-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-08);
+  width: 100%;
+}
+
+.text-field-inline {
+  gap: 0;
+}
+
+/* ========== LABEL ========== */
+.text-field-label {
+  font-family: var(--type-style-7-family);
+  font-size: var(--type-style-7-size);
+  font-weight: var(--type-style-7-weight);
+  line-height: var(--type-style-7-line-height);
+  color: var(--text-default);
+  cursor: pointer;
+}
+
+.text-field-label-inline {
+  font-family: var(--type-style-6-family);
+  font-size: var(--type-style-6-size);
+  font-weight: var(--type-style-6-weight);
+  line-height: var(--type-style-6-line-height);
+  color: var(--text-default);
+  padding-right: var(--spacing-12);
+  white-space: nowrap;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+/* ========== WRAPPER ========== */
+.text-field-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-08);
+  min-height: var(--input-min-height);
+  padding: var(--spacing-16);
+  background-color: var(--bg-input-default);
+  border: var(--input-border-width-default) solid var(--color-gray-700);
+  border-radius: var(--input-corner-radius);
+  transition: border-color 0.2s ease, border-width 0.2s ease;
+  cursor: text;
+}
+
+/* ========== INPUT ========== */
+.text-field-input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  font-family: var(--type-style-6-family);
+  font-size: var(--type-style-6-size);
+  font-weight: var(--type-style-6-weight);
+  line-height: var(--type-style-6-line-height);
+  color: var(--text-input-default);
+  outline: none;
+  cursor: text;
+}
+
+.text-field-input::placeholder {
+  color: var(--text-input-placeholder);
+}
+
+/* Input Focus State - NO BLUE BORDER */
+.text-field-input:focus {
+  outline: none;
+}
+
+.text-field-wrapper:has(.text-field-input:focus) {
+  border-width: var(--input-border-width-active);
+  border-color: var(--color-black);
+}
+
+/* Input Disabled State */
+.text-field-input:disabled {
+  color: var(--text-input-disabled);
+  cursor: not-allowed;
+}
+
+.text-field-wrapper:has(.text-field-input:disabled) {
+  background-color: var(--bg-input-disabled);
+  border-color: var(--color-gray-300);
+  cursor: not-allowed;
+}
+
+.text-field-label:has(+ * .text-field-input:disabled) {
+  cursor: not-allowed;
+}
+
+/* ========== ERROR STATE ========== */
+.text-field-error .text-field-wrapper {
+  border-color: var(--color-red-critical);
+}
+
+.text-field-error .text-field-wrapper:has(.text-field-input:focus) {
+  border-color: var(--color-red-critical);
+}
+
+/* ========== ICONS ========== */
+/* Icon container: 24px × 24px with 3px padding */
+.text-field-icon {
+  display: none; /* Hidden by default */
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  min-height: 24px;
+  max-width: 24px;
+  max-height: 24px;
+  padding: 3px;
+  flex-shrink: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Icon image: 18px × 18px inside the container */
+.text-field-icon img {
+  width: 18px;
+  height: 18px;
+  display: block;
+  max-width: none;
+}
+
+/* Error icon - show it and make it red */
+.text-field-error .text-field-icon-error {
+  display: flex;
+}
+
+.text-field-icon-error img {
+  /* The SVG is black, we need to make it red (#DB0F30) */
+  filter: brightness(0) saturate(100%) invert(17%) sepia(93%) saturate(6417%) hue-rotate(350deg) brightness(96%) contrast(95%);
+}
+
+/* ========== CLEAR BUTTON ========== */
+/* Clear button: 24px × 24px, no padding, icon fills the space */
+.text-field-clear {
+  display: none; /* Hidden by default, shown by JS when there's content */
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  min-height: 24px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: opacity 0.2s ease;
+}
+
+.text-field-clear img {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+.text-field-clear:hover {
+  opacity: 0.7;
+}
+
+.text-field-clear:active {
+  opacity: 0.5;
+}
+
+/* ========== HINT MESSAGE ========== */
+.text-field-hint {
+  padding: var(--spacing-08) 0;
+  font-family: var(--type-style-8-family);
+  font-size: var(--type-style-8-size);
+  font-weight: var(--type-style-8-weight);
+  line-height: var(--type-style-8-line-height);
+  color: var(--text-default);
+}
+
+.text-field-error .text-field-hint {
+  color: var(--text-input-error);
+}
+
+/* ========== DARK MODE ========== */
+[data-theme="dark"] .text-field-wrapper {
+  background-color: var(--bg-input-default);
+  border-color: var(--border-default);
+}
+
+[data-theme="dark"] .text-field-wrapper:has(.text-field-input:focus) {
+  border-color: var(--color-white);
+}
+
+[data-theme="dark"] .text-field-wrapper:has(.text-field-input:disabled) {
+  background-color: var(--bg-input-disabled);
+  border-color: var(--color-gray-700);
+}
+
+[data-theme="dark"] .text-field-label-inline {
+  color: var(--text-default);
+}
+
+[data-theme="dark"] .text-field-input:disabled ~ .text-field-label-inline {
+  color: var(--text-input-disabled);
+}
+
+/* Dark mode - Error border stays red */
+[data-theme="dark"] .text-field-error .text-field-wrapper {
+  border-color: var(--color-red-critical);
+}
+
+[data-theme="dark"] .text-field-error .text-field-wrapper:has(.text-field-input:focus) {
+  border-color: var(--color-red-critical);
+}
+
+/* Dark mode - Error icon stays red */
+[data-theme="dark"] .text-field-icon-error img {
+  /* Keep same red filter in dark mode */
+  filter: brightness(0) saturate(100%) invert(17%) sepia(93%) saturate(6417%) hue-rotate(350deg) brightness(96%) contrast(95%);
+}
+
+/* Dark mode - Close icon becomes white */
+[data-theme="dark"] .text-field-clear img {
+  filter: brightness(0) invert(1);
+}
+
+/* ========== ACCESSIBILITY - REMOVE BLUE OUTLINE ========== */
+.text-field-input:focus-visible {
+  outline: none;
+}
+
+/* ========== REDUCED MOTION ========== */
+@media (prefers-reduced-motion: reduce) {
+  .text-field-wrapper,
+  .text-field-clear {
+    transition: none;
+  }
+}

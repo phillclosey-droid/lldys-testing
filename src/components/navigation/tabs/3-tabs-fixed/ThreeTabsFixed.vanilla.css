@@ -1,0 +1,149 @@
+/* 3-Tabs-Fixed Component CSS - SELF-CONTAINED - TOKEN LED */
+
+/* ========== CONTAINER ========== */
+.tabs-3-fixed {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  max-width: 375px;
+  padding: 0 var(--spacing-16);
+  position: relative;
+}
+
+/* ========== DEFAULT LAYOUT (PILL STYLE) ========== */
+.tabs-3-fixed.layout-default {
+  min-height: 48px;
+  max-height: 48px;
+}
+
+.tabs-3-fixed.layout-default .tabs-container {
+  display: flex;
+  width: 100%;
+}
+
+.tabs-3-fixed.layout-default .tab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  padding: var(--spacing-08) 0;
+  background: transparent;
+  border: var(--border-width-01) solid var(--color-black);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tabs-3-fixed.layout-default .tab:first-child {
+  border-top-left-radius: var(--radius-default);
+  border-bottom-left-radius: var(--radius-default);
+  border-right: 0;
+}
+
+.tabs-3-fixed.layout-default .tab:nth-child(2) {
+  border-left: 0;
+  border-right: 0;
+}
+
+.tabs-3-fixed.layout-default .tab:last-child {
+  border-top-right-radius: var(--radius-default);
+  border-bottom-right-radius: var(--radius-default);
+  border-left: 0;
+}
+
+.tabs-3-fixed.layout-default .tab.active {
+  background: var(--tabs-active-bg);
+  border-color: transparent;
+}
+
+.tabs-3-fixed.layout-default .tab-text {
+  flex: 1;
+  font-family: var(--type-style-8-family);
+  font-size: var(--type-style-8-size);
+  font-weight: var(--type-style-8-weight);
+  line-height: var(--type-style-8-line-height);
+  letter-spacing: var(--type-style-8-letter-spacing);
+  text-align: center;
+  color: var(--text-default);
+}
+
+.tabs-3-fixed.layout-default .tab.active .tab-text {
+  color: var(--tabs-active-text);
+}
+
+/* ========== ALT 01 LAYOUT (UNDERLINE STYLE) ========== */
+.tabs-3-fixed.layout-alt-01 {
+  padding-bottom: 0;
+}
+
+.tabs-3-fixed.layout-alt-01 .tabs-container {
+  display: flex;
+  width: 100%;
+  position: relative;
+}
+
+.tabs-3-fixed.layout-alt-01 .tab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-16);
+  background: transparent;
+  border: none;
+  border-bottom: var(--border-width-01) solid var(--color-gray-100);
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.tabs-3-fixed.layout-alt-01 .tab.active {
+  border-bottom-color: transparent;
+}
+
+.tabs-3-fixed.layout-alt-01 .tab-text {
+  font-family: var(--type-style-8-family);
+  font-size: var(--type-style-8-size);
+  font-weight: var(--type-style-8-weight);
+  line-height: var(--type-style-8-line-height);
+  letter-spacing: var(--type-style-8-letter-spacing);
+  text-align: center;
+  color: var(--text-default);
+  white-space: nowrap;
+}
+
+/* Active border indicator */
+.tabs-3-fixed.layout-alt-01 .active-border {
+  position: absolute;
+  bottom: 0;
+  left: var(--spacing-16);
+  right: var(--spacing-16);
+  display: flex;
+  pointer-events: none;
+}
+
+.tabs-3-fixed.layout-alt-01 .active-border-segment {
+  flex: 1;
+  height: var(--border-width-02);
+  background: transparent;
+  transition: background-color 0.2s;
+}
+
+/* Active line: black in light mode, green in dark mode */
+.tabs-3-fixed.layout-alt-01 .active-border-segment.active {
+  background: var(--color-black);
+}
+
+/* ========== DARK MODE OVERRIDES ========== */
+[data-theme="dark"] .tabs-3-fixed.layout-default .tab {
+  border-color: var(--color-gray-600);
+}
+
+[data-theme="dark"] .tabs-3-fixed.layout-alt-01 .tab {
+  border-bottom-color: var(--color-gray-800);
+}
+
+[data-theme="dark"] .tabs-3-fixed.layout-alt-01 .active-border-segment.active {
+  background: var(--tabs-indicator);
+}

@@ -1,0 +1,95 @@
+/* Toggle Vanilla CSS - SELF-CONTAINED - TOKEN LED */
+
+/* ========== TOGGLE CONTAINER ========== */
+.toggle {
+  display: inline-flex;
+  border-radius: var(--radius-small);
+  background-color: var(--bg-panel-secondary);
+  padding: 2px;
+}
+
+/* ========== TOGGLE TAB ========== */
+.toggle-tab {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacing-06) var(--spacing-12);
+  border-radius: var(--radius-small);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+  position: relative;
+  min-width: 57px;
+  height: 32px;
+}
+
+.toggle-tab-text {
+  font-family: var(--type-style-6-family);
+  font-size: var(--type-style-6-size);
+  font-weight: var(--type-style-6-weight);
+  line-height: var(--type-style-6-line-height);
+  letter-spacing: var(--type-style-6-letter-spacing);
+  color: var(--text-default);
+  text-align: center;
+  transition: color 0.2s;
+}
+
+/* ========== TOGGLE SEPARATOR ========== */
+.toggle-separator {
+  width: 1px;
+  height: 12px;
+  background-color: var(--border-default);
+  border-radius: 0.5px;
+  align-self: center;
+  flex-shrink: 0;
+}
+
+/* ========== ACTIVE STATE ========== */
+.toggle-tab.is-active {
+  background-color: var(--bg-action-default);
+}
+
+.toggle-tab.is-active .toggle-tab-text {
+  color: var(--text-action-inverse);
+}
+
+/* Hide separator when either adjacent tab is active */
+.toggle-tab.is-active + .toggle-separator,
+.toggle-separator:has(+ .toggle-tab.is-active) {
+  display: none;
+}
+
+/* Fallback for browsers without :has() support */
+@supports not (selector(:has(*))) {
+  .toggle-separator {
+    display: none;
+  }
+  
+  .toggle-tab:not(.is-active) + .toggle-separator + .toggle-tab:not(.is-active) {
+    display: block;
+  }
+}
+
+/* ========== DISABLED STATE ========== */
+.toggle-tab:disabled {
+  cursor: not-allowed;
+}
+
+.toggle-tab:disabled .toggle-tab-text {
+  color: var(--text-subdued);
+}
+
+.toggle-tab:disabled.is-active {
+  background-color: var(--border-default);
+}
+
+.toggle-tab:disabled.is-active .toggle-tab-text {
+  color: var(--text-subdued);
+}
+
+/* ========== HOVER STATE (not disabled, not active) ========== */
+.toggle-tab:not(:disabled):not(.is-active):hover {
+  background-color: var(--bg-panel-pressed);
+}

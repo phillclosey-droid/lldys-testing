@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accordion Component - Demo</title>
+    
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="../../../css/cancara-tokens.css">
+    
+    <!-- Accordion Component (SELF-CONTAINED) -->
+    <link rel="stylesheet" href="Accordion.vanilla.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family-body);
+            background: var(--bg-page-default);
+            color: var(--text-default);
+            transition: background-color 0.3s, color 0.3s;
+            padding: 40px;
+            min-height: 100vh;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .toggle-button {
+            background: var(--bg-action-default);
+            color: var(--text-action-inverse);
+            border: none;
+            border-radius: var(--radius-default);
+            padding: 12px 24px;
+            font-family: var(--font-family-body);
+            font-size: 14px;
+            font-weight: var(--font-weight-bold);
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .toggle-button:hover {
+            background: var(--bg-action-pressed);
+        }
+
+        h1 {
+            margin-bottom: 40px;
+            font-size: 32px;
+        }
+        
+        .demo-section {
+            margin-bottom: 60px;
+        }
+        
+        .demo-section-title {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .demo-section p {
+            margin-bottom: 20px;
+            color: var(--text-subdued);
+        }
+
+        .center-wrapper {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <div class="theme-toggle">
+        <button class="toggle-button" onclick="toggleTheme()">
+            <span id="theme-text">Switch to Dark Mode</span>
+        </button>
+    </div>
+
+    <h1>Accordion Component - All Variants</h1>
+    
+    <!-- VARIANT 1: Basic - Just text -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">Variant 1: Text Only (Standalone)</h2>
+        <p>Single accordion with just label text</p>
+        
+        <div class="center-wrapper">
+            <div class="accordion accordion-compact accordion-single">
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="accordion-label">
+                            <div class="accordion-label-content">
+                                <div class="accordion-label-text">What is an ISA?</div>
+                            </div>
+                        </div>
+                        <div class="accordion-icon">
+                            <div class="accordion-icon-plus">
+                                <img data-icon-plus alt="">
+                            </div>
+                            <div class="accordion-icon-minus">
+                                <img data-icon-minus alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-divider"></div>
+                    <div class="accordion-panel">
+                        <div class="accordion-panel-content">
+                            <p class="accordion-panel-text">An Individual Savings Account (ISA) is a tax-efficient way to save or invest your money.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VARIANT 2: With Subtext -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">Variant 2: Text + Subtext (Standalone)</h2>
+        <p>Single accordion with label text and supporting subtext</p>
+        
+        <div class="center-wrapper">
+            <div class="accordion accordion-compact accordion-single">
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="accordion-label">
+                            <div class="accordion-label-content">
+                                <div class="accordion-label-text">Interest Rates</div>
+                                <div class="accordion-label-subtext">Updated monthly</div>
+                            </div>
+                        </div>
+                        <div class="accordion-icon">
+                            <div class="accordion-icon-plus">
+                                <img data-icon-plus alt="">
+                            </div>
+                            <div class="accordion-icon-minus">
+                                <img data-icon-minus alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-divider"></div>
+                    <div class="accordion-panel">
+                        <div class="accordion-panel-content">
+                            <p class="accordion-panel-text">Our interest rates vary depending on the type of account and balance.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VARIANT 3: With Icon -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">Variant 3: Icon + Text (Standalone)</h2>
+        <p>Single accordion with 18px icon and label text</p>
+        
+        <div class="center-wrapper">
+            <div class="accordion accordion-compact accordion-single">
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="accordion-label">
+                            <div class="accordion-label-icon">
+                                <img data-icon="savings-account" data-icon-category="finance" alt="">
+                            </div>
+                            <div class="accordion-label-content">
+                                <div class="accordion-label-text">Savings Account</div>
+                            </div>
+                        </div>
+                        <div class="accordion-icon">
+                            <div class="accordion-icon-plus">
+                                <img data-icon-plus alt="">
+                            </div>
+                            <div class="accordion-icon-minus">
+                                <img data-icon-minus alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-divider"></div>
+                    <div class="accordion-panel">
+                        <div class="accordion-panel-content">
+                            <p class="accordion-panel-text">Open a savings account to start building your financial future with competitive interest rates.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VARIANT 4: Icon + Text + Subtext -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">Variant 4: Icon + Text + Subtext (Standalone)</h2>
+        <p>Single accordion with icon, label text, and subtext</p>
+        
+        <div class="center-wrapper">
+            <div class="accordion accordion-compact accordion-single">
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="accordion-label">
+                            <div class="accordion-label-icon">
+                                <img data-icon="current-account" data-icon-category="finance" alt="">
+                            </div>
+                            <div class="accordion-label-content">
+                                <div class="accordion-label-text">Current Account</div>
+                                <div class="accordion-label-subtext">£2,547.89 available</div>
+                            </div>
+                        </div>
+                        <div class="accordion-icon">
+                            <div class="accordion-icon-plus">
+                                <img data-icon-plus alt="">
+                            </div>
+                            <div class="accordion-icon-minus">
+                                <img data-icon-minus alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-divider"></div>
+                    <div class="accordion-panel">
+                        <div class="accordion-panel-content">
+                            <p class="accordion-panel-text">View recent transactions, transfer money, and manage your everyday banking needs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VARIANT 5: Multiple Items in Group -->
+    <div class="demo-section">
+        <h2 class="demo-section-title">Variant 5: Multiple Items (Group)</h2>
+        <p>Several accordion items together with a heading</p>
+        
+        <div class="center-wrapper">
+            <div class="accordion accordion-compact accordion-group">
+                <h2 class="accordion-heading">Frequently Asked Questions</h2>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="accordion-label">
+                            <div class="accordion-label-content">
+                                <div class="accordion-label-text">What is an ISA?</div>
+                            </div>
+                        </div>
+                        <div class="accordion-icon">
+                            <div class="accordion-icon-plus">
+                                <img data-icon-plus alt="">
+                            </div>
+                            <div class="accordion-icon-minus">
+                                <img data-icon-minus alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-divider"></div>
+                    <div class="accordion-panel">
+                        <div class="accordion-panel-content">
+                            <p class="accordion-panel-text">An Individual Savings Account is a tax-efficient savings account.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="accordion-label">
+                            <div class="accordion-label-icon">
+                                <img data-icon="investment" data-icon-category="finance" alt="">
+                            </div>
+                            <div class="accordion-label-content">
+                                <div class="accordion-label-text">How do I invest?</div>
+                                <div class="accordion-label-subtext">Start from £100</div>
+                            </div>
+                        </div>
+                        <div class="accordion-icon">
+                            <div class="accordion-icon-plus">
+                                <img data-icon-plus alt="">
+                            </div>
+                            <div class="accordion-icon-minus">
+                                <img data-icon-minus alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-divider"></div>
+                    <div class="accordion-panel">
+                        <div class="accordion-panel-content">
+                            <p class="accordion-panel-text">Start investing with as little as £100 through our easy-to-use investment platform.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="accordion-label">
+                            <div class="accordion-label-content">
+                                <div class="accordion-label-text">What is the interest rate?</div>
+                                <div class="accordion-label-subtext">Updated monthly</div>
+                            </div>
+                        </div>
+                        <div class="accordion-icon">
+                            <div class="accordion-icon-plus">
+                                <img data-icon-plus alt="">
+                            </div>
+                            <div class="accordion-icon-minus">
+                                <img data-icon-minus alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-divider"></div>
+                    <div class="accordion-panel">
+                        <div class="accordion-panel-content">
+                            <p class="accordion-panel-text">Rates vary by account type and are updated monthly.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="Accordion.vanilla.js"></script>
+
+    <script>
+        function detectSystemTheme() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-text').textContent = 'Switch to Light Mode';
+            } else {
+                document.body.setAttribute('data-theme', 'light');
+                document.getElementById('theme-text').textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', detectSystemTheme);
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const themeText = document.getElementById('theme-text');
+            const currentTheme = body.getAttribute('data-theme');
+            
+            if (currentTheme === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                themeText.textContent = 'Switch to Light Mode';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeText.textContent = 'Switch to Dark Mode';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', function() {
+            detectSystemTheme();
+        });
+    </script>
+</body>
+</html>

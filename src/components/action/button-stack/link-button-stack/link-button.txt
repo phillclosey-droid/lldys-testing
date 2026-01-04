@@ -1,0 +1,64 @@
+const _LinkButton: React.VFC = () => {
+  return (
+    <_LinkButton>
+      <State=Default>
+        <Text>Link</Text>
+      </State=Default>
+      <State=Pressed>
+        <Text>Link</Text>
+      </State=Pressed>
+      <State=Disabled>
+        <Text>Link</Text>
+      </State=Disabled>
+    </_LinkButton>
+  )
+}
+
+const State=Default = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 16px;
+  background-color: #ffffff;
+`
+const text1 = styled.div`
+  text-align: center;
+  vertical-align: top;
+  font-size: 15px;
+  font-family: GT Ultra;
+  line-height: 20px;
+  color: #000000;
+`
+const State=Pressed = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 16px;
+  background-color: #c9c9c9;
+`
+const text2 = styled.div`
+  text-align: center;
+  vertical-align: top;
+  font-size: 15px;
+  font-family: GT Ultra;
+  line-height: 20px;
+  color: #000000;
+`
+const State=Disabled = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 16px;
+  background-color: #f1f1f1;
+`
+const text3 = styled.div`
+  text-align: center;
+  vertical-align: top;
+  font-size: 15px;
+  font-family: GT Ultra;
+  line-height: 20px;
+  color: #767676;
+`
