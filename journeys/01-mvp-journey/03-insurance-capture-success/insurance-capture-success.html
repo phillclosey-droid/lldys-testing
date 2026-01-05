@@ -9,7 +9,15 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="mobile-web-app-capable" content="yes">
     
-    <title>Insurance Reminder Added - MVP Journey</title>
+        <!-- CRITICAL: Set theme BEFORE any CSS loads to prevent flicker -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('cancara-theme-preference') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+    
+<title>Insurance Reminder Added - MVP Journey</title>
     
     <!-- Design Tokens (ALWAYS REQUIRED) -->
     <link rel="stylesheet" href="../../../src/css/cancara-tokens.css">
@@ -22,17 +30,6 @@
     
     <!-- Template Styles -->
     <link rel="stylesheet" href="../../../src/templates/base-template/base-template.css">
-    
-    <!-- Immediate Theme Detection (Prevents Flicker) -->
-    <script>
-        (function() {
-            if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
-                document.documentElement.setAttribute("data-theme", "dark");
-            } else {
-                document.documentElement.setAttribute("data-theme", "light");
-            }
-        })();
-    </script>
     
     <style>
         * {
@@ -167,7 +164,13 @@
         }
     </style>
 </head>
-<body>
+<body data-theme="dark">
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('cancara-theme-preference') || 'dark';
+            document.body.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
     <!-- Dark Mode Toggle -->
     <div class="theme-toggle">
         <button class="toggle-button" onclick="toggleTheme()">
@@ -339,28 +342,6 @@
 
     <script>
         // Detect system dark mode preference and apply automatically
-        function detectSystemTheme() {
-            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-            const body = document.body;
-            const themeText = document.getElementById('theme-text');
-            const successIcon = document.getElementById('success-icon');
-            
-            if (prefersDark) {
-                body.setAttribute('data-theme', 'dark');
-                themeText.textContent = 'Switch to Light Mode';
-                successIcon.src = '../../../assets/illustrations/default-alt-01/Tick_Lloyds_-_V2_-_Dark_Mode.svg';
-            } else {
-                body.setAttribute('data-theme', 'light');
-                themeText.textContent = 'Switch to Dark Mode';
-                successIcon.src = '../../../assets/illustrations/default-alt-01/Tick_Lloyds_-_V2.svg';
-            }
-        }
-
-        // Listen for system theme changes
-        if (window.matchMedia) {
-            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', detectSystemTheme);
-        }
-
         // Toggle theme manually
         function toggleTheme() {
             const body = document.body;
@@ -372,10 +353,12 @@
                 body.setAttribute('data-theme', 'dark');
                 themeText.textContent = 'Switch to Light Mode';
                 successIcon.src = '../../../assets/illustrations/default-alt-01/Tick_Lloyds_-_V2_-_Dark_Mode.svg';
+                localStorage.setItem('cancara-theme-preference', 'dark');
             } else {
                 body.setAttribute('data-theme', 'light');
                 themeText.textContent = 'Switch to Dark Mode';
                 successIcon.src = '../../../assets/illustrations/default-alt-01/Tick_Lloyds_-_V2.svg';
+                localStorage.setItem('cancara-theme-preference', 'light');
             }
         }
 
@@ -413,7 +396,20 @@
 
         // Initialize on page load
         window.addEventListener('DOMContentLoaded', function() {
-            detectSystemTheme(); // Auto-detect system theme
+            // Update toggle text and icon based on current theme
+            const currentTheme = document.body.getAttribute('data-theme');
+            const themeText = document.getElementById('theme-text');
+            const successIcon = document.getElementById('success-icon');
+            
+            if (themeText) {
+                if (currentTheme === 'dark') {
+                    themeText.textContent = 'Switch to Light Mode';
+                    successIcon.src = '../../../assets/illustrations/default-alt-01/Tick_Lloyds_-_V2_-_Dark_Mode.svg';
+                } else {
+                    themeText.textContent = 'Switch to Dark Mode';
+                    successIcon.src = '../../../assets/illustrations/default-alt-01/Tick_Lloyds_-_V2.svg';
+                }
+            }
         });
     </script>
 </body>

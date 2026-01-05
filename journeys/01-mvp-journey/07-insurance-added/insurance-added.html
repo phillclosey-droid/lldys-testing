@@ -9,7 +9,15 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="mobile-web-app-capable" content="yes">
     
-    <title>Vehicle Insurance</title>
+        <!-- CRITICAL: Set theme BEFORE any CSS loads to prevent flicker -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('cancara-theme-preference') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+    
+<title>Vehicle Insurance</title>
     
     <!-- Design Tokens -->
     <link rel="stylesheet" href="../../../src/css/cancara-tokens.css">
@@ -167,6 +175,12 @@
     </style>
 </head>
 <body data-theme="dark">
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('cancara-theme-preference') || 'dark';
+            document.body.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
     <div class="theme-toggle">
         <button class="toggle-button" onclick="toggleTheme()">
             <span id="theme-text">Switch to Light Mode</span>
@@ -509,20 +523,6 @@
             document.getElementById('tab-icon-4-active').src = ICONS.tab5Active;
         }
 
-        function detectSystemTheme() {
-            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                document.body.setAttribute('data-theme', 'dark');
-                document.getElementById('theme-text').textContent = 'Switch to Light Mode';
-            } else {
-                document.body.setAttribute('data-theme', 'light');
-                document.getElementById('theme-text').textContent = 'Switch to Dark Mode';
-            }
-        }
-
-        if (window.matchMedia) {
-            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', detectSystemTheme);
-        }
-
         function setActiveTab(tabIndex) {
             const nav = document.getElementById('bottom-nav');
             const tabs = nav.querySelectorAll('.bottom-nav-tab');
@@ -540,9 +540,11 @@
             if (currentTheme === 'light') {
                 body.setAttribute('data-theme', 'dark');
                 themeText.textContent = 'Switch to Light Mode';
+                localStorage.setItem('cancara-theme-preference', 'dark');
             } else {
                 body.setAttribute('data-theme', 'light');
                 themeText.textContent = 'Switch to Dark Mode';
+                localStorage.setItem('cancara-theme-preference', 'light');
             }
         }
         
@@ -555,7 +557,17 @@
         }
 
         window.addEventListener('DOMContentLoaded', function() {
-            detectSystemTheme();
+            // Update toggle text based on current theme
+            const currentTheme = document.body.getAttribute('data-theme');
+            const themeText = document.getElementById('theme-text');
+            if (themeText) {
+                if (currentTheme === 'dark') {
+                    themeText.textContent = 'Switch to Light Mode';
+                } else {
+                    themeText.textContent = 'Switch to Dark Mode';
+                }
+            }
+            
             initializeIcons();
             
             // Handle modal button clicks

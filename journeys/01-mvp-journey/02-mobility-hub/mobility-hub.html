@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     
+    <!-- CRITICAL: Set theme BEFORE any CSS loads to prevent flicker -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('cancara-theme-preference') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+    
     <!-- PWA Meta Tags for Full Screen -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -957,6 +965,12 @@
     <!-- Cache buster: 20251223-v3 -->
 </head>
 <body data-theme="dark">
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('cancara-theme-preference') || 'dark';
+            document.body.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
     <!-- Dark Mode Toggle -->
     <div class="theme-toggle">
         <button class="toggle-button" onclick="toggleTheme()">
@@ -1042,7 +1056,7 @@
                     <!-- Car Placement with Video -->
                     <div class="hero-panel-car-placement">
                         <video muted playsinline class="hero-panel-car-video" id="hero-car-video">
-                            <source src="../../../assets/videos/car-spin.webm" type="video/webm">
+                            <!-- Source will be set by JavaScript based on theme -->
                         </video>
                     </div>
                     
@@ -1680,20 +1694,6 @@
         }
 
 
-        function detectSystemTheme() {
-            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                document.body.setAttribute('data-theme', 'dark');
-                document.getElementById('theme-text').textContent = 'Switch to Light Mode';
-            } else {
-                document.body.setAttribute('data-theme', 'light');
-                document.getElementById('theme-text').textContent = 'Switch to Dark Mode';
-            }
-        }
-
-        if (window.matchMedia) {
-            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', detectSystemTheme);
-        }
-
         function setActiveTab(tabIndex) {
             const nav = document.getElementById('bottom-nav');
             const tabs = nav.querySelectorAll('.bottom-nav-tab');
@@ -1711,9 +1711,11 @@
             if (currentTheme === 'light') {
                 body.setAttribute('data-theme', 'dark');
                 themeText.textContent = 'Switch to Light Mode';
+                localStorage.setItem('cancara-theme-preference', 'dark');
             } else {
                 body.setAttribute('data-theme', 'light');
                 themeText.textContent = 'Switch to Dark Mode';
+                localStorage.setItem('cancara-theme-preference', 'light');
             }
         }
 
@@ -1744,7 +1746,17 @@
         }
 
         window.addEventListener('DOMContentLoaded', function() {
-            detectSystemTheme();
+            // Update toggle text based on current theme (already set by localStorage script in <body>)
+            const currentTheme = document.body.getAttribute('data-theme');
+            const themeText = document.getElementById('theme-text');
+            if (themeText) {
+                if (currentTheme === 'dark') {
+                    themeText.textContent = 'Switch to Light Mode';
+                } else {
+                    themeText.textContent = 'Switch to Dark Mode';
+                }
+            }
+            
             initializeIcons();
             initializeChevrons();
             
@@ -1773,6 +1785,17 @@
             
             // Elements
             const video = document.getElementById('hero-car-video');
+            
+            // Set video source based on theme BEFORE any other video operations
+            if (video) {
+                const currentTheme = document.body.getAttribute('data-theme');
+                const videoSource = currentTheme === 'light' 
+                    ? '../../../assets/videos/car-spin-light.webm'
+                    : '../../../assets/videos/car-spin.webm';
+                video.src = videoSource;
+                video.load(); // Load the video immediately
+            }
+            
             const progressFill = document.getElementById('progress-fill');
             const progressText = document.getElementById('progress-text');
             const progressSubtext = document.getElementById('progress-subtext');
