@@ -567,16 +567,21 @@
             min-height: auto !important;
             max-height: none !important;
             height: auto !important;
+            overflow: hidden;
+            position: relative;
         }
         
-        /* Car video styling */
+        /* Car video styling - make slightly wider to hide dark edges on light mode video */
         .hero-panel-car-video {
-            width: 100%;
+            width: 110%;
             height: auto;
             display: block;
-            object-fit: contain;
+            object-fit: cover;
             aspect-ratio: 16 / 9;
             min-height: 200px;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
         }
         
         /* Prevent FOUC (Flash of Unstyled Content) for images loaded by JS */
@@ -1433,6 +1438,10 @@
                 </div>
                 
                 <div class="list-item-action asset-pictogram width-compact position-bottom state-default">
+                    <div class="divider width-default">
+                        <div class="divider-line"></div>
+                    </div>
+                    
                     <div class="list-item-content">
                         <!-- Nested Pictogram Component -->
                         <div class="pictogram pict-default">
@@ -1449,11 +1458,6 @@
                     </div>
                 </div>
                 
-                <!-- Divider Component - EXACT COPY from Divider.html -->
-                <div class="divider width-default type-default">
-                    <div class="divider-line"></div>
-                </div>
-                
                 <!-- Feedback Section -->
                 <div class="feedback-section">
                     <div class="feedback-heading">How are we doing?</div>
@@ -1468,7 +1472,7 @@
                 
                 <!-- All Caught Up Section -->
                 <div style="display: flex; flex-direction: column; align-items: center; width: 100%; margin-top: var(--spacing-48);">
-                    <img src="../../../assets/brand/cancara-horse.svg" alt="" style="width: 44px; height: auto; margin-bottom: var(--spacing-16);">
+                    <img id="caught-up-horse" src="../../../assets/brand/cancara-horse.svg" alt="" style="width: 44px; height: auto; margin-bottom: var(--spacing-16);">
                     <div style="font-family: var(--type-style-5-family); font-size: var(--type-style-5-size); font-weight: var(--type-style-5-weight); line-height: var(--type-style-5-line-height); color: var(--text-default); text-align: center;">All caught up</div>
                 </div>
                 
@@ -1716,15 +1720,24 @@
         function toggleTheme() {
             const body = document.body;
             const themeText = document.getElementById('theme-text');
+            const horseLogo = document.getElementById('caught-up-horse');
             const currentTheme = body.getAttribute('data-theme');
+            const cacheBuster = '?v=' + Date.now();
+            
             if (currentTheme === 'light') {
                 body.setAttribute('data-theme', 'dark');
                 themeText.textContent = 'Switch to Light Mode';
                 localStorage.setItem('cancara-theme-preference', 'dark');
+                if (horseLogo) {
+                    horseLogo.src = '../../../assets/brand/cancara-horse-dark.svg' + cacheBuster;
+                }
             } else {
                 body.setAttribute('data-theme', 'light');
                 themeText.textContent = 'Switch to Dark Mode';
                 localStorage.setItem('cancara-theme-preference', 'light');
+                if (horseLogo) {
+                    horseLogo.src = '../../../assets/brand/cancara-horse-light.svg' + cacheBuster;
+                }
             }
         }
 
@@ -1763,6 +1776,17 @@
                     themeText.textContent = 'Switch to Light Mode';
                 } else {
                     themeText.textContent = 'Switch to Dark Mode';
+                }
+            }
+            
+            // Update horse logo based on theme
+            const horseLogo = document.getElementById('caught-up-horse');
+            if (horseLogo) {
+                const cacheBuster = '?v=' + Date.now();
+                if (currentTheme === 'light') {
+                    horseLogo.src = '../../../assets/brand/cancara-horse-light.svg' + cacheBuster;
+                } else {
+                    horseLogo.src = '../../../assets/brand/cancara-horse-dark.svg' + cacheBuster;
                 }
             }
             
