@@ -13,7 +13,16 @@
     <script>
         (function() {
             const savedTheme = localStorage.getItem('cancara-theme-preference') || 'dark';
+            // Set on html first for immediate effect
             document.documentElement.setAttribute('data-theme', savedTheme);
+            // Then set on body when it's available
+            if (document.body) {
+                document.body.setAttribute('data-theme', savedTheme);
+            } else {
+                document.addEventListener('DOMContentLoaded', function() {
+                    document.body.setAttribute('data-theme', savedTheme);
+                });
+            }
         })();
     </script>
     

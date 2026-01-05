@@ -8,7 +8,16 @@
     <script>
         (function() {
             const savedTheme = localStorage.getItem('cancara-theme-preference') || 'dark';
+            // Set on html first for immediate effect
             document.documentElement.setAttribute('data-theme', savedTheme);
+            // Then set on body when it's available
+            if (document.body) {
+                document.body.setAttribute('data-theme', savedTheme);
+            } else {
+                document.addEventListener('DOMContentLoaded', function() {
+                    document.body.setAttribute('data-theme', savedTheme);
+                });
+            }
         })();
     </script>
     
@@ -1030,27 +1039,17 @@
     </div><!-- End native-keyboard -->
 
     <script>
-        /*
-         * PATH CONFIGURATION
-         * Updated for journey location: /journeys/01-mvp-journey/01-account-summary/
-         */
         const ASSETS_BASE = '../../../assets';
         
-        // Icon path helpers
         const ICONS = {
-            // Header icons
             burgerMenu: `${ASSETS_BASE}/icons/navigation/burger-menu.svg`,
             question: `${ASSETS_BASE}/icons/communication/question-mark.svg`,
             person: `${ASSETS_BASE}/icons/people/person.svg`,
-            
-            // Tab icons (inactive/normal state)
             tab1: `${ASSETS_BASE}/icons/tabs/tab-1-icon.svg`,
             tab2: `${ASSETS_BASE}/icons/tabs/tab-2-icon.svg`,
             tab3: `${ASSETS_BASE}/icons/tabs/tab-3-icon.svg`,
             tab4: `${ASSETS_BASE}/icons/tabs/tab-4-icon.svg`,
             tab5: `${ASSETS_BASE}/icons/tabs/tab-5-icon.svg`,
-            
-            // Tab icons (active state)
             tab1Active: `${ASSETS_BASE}/icons/tabs/tab-1-icon-active.svg`,
             tab2Active: `${ASSETS_BASE}/icons/tabs/tab-2-icon-active.svg`,
             tab3Active: `${ASSETS_BASE}/icons/tabs/tab-3-icon-active.svg`,
@@ -1058,26 +1057,44 @@
             tab5Active: `${ASSETS_BASE}/icons/tabs/tab-5-icon-active.svg`,
         };
 
-        // Initialize all icon paths
         function initializeIcons() {
+            console.log('Initializing icons...');
+            
             // Header icons
-            document.getElementById('burger-menu-icon').src = ICONS.burgerMenu;
-            document.getElementById('question-icon').src = ICONS.question;
-            document.getElementById('person-icon').src = ICONS.person;
+            const burgerMenu = document.getElementById('burger-menu-icon');
+            const question = document.getElementById('question-icon');
+            const person = document.getElementById('person-icon');
             
-            // Bottom nav tab icons - inactive states
-            document.getElementById('tab-icon-0-inactive').src = ICONS.tab1;
-            document.getElementById('tab-icon-1-inactive').src = ICONS.tab2;
-            document.getElementById('tab-icon-2-inactive').src = ICONS.tab3;
-            document.getElementById('tab-icon-3-inactive').src = ICONS.tab4;
-            document.getElementById('tab-icon-4-inactive').src = ICONS.tab5;
+            if (burgerMenu) {
+                burgerMenu.src = ICONS.burgerMenu;
+                console.log('Burger menu icon set');
+            }
             
-            // Bottom nav tab icons - active states
-            document.getElementById('tab-icon-0-active').src = ICONS.tab1Active;
-            document.getElementById('tab-icon-1-active').src = ICONS.tab2Active;
-            document.getElementById('tab-icon-2-active').src = ICONS.tab3Active;
-            document.getElementById('tab-icon-3-active').src = ICONS.tab4Active;
-            document.getElementById('tab-icon-4-active').src = ICONS.tab5Active;
+            if (question) {
+                question.src = ICONS.question;
+                console.log('Question icon set');
+            }
+            
+            if (person) {
+                person.src = ICONS.person;
+                console.log('Person icon set');
+            }
+            
+            // Bottom nav tab icons
+            for (let i = 0; i < 5; i++) {
+                const inactiveIcon = document.getElementById(`tab-icon-${i}-inactive`);
+                const activeIcon = document.getElementById(`tab-icon-${i}-active`);
+                
+                if (inactiveIcon) {
+                    inactiveIcon.src = ICONS[`tab${i + 1}`];
+                    console.log(`Tab ${i} inactive icon set`);
+                }
+                
+                if (activeIcon) {
+                    activeIcon.src = ICONS[`tab${i + 1}Active`];
+                    console.log(`Tab ${i} active icon set`);
+                }
+            }
         }
 
         // Set active tab
@@ -1114,13 +1131,16 @@
 
         // Open tray
         function openTray() {
+            console.log('[TRAY] Opening tray...');
             document.querySelector('.tray-overlay').classList.add('visible');
             document.querySelector('.tray-container').classList.add('visible');
             document.body.style.overflow = 'hidden';
+            console.log('[TRAY] Tray opened, overlay and container visible');
             
             // Attach keyboard listeners after tray is open
             setTimeout(function() {
                 attachKeyboardListeners();
+                console.log('[TRAY] Keyboard listeners attached');
             }, 100);
         }
 
@@ -1542,6 +1562,18 @@
             initializeIcons();    // Load all icon paths
             attachKeyboardListeners(); // Attach keyboard listeners on page load
             
+            // Manually initialize all component scripts to ensure SVGs load correctly
+            // This is needed because the auto-init may run before DOM is fully ready
+            if (window.initPictograms) {
+                window.initPictograms();
+                console.log('Pictograms manually initialized');
+            }
+            
+            if (window.initActionButtons) {
+                window.initActionButtons();
+                console.log('Action buttons manually initialized');
+            }
+            
             // Manually load spinner frames because component JS path calculation is wrong for journey files
             const spinners = document.querySelectorAll('.native-spinner[data-spinner-set]');
             spinners.forEach(function(nativeSpinner) {
@@ -1564,7 +1596,6 @@
             });
             
             // Update horse logo based on theme
-            const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
             const horseLogo = document.getElementById('caught-up-horse');
             if (horseLogo) {
                 if (currentTheme === 'light') {
