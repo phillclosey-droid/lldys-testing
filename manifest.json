@@ -2,7 +2,7 @@
   "name": "Lloyds Mobility Hub",
   "short_name": "Mobility Hub",
   "description": "Manage your vehicle reminders and services",
-  "start_url": "/lldys-testing/journeys/01-mvp-journey/02-mobility-hub/mobility-hub.html",
+  "start_url": "/lldys-testing/index.html",
   "display": "standalone",
   "background_color": "#1A1A1A",
   "theme_color": "#1A1A1A",
