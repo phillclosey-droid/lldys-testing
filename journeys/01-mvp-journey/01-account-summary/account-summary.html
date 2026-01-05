@@ -1218,6 +1218,8 @@
         // Keyboard interaction for input field
         let keyboardMode = 'letters'; // 'letters' or 'numbers'
         let keyboardListenersAttached = false;
+        let isSearching = false; // Flag to prevent blur from interfering with search
+        let justFocused = false; // Flag to prevent immediate blur after focus
         
         function attachKeyboardListeners() {
             if (keyboardListenersAttached) return; // Only attach once
@@ -1230,27 +1232,24 @@
             if (registrationInput && nativeKeyboard) {
                 keyboardListenersAttached = true;
                 
-                // Prevent keyboard from closing when clicking inside keyboard area
+                // Prevent keyboard from closing when clicking inside
                 nativeKeyboard.addEventListener('mousedown', function(e) {
                     e.preventDefault();
                 });
                 
+                // STAGE 1 → STAGE 2: Input focus
                 registrationInput.addEventListener('focus', function() {
-                    console.log('Input focused!');
-                    
                     const isMobile = window.matchMedia('(max-width: 768px)').matches;
                     const trayContentArea = document.querySelector('.tray-content-area');
                     const buttonText = document.querySelector('.tray-content-area .btn-primary .action-button-text');
                     
-                    // If in Stage 3, ignore completely
+                    // If in Stage 3, ignore
                     if (trayContentArea.classList.contains('stage-3')) {
-                        console.log('In Stage 3, ignoring focus');
                         return;
                     }
                     
-                    // If button already says "Search", just show keyboard
-                    if (buttonText.textContent === 'Search') {
-                        console.log('Already in Stage 2, just showing keyboard');
+                    // If already in Stage 2, just show keyboard
+                    if (buttonText && buttonText.textContent === 'Search') {
                         document.querySelector('.tray-container').classList.add('keyboard-active');
                         if (!isMobile) {
                             nativeKeyboard.classList.add('visible');
@@ -1259,36 +1258,29 @@
                     }
                     
                     // First time entering Stage 2
-                    console.log('Entering Stage 2 for first time');
-                    
-                    // Add stage-2 class
                     trayContentArea.classList.add('stage-2');
-                    
-                    // Fade out content above input (panel shrinks in height)
                     document.querySelector('.tray-content-above-input').classList.add('hidden');
-                    // Simulate keyboard pushing tray up
                     document.querySelector('.tray-container').classList.add('keyboard-active');
-                    // Show native keyboard (only on desktop)
                     if (!isMobile) {
                         nativeKeyboard.classList.add('visible');
                     }
-                    // Change primary button text to "Search"
-                    buttonText.textContent = 'Search';
+                    if (buttonText) {
+                        buttonText.textContent = 'Search';
+                    }
                 });
 
+                // Input blur
                 registrationInput.addEventListener('blur', function() {
-                    console.log('Input blurred!');
-                    
-                    // Don't do anything if we're in Stage 3
                     const trayContentArea = document.querySelector('.tray-content-area');
+                    
+                    // Don't do anything if in Stage 3
                     if (trayContentArea.classList.contains('stage-3')) {
-                        console.log('In Stage 3, ignoring blur');
                         return;
                     }
                     
                     // Slide keyboard away
                     nativeKeyboard.classList.remove('visible');
-                    // Slide panel back down to bottom (remove keyboard-active)
+                    // Slide panel back down
                     document.querySelector('.tray-container').classList.remove('keyboard-active');
                     // KEEP content hidden (Stage 2 state)
                     // KEEP button text as "Search"
@@ -1422,89 +1414,84 @@
                 attachKeyHandlers();
                 
                 // Search button click handler (Stage 2 → Stage 3)
+                // CRITICAL: Use mousedown instead of click to fire BEFORE blur
                 const searchButton = document.getElementById('search-button');
                 if (searchButton) {
-                    searchButton.addEventListener('click', function(e) {
+                    console.log('[INIT] Search button found, attaching handler');
+                    
+                    searchButton.addEventListener('mousedown', function(e) {
                         e.preventDefault();
                         e.stopPropagation();
                         
-                        console.log('Search button clicked!');
-                        console.log('Button text:', searchButton.querySelector('.action-button-text').textContent);
+                        console.log('[SEARCH] Button mousedown!');
+                        console.log('[SEARCH] Button text:', searchButton.querySelector('.action-button-text').textContent);
+                        console.log('[SEARCH] isSearching flag:', isSearching);
+                        console.log('[SEARCH] Keyboard visible:', nativeKeyboard.classList.contains('visible'));
                         
                         // Only proceed to Stage 3 if button says "Search"
                         const buttonText = searchButton.querySelector('.action-button-text').textContent;
                         if (buttonText !== 'Search') {
-                            console.log('Button not in search mode, ignoring');
+                            console.log('[SEARCH] Button not in search mode, ignoring');
                             return;
                         }
                         
-                        console.log('Proceeding to Stage 3...');
+                        console.log('[SEARCH] Proceeding to Stage 3...');
+                        isSearching = true;
                         
-                        // Blur input to close native keyboard on mobile
                         const registrationInput = document.getElementById('registration-input');
+                        const trayContentArea = document.querySelector('.tray-content-area');
+                        const inputField = document.getElementById('registration-input');
+                        const trayContainer = document.querySelector('.tray-container');
+                        const spinnerContainer = document.querySelector('.spinner-container');
+                        
                         if (registrationInput) {
                             registrationInput.blur();
                         }
                         
-                        // Close custom keyboard if open but DON'T slide panel down yet
-                        if (nativeKeyboard.classList.contains('visible')) {
+                        // Check if keyboard is visible
+                        const isKeyboardVisible = nativeKeyboard.classList.contains('visible');
+                        
+                        if (isKeyboardVisible) {
+                            console.log('Closing keyboard then starting sequence');
                             nativeKeyboard.classList.remove('visible');
-                        }
-                        // Keep keyboard-active class so panel stays in position during loading
-                        
-                        // Start Stage 3 loading immediately (no setTimeout)
-                        const trayContentArea = document.querySelector('.tray-content-area');
-                        const inputField = document.getElementById('registration-input');
-                        trayContentArea.classList.add('loading');
-                        
-                        // Show spinner centered on input
-                        const spinnerContainer = document.querySelector('.spinner-container');
-                        spinnerContainer.classList.add('active');
-                        
-                        console.log('Spinner showing...', spinnerContainer);
-                        console.log('Spinner frames:', spinnerContainer.querySelectorAll('.spinner-frame').length);
-                        
-                        // After 1 second, fade back to 100% and show results
-                        setTimeout(function() {
-                            // Fade input and button back to 100%
-                            trayContentArea.classList.remove('loading');
-                            
-                            // Smoothly slide panel down to bottom
-                            const trayContainer = document.querySelector('.tray-container');
-                            trayContainer.classList.add('sliding-to-bottom');
                             trayContainer.classList.remove('keyboard-active');
                             
-                            // Wait for panel to slide down, then swap content
+                            // Wait for keyboard animation then start Stage 3
                             setTimeout(function() {
-                                // Remove sliding class
-                                trayContainer.classList.remove('sliding-to-bottom');
+                                startStage3Sequence();
+                            }, 300);
+                        } else {
+                            startStage3Sequence();
+                        }
+                        
+                        function startStage3Sequence() {
+                            trayContentArea.classList.add('loading');
+                            spinnerContainer.classList.add('active');
+                            
+                            setTimeout(function() {
+                                trayContentArea.classList.remove('loading');
+                                trayContainer.classList.add('sliding-to-bottom');
                                 
-                                // Hide spinner
-                                spinnerContainer.classList.remove('active');
-                                
-                                // Fade out input field
-                                inputField.parentElement.style.opacity = '0';
-                                searchButton.style.opacity = '0';
-                                
-                                // After fade out, hide and show results
                                 setTimeout(function() {
-                                    inputField.parentElement.style.display = 'none';
-                                    searchButton.style.display = 'none';
+                                    trayContainer.classList.remove('sliding-to-bottom');
+                                    spinnerContainer.classList.remove('active');
+                                    inputField.parentElement.style.opacity = '0';
+                                    searchButton.style.opacity = '0';
                                     
-                                    // Add stage-3 class for proper height
-                                    trayContentArea.classList.add('stage-3');
-                                    
-                                    // Show search results and fade in
-                                    const searchResults = document.querySelector('.search-results');
-                                    searchResults.classList.add('visible');
-                                    
-                                    // Fade in vehicle result box
                                     setTimeout(function() {
-                                        document.querySelector('.vehicle-result').classList.add('visible');
-                                    }, 50);
-                                }, 300); // Wait for fade out
-                            }, 300); // Wait for panel to slide down
-                        }, 1000); // Spinner shows for 1 second
+                                        inputField.parentElement.style.display = 'none';
+                                        searchButton.style.display = 'none';
+                                        trayContentArea.classList.add('stage-3');
+                                        document.querySelector('.search-results').classList.add('visible');
+                                        
+                                        setTimeout(function() {
+                                            document.querySelector('.vehicle-result').classList.add('visible');
+                                            isSearching = false;
+                                        }, 50);
+                                    }, 300);
+                                }, 300);
+                            }, 1000);
+                        }
                     });
                 }
                 

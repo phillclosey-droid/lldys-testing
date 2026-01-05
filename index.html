@@ -51,6 +51,20 @@
             margin-bottom: var(--spacing-24);
         }
         
+        /* Hide light logo by default (dark mode) */
+        .splash-logo.light-mode {
+            display: none;
+        }
+        
+        /* In light mode, hide dark logo and show light logo */
+        [data-theme="light"] .splash-logo.dark-mode {
+            display: none;
+        }
+        
+        [data-theme="light"] .splash-logo.light-mode {
+            display: block;
+        }
+        
         .splash-title {
             font-family: var(--type-style-1-family);
             font-size: var(--type-style-1-size);
@@ -87,7 +101,7 @@
             cursor: pointer;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
             border: 2px solid var(--color-green-success);
-            background: var(--bg-page) !important;
+            background: var(--bg-page-default) !important;
         }
         
         /* Increase font sizes on project tile */
@@ -115,10 +129,25 @@
     </style>
 </head>
 <body data-theme="dark">
+    <!-- Auto-detect system theme preference -->
+    <script>
+        (function() {
+            // Check if user has system preference for dark/light mode
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const theme = prefersDark ? 'dark' : 'light';
+            
+            // Set theme on body
+            document.body.setAttribute('data-theme', theme);
+            
+            // Also set on html for consistency
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
     <div class="splash-container">
         <!-- Header -->
         <div class="splash-header">
-            <img src="assets/brand/cancara-horse.svg" alt="Cancara" class="splash-logo">
+            <img src="assets/brand/cancara-horse-dark.svg" alt="Cancara" class="splash-logo dark-mode">
+            <img src="assets/brand/cancara-horse-light.svg" alt="Cancara" class="splash-logo light-mode">
             <h1 class="splash-title">Mobility Proposition</h1>
             <p class="splash-subtitle">A Mobility Hub focused on helping customers during the life of their vehicle</p>
         </div>
@@ -130,7 +159,7 @@
             <!-- Project Tile: MVP Journey -->
             <div class="tile tile-horizontal" onclick="openThemeModal()">
                 <div class="pictogram pict-primary-alt-03">
-                    <img data-pictogram="Car_Lloyds_-_V2" alt="">
+                    <img src="assets/icons/travel/car.svg" alt="">
                 </div>
                 <div class="tile-vstack">
                     <div class="tile-text-heading">01 MVP Journey</div>
