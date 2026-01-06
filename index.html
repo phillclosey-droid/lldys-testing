@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="src/components/action/tile/tile/Tile.vanilla.css">
     <link rel="stylesheet" href="src/components/notification/pop-up-modal/custom-pop-up-modal/CustomPopupModal.vanilla.css">
     <link rel="stylesheet" href="src/components/notification/notification-panel/NotificationPanel.vanilla.css">
+    <link rel="stylesheet" href="src/components/content/divider/Divider.vanilla.css">
     
     <style>
         * {
@@ -45,24 +46,51 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
             padding: var(--spacing-24);
+            min-height: 100vh;
         }
         
         .splash-container {
             max-width: 430px;
             width: 100%;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .splash-top {
+            margin-bottom: auto;
+            margin-top: var(--spacing-48);
+        }
+        
+        .splash-middle {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-top: calc(var(--spacing-48) * -1);
         }
         
         .splash-header {
-            text-align: center;
-            margin-bottom: var(--spacing-48);
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: var(--spacing-16);
+            gap: var(--spacing-16);
+        }
+        
+        .splash-header-left {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-12);
         }
         
         .splash-logo {
-            width: 64px;
+            width: 48px;
             height: auto;
-            margin-bottom: var(--spacing-24);
+            flex-shrink: 0;
         }
         
         /* Hide light logo by default (dark mode) */
@@ -86,7 +114,8 @@
             line-height: var(--type-style-1-line-height);
             letter-spacing: var(--type-style-1-letter-spacing);
             color: var(--text-default);
-            margin-bottom: var(--spacing-12);
+            text-align: left;
+            max-width: 250px;
         }
         
         .splash-subtitle {
@@ -95,10 +124,13 @@
             font-weight: var(--type-style-6-weight);
             line-height: var(--type-style-6-line-height);
             color: var(--text-subdued);
+            text-align: left;
+            width: 70%;
+            margin-bottom: var(--spacing-48);
         }
         
         .projects-section {
-            margin-bottom: var(--spacing-32);
+            margin-bottom: 0;
         }
         
         .section-title {
@@ -108,7 +140,8 @@
             line-height: var(--type-style-3-line-height);
             letter-spacing: var(--type-style-3-letter-spacing);
             color: var(--text-default);
-            margin-bottom: var(--spacing-16);
+            margin-bottom: var(--spacing-24);
+            text-align: left;
         }
         
         .tile {
@@ -129,8 +162,26 @@
         .tile .tile-text-subtext {
             font-family: var(--type-style-7-family);
             font-size: var(--type-style-7-size);
-            font-weight: var(--type-style-7-weight);
+            font-weight: var(--font-weight-thin);
             line-height: var(--type-style-7-line-height);
+        }
+        
+        .footer-label {
+            text-align: center;
+            margin-top: var(--spacing-24);
+            margin-bottom: var(--spacing-24);
+            font-family: var(--type-style-13-family);
+            font-size: var(--type-style-13-size);
+            font-weight: var(--type-style-13-weight);
+            line-height: var(--type-style-13-line-height);
+            letter-spacing: 0.15em;
+            color: var(--text-subdued);
+            text-transform: uppercase;
+        }
+        
+        .footer-container {
+            max-width: 430px;
+            width: 100%;
         }
         
         .tile:hover {
@@ -187,32 +238,46 @@
         })();
     </script>
     <div class="splash-container">
-        <!-- Header -->
-        <div class="splash-header">
-            <img src="assets/brand/cancara-horse-dark.svg" alt="Cancara" class="splash-logo dark-mode">
-            <img src="assets/brand/cancara-horse-light.svg" alt="Cancara" class="splash-logo light-mode">
-            <h1 class="splash-title">Mobility Proposition</h1>
-            <p class="splash-subtitle">A Mobility Hub focused on helping customers during the life of their vehicle</p>
+        <!-- Top Section - Header at top of page -->
+        <div class="splash-top">
+            <div class="splash-header">
+                <div class="splash-header-left">
+                    <h1 class="splash-title">Mobility Proposition</h1>
+                </div>
+                <img src="assets/brand/cancara-horse-dark.svg" alt="Cancara" class="splash-logo dark-mode">
+                <img src="assets/brand/cancara-horse-light.svg" alt="Cancara" class="splash-logo light-mode">
+            </div>
         </div>
         
-        <!-- Projects Section -->
-        <div class="projects-section">
-            <h2 class="section-title">Projects</h2>
-            
-            <!-- Project Tile: MVP Journey -->
-            <div class="tile tile-horizontal" onclick="openThemeModal()">
-                <div class="pictogram pict-primary-alt-03">
-                    <img src="assets/icons/travel/car.svg" alt="">
-                </div>
-                <div class="tile-vstack">
-                    <div class="tile-text-heading">01 MVP Journey</div>
-                    <div class="tile-text-subtext">Complete vehicle management journey with MOT, tax, insurance, and service tracking</div>
-                </div>
-                <div class="tile-icon tile-icon-12">
-                    <img src="assets/icons/arrows/chevron-right.svg" alt="">
+        <!-- Middle Section - Projects vertically centered -->
+        <div class="splash-middle">
+            <!-- Projects Section -->
+            <div class="projects-section">
+                <h2 class="section-title">Projects</h2>
+                
+                <!-- Project Tile: MVP Journey -->
+                <div class="tile tile-horizontal" onclick="openThemeModal()">
+                    <div class="pictogram pict-primary-alt-03">
+                        <img src="assets/icons/travel/car.svg" alt="">
+                    </div>
+                    <div class="tile-vstack">
+                        <div class="tile-text-heading">01 MVP Journey</div>
+                        <div class="tile-text-subtext">A Mobility Hub focused on helping customers stay on top of car ownership admin</div>
+                    </div>
+                    <div class="tile-icon tile-icon-12">
+                        <img src="assets/icons/arrows/chevron-right.svg" alt="">
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
+    
+    <!-- Fixed Footer -->
+    <div class="footer-container">
+        <div class="divider width-fullwidth type-default">
+            <div class="divider-line"></div>
+        </div>
+        <div class="footer-label">Segments & Journeys</div>
     </div>
     
     <!-- Theme Selection Modal -->
