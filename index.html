@@ -37,6 +37,8 @@
         html, body {
             height: 100%;
             width: 100%;
+            margin: 0;
+            padding: 0;
         }
         
         body {
@@ -46,9 +48,18 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
+        }
+        
+        .page-container {
+            width: 100%;
+            max-width: 430px;
+            height: 100dvh;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
             padding: var(--spacing-24);
-            padding-bottom: calc(var(--spacing-24) + env(safe-area-inset-bottom));
-            min-height: 100vh;
+            box-sizing: border-box;
         }
         
         .splash-container {
@@ -171,8 +182,7 @@
         .footer-label {
             text-align: center;
             margin-top: var(--spacing-24);
-            margin-bottom: var(--spacing-24);
-            padding-bottom: env(safe-area-inset-bottom);
+            margin-bottom: 0;
             font-family: var(--type-style-13-family);
             font-size: var(--type-style-13-size);
             font-weight: var(--type-style-13-weight);
@@ -240,9 +250,10 @@
             document.documentElement.setAttribute('data-theme', theme);
         })();
     </script>
-    <div class="splash-container">
-        <!-- Top Section - Header at top of page -->
-        <div class="splash-top">
+    <div class="page-container">
+        <div class="splash-container">
+            <!-- Top Section - Header at top of page -->
+            <div class="splash-top">
             <div class="splash-header">
                 <div class="splash-header-left">
                     <h1 class="splash-title">Mobility Journeys</h1>
@@ -273,14 +284,14 @@
                 </div>
             </div>
         </div>
-    </div>
-    
-    <!-- Fixed Footer -->
-    <div class="footer-container">
-        <div class="divider width-fullwidth type-default">
-            <div class="divider-line"></div>
+        
+        <!-- Fixed Footer -->
+        <div class="footer-container">
+            <div class="divider width-fullwidth type-default">
+                <div class="divider-line"></div>
+            </div>
+            <div class="footer-label">Segments & Propositions</div>
         </div>
-        <div class="footer-label">Segments & Propositions</div>
     </div>
     
     <!-- Theme Selection Modal -->
