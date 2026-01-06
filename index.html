@@ -24,6 +24,7 @@
     <!-- Component Styles -->
     <link rel="stylesheet" href="src/components/action/tile/tile/Tile.vanilla.css">
     <link rel="stylesheet" href="src/components/notification/pop-up-modal/custom-pop-up-modal/CustomPopupModal.vanilla.css">
+    <link rel="stylesheet" href="src/components/notification/notification-panel/NotificationPanel.vanilla.css">
     
     <style>
         * {
@@ -139,6 +140,35 @@
         .tile:active {
             transform: translateY(0);
         }
+        
+        /* ========== PWA INSTALL TOAST ========== */
+        
+        .pwa-toast-container {
+            position: fixed;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 32px);
+            max-width: 400px;
+            z-index: 9999;
+            animation: slideUpToast 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        @keyframes slideUpToast {
+            from {
+                transform: translateX(-50%) translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(-50%) translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .pwa-toast-container .notification-panel {
+            cursor: pointer;
+        }
+        
     </style>
 </head>
 <body data-theme="dark">
@@ -240,8 +270,51 @@
         });
     </script>
     
+    <!-- PWA Install Toast - EXACT COPY from NotificationPanel.html -->
+    <div class="pwa-toast-container" id="pwa-toast" style="display: none;">
+        <div class="notification-panel type-primary sentiment-info">
+            <div class="notification-panel-content">
+                <div class="notification-panel-icon-container">
+                    <div class="notification-panel-icon">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 0C3.58 0 0 3.58 0 8C0 12.42 3.58 16 8 16C12.42 16 16 12.42 16 8C16 3.58 12.42 0 8 0ZM8.8 12H7.2V7.2H8.8V12ZM8.8 5.6H7.2V4H8.8V5.6Z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="notification-panel-text">
+                    <div class="notification-panel-title">Install this app</div>
+                    <div class="notification-panel-message">Tap Share → Add to Home Screen</div>
+                </div>
+                <button class="notification-panel-action" onclick="document.getElementById('pwa-toast').style.display='none'; localStorage.setItem('pwa-toast-dismissed', 'true');">
+                    <div class="notification-panel-action-icon">
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 3L9 9M9 3L3 9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- PWA Install Toast Logic -->
+    <script>
+        // Show iOS install instructions if on iOS Safari and not in standalone mode
+        window.addEventListener('DOMContentLoaded', function() {
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+            const isInStandaloneMode = window.navigator.standalone || window.matchMedia('(display-mode: standalone)').matches;
+            
+            // Show toast if on iOS, in browser (not standalone), and hasn't been dismissed
+            if (isIOS && !isInStandaloneMode && !localStorage.getItem('pwa-toast-dismissed')) {
+                setTimeout(function() {
+                    document.getElementById('pwa-toast').style.display = 'block';
+                }, 1000); // Show after 1 second
+            }
+        });
+    </script>
+    
     <!-- Component Scripts -->
     <script src="src/components/action/tile/tile/Tile.vanilla.js"></script>
     <script src="src/components/content/icon/pictogram/Pictogram.vanilla.js"></script>
+    <script src="src/components/notification/notification-panel/NotificationPanel.vanilla.js"></script>
 </body>
 </html>
