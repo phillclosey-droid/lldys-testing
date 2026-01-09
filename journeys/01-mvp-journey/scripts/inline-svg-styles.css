@@ -13,13 +13,13 @@
     color: black;
 }
 
-/* Ensure SVGs inherit sizing from wrapper */
+/* Default: SVGs inherit sizing from wrapper */
 .inline-svg {
     width: 100%;
     height: 100%;
 }
 
-/* Bottom nav icons need proper sizing */
+/* Bottom nav icons */
 .bottom-nav-icon .inline-svg {
     width: 24px;
     height: 24px;
@@ -29,4 +29,34 @@
 .icon-wrapper .inline-svg {
     width: 100%;
     height: 100%;
+}
+
+/* CRITICAL: Pictograms need exact sizing like img tags */
+.pictogram svg,
+.pictogram .inline-svg {
+    width: 24px !important;
+    height: 24px !important;
+    object-fit: contain;
+}
+
+/* Pictograms ALWAYS stay black (never theme) */
+.pictogram svg,
+.pictogram svg *,
+.pictogram .inline-svg,
+.pictogram .inline-svg * {
+    color: black !important;
+    fill: black !important;
+}
+
+[data-theme="dark"] .pictogram svg,
+[data-theme="dark"] .pictogram svg *,
+[data-theme="dark"] .pictogram .inline-svg,
+[data-theme="dark"] .pictogram .inline-svg * {
+    color: black !important;
+    fill: black !important;
+}
+
+/* Cancara horse logo - DON'T convert to inline, let it switch files */
+#caught-up-horse {
+    /* This will remain as <img> tag, won't be converted by loader */
 }

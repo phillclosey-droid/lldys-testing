@@ -101,11 +101,7 @@
         .content-container {
             padding: 0 0 100px 0 !important;
         }
-        
-        /* Icon filter for dark mode */
-        [data-theme="dark"] .account-icon {
-            filter: invert(1) brightness(2);
-        }
+
         
         /* Tray overlay - hidden by default */
         .tray-overlay {
@@ -615,10 +611,10 @@
                         <div class="hit-target">
                             <div class="icon-wrapper icon-18">
                                 <!-- INLINE SVG: burger-menu -->
-                                <svg id="burger-menu-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M11.9998 4.66667C13.2885 4.66667 14.3332 3.622 14.3332 2.33333C14.3332 1.04467 13.2885 0 11.9998 0C10.7112 0 9.6665 1.04467 9.6665 2.33333C9.6665 3.622 10.7112 4.66667 11.9998 4.66667Z" fill="black"/>
-                                    <path d="M11.9998 24C13.2885 24 14.3332 22.9553 14.3332 21.6667C14.3332 20.378 13.2885 19.3333 11.9998 19.3333C10.7112 19.3333 9.6665 20.378 9.6665 21.6667C9.6665 22.9553 10.7112 24 11.9998 24Z" fill="black"/>
-                                    <path d="M11.9998 14.3333C13.2885 14.3333 14.3332 13.2887 14.3332 12C14.3332 10.7113 13.2885 9.66667 11.9998 9.66667C10.7112 9.66667 9.6665 10.7113 9.6665 12C9.6665 13.2887 10.7112 14.3333 11.9998 14.3333Z" fill="black"/>
+                                <svg id="burger-menu-icon" class="inline-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M11.9998 4.66667C13.2885 4.66667 14.3332 3.622 14.3332 2.33333C14.3332 1.04467 13.2885 0 11.9998 0C10.7112 0 9.6665 1.04467 9.6665 2.33333C9.6665 3.622 10.7112 4.66667 11.9998 4.66667Z" fill="currentColor"/>
+                                    <path d="M11.9998 24C13.2885 24 14.3332 22.9553 14.3332 21.6667C14.3332 20.378 13.2885 19.3333 11.9998 19.3333C10.7112 19.3333 9.6665 20.378 9.6665 21.6667C9.6665 22.9553 10.7112 24 11.9998 24Z" fill="currentColor"/>
+                                    <path d="M11.9998 14.3333C13.2885 14.3333 14.3332 13.2887 14.3332 12C14.3332 10.7113 13.2885 9.66667 11.9998 9.66667C10.7112 9.66667 9.6665 10.7113 9.6665 12C9.6665 13.2887 10.7112 14.3333 11.9998 14.3333Z" fill="currentColor"/>
                                 </svg>
                             </div>
                             <!-- Notification Badge (Nested Component) -->
@@ -684,16 +680,16 @@
                     <h2 style="font-family: var(--type-style-3-family); font-size: var(--type-style-3-size); font-weight: var(--type-style-3-weight); line-height: var(--type-style-3-line-height); letter-spacing: var(--type-style-3-letter-spacing); color: var(--text-default); margin: 0;">Your accounts</h2>
                     <div style="width: 24px; height: 24px; flex-shrink: 0; display: flex; align-items: center; justify-content: center;">
                         <!-- INLINE SVG: reorder-accounts -->
-                        <svg class="account-icon" style="width: 100%; height: 100%;" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M21 1H3C1.9 1 1 1.9 1 3V8C1 9.1 1.9 10 3 10H21C22.1 10 23 9.1 23 8V3C23 1.9 22.1 1 21 1ZM21.7 8C21.7 8.39 21.39 8.69995 21 8.69995H3C2.61 8.69995 2.3 8.39 2.3 8V3C2.3 2.61 2.61 2.30005 3 2.30005H21C21.39 2.30005 21.7 2.61 21.7 3V8Z" fill="black"/>
-                            <path d="M5.7 6.75C6.39036 6.75 6.95 6.19036 6.95 5.5C6.95 4.80964 6.39036 4.25 5.7 4.25C5.00964 4.25 4.45 4.80964 4.45 5.5C4.45 6.19036 5.00964 6.75 5.7 6.75Z" fill="black"/>
-                            <path d="M18.99 5H8.99V6.30005H18.99V5Z" fill="black"/>
-                            <path d="M19 12.7H9V14H19V12.7Z" fill="black"/>
-                            <path d="M5.7 14.58C6.39036 14.58 6.95 14.0203 6.95 13.33C6.95 12.6396 6.39036 12.08 5.7 12.08C5.00964 12.08 4.45 12.6396 4.45 13.33C4.45 14.0203 5.00964 14.58 5.7 14.58Z" fill="black"/>
-                            <path d="M19 16.7H9V18H19V16.7Z" fill="black"/>
-                            <path d="M5.7 18.58C6.39036 18.58 6.95 18.0203 6.95 17.33C6.95 16.6396 6.39036 16.08 5.7 16.08C5.00964 16.08 4.45 16.6396 4.45 17.33C4.45 18.0203 5.00964 18.58 5.7 18.58Z" fill="black"/>
-                            <path d="M19 20.7H9V22H19V20.7Z" fill="black"/>
-                            <path d="M5.7 22.58C6.39036 22.58 6.95 22.0203 6.95 21.33C6.95 20.6396 6.39036 20.08 5.7 20.08C5.00964 20.08 4.45 20.6396 4.45 21.33C4.45 22.0203 5.00964 22.58 5.7 22.58Z" fill="black"/>
+                        <svg class="account-icon inline-svg" style="width: 100%; height: 100%;" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 1H3C1.9 1 1 1.9 1 3V8C1 9.1 1.9 10 3 10H21C22.1 10 23 9.1 23 8V3C23 1.9 22.1 1 21 1ZM21.7 8C21.7 8.39 21.39 8.69995 21 8.69995H3C2.61 8.69995 2.3 8.39 2.3 8V3C2.3 2.61 2.61 2.30005 3 2.30005H21C21.39 2.30005 21.7 2.61 21.7 3V8Z" fill="currentColor"/>
+                            <path d="M5.7 6.75C6.39036 6.75 6.95 6.19036 6.95 5.5C6.95 4.80964 6.39036 4.25 5.7 4.25C5.00964 4.25 4.45 4.80964 4.45 5.5C4.45 6.19036 5.00964 6.75 5.7 6.75Z" fill="currentColor"/>
+                            <path d="M18.99 5H8.99V6.30005H18.99V5Z" fill="currentColor"/>
+                            <path d="M19 12.7H9V14H19V12.7Z" fill="currentColor"/>
+                            <path d="M5.7 14.58C6.39036 14.58 6.95 14.0203 6.95 13.33C6.95 12.6396 6.39036 12.08 5.7 12.08C5.00964 12.08 4.45 12.6396 4.45 13.33C4.45 14.0203 5.00964 14.58 5.7 14.58Z" fill="currentColor"/>
+                            <path d="M19 16.7H9V18H19V16.7Z" fill="currentColor"/>
+                            <path d="M5.7 18.58C6.39036 18.58 6.95 18.0203 6.95 17.33C6.95 16.6396 6.39036 16.08 5.7 16.08C5.00964 16.08 4.45 16.6396 4.45 17.33C4.45 18.0203 5.00964 18.58 5.7 18.58Z" fill="currentColor"/>
+                            <path d="M19 20.7H9V22H19V20.7Z" fill="currentColor"/>
+                            <path d="M5.7 22.58C6.39036 22.58 6.95 22.0203 6.95 21.33C6.95 20.6396 6.39036 20.08 5.7 20.08C5.00964 20.08 4.45 20.6396 4.45 21.33C4.45 22.0203 5.00964 22.58 5.7 22.58Z" fill="currentColor"/>
                         </svg>
                     </div>
                 </div>
@@ -740,11 +736,11 @@
                       <div class="tile tile-vertical">
                         <div class="pictogram pict-secondary-alt-01">
                           <!-- INLINE SVG: Cards -->
-                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M17 9H2C0.9 9 0 9.9 0 11V21C0 22.1 0.9 23 2 23H17C18.1 23 19 22.1 19 21V11C19 9.9 18.1 9 17 9ZM17.7 21C17.7 21.38 17.38 21.7 17 21.7H2C1.62 21.7 1.3 21.38 1.3 21V11C1.3 10.62 1.62 10.3 2 10.3H17C17.38 10.3 17.7 10.62 17.7 11V21Z" fill="black"/>
-                              <path d="M6 13H3.5C3.22386 13 3 13.2239 3 13.5V15C3 15.2761 3.22386 15.5 3.5 15.5H6C6.27614 15.5 6.5 15.2761 6.5 15V13.5C6.5 13.2239 6.27614 13 6 13Z" fill="black"/>
-                              <path d="M16 18.7H10V20H16V18.7Z" fill="black"/>
-                              <path d="M22 1H8C6.9 1 6 1.9 6 3V7.5H9V5.5C9 5.23 9.23 5 9.5 5H12C12.27 5 12.5 5.23 12.5 5.5V7.5H18C19.38 7.5 20.5 8.62 20.5 10V14H22C23.1 14 24 13.1 24 12V3C24 1.9 23.1 1 22 1Z" fill="black"/>
+                          <svg class="inline-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M17 9H2C0.9 9 0 9.9 0 11V21C0 22.1 0.9 23 2 23H17C18.1 23 19 22.1 19 21V11C19 9.9 18.1 9 17 9ZM17.7 21C17.7 21.38 17.38 21.7 17 21.7H2C1.62 21.7 1.3 21.38 1.3 21V11C1.3 10.62 1.62 10.3 2 10.3H17C17.38 10.3 17.7 10.62 17.7 11V21Z" fill="currentColor"/>
+                              <path d="M6 13H3.5C3.22386 13 3 13.2239 3 13.5V15C3 15.2761 3.22386 15.5 3.5 15.5H6C6.27614 15.5 6.5 15.2761 6.5 15V13.5C6.5 13.2239 6.27614 13 6 13Z" fill="currentColor"/>
+                              <path d="M16 18.7H10V20H16V18.7Z" fill="currentColor"/>
+                              <path d="M22 1H8C6.9 1 6 1.9 6 3V7.5H9V5.5C9 5.23 9.23 5 9.5 5H12C12.27 5 12.5 5.23 12.5 5.5V7.5H18C19.38 7.5 20.5 8.62 20.5 10V14H22C23.1 14 24 13.1 24 12V3C24 1.9 23.1 1 22 1Z" fill="currentColor"/>
                           </svg>
                         </div>
                         <div class="tile-vstack">
@@ -782,8 +778,8 @@
                       <div class="tile tile-vertical">
                         <div class="pictogram pict-secondary-alt-04">
                           <!-- INLINE SVG: Holiday -->
-                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M23.9891 24L21.1091 7.63636H16.3527V9.81818H14.7164V7.63636H12.6982V4.16727C13.1236 3.94909 14.2473 3.52364 16.2873 3.90545C20.1709 4.63636 21.2291 1.60364 21.2291 1.60364C19.8327 1.89818 18.0436 1.66909 15.9382 0.709091C14.7164 0.141818 13.5818 0 12.6982 0H11.28V7.63636H9.26182V9.81818H7.62545V7.63636H2.88L0 24H24H23.9891ZM1.68 22.5818L4.06909 9.05455H6.20727V11.2364H10.68V9.05455H13.2982V11.2364H17.7709V9.05455H19.9091L22.2982 22.5818H15.2618V18.0545C15.2618 16.2436 13.8 14.7818 11.9891 14.7818C10.1782 14.7818 8.71636 16.2436 8.71636 18.0545V22.5818H1.68Z" fill="black"/>
+                          <svg class="inline-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M23.9891 24L21.1091 7.63636H16.3527V9.81818H14.7164V7.63636H12.6982V4.16727C13.1236 3.94909 14.2473 3.52364 16.2873 3.90545C20.1709 4.63636 21.2291 1.60364 21.2291 1.60364C19.8327 1.89818 18.0436 1.66909 15.9382 0.709091C14.7164 0.141818 13.5818 0 12.6982 0H11.28V7.63636H9.26182V9.81818H7.62545V7.63636H2.88L0 24H24H23.9891ZM1.68 22.5818L4.06909 9.05455H6.20727V11.2364H10.68V9.05455H13.2982V11.2364H17.7709V9.05455H19.9091L22.2982 22.5818H15.2618V18.0545C15.2618 16.2436 13.8 14.7818 11.9891 14.7818C10.1782 14.7818 8.71636 16.2436 8.71636 18.0545V22.5818H1.68Z" fill="currentColor"/>
                           </svg>
                         </div>
                         <div class="tile-vstack">
@@ -1159,15 +1155,18 @@
         // Toggle theme
         function toggleTheme() {
             const body = document.body;
+            const html = document.documentElement;
             const themeText = document.getElementById('theme-text');
             const currentTheme = body.getAttribute('data-theme');
             
             if (currentTheme === 'light') {
                 body.setAttribute('data-theme', 'dark');
+                html.setAttribute('data-theme', 'dark');
                 themeText.textContent = 'Switch to Light Mode';
                 localStorage.setItem('cancara-theme-preference', 'dark');
             } else {
                 body.setAttribute('data-theme', 'light');
+                html.setAttribute('data-theme', 'light');
                 themeText.textContent = 'Switch to Dark Mode';
                 localStorage.setItem('cancara-theme-preference', 'light');
             }

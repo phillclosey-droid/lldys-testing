@@ -117,6 +117,11 @@
         
         // 1. Replace images with src="...something.svg"
         document.querySelectorAll('img[src*=".svg"]').forEach(img => {
+            // Skip the horse logo - it needs to switch files based on theme
+            if (img.id === 'caught-up-horse') {
+                return;
+            }
+            
             const filename = img.src.split('/').pop().replace('.svg', '');
             if (SVG_LIBRARY[filename]) {
                 if (replaceImgWithSVG(img, filename)) {
