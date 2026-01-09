@@ -543,6 +543,21 @@
         .tile-grid-link-description {
             gap: 0 !important;
         }
+        
+        /* Inline SVG dark mode support */
+        [data-theme="dark"] .inline-svg {
+            color: white;
+        }
+        
+        [data-theme="light"] .inline-svg {
+            color: black;
+        }
+        
+        /* Ensure SVGs inherit sizing */
+        .inline-svg {
+            width: 100%;
+            height: 100%;
+        }
     </style>
     
     <!-- Load theme BEFORE body renders to prevent flicker -->
@@ -552,6 +567,7 @@
             document.documentElement.setAttribute('data-theme', savedTheme);
         })();
     </script>
+    <link rel="stylesheet" href="../scripts/inline-svg-styles.css">
 </head>
 <body data-theme="dark">
     <!-- Dark Mode Toggle -->
@@ -1108,34 +1124,17 @@
                 console.log('Person icon set');
             }
             
-            // Bottom nav tab icons - with inline SVGs for tab-1 and tab-3 (were being blocked)
+            // Bottom nav tab icons
             for (let i = 0; i < 5; i++) {
                 const inactiveIcon = document.getElementById(`tab-icon-${i}-inactive`);
                 const activeIcon = document.getElementById(`tab-icon-${i}-active`);
                 
-                // Tab 1 (index 0) - use inline SVG
-                if (i === 0 && inactiveIcon) {
-                    inactiveIcon.outerHTML = '<svg class="icon-inactive" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3C12.315 3 12.6304 3.10105 12.9004 3.30371L20.2803 8.97852C20.7301 9.32852 20.9999 9.87197 21 10.4521V21H3V10.4521C3.00008 9.87197 3.2699 9.32852 3.71973 8.97852L11.0996 3.30371C11.3696 3.10105 11.685 3 12 3ZM12 4.19727C11.946 4.19727 11.8738 4.20645 11.8018 4.26172L4.42188 9.92773C4.26005 10.0475 4.16992 10.2408 4.16992 10.4434V19.793H8.40039V12.7002H15.5996V19.793H19.8301V10.4521C19.83 10.2496 19.74 10.0562 19.5781 9.93652L12.1982 4.26172C12.1262 4.20645 12.054 4.19727 12 4.19727ZM9.57031 13.8975V19.793H14.4297V13.8975H9.57031Z" fill="black"/></svg>';
-                    console.log('Tab 0 inactive icon set (INLINE)');
-                } else if (i === 0 && activeIcon) {
-                    activeIcon.outerHTML = '<svg class="icon-active" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3C12.315 3 12.6304 3.10105 12.9004 3.30371L20.2803 8.97852C20.7301 9.32852 20.9999 9.87197 21 10.4521V21H3V10.4521C3.00008 9.87197 3.2699 9.32852 3.71973 8.97852L11.0996 3.30371C11.3696 3.10105 11.685 3 12 3ZM12 4.19727C11.946 4.19727 11.8738 4.20645 11.8018 4.26172L4.42188 9.92773C4.26005 10.0475 4.16992 10.2408 4.16992 10.4434V19.793H8.40039V12.7002H15.5996V19.793H19.8301V10.4521C19.83 10.2496 19.74 10.0562 19.5781 9.93652L12.1982 4.26172C12.1262 4.20645 12.054 4.19727 12 4.19727ZM9.57031 13.8975V19.793H14.4297V13.8975H9.57031Z" fill="black"/></svg>';
-                    console.log('Tab 0 active icon set (INLINE)');
-                }
-                // Tab 3 (index 2) - use inline SVG 
-                else if (i === 2 && inactiveIcon) {
-                    inactiveIcon.outerHTML = '<svg class="icon-inactive" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.17578 9.87988C10.4109 11.5102 11.5715 13.2149 12.6172 15.0264C13.6629 16.8379 14.5528 18.6988 15.3516 20.5762L9.17578 18.6494L3 20.5762C3.79867 18.6989 4.68774 16.8378 5.7334 15.0264C6.77913 13.2066 7.9489 11.5102 9.17578 9.87988ZM9.16699 11.6826C8.22006 13.0083 7.3891 14.2852 6.65625 15.5615C6.05516 16.599 5.48626 17.6862 4.93457 18.8555L8.84668 17.6367L9.16699 17.5371L9.48828 17.6367L13.3994 18.8555C12.8477 17.6862 12.2716 16.599 11.6787 15.5615C10.9459 14.2852 10.1139 13.0083 9.16699 11.6826ZM21 3.42383C20.2013 5.30109 19.3122 7.16223 18.2666 8.97363C17.2209 10.7934 16.0511 12.4898 14.8242 14.1201C13.5891 12.4898 12.4285 10.7851 11.3828 8.97363C10.3371 7.16213 9.44715 5.3012 8.64844 3.42383L14.8242 5.35059L21 3.42383ZM15.1455 6.37207L14.8242 6.4707L14.5029 6.37207L10.5918 5.15332C11.1435 6.32258 11.7196 7.40975 12.3125 8.44727C13.0453 9.72351 13.8773 10.9995 14.8242 12.3252C15.7711 10.9995 16.6031 9.72351 17.3359 8.44727C17.937 7.40978 18.505 6.32255 19.0566 5.15332L15.1455 6.37207Z" fill="black"/></svg>';
-                    console.log('Tab 2 inactive icon set (INLINE)');
-                } else if (i === 2 && activeIcon) {
-                    activeIcon.outerHTML = '<svg class="icon-active" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.17578 9.87988C10.4109 11.5102 11.5715 13.2149 12.6172 15.0264C13.6629 16.8379 14.5528 18.6988 15.3516 20.5762L9.17578 18.6494L3 20.5762C3.79867 18.6989 4.68774 16.8378 5.7334 15.0264C6.77913 13.2066 7.9489 11.5102 9.17578 9.87988ZM9.16699 11.6826C8.22006 13.0083 7.3891 14.2852 6.65625 15.5615C6.05516 16.599 5.48626 17.6862 4.93457 18.8555L8.84668 17.6367L9.16699 17.5371L9.48828 17.6367L13.3994 18.8555C12.8477 17.6862 12.2716 16.599 11.6787 15.5615C10.9459 14.2852 10.1139 13.0083 9.16699 11.6826ZM21 3.42383C20.2013 5.30109 19.3122 7.16223 18.2666 8.97363C17.2209 10.7934 16.0511 12.4898 14.8242 14.1201C13.5891 12.4898 12.4285 10.7851 11.3828 8.97363C10.3371 7.16213 9.44715 5.3012 8.64844 3.42383L14.8242 5.35059L21 3.42383ZM15.1455 6.37207L14.8242 6.4707L14.5029 6.37207L10.5918 5.15332C11.1435 6.32258 11.7196 7.40975 12.3125 8.44727C13.0453 9.72351 13.8773 10.9995 14.8242 12.3252C15.7711 10.9995 16.6031 9.72351 17.3359 8.44727C17.937 7.40978 18.505 6.32255 19.0566 5.15332L15.1455 6.37207Z" fill="black"/></svg>';
-                    console.log('Tab 2 active icon set (INLINE)');
-                }
-                // Other tabs - use normal method
-                else if (inactiveIcon && !inactiveIcon.outerHTML.includes('<svg')) {
+                if (inactiveIcon) {
                     inactiveIcon.src = ICONS[`tab${i + 1}`];
                     console.log(`Tab ${i} inactive icon set`);
                 }
                 
-                if (activeIcon && !activeIcon.outerHTML.includes('<svg') && i !== 0 && i !== 2) {
+                if (activeIcon) {
                     activeIcon.src = ICONS[`tab${i + 1}Active`];
                     console.log(`Tab ${i} active icon set`);
                 }
@@ -1727,5 +1726,7 @@
     <script src="../../../src/components/action/button/action-button/ActionButton.vanilla.js"></script>
     <script src="../../../src/components/os/native-spinner-configuration/NativeSpinner.vanilla.js"></script>
     <script src="../../../src/components/os/spinner/Spinner.vanilla.js"></script>
+    <!-- Inline SVG Loader - Firewall Workaround -->
+    <script src="../scripts/inline-svg-loader.js"></script>
 </body>
 </html>

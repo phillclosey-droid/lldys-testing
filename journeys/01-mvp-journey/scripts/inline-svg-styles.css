@@ -1,0 +1,32 @@
+/* Inline SVG Theme Support
+ * Styles for SVGs converted to inline by inline-svg-loader.js
+ * Include this in every page that uses the inline SVG loader
+ */
+
+/* Dark mode - white icons */
+[data-theme="dark"] .inline-svg {
+    color: white;
+}
+
+/* Light mode - black icons */
+[data-theme="light"] .inline-svg {
+    color: black;
+}
+
+/* Ensure SVGs inherit sizing from wrapper */
+.inline-svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Bottom nav icons need proper sizing */
+.bottom-nav-icon .inline-svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* Header icons */
+.icon-wrapper .inline-svg {
+    width: 100%;
+    height: 100%;
+}
