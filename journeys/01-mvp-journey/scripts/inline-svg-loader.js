@@ -123,6 +123,7 @@
             }
             
             const filename = img.src.split('/').pop().replace('.svg', '');
+            console.log(`[inline-svg-loader] Checking: ${filename}, found: ${!!SVG_LIBRARY[filename]}, id: ${img.id || 'none'}`);
             if (SVG_LIBRARY[filename]) {
                 if (replaceImgWithSVG(img, filename)) {
                     replaced++;

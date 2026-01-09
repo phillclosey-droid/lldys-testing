@@ -8,6 +8,9 @@
     <!-- Design Tokens -->
     <link rel="stylesheet" href="../../css/cancara-tokens.css">
     
+    <!-- Inline SVG support (firewall bypass for corporate network) -->
+    <link rel="stylesheet" href="../../../journeys/01-mvp-journey/scripts/inline-svg-styles.css">
+    
     <!-- Component Styles -->
     <link rel="stylesheet" href="../../components/navigation/status-bar/StatusBar.vanilla.css">
     <link rel="stylesheet" href="../../components/notification/notification-badge/NotificationBadge.vanilla.css">
@@ -318,5 +321,7 @@
             initializeIcons();    // Load all icon paths
         });
     </script>
+    <!-- Inline SVG loader (firewall bypass for corporate network) -->
+    <script src="../../../journeys/01-mvp-journey/scripts/inline-svg-loader.js"></script>
 </body>
 </html>
