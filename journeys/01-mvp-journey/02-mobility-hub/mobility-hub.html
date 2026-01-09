@@ -2022,6 +2022,14 @@
             document.querySelector('.tray-overlay').classList.add('visible');
             document.querySelector('.tray-container').classList.add('visible');
             document.body.style.overflow = 'hidden';
+            
+            // Re-run inline SVG loader for tray icons (they load after page init)
+            setTimeout(function() {
+                if (window.reloadInlineSVGs) {
+                    window.reloadInlineSVGs();
+                    console.log('[TRAY] Re-ran inline SVG loader for manage tray icons');
+                }
+            }, 200);
         }
         
         // Close manage tray
@@ -2416,6 +2424,14 @@
             document.querySelector('.connect-tray-overlay').classList.add('visible');
             document.querySelector('.connect-tray-container').classList.add('visible');
             document.body.style.overflow = 'hidden';
+            
+            // Re-run inline SVG loader for tray icons (they load after page init)
+            setTimeout(function() {
+                if (window.reloadInlineSVGs) {
+                    window.reloadInlineSVGs();
+                    console.log('[TRAY] Re-ran inline SVG loader for connect tray icons');
+                }
+            }, 200);
             
             // Manually load spinner frames - EXACTLY like account summary
             setTimeout(function() {
