@@ -1180,6 +1180,14 @@
             document.body.style.overflow = 'hidden';
             console.log('[TRAY] Tray opened, overlay and container visible');
             
+            // Re-run inline SVG loader for tray icons (they load after page init)
+            setTimeout(function() {
+                if (window.reloadInlineSVGs) {
+                    window.reloadInlineSVGs();
+                    console.log('[TRAY] Re-ran inline SVG loader for tray icons');
+                }
+            }, 200);
+            
             // Attach keyboard listeners after tray is open
             setTimeout(function() {
                 attachKeyboardListeners();
