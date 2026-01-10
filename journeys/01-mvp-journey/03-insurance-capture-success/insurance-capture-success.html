@@ -18,9 +18,11 @@
             // Then set on body when it's available
             if (document.body) {
                 document.body.setAttribute('data-theme', savedTheme);
+                html.setAttribute('data-theme', 'dark');
             } else {
                 document.addEventListener('DOMContentLoaded', function() {
                     document.body.setAttribute('data-theme', savedTheme);
+                html.setAttribute('data-theme', 'dark');
                 });
             }
         })();
@@ -178,6 +180,7 @@
         (function() {
             const savedTheme = localStorage.getItem('cancara-theme-preference') || 'dark';
             document.body.setAttribute('data-theme', savedTheme);
+                html.setAttribute('data-theme', 'dark');
         })();
     </script>
     <!-- Dark Mode Toggle -->
@@ -351,17 +354,20 @@
         // Toggle theme manually
         function toggleTheme() {
             const body = document.body;
+            const html = document.documentElement;
             const themeText = document.getElementById('theme-text');
             const successIcon = document.getElementById('success-icon');
             const currentTheme = body.getAttribute('data-theme');
             
             if (currentTheme === 'light') {
                 body.setAttribute('data-theme', 'dark');
+                html.setAttribute('data-theme', 'dark');
                 themeText.textContent = 'Switch to Light Mode';
                 successIcon.src = '../../../assets/illustrations/default-alt-01/Tick_Lloyds_-_V2_-_Dark_Mode.svg';
                 localStorage.setItem('cancara-theme-preference', 'dark');
             } else {
                 body.setAttribute('data-theme', 'light');
+                html.setAttribute('data-theme', 'light');
                 themeText.textContent = 'Switch to Dark Mode';
                 successIcon.src = '../../../assets/illustrations/default-alt-01/Tick_Lloyds_-_V2.svg';
                 localStorage.setItem('cancara-theme-preference', 'light');

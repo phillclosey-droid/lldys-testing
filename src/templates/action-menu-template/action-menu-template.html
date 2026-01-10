@@ -161,6 +161,14 @@
             const menu = document.getElementById('actionMenu');
             menu.classList.add('visible');
             document.body.style.overflow = 'hidden';
+            
+            // Re-run inline SVG loader for menu icons (they load after page init)
+            setTimeout(function() {
+                if (window.reloadInlineSVGs) {
+                    window.reloadInlineSVGs();
+                    console.log('[ACTION-MENU] Re-ran inline SVG loader for menu icons');
+                }
+            }, 200);
         }
 
         // Close action menu

@@ -18,9 +18,11 @@
             // Then set on body when it's available
             if (document.body) {
                 document.body.setAttribute('data-theme', savedTheme);
+                html.setAttribute('data-theme', 'dark');
             } else {
                 document.addEventListener('DOMContentLoaded', function() {
                     document.body.setAttribute('data-theme', savedTheme);
+                html.setAttribute('data-theme', 'dark');
                 });
             }
         })();
@@ -182,7 +184,6 @@
         }
         
         .advisory-text::before {
-            content: "Advisory: ";
             font-weight: var(--font-weight-regular);
         }
     </style>
@@ -193,6 +194,7 @@
         (function() {
             const savedTheme = localStorage.getItem('cancara-theme-preference') || 'dark';
             document.body.setAttribute('data-theme', savedTheme);
+                html.setAttribute('data-theme', 'dark');
         })();
     </script>
     <!-- Dark Mode Toggle -->
@@ -417,145 +419,20 @@
                     
                     <!-- Advisory Box 1 -->
                     <div class="advisory-box">
-                        <div class="advisory-label">Advisory:</div>
                         <div class="advisory-text">Tyre slightly damaged/cracking or perishing. Both rear (5.2.3 (d) (ii))</div>
                     </div>
                     
                     <!-- Advisory Box 2 -->
                     <div class="advisory-box">
-                        <div class="advisory-label">Advisory:</div>
                         <div class="advisory-text">Nearside front coil spring corroded</div>
                     </div>
                     
                     <!-- Advisory Box 3 -->
                     <div class="advisory-box">
-                        <div class="advisory-label">Advisory:</div>
                         <div class="advisory-text">Both front tyres wearing on inner edge.</div>
                     </div>
                 </div>
 
-                <!-- About vehicle servicing Section -->
-                <div class="content-section">
-                    <h2 class="section-title">About vehicle servicing</h2>
-                    
-                    <!-- Accordion Component - EXACT COPY -->
-                    <div class="accordion accordion-full">
-                        <!-- Accordion Item 1 -->
-                        <div class="accordion-item">
-                            <div class="accordion-header">
-                                <div class="accordion-label">
-                                    <div class="accordion-label-text">How often should I get my vehicle serviced</div>
-                                </div>
-                                <div class="accordion-icon">
-                                    <div class="accordion-icon-plus">
-                                        <img data-icon-plus alt="">
-                                    </div>
-                                    <div class="accordion-icon-minus">
-                                        <img data-icon-minus alt="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-divider"></div>
-                            <div class="accordion-panel">
-                                <div class="accordion-panel-content">
-                                    <p class="accordion-panel-text">Most manufacturers recommend servicing your vehicle once a year or every 12,000 miles, whichever comes first.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Accordion Item 2 -->
-                        <div class="accordion-item">
-                            <div class="accordion-header">
-                                <div class="accordion-label">
-                                    <div class="accordion-label-text">What needs to be done during car service?</div>
-                                </div>
-                                <div class="accordion-icon">
-                                    <div class="accordion-icon-plus">
-                                        <img data-icon-plus alt="">
-                                    </div>
-                                    <div class="accordion-icon-minus">
-                                        <img data-icon-minus alt="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-divider"></div>
-                            <div class="accordion-panel">
-                                <div class="accordion-panel-content">
-                                    <p class="accordion-panel-text">A standard service includes oil and filter change, brake checks, fluid level checks, tire inspection, and battery tests.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Accordion Item 3 -->
-                        <div class="accordion-item">
-                            <div class="accordion-header">
-                                <div class="accordion-label">
-                                    <div class="accordion-label-text">Do I have to get my car serviced by a main dealer?</div>
-                                </div>
-                                <div class="accordion-icon">
-                                    <div class="accordion-icon-plus">
-                                        <img data-icon-plus alt="">
-                                    </div>
-                                    <div class="accordion-icon-minus">
-                                        <img data-icon-minus alt="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-divider"></div>
-                            <div class="accordion-panel">
-                                <div class="accordion-panel-content">
-                                    <p class="accordion-panel-text">No, you can use any qualified mechanic or garage. However, using a main dealer may be beneficial for warranty purposes.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Accordion Item 4 -->
-                        <div class="accordion-item">
-                            <div class="accordion-header">
-                                <div class="accordion-label">
-                                    <div class="accordion-label-text">How much is reasonable for garage labour?</div>
-                                </div>
-                                <div class="accordion-icon">
-                                    <div class="accordion-icon-plus">
-                                        <img data-icon-plus alt="">
-                                    </div>
-                                    <div class="accordion-icon-minus">
-                                        <img data-icon-minus alt="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-divider"></div>
-                            <div class="accordion-panel">
-                                <div class="accordion-panel-content">
-                                    <p class="accordion-panel-text">Garage labour rates vary by location and garage type. Independent garages typically charge £40-£100 per hour.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Accordion Item 5 -->
-                        <div class="accordion-item">
-                            <div class="accordion-header">
-                                <div class="accordion-label">
-                                    <div class="accordion-label-text">What is 10-60-90 maintenance?</div>
-                                </div>
-                                <div class="accordion-icon">
-                                    <div class="accordion-icon-plus">
-                                        <img data-icon-plus alt="">
-                                    </div>
-                                    <div class="accordion-icon-minus">
-                                        <img data-icon-minus alt="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-divider"></div>
-                            <div class="accordion-panel">
-                                <div class="accordion-panel-content">
-                                    <p class="accordion-panel-text">10-60-90 maintenance refers to service intervals at 10,000, 60,000, and 90,000 miles where more comprehensive checks are needed.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
             </div>
         </div>
@@ -674,14 +551,17 @@
 
         function toggleTheme() {
             const body = document.body;
+            const html = document.documentElement;
             const themeText = document.getElementById('theme-text');
             const currentTheme = body.getAttribute('data-theme');
             if (currentTheme === 'light') {
                 body.setAttribute('data-theme', 'dark');
+                html.setAttribute('data-theme', 'dark');
                 themeText.textContent = 'Switch to Light Mode';
                 localStorage.setItem('cancara-theme-preference', 'dark');
             } else {
                 body.setAttribute('data-theme', 'light');
+                html.setAttribute('data-theme', 'light');
                 themeText.textContent = 'Switch to Dark Mode';
                 localStorage.setItem('cancara-theme-preference', 'light');
             }

@@ -126,6 +126,14 @@
             const tray = document.querySelector('.tray-template');
             tray.classList.add('visible');
             document.body.style.overflow = 'hidden';
+            
+            // Re-run inline SVG loader for tray icons (they load after page init)
+            setTimeout(function() {
+                if (window.reloadInlineSVGs) {
+                    window.reloadInlineSVGs();
+                    console.log('[TRAY] Re-ran inline SVG loader for tray icons');
+                }
+            }, 200);
         }
 
         // Close tray

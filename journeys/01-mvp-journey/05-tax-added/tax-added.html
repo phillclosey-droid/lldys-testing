@@ -18,9 +18,11 @@
             // Then set on body when it's available
             if (document.body) {
                 document.body.setAttribute('data-theme', savedTheme);
+                html.setAttribute('data-theme', 'dark');
             } else {
                 document.addEventListener('DOMContentLoaded', function() {
                     document.body.setAttribute('data-theme', savedTheme);
+                html.setAttribute('data-theme', 'dark');
                 });
             }
         })();
@@ -152,6 +154,7 @@
         (function() {
             const savedTheme = localStorage.getItem('cancara-theme-preference') || 'dark';
             document.body.setAttribute('data-theme', savedTheme);
+                html.setAttribute('data-theme', 'dark');
         })();
     </script>
     <!-- Dark Mode Toggle -->
@@ -370,130 +373,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- About TAX Section -->
-                <div class="content-section">
-                    <h2 class="section-title">About TAX</h2>
-                    
-                    <!-- Accordion Component -->
-                    <div class="accordion accordion-full">
-                        <!-- Accordion Item 1 -->
-                        <div class="accordion-item">
-                            <div class="accordion-header">
-                                <div class="accordion-label">
-                                    <div class="accordion-label-text">How is car tax is calculated?</div>
-                                </div>
-                                <div class="accordion-icon">
-                                    <div class="accordion-icon-plus">
-                                        <img data-icon-plus alt="">
-                                    </div>
-                                    <div class="accordion-icon-minus">
-                                        <img data-icon-minus alt="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-divider"></div>
-                            <div class="accordion-panel">
-                                <div class="accordion-panel-content">
-                                    <p class="accordion-panel-text">Car tax is based on your vehicle's CO2 emissions and fuel type. The first year rate is usually higher, followed by a standard annual rate.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Accordion Item 2 -->
-                        <div class="accordion-item">
-                            <div class="accordion-header">
-                                <div class="accordion-label">
-                                    <div class="accordion-label-text">What happens if I don't tax my car?</div>
-                                </div>
-                                <div class="accordion-icon">
-                                    <div class="accordion-icon-plus">
-                                        <img data-icon-plus alt="">
-                                    </div>
-                                    <div class="accordion-icon-minus">
-                                        <img data-icon-minus alt="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-divider"></div>
-                            <div class="accordion-panel">
-                                <div class="accordion-panel-content">
-                                    <p class="accordion-panel-text">Driving without tax can result in fines up to £1,000 and your vehicle may be clamped or impounded.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Accordion Item 3 -->
-                        <div class="accordion-item">
-                            <div class="accordion-header">
-                                <div class="accordion-label">
-                                    <div class="accordion-label-text">What happens if I don't tax my car?</div>
-                                </div>
-                                <div class="accordion-icon">
-                                    <div class="accordion-icon-plus">
-                                        <img data-icon-plus alt="">
-                                    </div>
-                                    <div class="accordion-icon-minus">
-                                        <img data-icon-minus alt="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-divider"></div>
-                            <div class="accordion-panel">
-                                <div class="accordion-panel-content">
-                                    <p class="accordion-panel-text">You cannot drive your vehicle on public roads without valid tax, even if it's parked on the street.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Accordion Item 4 -->
-                        <div class="accordion-item">
-                            <div class="accordion-header">
-                                <div class="accordion-label">
-                                    <div class="accordion-label-text">Are there any car tax exemptions?</div>
-                                </div>
-                                <div class="accordion-icon">
-                                    <div class="accordion-icon-plus">
-                                        <img data-icon-plus alt="">
-                                    </div>
-                                    <div class="accordion-icon-minus">
-                                        <img data-icon-minus alt="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-divider"></div>
-                            <div class="accordion-panel">
-                                <div class="accordion-panel-content">
-                                    <p class="accordion-panel-text">Some vehicles are exempt including electric vehicles, historic vehicles over 40 years old, and vehicles used by disabled people.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Accordion Item 5 -->
-                        <div class="accordion-item">
-                            <div class="accordion-header">
-                                <div class="accordion-label">
-                                    <div class="accordion-label-text">Can I get a refund if I sell my car?</div>
-                                </div>
-                                <div class="accordion-icon">
-                                    <div class="accordion-icon-plus">
-                                        <img data-icon-plus alt="">
-                                    </div>
-                                    <div class="accordion-icon-minus">
-                                        <img data-icon-minus alt="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-divider"></div>
-                            <div class="accordion-panel">
-                                <div class="accordion-panel-content">
-                                    <p class="accordion-panel-text">Yes, you'll automatically get a refund for any full months of tax remaining when you tell DVLA you've sold your vehicle.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
 
@@ -636,14 +515,17 @@
 
         function toggleTheme() {
             const body = document.body;
+            const html = document.documentElement;
             const themeText = document.getElementById('theme-text');
             const currentTheme = body.getAttribute('data-theme');
             if (currentTheme === 'light') {
                 body.setAttribute('data-theme', 'dark');
+                html.setAttribute('data-theme', 'dark');
                 themeText.textContent = 'Switch to Light Mode';
                 localStorage.setItem('cancara-theme-preference', 'dark');
             } else {
                 body.setAttribute('data-theme', 'light');
+                html.setAttribute('data-theme', 'light');
                 themeText.textContent = 'Switch to Dark Mode';
                 localStorage.setItem('cancara-theme-preference', 'light');
             }

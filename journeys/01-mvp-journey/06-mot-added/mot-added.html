@@ -18,9 +18,11 @@
             // Then set on body when it's available
             if (document.body) {
                 document.body.setAttribute('data-theme', savedTheme);
+                html.setAttribute('data-theme', 'dark');
             } else {
                 document.addEventListener('DOMContentLoaded', function() {
                     document.body.setAttribute('data-theme', savedTheme);
+                html.setAttribute('data-theme', 'dark');
                 });
             }
         })();
@@ -208,11 +210,11 @@
         }
         
         /* Accordion icon colors */
-        .accordion-icon-left img[src*="success"] {
+        #tab-all-mots .accordion-icon-left img[src*="success"] {
             filter: brightness(0) saturate(100%) invert(64%) sepia(98%) saturate(440%) hue-rotate(91deg) brightness(95%) contrast(89%);
         }
         
-        .accordion-icon-left img[src*="cross"] {
+        #tab-all-mots .accordion-icon-left img[src*="cross"] {
             filter: brightness(0) saturate(100%) invert(37%) sepia(93%) saturate(7471%) hue-rotate(358deg) brightness(96%) contrast(118%);
         }
         
@@ -271,6 +273,7 @@
         (function() {
             const savedTheme = localStorage.getItem('cancara-theme-preference') || 'dark';
             document.body.setAttribute('data-theme', savedTheme);
+                html.setAttribute('data-theme', 'dark');
         })();
     </script>
     <div class="theme-toggle">
@@ -665,122 +668,6 @@
                     </div>
                 </div>
 
-                <div class="content-section">
-                    <h2 class="section-title">About MOTs</h2>
-                    
-                    <div class="accordion accordion-full">
-                        <div class="accordion-item">
-                            <div class="accordion-header">
-                                <div class="accordion-label">
-                                    <div class="accordion-label-text">Preparing for your MOT</div>
-                                </div>
-                                <div class="accordion-icon">
-                                    <div class="accordion-icon-plus">
-                                        <img data-icon-plus alt="">
-                                    </div>
-                                    <div class="accordion-icon-minus">
-                                        <img data-icon-minus alt="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-divider"></div>
-                            <div class="accordion-panel">
-                                <div class="accordion-panel-content">
-                                    <p class="accordion-panel-text">Check your lights, tyres, brakes, and fluid levels before your MOT to avoid common failures.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="accordion-item">
-                            <div class="accordion-header">
-                                <div class="accordion-label">
-                                    <div class="accordion-label-text">What gets checked</div>
-                                </div>
-                                <div class="accordion-icon">
-                                    <div class="accordion-icon-plus">
-                                        <img data-icon-plus alt="">
-                                    </div>
-                                    <div class="accordion-icon-minus">
-                                        <img data-icon-minus alt="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-divider"></div>
-                            <div class="accordion-panel">
-                                <div class="accordion-panel-content">
-                                    <p class="accordion-panel-text">Your MOT checks lights, steering, brakes, tyres, seat belts, windscreen, emissions and more.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="accordion-item">
-                            <div class="accordion-header">
-                                <div class="accordion-label">
-                                    <div class="accordion-label-text">Common issues you can fix first</div>
-                                </div>
-                                <div class="accordion-icon">
-                                    <div class="accordion-icon-plus">
-                                        <img data-icon-plus alt="">
-                                    </div>
-                                    <div class="accordion-icon-minus">
-                                        <img data-icon-minus alt="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-divider"></div>
-                            <div class="accordion-panel">
-                                <div class="accordion-panel-content">
-                                    <p class="accordion-panel-text">Replace blown bulbs, top up washer fluid, fix windscreen chips, and ensure tyres meet minimum tread depth.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="accordion-item">
-                            <div class="accordion-header">
-                                <div class="accordion-label">
-                                    <div class="accordion-label-text">How to pick an MOT centre</div>
-                                </div>
-                                <div class="accordion-icon">
-                                    <div class="accordion-icon-plus">
-                                        <img data-icon-plus alt="">
-                                    </div>
-                                    <div class="accordion-icon-minus">
-                                        <img data-icon-minus alt="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-divider"></div>
-                            <div class="accordion-panel">
-                                <div class="accordion-panel-content">
-                                    <p class="accordion-panel-text">Choose an approved MOT centre with good reviews. Compare prices and check if they offer repairs if needed.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="accordion-item">
-                            <div class="accordion-header">
-                                <div class="accordion-label">
-                                    <div class="accordion-label-text">When repairs are needed</div>
-                                </div>
-                                <div class="accordion-icon">
-                                    <div class="accordion-icon-plus">
-                                        <img data-icon-plus alt="">
-                                    </div>
-                                    <div class="accordion-icon-minus">
-                                        <img data-icon-minus alt="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-divider"></div>
-                            <div class="accordion-panel">
-                                <div class="accordion-panel-content">
-                                    <p class="accordion-panel-text">If your car fails, you have 10 working days to fix issues and get a free retest at the same centre.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
 
@@ -897,14 +784,17 @@
 
         function toggleTheme() {
             const body = document.body;
+            const html = document.documentElement;
             const themeText = document.getElementById('theme-text');
             const currentTheme = body.getAttribute('data-theme');
             if (currentTheme === 'light') {
                 body.setAttribute('data-theme', 'dark');
+                html.setAttribute('data-theme', 'dark');
                 themeText.textContent = 'Switch to Light Mode';
                 localStorage.setItem('cancara-theme-preference', 'dark');
             } else {
                 body.setAttribute('data-theme', 'light');
+                html.setAttribute('data-theme', 'light');
                 themeText.textContent = 'Switch to Dark Mode';
                 localStorage.setItem('cancara-theme-preference', 'light');
             }

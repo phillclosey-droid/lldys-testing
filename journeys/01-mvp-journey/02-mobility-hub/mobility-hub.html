@@ -13,9 +13,11 @@
             // Then set on body when it's available
             if (document.body) {
                 document.body.setAttribute('data-theme', savedTheme);
+                html.setAttribute('data-theme', 'dark');
             } else {
                 document.addEventListener('DOMContentLoaded', function() {
                     document.body.setAttribute('data-theme', savedTheme);
+                html.setAttribute('data-theme', 'dark');
                 });
             }
         })();
@@ -984,6 +986,7 @@
         (function() {
             const savedTheme = localStorage.getItem('cancara-theme-preference') || 'dark';
             document.body.setAttribute('data-theme', savedTheme);
+                html.setAttribute('data-theme', 'dark');
         })();
     </script>
     <!-- Dark Mode Toggle -->
@@ -1727,6 +1730,7 @@
             
             if (currentTheme === 'light') {
                 body.setAttribute('data-theme', 'dark');
+                html.setAttribute('data-theme', 'dark');
                 themeText.textContent = 'Switch to Light Mode';
                 localStorage.setItem('cancara-theme-preference', 'dark');
                 if (horseLogo) {
@@ -1734,6 +1738,7 @@
                 }
             } else {
                 body.setAttribute('data-theme', 'light');
+                html.setAttribute('data-theme', 'light');
                 themeText.textContent = 'Switch to Dark Mode';
                 localStorage.setItem('cancara-theme-preference', 'light');
                 if (horseLogo) {
