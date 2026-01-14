@@ -555,8 +555,7 @@
         /* Dark mode icon support */
         [data-theme="dark"] .manage-action-icon img,
         [data-theme="dark"] .manage-action-chevron img,
-        [data-theme="dark"] .tray-header-trailing .icon-wrapper img,
-        [data-theme="dark"] .list-item-icon img {
+        [data-theme="dark"] .tray-header-trailing .icon-wrapper img {
             filter: invert(1);
         }
         
@@ -1252,8 +1251,7 @@
                         </div>
                     </div>
                     
-                    <!-- OLD INLINE SCRIPT - Commented out, using state machine instead -->
-                    <!--
+                    <!-- Inline script to flip completed cards IMMEDIATELY (prevents flicker) -->
                     <script>
                     (function() {
                         // FIRST: Clear any existing flip states (in case of bfcache)
@@ -1357,7 +1355,6 @@
                         });
                     })();
                     </script>
-                    -->
                 </div>
                 
                 <!-- EmptyStateHeroPanel Component (Hidden by default) -->
@@ -1939,34 +1936,6 @@
             }
         }
 
-        // Theme toggle and icon initialization (needed for UI)
-        window.addEventListener('DOMContentLoaded', function() {
-            const currentTheme = document.body.getAttribute('data-theme');
-            const themeText = document.getElementById('theme-text');
-            if (themeText) {
-                if (currentTheme === 'dark') {
-                    themeText.textContent = 'Switch to Light Mode';
-                } else {
-                    themeText.textContent = 'Switch to Dark Mode';
-                }
-            }
-            
-            const horseLogo = document.getElementById('caught-up-horse');
-            if (horseLogo) {
-                const cacheBuster = '?v=' + Date.now();
-                if (currentTheme === 'light') {
-                    horseLogo.src = '../../../assets/brand/cancara-horse-light.svg' + cacheBuster;
-                } else {
-                    horseLogo.src = '../../../assets/brand/cancara-horse-dark.svg' + cacheBuster;
-                }
-            }
-            
-            initializeIcons();
-            initializeChevrons();
-        });
-
-        // OLD DOMCONTENTLOADED - Commented out, using state machine instead
-        /*
         window.addEventListener('DOMContentLoaded', function() {
             // Update toggle text based on current theme (already set by localStorage script in <body>)
             const currentTheme = document.body.getAttribute('data-theme');
@@ -2184,8 +2153,6 @@
                 }
             }
         });
-        */
-        // END OLD DOMCONTENTLOADED
         
         // Handle pageshow for debugging
         window.addEventListener('pageshow', function(event) {
@@ -3079,14 +3046,9 @@
         });
     </script>
 
-    <!-- Load animations FIRST so they're available -->
+    <!-- Inline SVG Loader - Firewall Workaround -->
     <script src="hub-new-animations.js"></script>
     <script src="hub-navigation.js"></script>
-    
-    <!-- STATE MACHINE - Loads after animations are available -->
-    <script src="hub-state-machine-simple.js"></script>
-    
-    <!-- Inline SVG Loader - Firewall Workaround -->
     <script src="../scripts/inline-svg-loader.js"></script>
     
     <!-- Force reload SVGs after all scripts loaded -->

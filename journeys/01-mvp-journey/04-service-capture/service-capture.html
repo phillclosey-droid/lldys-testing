@@ -438,12 +438,8 @@
 
         // Handle service completion
         function handleServiceComplete() {
-            // Get existing completed tasks from referrer or start fresh
-            const urlParams = new URLSearchParams(window.location.search);
-            const existingCompleted = urlParams.get('from_completed') || '';
-            
-            // Navigate to success page, passing along completed tasks
-            window.location.href = `../04-service-capture-success/service-capture-success.html${existingCompleted ? '?from_completed=' + existingCompleted : ''}`;
+            // Navigate to success page (no URL params needed)
+            window.location.href = '../04-service-capture-success/service-capture-success.html';
         }
 
         // Initialize on page load

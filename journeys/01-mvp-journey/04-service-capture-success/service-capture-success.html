@@ -18,11 +18,11 @@
             // Then set on body when it's available
             if (document.body) {
                 document.body.setAttribute('data-theme', savedTheme);
-                html.setAttribute('data-theme', 'dark');
+                document.documentElement.setAttribute('data-theme', savedTheme);
             } else {
                 document.addEventListener('DOMContentLoaded', function() {
                     document.body.setAttribute('data-theme', savedTheme);
-                html.setAttribute('data-theme', 'dark');
+                    document.documentElement.setAttribute('data-theme', savedTheme);
                 });
             }
         })();
@@ -181,7 +181,7 @@
         (function() {
             const savedTheme = localStorage.getItem('cancara-theme-preference') || 'dark';
             document.body.setAttribute('data-theme', savedTheme);
-                html.setAttribute('data-theme', 'dark');
+            document.documentElement.setAttribute('data-theme', savedTheme);
         })();
     </script>
     <!-- Dark Mode Toggle -->
@@ -257,6 +257,20 @@
                     <div class="success-illustration">
                         <img src="../../../assets/illustrations/default-alt-01/Tick_Lloyds_-_V2.svg" alt="Success" id="success-icon">
                     </div>
+                    <script>
+                    // Set correct tick illustration IMMEDIATELY based on current theme
+                    (function() {
+                        const savedTheme = localStorage.getItem('cancara-theme-preference') || 'dark';
+                        const successIcon = document.getElementById('success-icon');
+                        if (successIcon) {
+                            if (savedTheme === 'dark') {
+                                successIcon.src = '../../../assets/illustrations/default-alt-01/Tick_Lloyds_-_V2_-_Dark_Mode.svg';
+                            } else {
+                                successIcon.src = '../../../assets/illustrations/default-alt-01/Tick_Lloyds_-_V2.svg';
+                            }
+                        }
+                    })();
+                    </script>
                     
                     <!-- Success Title -->
                     <h1 class="success-title">You've added your service reminder.</h1>
@@ -390,21 +404,22 @@
             segments[tabIndex].classList.add('active');
         }
 
-        // Handle continue button - trigger hub animations
+        // Handle continue button - NEW STATE MACHINE VERSION
         function handleContinue() {
-            // Get existing completed tasks from referrer or start fresh
-            const urlParams = new URLSearchParams(window.location.search);
-            const existingCompleted = urlParams.get('from_completed') || '';
-            
-            // Add servicing to completed list
-            const completedTasks = existingCompleted ? existingCompleted.split(',').filter(t => t) : [];
-            if (!completedTasks.includes('servicing')) {
-                completedTasks.push('servicing');
+            // Load state machine if not already loaded
+            if (!window.hubStateMachine) {
+                console.error('[SERVICE-SUCCESS] State machine not loaded!');
+                // Fallback to old method
+                window.location.href = '../02-mobility-hub/mobility-hub.html';
+                return;
             }
             
-            // Navigate back to hub with completed tasks and new task indicator
-            // This will trigger: scroll, card flip, progress bar animation
-            window.location.href = `../02-mobility-hub/mobility-hub.html?completed=${completedTasks.join(',')}&newTask=servicing`;
+            // Mark servicing as completed
+            window.hubStateMachine.completeTask('servicing');
+            console.log('[SERVICE-SUCCESS] Marked servicing as complete');
+            
+            // Navigate to hub (state machine will handle animation)
+            window.location.href = '../02-mobility-hub/mobility-hub.html';
         }
 
         // Initialize on page load
@@ -425,6 +440,10 @@
             }
         });
     </script>
+    
+    <!-- Load state machine for completeTask API -->
+    <script src="../02-mobility-hub/hub-state-machine-simple.js"></script>
+    
     <!-- Inline SVG Loader - Firewall Workaround -->
     <script src="../scripts/inline-svg-loader.js"></script>
 </body>

@@ -105,6 +105,60 @@ USAGE:
     </div>
 </div>
 
+<!-- EXAMPLE 5: Asset=Icon WITH Badge -->
+<div class="list-item-action asset-icon width-compact position-top state-default">
+    <div class="list-item-content">
+        <div class="list-item-icon">
+            <img src="../../../../assets/icons/people/profile-settings.svg" alt="">
+        </div>
+        
+        <div class="list-item-text">
+            <span class="list-item-title">Messages</span>
+            <span class="list-item-description">3 new messages</span>
+        </div>
+        
+        <!-- NESTED NotificationBadge Component (OPTIONAL) -->
+        <div class="notification-badge">
+            <div class="notification-badge-text">3</div>
+        </div>
+        
+        <div class="list-item-action-icon">
+            <img data-chevron="right" alt="">
+        </div>
+    </div>
+    
+    <div class="divider width-default">
+        <div class="divider-line"></div>
+    </div>
+</div>
+
+<!-- EXAMPLE 6: Asset=Icon WITH Tag -->
+<div class="list-item-action asset-icon width-compact position-top state-default">
+    <div class="list-item-content">
+        <div class="list-item-icon">
+            <img src="../../../../assets/icons/date-and-time/subscriptions.svg" alt="">
+        </div>
+        
+        <div class="list-item-text">
+            <span class="list-item-title">Tax</span>
+            <span class="list-item-description">06 Aug 25</span>
+        </div>
+        
+        <!-- NESTED NotificationTag Component (OPTIONAL) -->
+        <div class="notification-tag tag-new">
+            <div class="notification-tag-text">New</div>
+        </div>
+        
+        <div class="list-item-action-icon">
+            <img data-chevron="right" alt="">
+        </div>
+    </div>
+    
+    <div class="divider width-default">
+        <div class="divider-line"></div>
+    </div>
+</div>
+
 <!--
 COMPLETE USAGE:
 
@@ -113,6 +167,8 @@ COMPLETE USAGE:
     <link rel="stylesheet" href="../../icon/pictogram/Pictogram.vanilla.css">
     <link rel="stylesheet" href="../../icon/illustration/Illustration.vanilla.css">
     <link rel="stylesheet" href="../../divider/Divider.vanilla.css">
+    <link rel="stylesheet" href="../../../notification/notification-badge/NotificationBadge.vanilla.css">
+    <link rel="stylesheet" href="../../../notification/notification-tag/NotificationTag.vanilla.css">
     <link rel="stylesheet" href="ListItemAction.vanilla.css">
 </head>
 <body>
