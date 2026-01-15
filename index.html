@@ -284,15 +284,45 @@
             cursor: pointer;
         }
         
+        /* ========== THEME MODAL ========== */
+        
+        .popup-modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--bg-overlay-default);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+        }
+        
     </style>
 </head>
-<body data-theme="dark">
-    <!-- Load theme from localStorage before anything else -->
+<body>
+    <!-- Auto-detect system theme on INDEX PAGE ONLY (never save to localStorage here) -->
     <script>
         (function() {
-            const savedTheme = localStorage.getItem('cancara-theme-preference') || 'dark';
-            document.body.setAttribute('data-theme', savedTheme);
-            document.documentElement.setAttribute('data-theme', savedTheme);
+            // Index page ALWAYS uses system preference and NEVER uses localStorage
+            // This allows users to see their OS theme, then choose when entering a journey
+            function applyTheme(isDark) {
+                const theme = isDark ? 'dark' : 'light';
+                document.body.setAttribute('data-theme', theme);
+                document.documentElement.setAttribute('data-theme', theme);
+            }
+            
+            // Check system preference
+            const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+            
+            // Apply initial theme based on system
+            applyTheme(darkModeQuery.matches);
+            
+            // Listen for system theme changes in real-time
+            darkModeQuery.addEventListener('change', (e) => {
+                applyTheme(e.matches);
+            });
         })();
     </script>
     
@@ -302,34 +332,6 @@
             <span id="theme-text">Switch to Light Mode</span>
         </button>
     </div>
-    
-    <!-- Auto-detect system theme preference AND listen for changes (only if no saved preference) -->
-    <script>
-        (function() {
-            // Only use system theme if no saved preference exists
-            const savedTheme = localStorage.getItem('cancara-theme-preference');
-            
-            if (!savedTheme) {
-                // Function to apply theme
-                function applyTheme(isDark) {
-                    const theme = isDark ? 'dark' : 'light';
-                    document.body.setAttribute('data-theme', theme);
-                    document.documentElement.setAttribute('data-theme', theme);
-                }
-                
-                // Check system preference
-                const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
-                
-                // Apply initial theme
-                applyTheme(darkModeQuery.matches);
-                
-                // Listen for system theme changes
-                darkModeQuery.addEventListener('change', (e) => {
-                    applyTheme(e.matches);
-                });
-            }
-        })();
-    </script>
     <div class="page-container">
         <div class="splash-container">
             <!-- Top Section - Header at top of page -->
@@ -403,7 +405,7 @@
     <script src="src/components/notification/notification-panel/NotificationPanel.vanilla.js"></script>
     
     <script>
-        // Toggle between light and dark mode
+        // Toggle between light and dark mode (only updates toggle button, doesn't save)
         function toggleTheme() {
             const body = document.body;
             const html = document.documentElement;
@@ -414,13 +416,12 @@
                 body.setAttribute('data-theme', 'dark');
                 html.setAttribute('data-theme', 'dark');
                 themeText.textContent = 'Switch to Light Mode';
-                localStorage.setItem('cancara-theme-preference', 'dark');
             } else {
                 body.setAttribute('data-theme', 'light');
                 html.setAttribute('data-theme', 'light');
                 themeText.textContent = 'Switch to Dark Mode';
-                localStorage.setItem('cancara-theme-preference', 'light');
             }
+            // NOTE: We don't save to localStorage on index page - it always uses system preference
         }
         
         // Update toggle button text on page load
@@ -436,15 +437,20 @@
             }
         });
         
+        // Show modal when clicking project tile
         function openThemeModal() {
-            window.location.href = 'journeys/01-mvp-journey/01-account-summary/account-summary.html';
+            const modal = document.getElementById('theme-modal');
+            if (modal) {
+                modal.style.display = 'flex';
+            }
         }
         
+        // Set theme and save to localStorage, then navigate to journey
         function setTheme(theme) {
-            document.body.setAttribute('data-theme', theme);
-            document.documentElement.setAttribute('data-theme', theme);
+            // Save the chosen theme to localStorage for the journey pages
             localStorage.setItem('cancara-theme-preference', theme);
-            document.getElementById('theme-modal').style.display = 'none';
+            // Navigate to the journey
+            window.location.href = 'journeys/01-mvp-journey/01-account-summary/account-summary.html';
         }
 
         // PWA Install Prompt Logic
