@@ -58,6 +58,42 @@
             transition: background-color 0.3s ease, color 0.3s ease;
         }
         
+        /* Theme Toggle Button - Desktop Only */
+        .theme-toggle {
+            position: fixed;
+            top: var(--spacing-24);
+            right: var(--spacing-24);
+            z-index: 1000;
+        }
+        
+        .toggle-button {
+            padding: var(--spacing-08) var(--spacing-16);
+            background: var(--bg-action-default);
+            color: var(--text-action-inverse);
+            border: var(--border-width-01) solid var(--border-default);
+            border-radius: var(--radius-default);
+            font-family: var(--font-family-body);
+            font-size: var(--type-style-8-size);
+            font-weight: var(--type-style-8-weight);
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+        
+        .toggle-button:hover {
+            opacity: 0.9;
+        }
+        
+        .toggle-button:active {
+            transform: scale(0.98);
+        }
+        
+        /* Hide toggle on mobile */
+        @media (max-width: 430px) {
+            .theme-toggle {
+                display: none;
+            }
+        }
+        
         .page-container {
             width: 100%;
             max-width: 430px;
@@ -250,31 +286,48 @@
         
     </style>
 </head>
-<body>
-    <!-- Auto-detect system theme preference AND listen for changes -->
+<body data-theme="dark">
+    <!-- Load theme from localStorage before anything else -->
     <script>
         (function() {
-            // Function to apply theme
-            function applyTheme(isDark) {
-                const theme = isDark ? 'dark' : 'light';
-                document.body.setAttribute('data-theme', theme);
-                document.documentElement.setAttribute('data-theme', theme);
+            const savedTheme = localStorage.getItem('cancara-theme-preference') || 'dark';
+            document.body.setAttribute('data-theme', savedTheme);
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+    
+    <!-- Theme Toggle Button (Desktop Only) -->
+    <div class="theme-toggle">
+        <button class="toggle-button" onclick="toggleTheme()">
+            <span id="theme-text">Switch to Light Mode</span>
+        </button>
+    </div>
+    
+    <!-- Auto-detect system theme preference AND listen for changes (only if no saved preference) -->
+    <script>
+        (function() {
+            // Only use system theme if no saved preference exists
+            const savedTheme = localStorage.getItem('cancara-theme-preference');
+            
+            if (!savedTheme) {
+                // Function to apply theme
+                function applyTheme(isDark) {
+                    const theme = isDark ? 'dark' : 'light';
+                    document.body.setAttribute('data-theme', theme);
+                    document.documentElement.setAttribute('data-theme', theme);
+                }
                 
-                // Also apply the theme class for token support
-                document.body.classList.remove('theme-dark', 'theme-light');
-                document.body.classList.add(`theme-${theme}`);
+                // Check system preference
+                const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+                
+                // Apply initial theme
+                applyTheme(darkModeQuery.matches);
+                
+                // Listen for system theme changes
+                darkModeQuery.addEventListener('change', (e) => {
+                    applyTheme(e.matches);
+                });
             }
-            
-            // Check system preference
-            const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
-            
-            // Apply initial theme
-            applyTheme(darkModeQuery.matches);
-            
-            // Listen for system theme changes
-            darkModeQuery.addEventListener('change', (e) => {
-                applyTheme(e.matches);
-            });
         })();
     </script>
     <div class="page-container">
@@ -324,3 +377,133 @@
     <!-- Theme Selection Modal -->
     <div class="popup-modal-overlay" id="theme-modal" style="display: none;">
         <div class="popup-modal sentiment-default link-layout-2vertical">
+            <div class="popup-modal-title">
+                <div class="popup-modal-title-text">Select Theme</div>
+            </div>
+            <div class="popup-modal-body">
+                <div class="popup-modal-message">Choose between light and dark mode</div>
+            </div>
+            <div class="popup-modal-buttons">
+                <div class="popup-modal-divider"></div>
+                <div class="popup-modal-buttons-container">
+                    <button class="popup-modal-button" onclick="setTheme('dark')">
+                        <span class="popup-modal-button-text">Dark Mode</span>
+                    </button>
+                    <div class="popup-modal-separator"></div>
+                    <button class="popup-modal-button" onclick="setTheme('light')">
+                        <span class="popup-modal-button-text">Light Mode</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="src/components/action/tile/tile/Tile.vanilla.js"></script>
+    <script src="src/components/notification/pop-up-modal/custom-pop-up-modal/CustomPopupModal.vanilla.js"></script>
+    <script src="src/components/notification/notification-panel/NotificationPanel.vanilla.js"></script>
+    
+    <script>
+        // Toggle between light and dark mode
+        function toggleTheme() {
+            const body = document.body;
+            const html = document.documentElement;
+            const themeText = document.getElementById('theme-text');
+            const currentTheme = body.getAttribute('data-theme');
+            
+            if (currentTheme === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                html.setAttribute('data-theme', 'dark');
+                themeText.textContent = 'Switch to Light Mode';
+                localStorage.setItem('cancara-theme-preference', 'dark');
+            } else {
+                body.setAttribute('data-theme', 'light');
+                html.setAttribute('data-theme', 'light');
+                themeText.textContent = 'Switch to Dark Mode';
+                localStorage.setItem('cancara-theme-preference', 'light');
+            }
+        }
+        
+        // Update toggle button text on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            const currentTheme = document.body.getAttribute('data-theme');
+            const themeText = document.getElementById('theme-text');
+            if (themeText) {
+                if (currentTheme === 'dark') {
+                    themeText.textContent = 'Switch to Light Mode';
+                } else {
+                    themeText.textContent = 'Switch to Dark Mode';
+                }
+            }
+        });
+        
+        function openThemeModal() {
+            window.location.href = 'journeys/01-mvp-journey/01-account-summary/account-summary.html';
+        }
+        
+        function setTheme(theme) {
+            document.body.setAttribute('data-theme', theme);
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('cancara-theme-preference', theme);
+            document.getElementById('theme-modal').style.display = 'none';
+        }
+
+        // PWA Install Prompt Logic
+        let deferredPrompt;
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            showInstallToast();
+        });
+
+        function showInstallToast() {
+            const existingToast = document.querySelector('.pwa-toast-container');
+            if (existingToast) return;
+
+            const toast = document.createElement('div');
+            toast.className = 'pwa-toast-container';
+            toast.innerHTML = `
+                <div class="notification-panel panel-inverted">
+                    <div class="notification-panel-icon">
+                        <img src="assets/brand/cancara-horse.svg" alt="Cancara" style="width: 18px; height: 18px;">
+                    </div>
+                    <div class="notification-panel-content">
+                        <div class="notification-panel-title">Add to Home Screen</div>
+                        <div class="notification-panel-message">Install the Cancara app for quick access</div>
+                    </div>
+                    <div class="notification-panel-action">
+                        <img src="assets/icons/navigation/close.svg" alt="Dismiss" style="width: 18px; height: 18px;">
+                    </div>
+                </div>
+            `;
+
+            document.body.appendChild(toast);
+
+            toast.addEventListener('click', async (e) => {
+                if (e.target.closest('.notification-panel-action')) {
+                    dismissInstallToast();
+                } else {
+                    if (deferredPrompt) {
+                        deferredPrompt.prompt();
+                        const { outcome } = await deferredPrompt.userChoice;
+                        console.log(`User response to install prompt: ${outcome}`);
+                        deferredPrompt = null;
+                        dismissInstallToast();
+                    }
+                }
+            });
+
+            setTimeout(dismissInstallToast, 10000);
+        }
+
+        function dismissInstallToast() {
+            const toast = document.querySelector('.pwa-toast-container');
+            if (toast) {
+                toast.style.animation = 'none';
+                toast.style.opacity = '0';
+                setTimeout(() => toast.remove(), 300);
+            }
+        }
+    </script>
+</body>
+</html>
