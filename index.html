@@ -41,14 +41,21 @@
             padding: 0;
         }
         
+        /* CRITICAL: Browser background must match page background for seamless experience */
+        html {
+            background: var(--bg-page-default);
+            transition: background-color 0.3s ease;
+        }
+        
         body {
             font-family: var(--font-family-body);
-            background: var(--color-gray-800);
+            background: var(--bg-page-default);
             color: var(--text-default);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         
         .page-container {
@@ -103,15 +110,19 @@
             width: 48px;
             height: auto;
             flex-shrink: 0;
-            margin-bottom: 4px;
+            margin-bottom: var(--spacing-04);
         }
         
-        /* Hide light logo by default (dark mode) */
+        /* Show dark logo by default, hide light logo */
         .splash-logo.light-mode {
             display: none;
         }
         
-        /* In light mode, hide dark logo and show light logo */
+        .splash-logo.dark-mode {
+            display: block;
+        }
+        
+        /* In light mode, swap visibility */
         [data-theme="light"] .splash-logo.dark-mode {
             display: none;
         }
@@ -143,7 +154,7 @@
         }
         
         .projects-section {
-            margin-bottom: 0;
+            margin-bottom: var(--spacing-none);
         }
         
         .section-title {
@@ -159,17 +170,20 @@
         
         .tile {
             cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            border: 2px solid var(--color-green-success);
-            background: var(--bg-page-default) !important;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, 
+                        background-color 0.3s ease, border-color 0.3s ease;
+            border-width: var(--border-width-02);
+            border-style: solid;
+            border-color: var(--color-green-success);
+            background: var(--bg-panel-default) !important;
         }
         
-        /* Increase font sizes on project tile */
         .tile .tile-text-heading {
             font-family: var(--type-style-4-family);
             font-size: var(--type-style-4-size);
             font-weight: var(--type-style-4-weight);
             line-height: var(--type-style-4-line-height);
+            color: var(--text-default);
         }
         
         .tile .tile-text-subtext {
@@ -177,12 +191,13 @@
             font-size: var(--type-style-7-size);
             font-weight: var(--font-weight-thin);
             line-height: var(--type-style-7-line-height);
+            color: var(--text-subdued);
         }
         
         .footer-label {
             text-align: center;
             margin-top: var(--spacing-24);
-            margin-bottom: 0;
+            margin-bottom: var(--spacing-none);
             font-family: var(--type-style-13-family);
             font-size: var(--type-style-13-size);
             font-weight: var(--type-style-13-weight);
@@ -198,21 +213,21 @@
         }
         
         .tile:hover {
-            transform: translateY(-2px);
+            transform: translateY(calc(var(--spacing-04) * -0.5));
         }
         
         .tile:active {
-            transform: translateY(0);
+            transform: translateY(var(--spacing-none));
         }
         
         /* ========== PWA INSTALL TOAST ========== */
         
         .pwa-toast-container {
             position: fixed;
-            bottom: 32px;
+            bottom: var(--spacing-32);
             left: 50%;
             transform: translateX(-50%);
-            width: calc(100% - 32px);
+            width: calc(100% - var(--spacing-32));
             max-width: 400px;
             z-index: 9999;
             animation: slideUpToast 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -220,11 +235,11 @@
         
         @keyframes slideUpToast {
             from {
-                transform: translateX(-50%) translateY(20px);
+                transform: translateX(-50%) translateY(var(--spacing-24));
                 opacity: 0;
             }
             to {
-                transform: translateX(-50%) translateY(0);
+                transform: translateX(-50%) translateY(var(--spacing-none));
                 opacity: 1;
             }
         }
@@ -235,19 +250,31 @@
         
     </style>
 </head>
-<body data-theme="dark">
-    <!-- Auto-detect system theme preference -->
+<body>
+    <!-- Auto-detect system theme preference AND listen for changes -->
     <script>
         (function() {
-            // Check if user has system preference for dark/light mode
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            const theme = prefersDark ? 'dark' : 'light';
+            // Function to apply theme
+            function applyTheme(isDark) {
+                const theme = isDark ? 'dark' : 'light';
+                document.body.setAttribute('data-theme', theme);
+                document.documentElement.setAttribute('data-theme', theme);
+                
+                // Also apply the theme class for token support
+                document.body.classList.remove('theme-dark', 'theme-light');
+                document.body.classList.add(`theme-${theme}`);
+            }
             
-            // Set theme on body
-            document.body.setAttribute('data-theme', theme);
+            // Check system preference
+            const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
             
-            // Also set on html for consistency
-            document.documentElement.setAttribute('data-theme', theme);
+            // Apply initial theme
+            applyTheme(darkModeQuery.matches);
+            
+            // Listen for system theme changes
+            darkModeQuery.addEventListener('change', (e) => {
+                applyTheme(e.matches);
+            });
         })();
     </script>
     <div class="page-container">
@@ -297,103 +324,3 @@
     <!-- Theme Selection Modal -->
     <div class="popup-modal-overlay" id="theme-modal" style="display: none;">
         <div class="popup-modal sentiment-default link-layout-2vertical">
-            <div class="popup-modal-title">
-                <div class="popup-modal-title-text">Choose your theme</div>
-            </div>
-            <div class="popup-modal-body">
-                <div class="popup-modal-message">How would you like to view the journey?</div>
-            </div>
-            <div class="popup-modal-buttons">
-                <div class="popup-modal-divider"></div>
-                <div class="popup-modal-buttons-container">
-                    <button class="popup-modal-button" onclick="selectTheme('dark')">
-                        <span class="popup-modal-button-text">Dark Mode</span>
-                    </button>
-                    <div class="popup-modal-divider"></div>
-                    <button class="popup-modal-button" onclick="selectTheme('light')">
-                        <span class="popup-modal-button-text">Light Mode</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <script>
-        // Open theme selection modal
-        function openThemeModal() {
-            const modal = document.getElementById('theme-modal');
-            modal.style.display = 'flex';
-            // Add fade-in animation
-            setTimeout(() => {
-                modal.style.opacity = '1';
-            }, 10);
-        }
-        
-        // Select theme and navigate
-        function selectTheme(theme) {
-            // Store theme preference in localStorage
-            localStorage.setItem('cancara-theme-preference', theme);
-            
-            // Navigate to journey
-            window.location.href = 'journeys/01-mvp-journey/01-account-summary/account-summary.html';
-        }
-        
-        // Close modal when clicking overlay
-        document.getElementById('theme-modal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                this.style.opacity = '0';
-                setTimeout(() => {
-                    this.style.display = 'none';
-                }, 300);
-            }
-        });
-    </script>
-    
-    <!-- PWA Install Toast - EXACT COPY from NotificationPanel.html -->
-    <div class="pwa-toast-container" id="pwa-toast" style="display: none;">
-        <div class="notification-panel type-primary sentiment-info">
-            <div class="notification-panel-content">
-                <div class="notification-panel-icon-container">
-                    <div class="notification-panel-icon">
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M8 0C3.58 0 0 3.58 0 8C0 12.42 3.58 16 8 16C12.42 16 16 12.42 16 8C16 3.58 12.42 0 8 0ZM8.8 12H7.2V7.2H8.8V12ZM8.8 5.6H7.2V4H8.8V5.6Z" fill="currentColor"/>
-                        </svg>
-                    </div>
-                </div>
-                <div class="notification-panel-text">
-                    <div class="notification-panel-title">Install this app</div>
-                    <div class="notification-panel-message">Tap Share → Add to Home Screen</div>
-                </div>
-                <button class="notification-panel-action" onclick="document.getElementById('pwa-toast').style.display='none'; localStorage.setItem('pwa-toast-dismissed', 'true');">
-                    <div class="notification-panel-action-icon">
-                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M3 3L9 9M9 3L3 9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                    </div>
-                </button>
-            </div>
-        </div>
-    </div>
-    
-    <!-- PWA Install Toast Logic -->
-    <script>
-        // Show iOS install instructions if on iOS Safari and not in standalone mode
-        window.addEventListener('DOMContentLoaded', function() {
-            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-            const isInStandaloneMode = window.navigator.standalone || window.matchMedia('(display-mode: standalone)').matches;
-            
-            // Show toast if on iOS, in browser (not standalone), and hasn't been dismissed
-            if (isIOS && !isInStandaloneMode && !localStorage.getItem('pwa-toast-dismissed')) {
-                setTimeout(function() {
-                    document.getElementById('pwa-toast').style.display = 'block';
-                }, 1000); // Show after 1 second
-            }
-        });
-    </script>
-    
-    <!-- Component Scripts -->
-    <script src="src/components/action/tile/tile/Tile.vanilla.js"></script>
-    <script src="src/components/content/icon/pictogram/Pictogram.vanilla.js"></script>
-    <script src="src/components/notification/notification-panel/NotificationPanel.vanilla.js"></script>
-</body>
-</html>
