@@ -61,19 +61,57 @@ function animateNewTaskCompletion(newTask, progressPercent, totalCompleted, tota
         }
     }, 1300);
     
-    // Step 4: Fade out ghost panel - timing depends on if 100% or 75%
-    const fadeOutDelay = (progressPercent === 100) ? 1500 : 2200;  // Faster for 100%
+    // Step 4: Lock hero panel height BEFORE ghost panel fades (100% only)
+    // Tick flip completes at 1900ms (1300 + 600), add 150ms pause = 2050ms
+    const heightLockDelay = (progressPercent === 100) ? 2050 : 2200;
+    setTimeout(function() {
+        if (progressPercent === 100) {
+            const heroPanel = document.querySelector('.hero-panel-container');
+            
+            if (heroPanel) {
+                const currentHeight = heroPanel.getBoundingClientRect().height;
+                heroPanel.style.minHeight = currentHeight + 'px';
+                heroPanel.style.height = currentHeight + 'px';
+                heroPanel.style.maxHeight = currentHeight + 'px';
+                heroPanel.style.overflow = 'hidden';
+                console.log('[HUB-ANIM] 100% - Hero panel height LOCKED at', currentHeight + 'px (after 150ms pause)');
+            }
+        }
+    }, heightLockDelay);
+    
+    // Step 5: Fade out ghost panel AND progress bar together - timing depends on if 100% or 75%
+    // 100%: Start fade at 2050ms (after 150ms pause), 75%: Start at 2200ms as before
+    const fadeOutDelay = (progressPercent === 100) ? 2050 : 2200;
     setTimeout(function() {
         const flipContainer = document.querySelector(`.flip-container[data-task="${newTask}"]`);
-        if (flipContainer) {
-            flipContainer.style.transition = 'opacity 0.4s ease';
-            flipContainer.style.opacity = '0';
-            console.log('[HUB-ANIM] Ghost panel fading out');
+        const progressSection = document.getElementById('progress-section');
+        
+        if (progressPercent === 100) {
+            // For 100%, fade out BOTH ghost panel and progress bar simultaneously
+            if (flipContainer) {
+                flipContainer.style.transition = 'opacity 0.4s ease';
+                flipContainer.style.opacity = '0';
+                console.log('[HUB-ANIM] 100% - Ghost panel fading out');
+            }
+            if (progressSection) {
+                progressSection.style.transition = 'opacity 0.4s ease';
+                progressSection.style.opacity = '0';
+                console.log('[HUB-ANIM] 100% - Progress bar fading out simultaneously');
+            }
+        } else {
+            // For 75%, only fade ghost panel
+            if (flipContainer) {
+                flipContainer.style.transition = 'opacity 0.4s ease';
+                flipContainer.style.opacity = '0';
+                console.log('[HUB-ANIM] Ghost panel fading out');
+            }
         }
     }, fadeOutDelay);
     
-    // Step 5: Handle panel visibility and expansion - timing depends on if 100% or 75%
-    const expansionDelay = (progressPercent === 100) ? 1900 : 2600;
+    // Step 6: Handle panel visibility and expansion - timing depends on if 100% or 75%
+    // 100%: Ghost+progress fade starts at 2050ms, completes at 2450ms (2050 + 400)
+    // 75%: Ghost fade starts at 2200ms, completes at 2600ms (2200 + 400)
+    const expansionDelay = (progressPercent === 100) ? 2450 : 2600;
     setTimeout(function() {
         const dashboardGrid = document.querySelector('.hero-panel-dashboard-grid');
         
@@ -94,81 +132,84 @@ function animateNewTaskCompletion(newTask, progressPercent, totalCompleted, tota
                 console.log('[HUB-ANIM] 100% - Fading out entire dashboard grid');
             }
             
-            // After fade completes, LOCK hero panel height BEFORE hiding anything
+            // After fade completes, hide dashboard and progress, show notification
             setTimeout(function() {
-                const heroPanel = document.querySelector('.hero-panel');
                 const dashboardGrid = document.querySelector('.hero-panel-dashboard-grid');
+                const progressSection = document.getElementById('progress-section');
+                const notification = document.getElementById('completion-notification');
+                const heroPanel = document.querySelector('.hero-panel-container');
                 
-                // Step 1: Lock the height FIRST before any content changes
-                if (heroPanel) {
-                    const currentHeight = heroPanel.getBoundingClientRect().height;
-                    heroPanel.style.minHeight = currentHeight + 'px';
-                    heroPanel.style.height = currentHeight + 'px';
-                    heroPanel.style.maxHeight = currentHeight + 'px';
-                    console.log('[HUB-ANIM] 100% - Hero panel height LOCKED at', currentHeight + 'px');
-                }
+                console.log('[HUB-ANIM] POST-FADE - Elements found:', {
+                    dashboardGrid: !!dashboardGrid,
+                    progressSection: !!progressSection,
+                    notification: !!notification,
+                    heroPanel: !!heroPanel
+                });
                 
-                // Step 2: NOW hide the dashboard (height won't change because it's locked)
+                // Hide faded elements
                 if (dashboardGrid) {
                     dashboardGrid.style.display = 'none';
-                    console.log('[HUB-ANIM] 100% - Dashboard hidden but height locked');
+                    console.log('[HUB-ANIM] 100% - Dashboard hidden');
+                }
+                if (progressSection) {
+                    progressSection.style.display = 'none';
+                    console.log('[HUB-ANIM] 100% - Progress hidden');
                 }
                 
-                // Fade out progress section and fade in notification (height still locked)
-                setTimeout(function() {
-                    const progressSection = document.getElementById('progress-section');
-                    const notification = document.getElementById('completion-notification');
+                // Show notification (invisible) and prepare for simultaneous animations
+                if (notification) {
+                    notification.style.display = 'block';
+                    notification.style.opacity = '0';
+                    notification.style.marginBottom = '16px';
+                    console.log('[HUB-ANIM] 100% - Notification set to display:block, opacity:0');
+                } else {
+                    console.error('[HUB-ANIM] 100% - NOTIFICATION NOT FOUND!');
+                }
+                
+                if (notification && heroPanel) {
+                    // Get current locked height BEFORE any changes
+                    const lockedHeight = parseInt(heroPanel.style.height) || heroPanel.getBoundingClientRect().height;
                     
-                    if (progressSection && notification) {
-                        // Fade out progress
-                        progressSection.style.transition = 'opacity 0.4s ease';
-                        progressSection.style.opacity = '0';
+                    // Force reflow to register display:block
+                    notification.offsetHeight;
+                    
+                    // Calculate target height with notification visible
+                    const targetHeight = heroPanel.scrollHeight;
+                    
+                    console.log('[HUB-ANIM] 100% - Locked height:', lockedHeight + 'px', 'Target height:', targetHeight + 'px');
+                    
+                    // Use setTimeout instead of requestAnimationFrame for more reliable timing
+                    setTimeout(function() {
+                        // Ensure we're starting from the locked height
+                        heroPanel.style.height = lockedHeight + 'px';
                         
+                        // Force reflow before setting transition
+                        heroPanel.offsetHeight;
+                        
+                        // Enable transition
+                        heroPanel.style.transition = 'height 0.5s ease';
+                        notification.style.transition = 'opacity 0.5s ease';
+                        
+                        // Start animations on next frame
                         setTimeout(function() {
-                            progressSection.style.display = 'none';
-                            notification.style.display = 'block';
-                            notification.style.marginBottom = '16px';
-                            
-                            // Fade in notification
-                            setTimeout(function() {
-                                notification.style.transition = 'opacity 0.4s ease';
-                                notification.style.opacity = '1';
-                                console.log('[HUB-ANIM] 100% - Notification shown, height STILL locked');
-                                
-                                // Step 3: NOW animate hero panel height AFTER notification is visible
-                                setTimeout(function() {
-                                    if (heroPanel) {
-                                        // Remove height constraints and enable transition
-                                        heroPanel.style.minHeight = '';
-                                        heroPanel.style.maxHeight = '';
-                                        heroPanel.style.transition = 'height 0.5s ease';
-                                        
-                                        // Calculate new natural height
-                                        heroPanel.style.height = 'auto';
-                                        const newHeight = heroPanel.getBoundingClientRect().height;
-                                        
-                                        // Snap back to locked height
-                                        heroPanel.style.height = currentHeight + 'px';
-                                        
-                                        // Force reflow
-                                        heroPanel.offsetHeight;
-                                        
-                                        // Animate to new height
-                                        heroPanel.style.height = newHeight + 'px';
-                                        
-                                        console.log('[HUB-ANIM] 100% - Animating height from', currentHeight, 'to', newHeight);
-                                        
-                                        // Clean up after animation
-                                        setTimeout(function() {
-                                            heroPanel.style.height = 'auto';
-                                            heroPanel.style.transition = '';
-                                        }, 500);
-                                    }
-                                }, 300); // Delay after notification appears
-                            }, 50);
-                        }, 400);
-                    }
-                }, 100);
+                            heroPanel.style.height = targetHeight + 'px';
+                            notification.style.opacity = '1';
+                            console.log('[HUB-ANIM] 100% - Started height animation from', lockedHeight, 'to', targetHeight);
+                        }, 20);
+                    }, 50);
+                    
+                    // Clean up after animation
+                    setTimeout(function() {
+                        heroPanel.style.height = 'auto';
+                        heroPanel.style.minHeight = '';
+                        heroPanel.style.maxHeight = '';
+                        heroPanel.style.overflow = '';
+                        heroPanel.style.transition = '';
+                        console.log('[HUB-ANIM] 100% - Animation complete, styles cleaned');
+                    }, 500);
+                } else {
+                    console.error('[HUB-ANIM] Missing heroPanel or notification for height animation');
+                }
             }, 400);
         } else {
             // Not 100% yet - expand remaining panel
@@ -207,8 +248,10 @@ function animateNewTaskCompletion(newTask, progressPercent, totalCompleted, tota
         }
     }, expansionDelay);
     
-    // Step 6: Show list item with height animation - timing depends on if 100% or 75%
-    const listItemDelay = (progressPercent === 100) ? 2300 : 3000;
+    // Step 7: Show list item with height animation - timing depends on if 100% or 75%
+    // 100%: Start showing list item at same time as ghost panel fade (2050ms)
+    // 75%: Keep original timing (3000ms)
+    const listItemDelay = (progressPercent === 100) ? 2050 : 3000;
     setTimeout(function() {
         const listItem = document.getElementById(`${newTask}-list-item`);
         if (listItem) {

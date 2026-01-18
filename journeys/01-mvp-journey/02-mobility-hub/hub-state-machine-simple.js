@@ -20,7 +20,8 @@
         completedTasks: [],  // Start with NO tasks
         progressState: 'hub_0',  // Start at hub_0 for initial animation
         lastCompletedTask: null,
-        hasSeenInitialAnimation: false  // Track if we've done the car spin
+        hasSeenInitialAnimation: false,  // Track if we've done the car spin
+        isConnected: true  // Track if car is connected (false = show empty state)
     };
 
     // ========================================
@@ -60,7 +61,60 @@
     // ========================================
 
     function renderStaticState(state) {
-        console.log('[STATE-MACHINE] Rendering static state:', state.progressState);
+        console.log('[STATE-MACHINE] Rendering static state:', state.progressState, 'isConnected:', state.isConnected);
+        
+        // Handle disconnected state (empty panel)
+        if (!state.isConnected) {
+            const connectedPanel = document.getElementById('hero-panel-connected');
+            const emptyPanel = document.getElementById('hero-panel-empty');
+            const listActionGroup = document.querySelector('.list-action-group');
+            const financeButton = document.getElementById('finance-button');
+            
+            // Hide connected panel and list items
+            if (connectedPanel) {
+                connectedPanel.style.display = 'none';
+            }
+            if (listActionGroup) {
+                listActionGroup.style.display = 'none';
+            }
+            
+            // Show empty panel
+            if (emptyPanel) {
+                emptyPanel.style.display = 'block';
+                emptyPanel.style.opacity = '1';
+            }
+            
+            // Change finance button to secondary
+            if (financeButton) {
+                financeButton.classList.remove('btn-primary');
+                financeButton.classList.add('btn-secondary');
+            }
+            
+            console.log('[STATE-MACHINE] Showing empty/disconnected state');
+            return; // Exit early - don't render connected state
+        }
+        
+        // Show connected panel, hide empty panel
+        const connectedPanel = document.getElementById('hero-panel-connected');
+        const emptyPanel = document.getElementById('hero-panel-empty');
+        const listActionGroup = document.querySelector('.list-action-group');
+        const financeButton = document.getElementById('finance-button');
+        
+        if (connectedPanel) {
+            connectedPanel.style.display = 'block';
+            connectedPanel.style.opacity = '1';
+        }
+        if (emptyPanel) {
+            emptyPanel.style.display = 'none';
+        }
+        if (listActionGroup) {
+            listActionGroup.style.display = 'block';
+            listActionGroup.style.opacity = '1';
+        }
+        if (financeButton) {
+            financeButton.classList.remove('btn-secondary');
+            financeButton.classList.add('btn-primary');
+        }
         
         const progressMap = {
             'hub_0': 0,
@@ -194,9 +248,26 @@
             const remaining = ['insurance', 'servicing'].find(t => !state.completedTasks.includes(t));
             const completed = ['insurance', 'servicing'].find(t => state.completedTasks.includes(t));
             
-            hideGhostPanel(completed);
-            showGhostPanels([remaining]);
-            expandGhostPanel(remaining);
+            // If we're about to animate (lastCompletedTask exists), show the completed task with "Added"
+            if (state.lastCompletedTask) {
+                // Show the task we just completed with "Added" text
+                showGhostPanels([state.lastCompletedTask]);
+                setGhostPanelToAdded(state.lastCompletedTask);
+                expandGhostPanel(state.lastCompletedTask);
+                
+                // Hide all other tasks
+                const allTasks = ['insurance', 'servicing'];
+                allTasks.forEach(task => {
+                    if (task !== state.lastCompletedTask) {
+                        hideGhostPanel(task);
+                    }
+                });
+            } else {
+                // Normal static state - hide completed, show remaining expanded
+                hideGhostPanel(completed);
+                showGhostPanels([remaining]);
+                expandGhostPanel(remaining);
+            }
         } else if (state.progressState === 'hub_100') {
             // All ghost panels hidden
             hideGhostPanel('insurance');
@@ -257,6 +328,33 @@
         // Reset icon rotation
         if (iconButton) {
             iconButton.style.transform = 'rotateY(0deg)';
+            const icon = iconButton.querySelector('img');
+            if (icon) {
+                icon.setAttribute('data-action-icon', 'plus');
+                icon.setAttribute('src', '../../../assets/icons/action/plus.svg');
+                icon.style.transform = 'scaleX(1)';
+            }
+        }
+    }
+
+    function setGhostPanelToAdded(task) {
+        const ghostPanel = document.querySelector(`.flip-container[data-task="${task}"] .hero-panel-ghost-compact`);
+        const subtitle = ghostPanel ? ghostPanel.querySelector('.hero-panel-ghost-subtitle') : null;
+        const iconButton = ghostPanel ? ghostPanel.querySelector('.hero-panel-ghost-button') : null;
+        
+        // Set subtitle to default text based on task type (animation will change it to "Added")
+        if (subtitle) {
+            if (task === 'insurance') {
+                subtitle.textContent = 'Get reminder';
+            } else if (task === 'servicing') {
+                subtitle.textContent = 'Keep track';
+            }
+        }
+        
+        // Keep icon as plus (not flipped) so animation can flip it
+        if (iconButton) {
+            iconButton.style.transform = 'rotateY(0deg)';
+            iconButton.style.transition = '';
             const icon = iconButton.querySelector('img');
             if (icon) {
                 icon.setAttribute('data-action-icon', 'plus');
@@ -489,6 +587,23 @@
             state.lastCompletedTask = task;
             
             setState(state);
+        },
+        
+        disconnect: function() {
+            console.log('[STATE-MACHINE] Disconnecting car');
+            const state = getState();
+            state.isConnected = false;
+            setState(state);
+            
+            // Re-render to show empty state
+            renderStaticState(state);
+        },
+        
+        reconnect: function() {
+            console.log('[STATE-MACHINE] Reconnecting car - resetting to initial state');
+            // Reset to default state and reload
+            setState({ ...DEFAULT_STATE });
+            location.reload();
         },
         
         getState: getState,
